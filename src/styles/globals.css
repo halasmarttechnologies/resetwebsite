@@ -75,3 +75,8 @@ html.lenis, html.lenis body {
 .lenis.lenis-smooth iframe {
   pointer-events: none;
 }
+
+/* Suppress internal Next.js devtools portal errors */
+nextjs-portal [data-nextjs-toast="error"] {
+  opacity: 0.9;
+}
