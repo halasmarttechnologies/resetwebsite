@@ -7,13 +7,13 @@ import { MobileNav } from "./mobile-nav";
 
 export function Header() {
   return (
-    <header className="absolute top-0 left-0 right-0 z-40 w-full py-6 sm:py-8 md:py-10 transition-all duration-300">
-      <div className="max-w-[1600px] mx-auto w-full px-6 sm:px-10 md:px-14 lg:px-16 flex items-center justify-between">
+    <header className="absolute top-0 left-0 right-0 z-40 w-full py-6 sm:py-8 transition-all duration-300">
+      <div className="max-w-[1600px] mx-auto w-full px-5 sm:px-10 md:px-14 lg:px-16 flex items-center justify-between">
         {/* Left Side: Brand Logo (RESET) + Nav Links */}
-        <div className="flex items-center gap-10 md:gap-14 lg:gap-20">
-          {/* Logo in Plus Jakarta Sans Bold, pure white */}
+        <div className="flex items-center gap-8 sm:gap-12 md:gap-16 lg:gap-20">
+          {/* Logo in creative Syne display font, pure white */}
           <Link href="/" className="inline-flex items-center group">
-            <span className="font-jakarta text-2xl sm:text-3xl font-extrabold tracking-[-0.03em] text-white flex items-center select-none uppercase">
+            <span className="font-syne text-2xl sm:text-3xl font-extrabold tracking-[-0.03em] text-white flex items-center select-none uppercase">
               RESET
             </span>
           </Link>

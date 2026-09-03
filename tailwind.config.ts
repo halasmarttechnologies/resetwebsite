@@ -70,6 +70,8 @@ const config: Config = {
       },
       fontFamily: {
         sans: ["var(--font-jakarta)", "Inter", "sans-serif"],
+        syne: ["var(--font-syne)", "sans-serif"],
+        unbounded: ["var(--font-unbounded)", "sans-serif"],
         jakarta: ["var(--font-jakarta)", "sans-serif"],
         serif: ["var(--font-serif)", "Cormorant Garamond", "serif"],
         display: ["var(--font-display)", "Cinzel", "serif"],
