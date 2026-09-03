@@ -1,7 +1,7 @@
 "use client";
 
 import * as React from "react";
-import { motion, HTMLMotionProps, Variants } from "framer-motion";
+import { motion, type HTMLMotionProps, type Variants } from "framer-motion";
 import { useReducedMotion } from "@/hooks/use-reduced-motion";
 
 export const luxuryEase = [0.16, 1, 0.3, 1] as const;
@@ -26,7 +26,8 @@ export const staggerContainerVariants: Variants = {
   },
 };
 
-export interface FadeInProps extends HTMLMotionProps<"div"> {
+export interface FadeInProps extends Omit<HTMLMotionProps<"div">, "children"> {
+  children: React.ReactNode;
   delay?: number;
   duration?: number;
 }
@@ -58,11 +59,15 @@ export function FadeIn({
   );
 }
 
+export interface StaggerContainerProps extends Omit<HTMLMotionProps<"div">, "children"> {
+  children: React.ReactNode;
+}
+
 export function StaggerContainer({
   children,
   className,
   ...props
-}: HTMLMotionProps<"div">) {
+}: StaggerContainerProps) {
   const prefersReducedMotion = useReducedMotion();
 
   if (prefersReducedMotion) {
