@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { fontSans, fontSerif, fontDisplay } from "@/styles/fonts";
+import { fontSans, fontSerif, fontDisplay, fontAvalance, fontOutfit } from "@/styles/fonts";
 import "@/styles/globals.css";
 import { defaultSeoConfig } from "@/config/seo";
 import { Header } from "@/components/layout/header";
@@ -19,7 +19,7 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${fontSans.variable} ${fontSerif.variable} ${fontDisplay.variable}`}
+      className={`${fontSans.variable} ${fontSerif.variable} ${fontDisplay.variable} ${fontAvalance.variable} ${fontOutfit.variable}`}
     >
       <head>
         <script
@@ -29,9 +29,11 @@ export default function RootLayout({
       </head>
       <body className="bg-noir-900 text-noir-50 font-sans antialiased selection:bg-brand-gold/30 selection:text-brand-100 flex min-h-screen flex-col">
         <SmoothScrollProvider>
-          <Header />
-          <main className="flex-1">{children}</main>
-          <Footer />
+          <div className="w-full relative flex flex-col min-h-screen">
+            <Header />
+            <main className="flex-1">{children}</main>
+            <Footer />
+          </div>
         </SmoothScrollProvider>
       </body>
     </html>

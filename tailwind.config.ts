@@ -72,6 +72,8 @@ const config: Config = {
         sans: ["var(--font-sans)", "Inter", "sans-serif"],
         serif: ["var(--font-serif)", "Cormorant Garamond", "serif"],
         display: ["var(--font-display)", "Cinzel", "serif"],
+        avalance: ["var(--font-avalance)", "var(--font-sans)", "sans-serif"],
+        outfit: ["var(--font-outfit)", "sans-serif"],
       },
       fontSize: {
         "2xs": ["0.65rem", { lineHeight: "0.85rem" }],
