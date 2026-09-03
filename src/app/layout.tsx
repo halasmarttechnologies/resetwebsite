@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { fontSans, fontSerif, fontDisplay, fontAvalance, fontOutfit } from "@/styles/fonts";
+import { fontJakarta, fontSerif, fontDisplay, fontOutfit } from "@/styles/fonts";
 import "@/styles/globals.css";
 import { defaultSeoConfig } from "@/config/seo";
 import { Header } from "@/components/layout/header";
@@ -19,7 +19,7 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${fontSans.variable} ${fontSerif.variable} ${fontDisplay.variable} ${fontAvalance.variable} ${fontOutfit.variable}`}
+      className={`${fontJakarta.variable} ${fontSerif.variable} ${fontDisplay.variable} ${fontOutfit.variable}`}
     >
       <head>
         <script
@@ -27,11 +27,11 @@ export default function RootLayout({
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
         />
       </head>
-      <body className="bg-noir-900 text-noir-50 font-sans antialiased selection:bg-brand-gold/30 selection:text-brand-100 flex min-h-screen flex-col">
+      <body className="bg-white text-noir-900 font-sans antialiased selection:bg-brand-gold/30 selection:text-noir-900 flex min-h-screen flex-col">
         <SmoothScrollProvider>
-          <div className="w-full relative flex flex-col min-h-screen">
+          <div className="w-full relative flex flex-col min-h-screen bg-white">
             <Header />
-            <main className="flex-1">{children}</main>
+            <main className="flex-1 w-full bg-white">{children}</main>
             <Footer />
           </div>
         </SmoothScrollProvider>

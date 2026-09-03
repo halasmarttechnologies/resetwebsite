@@ -1,11 +1,13 @@
-import { Cormorant_Garamond, Inter, Cinzel, Syne, Outfit } from "next/font/google";
+import { Cormorant_Garamond, Cinzel, Plus_Jakarta_Sans, Outfit } from "next/font/google";
 
-export const fontSans = Inter({
+export const fontJakarta = Plus_Jakarta_Sans({
   subsets: ["latin"],
-  variable: "--font-sans",
+  variable: "--font-jakarta",
   display: "swap",
-  weight: ["300", "400", "500", "600", "700", "800", "900"],
+  weight: ["400", "500", "600", "700", "800"],
 });
+
+export const fontSans = fontJakarta;
 
 export const fontSerif = Cormorant_Garamond({
   subsets: ["latin"],
@@ -21,16 +23,9 @@ export const fontDisplay = Cinzel({
   weight: ["500", "600", "700", "800"],
 });
 
-export const fontAvalance = Syne({
-  subsets: ["latin"],
-  variable: "--font-avalance",
-  display: "swap",
-  weight: ["700", "800"],
-});
-
 export const fontOutfit = Outfit({
   subsets: ["latin"],
   variable: "--font-outfit",
   display: "swap",
-  weight: ["400", "500", "600", "700", "800", "900"],
+  weight: ["400", "500", "600", "700", "800"],
 });

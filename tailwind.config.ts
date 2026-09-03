@@ -69,10 +69,10 @@ const config: Config = {
         },
       },
       fontFamily: {
-        sans: ["var(--font-sans)", "Inter", "sans-serif"],
+        sans: ["var(--font-jakarta)", "Inter", "sans-serif"],
+        jakarta: ["var(--font-jakarta)", "sans-serif"],
         serif: ["var(--font-serif)", "Cormorant Garamond", "serif"],
         display: ["var(--font-display)", "Cinzel", "serif"],
-        avalance: ["var(--font-avalance)", "var(--font-sans)", "sans-serif"],
         outfit: ["var(--font-outfit)", "sans-serif"],
       },
       fontSize: {
