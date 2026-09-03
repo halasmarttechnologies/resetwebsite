@@ -13,7 +13,7 @@ export function Header() {
         <div className="flex items-center gap-10 md:gap-14 lg:gap-16">
           {/* Logo in Plus Jakarta Sans bold */}
           <Link href="/" className="inline-flex items-center group">
-            <span className="font-jakarta text-2xl sm:text-3xl font-extrabold tracking-[-0.03em] text-white flex items-center select-none uppercase drop-shadow-[0_2px_10px_rgba(0,0,0,0.5)]">
+            <span className="font-jakarta text-2xl sm:text-3xl font-extrabold tracking-[-0.03em] text-white flex items-center select-none uppercase">
               RESET
             </span>
           </Link>
@@ -22,25 +22,25 @@ export function Header() {
           <nav className="hidden md:flex items-center gap-6 lg:gap-8">
             <Link
               href="/about"
-              className="text-xs font-semibold uppercase tracking-[0.16em] text-white/90 hover:text-white transition-all duration-200 drop-shadow-[0_1px_6px_rgba(0,0,0,0.6)] hover:scale-105"
+              className="text-xs font-semibold uppercase tracking-[0.16em] text-white/95 hover:text-white transition-all duration-200 hover:scale-105"
             >
               ABOUT US
             </Link>
             <Link
               href="/services"
-              className="text-xs font-semibold uppercase tracking-[0.16em] text-white/90 hover:text-white transition-all duration-200 drop-shadow-[0_1px_6px_rgba(0,0,0,0.6)] hover:scale-105"
+              className="text-xs font-semibold uppercase tracking-[0.16em] text-white/95 hover:text-white transition-all duration-200 hover:scale-105"
             >
               SERVICES
             </Link>
             <Link
               href="/blog"
-              className="text-xs font-semibold uppercase tracking-[0.16em] text-white/90 hover:text-white transition-all duration-200 drop-shadow-[0_1px_6px_rgba(0,0,0,0.6)] hover:scale-105"
+              className="text-xs font-semibold uppercase tracking-[0.16em] text-white/95 hover:text-white transition-all duration-200 hover:scale-105"
             >
               BLOG
             </Link>
             <Link
               href="/contact"
-              className="text-xs font-semibold uppercase tracking-[0.16em] text-white/90 hover:text-white transition-all duration-200 drop-shadow-[0_1px_6px_rgba(0,0,0,0.6)] hover:scale-105"
+              className="text-xs font-semibold uppercase tracking-[0.16em] text-white/95 hover:text-white transition-all duration-200 hover:scale-105"
             >
               CONTACTS
             </Link>
@@ -53,7 +53,7 @@ export function Header() {
             href={siteConfig.booking.primaryUrl}
             target="_blank"
             rel="noopener noreferrer"
-            className="hidden sm:inline-flex items-center justify-center px-6 md:px-7 py-2.5 rounded-full bg-white/20 hover:bg-white/30 active:bg-white/40 backdrop-blur-md border border-white/30 text-white text-xs sm:text-sm font-semibold tracking-wide transition-all duration-300 shadow-[0_4px_20px_rgba(0,0,0,0.25)] hover:shadow-[0_4px_24px_rgba(255,255,255,0.3)] hover:scale-[1.02]"
+            className="hidden sm:inline-flex items-center justify-center px-6 md:px-7 py-2.5 rounded-full bg-white/20 hover:bg-white/30 active:bg-white/40 backdrop-blur-md border border-white/30 text-white text-xs sm:text-sm font-semibold tracking-wide transition-all duration-300 hover:scale-[1.02]"
           >
             Book an Appointment
           </a>
