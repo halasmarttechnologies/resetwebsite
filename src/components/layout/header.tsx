@@ -1,69 +1,85 @@
+"use client";
+
 import * as React from "react";
 import Link from "next/link";
-import { Container } from "@/components/ui/container";
-import { Button } from "@/components/ui/button";
-import { navigationConfig } from "@/config/navigation";
 import { siteConfig } from "@/config/site";
-import { AnnouncementBar } from "./announcement-bar";
 import { MobileNav } from "./mobile-nav";
-import { MessageSquare, Phone } from "lucide-react";
 
 export function Header() {
-  return (
-    <header className="sticky top-0 z-40 w-full bg-noir-900/90 backdrop-blur-md border-b border-noir-750/80 transition-all duration-300">
-      <AnnouncementBar />
+  const [isScrolled, setIsScrolled] = React.useState(false);
 
-      <Container size="xl">
-        <div className="flex h-20 items-center justify-between">
-          {/* Brand Logo */}
-          <Link href="/" className="flex flex-col group">
-            <span className="font-display text-2xl font-bold tracking-cinematic text-noir-50 group-hover:text-brand-gold transition-colors">
-              RESET
-            </span>
-            <span className="text-2xs uppercase tracking-luxury text-noir-400 font-medium">
-              Men Salon &bull; Dubai
+  React.useEffect(() => {
+    const handleScroll = () => {
+      setIsScrolled(window.scrollY > 40);
+    };
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
+  return (
+    <header
+      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ease-luxury ${
+        isScrolled
+          ? "bg-noir-950/80 backdrop-blur-lg border-b border-white/10 py-4 shadow-xl"
+          : "bg-transparent py-6 md:py-8"
+      }`}
+    >
+      <div className="w-full px-6 sm:px-10 md:px-14 lg:px-16 flex items-center justify-between">
+        {/* Left Side: Brand Logo + Nav Links (Grouped just like screenshot) */}
+        <div className="flex items-center gap-10 md:gap-14 lg:gap-20">
+          {/* Logo with Stylized Letter Mark */}
+          <Link href="/" className="inline-flex items-center group">
+            <span className="font-sans text-xl sm:text-2xl font-black tracking-[-0.02em] text-white flex items-center uppercase select-none">
+              <span>LXN</span>
+              <span className="text-brand-300 mx-[0.5px]">A</span>
+              <span>RIA</span>
             </span>
           </Link>
 
-          {/* Desktop Navigation */}
-          <nav className="hidden lg:flex items-center gap-8">
-            {navigationConfig.mainNav.map((item) => (
-              <Link
-                key={item.href}
-                href={item.href}
-                className="text-xs uppercase tracking-luxury text-noir-300 hover:text-brand-gold transition-colors duration-200 font-medium relative py-1"
-              >
-                {item.title}
-              </Link>
-            ))}
+          {/* Desktop Navigation Links */}
+          <nav className="hidden md:flex items-center gap-6 lg:gap-10">
+            <Link
+              href="/about"
+              className="text-2xs sm:text-xs font-semibold uppercase tracking-[0.18em] text-white/90 hover:text-white transition-colors duration-200"
+            >
+              ABOUT US
+            </Link>
+            <Link
+              href="/services"
+              className="text-2xs sm:text-xs font-semibold uppercase tracking-[0.18em] text-white/90 hover:text-white transition-colors duration-200"
+            >
+              SERVICES
+            </Link>
+            <Link
+              href="/blog"
+              className="text-2xs sm:text-xs font-semibold uppercase tracking-[0.18em] text-white/90 hover:text-white transition-colors duration-200"
+            >
+              BLOG
+            </Link>
+            <Link
+              href="/contact"
+              className="text-2xs sm:text-xs font-semibold uppercase tracking-[0.18em] text-white/90 hover:text-white transition-colors duration-200"
+            >
+              CONTACTS
+            </Link>
           </nav>
+        </div>
 
-          {/* Desktop Direct Actions */}
-          <div className="hidden lg:flex items-center gap-4">
-            <a
-              href={siteConfig.contact.phoneHref}
-              className="text-xs font-mono text-noir-300 hover:text-brand-300 transition-colors flex items-center gap-1.5"
-            >
-              <Phone className="w-3.5 h-3.5 text-brand-gold" />
-              <span>{siteConfig.contact.phoneDisplay}</span>
-            </a>
+        {/* Right Side: Frosted Glass "Book an Appointment" Pill Button */}
+        <div className="flex items-center gap-4">
+          <a
+            href={siteConfig.booking.primaryUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="hidden sm:inline-flex items-center justify-center px-6 md:px-7 py-2.5 rounded-full bg-white/15 hover:bg-white/25 active:bg-white/30 backdrop-blur-md border border-white/25 text-white text-xs sm:text-sm font-medium tracking-wide transition-all duration-300 shadow-lg shadow-black/20 hover:scale-[1.02]"
+          >
+            Book an Appointment
+          </a>
 
-            <a
-              href={siteConfig.booking.primaryUrl}
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              <Button variant="gold" size="sm" className="flex items-center gap-1.5 text-2xs">
-                <MessageSquare className="w-3.5 h-3.5" />
-                <span>Book Now</span>
-              </Button>
-            </a>
-          </div>
-
-          {/* Mobile Nav Toggle */}
+          {/* Mobile Menu Trigger */}
           <MobileNav />
         </div>
-      </Container>
+      </div>
     </header>
   );
 }

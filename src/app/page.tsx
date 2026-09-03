@@ -1,29 +1,17 @@
 import { Metadata } from "next";
-import { DevelopmentBanner } from "@/components/layout/development-banner";
-import { getCmsClient } from "@/lib/cms";
+import { HeroSection } from "@/components/sections/hero-section";
 
 export const metadata: Metadata = {
-  title: "Reset Men Salon | Luxury Men's Grooming Sanctuary & Japanese Head Spa Dubai",
+  title: "Reset Men Salon | Luxury Grooming Sanctuary & Japanese Head Spa Dubai",
   description:
-    "Reset Men Salon is Dubai's premier luxury men's grooming destination in Business Bay. Precision haircuts, beard architecture, and signature Japanese Head Spa.",
+    "Dubai's premier luxury men's grooming destination in Business Bay. Precision haircuts, beard architecture, and signature Japanese Head Spa.",
 };
 
-export default async function HomePage() {
-  const cms = getCmsClient();
-  const categories = await cms.getServiceCategories();
-  const services = await cms.getServices();
-
+export default function HomePage() {
   return (
-    <DevelopmentBanner
-      pageTitle="Reset Men Salon — System Initialized"
-      category="Homepage Architecture"
-      description="The production architecture, design system tokens, Lenis smooth scrolling, and CMS-ready data models are fully established. Visual homepage UI design will be crafted in the next phase."
-      metaData={{
-        "Service Categories": categories.length,
-        "Catalog Services": services.length,
-        Location: "Business Bay, Dubai",
-        Status: "Architecture & Data Layer Ready",
-      }}
-    />
+    <div className="relative w-full bg-noir-950 text-white min-h-screen">
+      {/* 1. Hero Section matching reference screenshot 1:1 */}
+      <HeroSection />
+    </div>
   );
 }
