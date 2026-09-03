@@ -14,16 +14,16 @@ function RollingLetter({
   delay?: number;
 }) {
   return (
-    <span className="relative inline-block overflow-hidden h-[1.08em] leading-[0.92] align-baseline">
+    <span className="relative inline-block overflow-hidden h-[1.12em] leading-[0.95] align-baseline select-none">
       <motion.span
-        initial={{ y: "120%", rotateX: -60 }}
+        initial={{ y: "115%", rotateX: -50 }}
         animate={{ y: "0%", rotateX: 0 }}
         transition={{
-          duration: 1.1,
+          duration: 0.95,
           delay: delay,
           ease: [0.16, 1, 0.3, 1],
         }}
-        className="inline-block transform-gpu origin-bottom will-change-transform text-white select-none"
+        className="inline-block transform-gpu origin-bottom will-change-transform text-white"
       >
         {char}
       </motion.span>
@@ -39,18 +39,17 @@ export function HeroSection() {
     offset: ["start start", "end start"],
   });
 
-  // Smooth scroll-driven parallax movement
+  // Subtle scroll-driven parallax movement
   const imageY = useTransform(scrollYProgress, [0, 1], ["0%", "8%"]);
   const imageScale = useTransform(scrollYProgress, [0, 1], [1, 1.03]);
-  const textY = useTransform(scrollYProgress, [0, 1], ["0%", "-12%"]);
 
   return (
     <section
       ref={containerRef}
       className="relative w-full bg-white flex justify-center overflow-hidden"
     >
-      {/* Centered Structured Frame matching website grid layout */}
-      <div className="relative w-full max-w-[1720px] h-screen min-h-[700px] max-h-[1050px] overflow-hidden flex flex-col justify-between rounded-none md:rounded-b-3xl">
+      {/* Centered Structured Frame matching website grid layout under any zoom level */}
+      <div className="relative w-full max-w-[1720px] h-[92vh] min-h-[640px] max-h-[980px] overflow-hidden rounded-none md:rounded-b-3xl">
         {/* 1. Full-Bleed High-Fashion Background Portrait (Crisp Sunlight & Blue Sky, 100% Clearly Visible) */}
         <motion.div
           style={{ y: imageY, scale: imageScale }}
@@ -63,65 +62,62 @@ export function HeroSection() {
             priority
             quality={95}
             sizes="(max-width: 1720px) 100vw, 1720px"
-            className="object-cover object-[center_28%] md:object-[center_20%]"
+            className="object-cover object-[center_26%] md:object-[center_20%]"
           />
         </motion.div>
 
-        {/* Spacer for Top Header */}
-        <div className="h-32 sm:h-36 md:h-40 w-full relative z-10" />
-
-        {/* 2. Hero Content Overlay (Aligned to Header Grid: max-w-[1600px] px-6 sm:px-10 md:px-14 lg:px-16) */}
-        <div className="relative z-20 w-full max-w-[1600px] mx-auto px-6 sm:px-10 md:px-14 lg:px-16 pb-8 sm:pb-10 md:pb-12 pointer-events-none">
-          <motion.div style={{ y: textY }} className="w-full">
-            {/* Bottom-Left Micro Copy & Action Link (Pure White, Smooth Intro) */}
-            <div className="mb-4 sm:mb-6 max-w-md pointer-events-auto overflow-hidden">
+        {/* 2. Hero Bottom Content Overlay (Anchored to Bottom Edge, Never Overlaps Header or Face) */}
+        <div className="absolute bottom-0 left-0 right-0 z-20 w-full pb-8 sm:pb-10 md:pb-12 pointer-events-none">
+          <div className="w-full max-w-[1600px] mx-auto px-6 sm:px-10 md:px-14 lg:px-16">
+            {/* Bottom-Left Micro Copy & Action Link */}
+            <div className="mb-2 sm:mb-3 max-w-md pointer-events-auto overflow-hidden">
               <motion.p
                 initial={{ y: "100%" }}
                 animate={{ y: "0%" }}
-                transition={{ duration: 0.9, delay: 0.25, ease: [0.16, 1, 0.3, 1] }}
-                className="font-jakarta text-white text-sm sm:text-base md:text-lg font-medium tracking-wide leading-snug mb-1.5"
+                transition={{ duration: 0.8, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
+                className="font-jakarta text-white text-xs sm:text-sm md:text-base font-medium tracking-wide leading-snug mb-1"
               >
                 Your glow begins here. Welcome to Reset.
               </motion.p>
               <motion.div
                 initial={{ y: "100%" }}
                 animate={{ y: "0%" }}
-                transition={{ duration: 0.9, delay: 0.4, ease: [0.16, 1, 0.3, 1] }}
+                transition={{ duration: 0.8, delay: 0.32, ease: [0.16, 1, 0.3, 1] }}
               >
                 <a
                   href={siteConfig.booking.primaryUrl}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="font-jakarta group inline-flex items-center text-white text-base sm:text-lg md:text-xl font-semibold underline underline-offset-4 decoration-white hover:text-white/80 transition-all duration-300"
+                  className="font-jakarta group inline-flex items-center text-white text-sm sm:text-base md:text-lg font-semibold underline underline-offset-4 decoration-white hover:text-white/85 transition-all duration-300"
                 >
                   <span>Book an Appointment</span>
                 </a>
               </motion.div>
             </div>
 
-            {/* Monumental Typography: MEN'S SALON (Increased Size, Pure White, Smooth Staggered Rolling Intro) */}
-            <div className="w-full flex items-baseline justify-start overflow-hidden">
-              <h1 className="flex items-center flex-wrap gap-x-4 sm:gap-x-6 md:gap-x-8 font-jakarta font-extrabold tracking-[-0.035em] text-white text-6xl sm:text-7xl md:text-8xl lg:text-[7.5vw] xl:text-[8.0vw] leading-[0.92] uppercase">
+            {/* Monumental Typography: MEN'S SALON (Single Line, Perfectly Sized, Never Wraps, Pure White, Zero Shadows) */}
+            <div className="w-full overflow-hidden pt-1">
+              <h1 className="inline-flex items-center flex-nowrap whitespace-nowrap gap-x-3 sm:gap-x-4 md:gap-x-6 font-jakarta font-extrabold tracking-[-0.03em] text-white text-[clamp(1.85rem,4.8vw,5.5rem)] leading-none uppercase">
                 {/* Word 1: MEN'S */}
-                <span className="inline-flex items-center">
-                  <RollingLetter char="M" delay={0.1} />
-                  <RollingLetter char="E" delay={0.16} />
-                  <RollingLetter char="N" delay={0.22} />
-                  <RollingLetter char="'" delay={0.28} />
-                  <RollingLetter char="S" delay={0.34} />
+                <span className="inline-flex items-center whitespace-nowrap">
+                  <RollingLetter char="M" delay={0.08} />
+                  <RollingLetter char="E" delay={0.13} />
+                  <RollingLetter char="N" delay={0.18} />
+                  <RollingLetter char="'" delay={0.23} />
+                  <RollingLetter char="S" delay={0.28} />
                 </span>
 
                 {/* Word 2: SALON */}
-                <span className="inline-flex items-center">
-                  <RollingLetter char="S" delay={0.42} />
-                  <RollingLetter char="A" delay={0.48} />
-                  <RollingLetter char="L" delay={0.54} />
-                  <RollingLetter char="O" delay={0.60} />
-                  <RollingLetter char="N" delay={0.66} />
+                <span className="inline-flex items-center whitespace-nowrap">
+                  <RollingLetter char="S" delay={0.35} />
+                  <RollingLetter char="A" delay={0.40} />
+                  <RollingLetter char="L" delay={0.45} />
+                  <RollingLetter char="O" delay={0.50} />
+                  <RollingLetter char="N" delay={0.55} />
                 </span>
               </h1>
             </div>
-          </motion.div>
+          </div>
         </div>
       </div>
     </section>
