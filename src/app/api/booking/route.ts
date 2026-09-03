@@ -1,6 +1,5 @@
 import { NextRequest, NextResponse } from "next/server";
 import { z } from "zod";
-import { siteConfig } from "@/config/site";
 import { checkRateLimit } from "@/lib/security/rate-limiter";
 
 const bookingSchema = z.object({

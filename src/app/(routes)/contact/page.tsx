@@ -19,6 +19,7 @@ export default async function ContactPage() {
       category="Contact & Location"
       description="Connect directly with our salon concierge for bookings, consultations, or location directions. Rate-limited API routes for inquiries are ready."
       metaData={{
+        Locations: locations.length,
         Phone: siteConfig.contact.phoneDisplay,
         WhatsApp: siteConfig.contact.whatsappDisplay,
         Email: siteConfig.contact.email,

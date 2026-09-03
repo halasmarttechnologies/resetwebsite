@@ -4,7 +4,7 @@ import { Container } from "@/components/ui/container";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { siteConfig } from "@/config/site";
-import { Construction, Sparkles, ArrowRight, ShieldCheck, Phone, MessageSquare } from "lucide-react";
+import { Construction, ArrowRight, ShieldCheck, Phone, MessageSquare } from "lucide-react";
 
 interface DevelopmentBannerProps {
   pageTitle: string;

@@ -1,7 +1,7 @@
 import * as React from "react";
 import Link from "next/link";
 import { Container } from "@/components/ui/container";
-import { Sparkles, ArrowRight } from "lucide-react";
+import { ArrowRight } from "lucide-react";
 
 export function AnnouncementBar() {
   return (
