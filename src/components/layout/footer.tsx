@@ -1,7 +1,6 @@
 "use client";
 
 import * as React from "react";
-import Image from "next/image";
 import Link from "next/link";
 import { siteConfig } from "@/config/site";
 
@@ -9,22 +8,7 @@ export function Footer() {
   const currentYear = new Date().getFullYear();
 
   return (
-    <footer className="relative z-30 w-full text-white pt-20 sm:pt-28 md:pt-36 pb-8 sm:pb-12 overflow-hidden select-none bg-noir-950 rounded-none border-t border-white/15">
-      {/* 1. Background Image with High Opacity & Crisp Visibility */}
-      <div className="absolute inset-0 z-0 h-full w-full">
-        <Image
-          src="/images/footer/footer-bg.webp"
-          alt="Reset Men Salon Dubai — Luxury Grooming"
-          fill
-          priority={false}
-          quality={95}
-          sizes="100vw"
-          className="object-cover object-[center_25%]"
-        />
-        {/* Lighter, subtle gradient overlay so the photo is prominently and clearly visible */}
-        <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/40 to-black/20" />
-      </div>
-
+    <footer className="relative z-30 w-full text-white pt-20 sm:pt-28 md:pt-36 pb-8 sm:pb-12 overflow-hidden select-none bg-black rounded-none border-t border-white/15">
       <div className="relative z-10 max-w-[1600px] mx-auto w-full px-4 sm:px-8 md:px-12 lg:px-16 flex flex-col justify-between">
         {/* 2. Top Inquiry & Booking CTA Banner */}
         <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-6 sm:gap-8 pb-10 sm:pb-16 border-b border-white/20">

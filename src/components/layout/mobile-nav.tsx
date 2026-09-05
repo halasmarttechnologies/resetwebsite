@@ -30,22 +30,16 @@ export function MobileNav({ isHomePage = false }: MobileNavProps) {
       <button
         onClick={() => setIsOpen(true)}
         aria-label="Open Navigation Menu"
-        className="p-2 transition-colors text-white hover:text-white/80"
+        className={`p-2 transition-colors ${
+          isHomePage ? "text-white hover:text-white/80" : "text-noir-950 hover:text-noir-700"
+        }`}
       >
         <Menu className="w-6 h-6" />
       </button>
 
-      {/* Backdrop blur layer & Drawer */}
+      {/* Backdrop & Drawer with Rich Blur */}
       {isOpen && (
-        <>
-          {/* Page content blur layer */}
-          <div
-            className="fixed inset-0 z-50 backdrop-blur-xl bg-black/30 animate-fade-in"
-            onClick={() => setIsOpen(false)}
-          />
-
-          {/* Drawer panel */}
-          <div className="fixed inset-0 z-[51] flex flex-col bg-noir-950/95 animate-fade-in p-6">
+        <div className="fixed inset-0 z-50 flex flex-col bg-noir-950/90 backdrop-blur-2xl animate-fade-in p-6">
             {/* Top Bar */}
             <div className="flex items-center justify-between pb-6 border-b border-noir-800">
               <Link
@@ -101,8 +95,7 @@ export function MobileNav({ isHomePage = false }: MobileNavProps) {
               </a>
             </div>
           </div>
-        </>
-      )}
+        )}
     </div>
   );
 }

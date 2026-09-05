@@ -32,7 +32,7 @@ export function PhilosophyEditorialSection() {
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
       style={{ scale }}
-      className="relative sticky top-0 z-20 w-full min-h-[550px] md:min-h-screen bg-[#fbfbf9] text-noir-950 flex flex-col justify-center items-center select-none py-16 sm:py-28 md:py-40 px-4 sm:px-8 md:px-16 overflow-hidden rounded-none border-t border-b border-noir-950/[0.08]"
+      className="sticky top-0 z-20 w-full min-h-screen bg-[#fbfbf9] text-noir-950 flex flex-col justify-center items-center select-none py-20 sm:py-28 md:py-40 px-4 sm:px-8 md:px-16 overflow-hidden rounded-none border-t border-b border-noir-950/[0.08]"
     >
       {/* Interactive Smooth Lens / Glow Cursor Follower */}
       <motion.div
@@ -55,7 +55,7 @@ export function PhilosophyEditorialSection() {
           transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
           className="mb-4 sm:mb-8"
         >
-          <span className="font-editorial text-[0.65rem] sm:text-sm font-bold tracking-[0.2em] sm:tracking-[0.25em] text-noir-500 uppercase">
+          <span className="font-editorial text-xs sm:text-sm font-bold tracking-[0.2em] sm:tracking-[0.25em] text-noir-500 uppercase">
             EMPOWER YOUR GROOMING &amp; SKIN CARE
           </span>
         </motion.div>
@@ -68,7 +68,7 @@ export function PhilosophyEditorialSection() {
           transition={{ duration: 0.9, delay: 0.15, ease: [0.16, 1, 0.3, 1] }}
           className="max-w-5xl mx-auto mb-8 sm:mb-12"
         >
-          <h2 className="font-editorial font-semibold text-2xl xs:text-3xl sm:text-5xl md:text-6xl lg:text-[4.6rem] xl:text-[5rem] text-noir-950 tracking-[-0.035em] leading-[1.08] uppercase text-center">
+          <h2 className="font-editorial font-semibold text-3xl sm:text-5xl md:text-6xl lg:text-[4.75rem] xl:text-[5.2rem] text-noir-950 tracking-[-0.035em] leading-[1.08] uppercase text-center">
             THE HARMONY BETWEEN
             <br />
             <span className="text-noir-800">POWERFUL INGREDIENTS</span>
