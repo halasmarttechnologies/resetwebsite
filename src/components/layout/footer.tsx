@@ -18,8 +18,8 @@ export function Footer() {
               <span>Reset Men Salon • Dubai</span>
             </div>
 
-            <h2 className="font-editorial font-bold text-xl sm:text-3xl md:text-4xl lg:text-[2.6rem] text-white tracking-[-0.025em] leading-[1.25]">
-              Interested in <span className="font-extrabold text-white">experiencing Reset</span>, booking a signature ritual, or simply learning more?
+            <h2 className="font-editorial font-semibold text-xl sm:text-3xl md:text-4xl lg:text-[2.6rem] text-white tracking-[-0.025em] leading-[1.25]">
+              Interested in experiencing Reset, booking a signature ritual, or simply learning more?
             </h2>
           </div>
 
