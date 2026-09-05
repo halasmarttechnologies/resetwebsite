@@ -98,7 +98,7 @@ export function HeroSection() {
 
           {/* Monumental Typography: MEN'S on line 1, SALON on line 2 on mobile; horizontal on desktop */}
           <div className="w-full overflow-hidden pt-1">
-            <h1 className="flex flex-col sm:flex-row items-start sm:items-center gap-y-0.5 sm:gap-x-4 md:gap-x-7 lg:gap-x-10 font-editorial font-bold sm:font-black tracking-[-0.04em] text-white text-[clamp(4rem,14vw,11.5rem)] sm:text-[clamp(3.8rem,12.5vw,11.5rem)] leading-[0.88] uppercase text-left">
+            <h1 className="flex flex-col sm:flex-row items-start sm:items-center gap-y-0.5 sm:gap-x-4 md:gap-x-7 lg:gap-x-10 font-editorial font-bold sm:font-black tracking-[-0.04em] text-white text-[clamp(5rem,18.5vw,12rem)] sm:text-[clamp(4.2rem,13vw,13rem)] leading-[0.86] uppercase text-left">
               {/* Word 1: MEN'S */}
               <span className="inline-flex items-center whitespace-nowrap">
                 <RollingLetter char="M" delay={0.08} />
