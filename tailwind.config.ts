@@ -70,12 +70,13 @@ const config: Config = {
       },
       fontFamily: {
         sans: ["var(--font-jakarta)", "Inter", "sans-serif"],
-        editorial: ["var(--font-editorial)", "var(--font-inter)", "sans-serif"],
+        editorial: ["var(--font-editorial)", "var(--font-outfit)", "sans-serif"],
+        outfit: ["var(--font-outfit)", "sans-serif"],
+        syne: ["var(--font-syne)", "sans-serif"],
         jakarta: ["var(--font-jakarta)", "sans-serif"],
         inter: ["var(--font-inter)", "sans-serif"],
         serif: ["var(--font-serif)", "Cormorant Garamond", "serif"],
         display: ["var(--font-display)", "Cinzel", "serif"],
-        outfit: ["var(--font-outfit)", "sans-serif"],
       },
       fontSize: {
         "2xs": ["0.65rem", { lineHeight: "0.85rem" }],
