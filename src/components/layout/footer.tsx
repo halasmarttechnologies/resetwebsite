@@ -25,26 +25,26 @@ export function Footer() {
         <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/40 to-black/20" />
       </div>
 
-      <div className="relative z-10 max-w-[1600px] mx-auto w-full px-6 sm:px-10 md:px-14 lg:px-16 flex flex-col justify-between">
+      <div className="relative z-10 max-w-[1600px] mx-auto w-full px-4 sm:px-8 md:px-12 lg:px-16 flex flex-col justify-between">
         {/* 2. Top Inquiry & Booking CTA Banner */}
-        <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-8 pb-12 sm:pb-16 border-b border-white/20">
+        <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-6 sm:gap-8 pb-10 sm:pb-16 border-b border-white/20">
           <div className="max-w-2xl drop-shadow-md">
-            <div className="flex items-center gap-2 text-xs uppercase tracking-[0.2em] text-white/80 font-semibold mb-3">
+            <div className="flex items-center gap-2 text-xs uppercase tracking-[0.2em] text-white/80 font-semibold mb-2.5 sm:mb-3">
               <span className="w-1.5 h-1.5 rounded-full bg-brand-gold shadow-[0_0_8px_#D4AF37]" />
               <span>Reset Men Salon • Dubai</span>
             </div>
 
-            <h2 className="font-editorial font-bold text-2xl sm:text-3xl md:text-4xl lg:text-[2.6rem] text-white tracking-[-0.025em] leading-[1.25]">
+            <h2 className="font-editorial font-bold text-xl sm:text-3xl md:text-4xl lg:text-[2.6rem] text-white tracking-[-0.025em] leading-[1.25]">
               Interested in <span className="font-extrabold text-white">experiencing Reset</span>, booking a signature ritual, or simply learning more?
             </h2>
           </div>
 
-          <div className="shrink-0">
+          <div className="shrink-0 w-full sm:w-auto">
             <a
               href={siteConfig.booking.primaryUrl}
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center justify-center px-8 py-3.5 rounded-full bg-white hover:bg-white/90 text-noir-950 text-xs sm:text-sm font-bold tracking-wide transition-all duration-300 hover:scale-105 shadow-2xl shadow-black/60"
+              className="w-full sm:w-auto inline-flex items-center justify-center px-8 py-3.5 rounded-full bg-white hover:bg-white/90 text-noir-950 text-xs sm:text-sm font-bold tracking-wide transition-all duration-300 hover:scale-105 shadow-2xl shadow-black/60"
             >
               Book an Appointment
             </a>
@@ -52,13 +52,13 @@ export function Footer() {
         </div>
 
         {/* 3. 3-Column Navigation & Contact Grid */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-12 gap-10 lg:gap-14 py-12 sm:py-16 border-b border-white/15 drop-shadow-sm">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-12 gap-8 sm:gap-10 lg:gap-14 py-10 sm:py-16 border-b border-white/15 drop-shadow-sm">
           {/* Column 1: Quick Links */}
-          <div className="lg:col-span-4 space-y-4">
+          <div className="lg:col-span-4 space-y-3 sm:space-y-4">
             <h3 className="font-editorial font-semibold text-sm uppercase tracking-[0.18em] text-white">
               Quick Links
             </h3>
-            <ul className="space-y-2.5 font-jakarta text-xs uppercase tracking-[0.14em] text-white/80">
+            <ul className="space-y-2 sm:space-y-2.5 font-jakarta text-xs uppercase tracking-[0.14em] text-white/80">
               <li>
                 <Link href="/" className="hover:text-white transition-colors duration-200">
                   Home
@@ -88,11 +88,11 @@ export function Footer() {
           </div>
 
           {/* Column 2: Our Services */}
-          <div className="lg:col-span-4 space-y-4">
+          <div className="lg:col-span-4 space-y-3 sm:space-y-4">
             <h3 className="font-editorial font-semibold text-sm uppercase tracking-[0.18em] text-white">
               Our Services
             </h3>
-            <ul className="space-y-2.5 font-jakarta text-xs uppercase tracking-[0.14em] text-white/80">
+            <ul className="space-y-2 sm:space-y-2.5 font-jakarta text-xs uppercase tracking-[0.14em] text-white/80">
               <li>
                 <Link href="/services/hair-and-beard" className="hover:text-white transition-colors duration-200">
                   Hair &amp; Beard
@@ -132,11 +132,11 @@ export function Footer() {
           </div>
 
           {/* Column 3: Find Us */}
-          <div className="lg:col-span-4 space-y-4">
+          <div className="lg:col-span-4 space-y-3 sm:space-y-4">
             <h3 className="font-editorial font-semibold text-sm uppercase tracking-[0.18em] text-white">
               Find Us
             </h3>
-            <ul className="space-y-3 font-jakarta text-xs tracking-wide text-white/90">
+            <ul className="space-y-2.5 sm:space-y-3 font-jakarta text-xs tracking-wide text-white/90">
               <li>
                 <a
                   href="tel:+97145655688"
@@ -187,19 +187,19 @@ export function Footer() {
         </div>
 
         {/* 4. Monumental Brand Typography Spanning Across Bottom */}
-        <div className="w-full pt-8 sm:pt-12 md:pt-14 pb-4 overflow-hidden">
-          <div className="w-full flex items-baseline justify-between select-none">
-            <h1 className="w-full font-editorial font-black text-[clamp(4.5rem,15vw,16rem)] text-white tracking-[-0.04em] leading-[0.82] uppercase text-left whitespace-nowrap drop-shadow-xl">
+        <div className="w-full pt-6 sm:pt-10 md:pt-14 pb-2 sm:pb-4 overflow-hidden">
+          <div className="w-full flex items-baseline justify-between select-none overflow-hidden">
+            <h1 className="w-full font-editorial font-black text-[clamp(3.5rem,14vw,16rem)] sm:text-[clamp(5.0rem,15vw,16rem)] text-white tracking-[-0.04em] leading-[0.82] uppercase text-left whitespace-nowrap drop-shadow-xl">
               RESET
             </h1>
           </div>
         </div>
 
         {/* 5. Bottom Sub-Bar: Copyright & Social Links */}
-        <div className="pt-6 sm:pt-8 border-t border-white/15 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-white/70 font-jakarta">
+        <div className="pt-6 sm:pt-8 border-t border-white/15 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-white/70 font-jakarta text-center sm:text-left">
           <p>&copy; {currentYear} Reset Men Salon LLC. Business Bay, Dubai. All rights reserved.</p>
 
-          <div className="flex items-center gap-6 text-xs uppercase tracking-wider">
+          <div className="flex flex-wrap items-center justify-center sm:justify-end gap-x-5 gap-y-2 text-xs uppercase tracking-wider">
             <a
               href={siteConfig.socials.instagram}
               target="_blank"

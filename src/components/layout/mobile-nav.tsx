@@ -7,7 +7,11 @@ import { siteConfig } from "@/config/site";
 import { Button } from "@/components/ui/button";
 import { Menu, X, ChevronRight, Phone, MessageSquare } from "lucide-react";
 
-export function MobileNav() {
+interface MobileNavProps {
+  isHomePage?: boolean;
+}
+
+export function MobileNav({ isHomePage = false }: MobileNavProps) {
   const [isOpen, setIsOpen] = React.useState(false);
 
   React.useEffect(() => {
@@ -22,31 +26,33 @@ export function MobileNav() {
   }, [isOpen]);
 
   return (
-    <div className="lg:hidden">
+    <div className="md:hidden">
       <button
         onClick={() => setIsOpen(true)}
         aria-label="Open Navigation Menu"
-        className="p-2 text-noir-200 hover:text-brand-gold transition-colors"
+        className={`p-2 transition-colors ${
+          isHomePage ? "text-white hover:text-white/80" : "text-noir-950 hover:text-noir-700"
+        }`}
       >
         <Menu className="w-6 h-6" />
       </button>
 
       {/* Backdrop & Drawer */}
       {isOpen && (
-        <div className="fixed inset-0 z-50 flex flex-col bg-noir-950/98 backdrop-blur-xl animate-fade-in p-6">
+        <div className="fixed inset-0 z-50 flex flex-col bg-noir-950/98 backdrop-blur-2xl animate-fade-in p-6">
           {/* Top Bar */}
           <div className="flex items-center justify-between pb-6 border-b border-noir-800">
             <Link
               href="/"
               onClick={() => setIsOpen(false)}
-              className="font-serif text-xl tracking-luxury text-noir-50"
+              className="font-editorial text-2xl font-bold tracking-[-0.03em] uppercase text-white"
             >
               RESET
             </Link>
             <button
               onClick={() => setIsOpen(false)}
               aria-label="Close Navigation Menu"
-              className="p-2 text-noir-300 hover:text-noir-50"
+              className="p-2 text-noir-400 hover:text-white transition-colors"
             >
               <X className="w-6 h-6" />
             </button>
@@ -59,7 +65,7 @@ export function MobileNav() {
                 <Link
                   href={item.href}
                   onClick={() => setIsOpen(false)}
-                  className="flex items-center justify-between text-lg font-serif tracking-wide text-noir-100 hover:text-brand-gold transition-colors py-1"
+                  className="flex items-center justify-between text-xl font-editorial font-semibold uppercase tracking-wider text-white hover:text-brand-300 transition-colors py-1.5"
                 >
                   <span>{item.title}</span>
                   <ChevronRight className="w-4 h-4 text-noir-500" />

@@ -11,10 +11,10 @@ export function Header() {
   const isHomePage = pathname === "/";
 
   return (
-    <header className="absolute top-0 left-0 right-0 z-40 w-full py-6 sm:py-8 transition-all duration-300">
-      <div className="max-w-[1600px] mx-auto w-full px-5 sm:px-10 md:px-14 lg:px-16 flex items-center justify-between">
+    <header className="absolute top-0 left-0 right-0 z-40 w-full py-5 sm:py-8 transition-all duration-300">
+      <div className="max-w-[1600px] mx-auto w-full px-4 sm:px-8 md:px-12 lg:px-16 flex items-center justify-between">
         {/* Left Side: Brand Logo (RESET) + Nav Links */}
-        <div className="flex items-center gap-8 sm:gap-12 md:gap-16 lg:gap-20">
+        <div className="flex items-center gap-6 sm:gap-10 md:gap-16 lg:gap-20">
           {/* Logo */}
           <Link href="/" className="inline-flex items-center group">
             <span
@@ -82,7 +82,7 @@ export function Header() {
         </div>
 
         {/* Right Side: "Book an Appointment" Pill Button (Non-sticky, Absolute) */}
-        <div className="flex items-center gap-4">
+        <div className="flex items-center gap-3 sm:gap-4">
           <a
             href={siteConfig.booking.primaryUrl}
             target="_blank"
@@ -97,7 +97,7 @@ export function Header() {
           </a>
 
           {/* Mobile Menu Trigger */}
-          <MobileNav />
+          <MobileNav isHomePage={isHomePage} />
         </div>
       </div>
     </header>

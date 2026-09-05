@@ -53,8 +53,8 @@ const cardVariants: Variants = {
 
 export function ServicesOverviewSection() {
   return (
-    <section className="relative w-full h-screen min-h-[750px] bg-white overflow-hidden flex flex-col justify-center items-center select-none border-b border-noir-950/[0.08]">
-      <div className="w-full max-w-[1440px] mx-auto px-5 sm:px-8 md:px-12 lg:px-16 flex flex-col items-center">
+    <section className="relative w-full min-h-screen py-16 sm:py-24 md:py-32 bg-white overflow-hidden flex flex-col justify-center items-center select-none border-b border-noir-950/[0.08]">
+      <div className="w-full max-w-[1440px] mx-auto px-4 sm:px-8 md:px-12 lg:px-16 flex flex-col items-center">
         {/* 1. Section Title */}
         <motion.div
           initial={{ opacity: 0, y: 30 }}
@@ -63,7 +63,7 @@ export function ServicesOverviewSection() {
           transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
           className="mb-8 sm:mb-10 md:mb-12 text-center"
         >
-          <h2 className="font-editorial font-semibold text-4xl sm:text-5xl md:text-6xl text-noir-950 tracking-[-0.035em] uppercase">
+          <h2 className="font-editorial font-semibold text-3xl sm:text-5xl md:text-6xl text-noir-950 tracking-[-0.035em] uppercase">
             OUR SERVICES
           </h2>
         </motion.div>
@@ -74,13 +74,13 @@ export function ServicesOverviewSection() {
           initial="hidden"
           whileInView="visible"
           viewport={{ once: false, amount: 0.2 }}
-          className="w-full grid grid-cols-1 md:grid-cols-3 gap-6 sm:gap-7 md:gap-8 mb-8 sm:mb-10 md:mb-12"
+          className="w-full grid grid-cols-1 md:grid-cols-3 gap-5 sm:gap-7 md:gap-8 mb-8 sm:mb-10 md:mb-12"
         >
           {services.map((service, index) => (
             <motion.div key={index} variants={cardVariants} className="w-full">
               <Link
                 href={service.href}
-                className="group relative block w-full aspect-square overflow-hidden bg-noir-900 rounded-none cursor-pointer"
+                className="group relative block w-full aspect-[4/3] sm:aspect-square overflow-hidden bg-noir-900 rounded-none cursor-pointer"
               >
                 {/* Background Photography with Smooth Zoom on Hover */}
                 <Image
@@ -95,13 +95,13 @@ export function ServicesOverviewSection() {
                 <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/25 to-transparent pointer-events-none" />
 
                 {/* Card Content Anchored to Bottom */}
-                <div className="absolute inset-x-0 bottom-0 p-5 sm:p-6 md:p-7 flex items-end justify-between z-10">
+                <div className="absolute inset-x-0 bottom-0 p-4 sm:p-6 md:p-7 flex items-end justify-between z-10">
                   {/* Left: Service Title & Service Count */}
                   <div className="flex flex-col text-left">
-                    <h3 className="font-editorial font-semibold text-lg sm:text-xl md:text-2xl text-white tracking-[-0.02em] leading-tight uppercase group-hover:text-brand-300 transition-colors duration-300">
+                    <h3 className="font-editorial font-semibold text-base sm:text-xl md:text-2xl text-white tracking-[-0.02em] leading-tight uppercase group-hover:text-brand-300 transition-colors duration-300">
                       {service.title}
                     </h3>
-                    <p className="font-jakarta text-xs sm:text-sm text-white/80 font-normal mt-1 tracking-wide">
+                    <p className="font-jakarta text-2xs sm:text-sm text-white/80 font-normal mt-0.5 sm:mt-1 tracking-wide">
                       {service.count}
                     </p>
                   </div>
@@ -115,7 +115,7 @@ export function ServicesOverviewSection() {
                       strokeWidth="2.5"
                       strokeLinecap="round"
                       strokeLinejoin="round"
-                      className="w-5 h-5 sm:w-6 sm:h-6"
+                      className="w-4 h-4 sm:w-6 sm:h-6"
                     >
                       <line x1="18" y1="6" x2="6" y2="18" />
                       <line x1="6" y1="6" x2="18" y2="18" />
@@ -137,7 +137,7 @@ export function ServicesOverviewSection() {
         >
           <Link
             href="/services"
-            className="group relative inline-flex flex-col items-center text-noir-950 font-jakarta text-base sm:text-lg md:text-xl font-semibold tracking-wide hover:text-noir-700 transition-colors duration-300"
+            className="group relative inline-flex flex-col items-center text-noir-950 font-jakarta text-sm sm:text-lg md:text-xl font-semibold tracking-wide hover:text-noir-700 transition-colors duration-300"
           >
             <span>View All</span>
             {/* Animated Underline */}
