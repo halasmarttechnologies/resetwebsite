@@ -11,15 +11,15 @@ export function Header() {
   const isHomePage = pathname === "/";
 
   return (
-    <header className="absolute top-0 left-0 right-0 z-40 w-full py-5 sm:py-8 transition-all duration-300">
+    <header className="absolute top-0 left-0 right-0 z-40 w-full py-5 sm:py-8 transition-all duration-300 bg-noir-950 md:bg-transparent">
       <div className="max-w-[1600px] mx-auto w-full px-4 sm:px-8 md:px-12 lg:px-16 flex items-center justify-between">
         {/* Left Side: Brand Logo (RESET) + Nav Links */}
         <div className="flex items-center gap-6 sm:gap-10 md:gap-16 lg:gap-20">
           {/* Logo */}
           <Link href="/" className="inline-flex items-center group">
             <span
-              className={`font-editorial text-2xl sm:text-3xl font-bold tracking-[-0.03em] uppercase select-none transition-colors duration-200 ${
-                isHomePage ? "text-white" : "text-noir-950"
+              className={`font-editorial text-2xl sm:text-3xl font-bold tracking-[-0.03em] uppercase select-none transition-colors duration-200 text-white ${
+                isHomePage ? "md:text-white" : "md:text-noir-950"
               }`}
             >
               RESET
@@ -91,7 +91,7 @@ export function Header() {
               isHomePage
                 ? "bg-white/20 hover:bg-white/30 active:bg-white/40 backdrop-blur-md border border-white/35 text-white"
                 : "bg-noir-950 hover:bg-noir-800 text-white shadow-md"
-            }`}
+            } md:inline-flex`}
           >
             Book an Appointment
           </a>

@@ -32,7 +32,7 @@ export function PhilosophyEditorialSection() {
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
       style={{ scale }}
-      className="relative md:sticky top-0 z-20 w-full min-h-[550px] md:min-h-screen bg-[#fbfbf9] text-noir-950 flex flex-col justify-center items-center select-none py-16 sm:py-28 md:py-40 px-4 sm:px-8 md:px-16 overflow-hidden rounded-none border-t border-b border-noir-950/[0.08]"
+      className="relative sticky top-0 z-20 w-full min-h-[550px] md:min-h-screen bg-[#fbfbf9] text-noir-950 flex flex-col justify-center items-center select-none py-16 sm:py-28 md:py-40 px-4 sm:px-8 md:px-16 overflow-hidden rounded-none border-t border-b border-noir-950/[0.08]"
     >
       {/* Interactive Smooth Lens / Glow Cursor Follower */}
       <motion.div
