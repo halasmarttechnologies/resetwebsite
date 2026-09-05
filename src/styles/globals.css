@@ -4,7 +4,7 @@
 
 @layer base {
   :root {
-    --background: 255 255 255; /* White background */
+    --background: 255 255 255;
     --surface: 248 248 250;
     --foreground: 17 17 19;
     --muted: 113 113 122;
@@ -29,11 +29,11 @@
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     overflow-x: hidden;
-    scrollbar-width: none; /* Firefox */
-    -ms-overflow-style: none; /* IE / Edge */
+    scrollbar-width: none;
+    -ms-overflow-style: none;
   }
 
-  /* Completely Invisible Scrollbar across all Webkit browsers (Chrome, Safari, Edge, Opera) */
+  /* Completely Invisible Scrollbar across all Webkit browsers */
   ::-webkit-scrollbar {
     display: none;
     width: 0px;
@@ -60,7 +60,7 @@
   }
 }
 
-/* Lenis Smooth Scroll Recommended CSS */
+/* Lenis Smooth Scroll Configuration */
 html.lenis, html.lenis body {
   height: auto;
 }

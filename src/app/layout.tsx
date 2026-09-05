@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { fontJakarta, fontSyne, fontUnbounded, fontSerif, fontDisplay, fontOutfit } from "@/styles/fonts";
+import { fontJakarta, fontEditorial, fontInter, fontSerif, fontDisplay, fontOutfit } from "@/styles/fonts";
 import "@/styles/globals.css";
 import { defaultSeoConfig } from "@/config/seo";
 import { Header } from "@/components/layout/header";
@@ -19,7 +19,7 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${fontJakarta.variable} ${fontSyne.variable} ${fontUnbounded.variable} ${fontSerif.variable} ${fontDisplay.variable} ${fontOutfit.variable}`}
+      className={`${fontJakarta.variable} ${fontEditorial.variable} ${fontInter.variable} ${fontSerif.variable} ${fontDisplay.variable} ${fontOutfit.variable}`}
     >
       <head>
         <script

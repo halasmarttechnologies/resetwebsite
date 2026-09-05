@@ -12,6 +12,7 @@ export const siteConfig = {
     whatsappDisplay: "+971 58 102 1540",
     whatsappLink: "https://wa.me/971581021540?text=Hello%20Reset%20Men%20Salon,%20I%20would%20like%20to%20inquire%20about%20booking.",
     email: "info@resetmensalon.ae",
+    googleMaps: "https://maps.google.com/?q=Reset+Men+Salon+Business+Bay+Dubai",
     address: {
       street: "Business Bay",
       city: "Dubai",

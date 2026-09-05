@@ -1,15 +1,8 @@
-import { Cormorant_Garamond, Cinzel, Syne, Unbounded, Outfit, Plus_Jakarta_Sans } from "next/font/google";
+import { Cormorant_Garamond, Cinzel, Archivo, Plus_Jakarta_Sans, Inter, Outfit } from "next/font/google";
 
-export const fontSyne = Syne({
+export const fontEditorial = Archivo({
   subsets: ["latin"],
-  variable: "--font-syne",
-  display: "swap",
-  weight: ["700", "800"],
-});
-
-export const fontUnbounded = Unbounded({
-  subsets: ["latin"],
-  variable: "--font-unbounded",
+  variable: "--font-editorial",
   display: "swap",
   weight: ["700", "800", "900"],
 });
@@ -22,6 +15,13 @@ export const fontJakarta = Plus_Jakarta_Sans({
 });
 
 export const fontSans = fontJakarta;
+
+export const fontInter = Inter({
+  subsets: ["latin"],
+  variable: "--font-inter",
+  display: "swap",
+  weight: ["400", "500", "600", "700", "800", "900"],
+});
 
 export const fontSerif = Cormorant_Garamond({
   subsets: ["latin"],
