@@ -65,7 +65,7 @@ export function HeroSection() {
       </motion.div>
 
       {/* 2. Hero Bottom Content Overlay (Anchored to Bottom Edge, Aligned to Grid) */}
-      <div className="absolute bottom-0 left-0 right-0 z-20 w-full pb-8 sm:pb-8 md:pb-10 pointer-events-none">
+      <div className="absolute bottom-0 left-0 right-0 z-20 w-full pb-16 sm:pb-8 md:pb-10 pointer-events-none">
         <div className="w-full max-w-[1600px] mx-auto px-4 sm:px-8 md:px-12 lg:px-16">
           {/* Bottom-Left Micro Copy & Action Link (Book an Appointment on TOP, Subtext UNDER it) */}
           <div className="mb-3 sm:mb-4 max-w-md pointer-events-auto overflow-hidden flex flex-col items-start">
@@ -96,9 +96,9 @@ export function HeroSection() {
             </motion.p>
           </div>
 
-          {/* Monumental Typography: MEN'S SALON (Balanced Grand Scale on Mobile & Desktop) */}
+          {/* Monumental Typography: MEN'S on line 1, SALON on line 2 on mobile; horizontal on desktop */}
           <div className="w-full overflow-hidden pt-1">
-            <h1 className="inline-flex items-center flex-nowrap whitespace-nowrap gap-x-2 sm:gap-x-4 md:gap-x-7 lg:gap-x-10 font-editorial font-bold sm:font-black tracking-[-0.04em] text-white text-[clamp(3.8rem,12.5vw,11.5rem)] leading-[0.88] uppercase">
+            <h1 className="flex flex-col sm:flex-row items-start sm:items-center gap-y-0.5 sm:gap-x-4 md:gap-x-7 lg:gap-x-10 font-editorial font-bold sm:font-black tracking-[-0.04em] text-white text-[clamp(4rem,14vw,11.5rem)] sm:text-[clamp(3.8rem,12.5vw,11.5rem)] leading-[0.88] uppercase text-left">
               {/* Word 1: MEN'S */}
               <span className="inline-flex items-center whitespace-nowrap">
                 <RollingLetter char="M" delay={0.08} />
