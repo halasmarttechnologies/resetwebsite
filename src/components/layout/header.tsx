@@ -18,7 +18,7 @@ export function Header() {
           {/* Logo */}
           <Link href="/" className="inline-flex items-center group">
             <span
-              className={`font-editorial text-2xl sm:text-3xl font-black tracking-[-0.03em] uppercase select-none transition-colors duration-200 ${
+              className={`font-editorial text-2xl sm:text-3xl font-bold tracking-[-0.03em] uppercase select-none transition-colors duration-200 ${
                 isHomePage ? "text-white" : "text-noir-950"
               }`}
             >

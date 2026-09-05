@@ -63,7 +63,7 @@ export function ServicesOverviewSection() {
           transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
           className="mb-8 sm:mb-10 md:mb-12 text-center"
         >
-          <h2 className="font-editorial font-black text-4xl sm:text-5xl md:text-6xl text-noir-950 tracking-[-0.035em] uppercase">
+          <h2 className="font-editorial font-semibold text-4xl sm:text-5xl md:text-6xl text-noir-950 tracking-[-0.035em] uppercase">
             OUR SERVICES
           </h2>
         </motion.div>
@@ -98,7 +98,7 @@ export function ServicesOverviewSection() {
                 <div className="absolute inset-x-0 bottom-0 p-5 sm:p-6 md:p-7 flex items-end justify-between z-10">
                   {/* Left: Service Title & Service Count */}
                   <div className="flex flex-col text-left">
-                    <h3 className="font-editorial font-black text-lg sm:text-xl md:text-2xl text-white tracking-[-0.02em] leading-tight uppercase group-hover:text-brand-300 transition-colors duration-300">
+                    <h3 className="font-editorial font-semibold text-lg sm:text-xl md:text-2xl text-white tracking-[-0.02em] leading-tight uppercase group-hover:text-brand-300 transition-colors duration-300">
                       {service.title}
                     </h3>
                     <p className="font-jakarta text-xs sm:text-sm text-white/80 font-normal mt-1 tracking-wide">

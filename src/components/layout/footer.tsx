@@ -55,7 +55,7 @@ export function Footer() {
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-12 gap-10 lg:gap-14 py-12 sm:py-16 border-b border-white/15 drop-shadow-sm">
           {/* Column 1: Quick Links */}
           <div className="lg:col-span-4 space-y-4">
-            <h3 className="font-editorial font-black text-sm uppercase tracking-[0.18em] text-white">
+            <h3 className="font-editorial font-semibold text-sm uppercase tracking-[0.18em] text-white">
               Quick Links
             </h3>
             <ul className="space-y-2.5 font-jakarta text-xs uppercase tracking-[0.14em] text-white/80">
@@ -89,7 +89,7 @@ export function Footer() {
 
           {/* Column 2: Our Services */}
           <div className="lg:col-span-4 space-y-4">
-            <h3 className="font-editorial font-black text-sm uppercase tracking-[0.18em] text-white">
+            <h3 className="font-editorial font-semibold text-sm uppercase tracking-[0.18em] text-white">
               Our Services
             </h3>
             <ul className="space-y-2.5 font-jakarta text-xs uppercase tracking-[0.14em] text-white/80">
@@ -133,7 +133,7 @@ export function Footer() {
 
           {/* Column 3: Find Us */}
           <div className="lg:col-span-4 space-y-4">
-            <h3 className="font-editorial font-black text-sm uppercase tracking-[0.18em] text-white">
+            <h3 className="font-editorial font-semibold text-sm uppercase tracking-[0.18em] text-white">
               Find Us
             </h3>
             <ul className="space-y-3 font-jakarta text-xs tracking-wide text-white/90">

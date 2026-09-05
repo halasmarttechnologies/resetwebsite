@@ -68,7 +68,7 @@ export function PhilosophyEditorialSection() {
           transition={{ duration: 0.9, delay: 0.15, ease: [0.16, 1, 0.3, 1] }}
           className="max-w-5xl mx-auto mb-10 sm:mb-12"
         >
-          <h2 className="font-editorial font-black text-3xl sm:text-5xl md:text-6xl lg:text-[4.6rem] xl:text-[5rem] text-noir-950 tracking-[-0.035em] leading-[1.08] uppercase text-center">
+          <h2 className="font-editorial font-semibold text-3xl sm:text-5xl md:text-6xl lg:text-[4.6rem] xl:text-[5rem] text-noir-950 tracking-[-0.035em] leading-[1.08] uppercase text-center">
             THE HARMONY BETWEEN
             <br />
             <span className="text-noir-800">POWERFUL INGREDIENTS</span>

@@ -106,7 +106,7 @@ export function ServicesCatalogView({}: ServicesCatalogViewProps = {}) {
           transition={{ duration: 0.85, ease: [0.16, 1, 0.3, 1] }}
           className="w-full flex items-center justify-center text-center mb-8 sm:mb-10 md:mb-12"
         >
-          <h2 className="font-editorial font-black text-4xl sm:text-6xl md:text-7xl lg:text-[5.2rem] text-noir-950 tracking-[-0.035em] uppercase flex items-center justify-center flex-wrap gap-x-3 sm:gap-x-5 md:gap-x-6 leading-none">
+          <h2 className="font-editorial font-semibold text-4xl sm:text-6xl md:text-7xl lg:text-[5.2rem] text-noir-950 tracking-[-0.035em] uppercase flex items-center justify-center flex-wrap gap-x-3 sm:gap-x-5 md:gap-x-6 leading-none">
             <span>OUR</span>
             {/* Center Animated Bracket Widget */}
             <span className="inline-flex items-center gap-1.5 px-3 sm:px-4 py-1 sm:py-1.5 border border-noir-900 rounded-md text-xs sm:text-sm md:text-base font-editorial font-bold tracking-widest uppercase my-1">
@@ -172,7 +172,7 @@ export function ServicesCatalogView({}: ServicesCatalogViewProps = {}) {
                 {/* Content Anchored at Bottom */}
                 <div className="relative z-10 w-full flex items-end justify-between">
                   <div>
-                    <h3 className="font-editorial font-black text-sm sm:text-base md:text-lg text-white uppercase tracking-tight">
+                    <h3 className="font-editorial font-semibold text-sm sm:text-base md:text-lg text-white uppercase tracking-tight">
                       {tab.label}
                     </h3>
                     <p className="font-jakarta text-2xs sm:text-xs text-white/80">
@@ -207,7 +207,7 @@ export function ServicesCatalogView({}: ServicesCatalogViewProps = {}) {
             <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-16 items-start pb-8">
               {/* Left Column: Huge Category Title */}
               <div className="lg:col-span-5">
-                <h3 className="font-editorial font-black text-3xl sm:text-4xl md:text-5xl lg:text-6xl text-noir-950 tracking-[-0.035em] uppercase leading-tight">
+                <h3 className="font-editorial font-semibold text-3xl sm:text-4xl md:text-5xl lg:text-6xl text-noir-950 tracking-[-0.035em] uppercase leading-tight">
                   {currentTab.title}
                 </h3>
               </div>
