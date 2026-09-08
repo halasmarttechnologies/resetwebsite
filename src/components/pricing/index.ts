@@ -1,1 +1,1 @@
-export * from "@/frontend/pricing";
+export { PricingView } from "./pricing-view";

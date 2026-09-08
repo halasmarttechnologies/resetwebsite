@@ -11,7 +11,7 @@ import {
   TestimonialEditorialSection,
   FaqEditorialSection,
   TrueParallaxShowcaseSection,
-} from "@/frontend/home";
+} from "@/components/home";
 
 export const metadata: Metadata = {
   title: "Reset Men Salon | Luxury Grooming Sanctuary & Japanese Head Spa Dubai",

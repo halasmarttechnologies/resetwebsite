@@ -1,1 +1,1 @@
-export * from "@/frontend/contact";
+export { ContactView } from "./contact-view";

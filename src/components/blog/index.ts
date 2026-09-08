@@ -1,1 +1,1 @@
-export * from "@/frontend/blog";
+export { BlogView } from "./blog-view";
