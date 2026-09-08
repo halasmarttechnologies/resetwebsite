@@ -4,23 +4,30 @@ export const blogCategories: BlogCategory[] = [
   {
     id: "bcat-1",
     slug: "scalp-wellness",
-    title: "Scalp Wellness & Head Spa",
+    title: "Scalp Wellness",
     description: "Insights into trichology, follicle detoxification, and Japanese scalp therapy rituals.",
-    count: 3,
+    count: 2,
   },
   {
     id: "bcat-2",
     slug: "grooming-guides",
-    title: "Grooming & Haircare Guides",
+    title: "Grooming Guides",
     description: "Master techniques for beard shaping, pomade selection, and hair maintenance.",
-    count: 4,
+    count: 2,
   },
   {
     id: "bcat-3",
-    slug: "lifestyle-dubai",
-    title: "Executive Lifestyle & Dubai Living",
-    description: "Navigating style, skincare in desert climates, and executive self-care.",
+    slug: "barber-techniques",
+    title: "Barber Techniques",
+    description: "Scissor architecture, razor precision, and executive haircutting craft.",
     count: 2,
+  },
+  {
+    id: "bcat-4",
+    slug: "executive-lifestyle",
+    title: "Executive Lifestyle",
+    description: "Navigating style, skincare in desert climates, and executive self-care.",
+    count: 1,
   },
 ];
 
@@ -56,9 +63,9 @@ At Reset Men Salon, our head spa begins with a 200x microscopic lens. You will v
       alt: "Japanese Head Spa Scalp Hydrotherapy in Dubai",
     },
     category: blogCategories[0],
-    authorName: "Kenji Takahashi",
+    authorName: "Maria Santos",
     authorRole: "Head Spa Master",
-    publishedAt: "2026-08-20T10:00:00.000Z",
+    publishedAt: "2026-07-27T10:00:00.000Z",
     readingTimeMinutes: 5,
     tags: ["Head Spa", "Scalp Health", "Dubai Grooming", "Wellness"],
     isFeatured: true,
@@ -66,7 +73,7 @@ At Reset Men Salon, our head spa begins with a 200x microscopic lens. You will v
   {
     id: "post-2",
     slug: "maintaining-the-perfect-beard-in-dubai-climate",
-    title: "Maintaining the Perfect Beard in High Humidity & Heat",
+    title: "Maintaining the Perfect Beard in High Humidity & Heat: Precision Grooming",
     excerpt:
       "Expert tips from our master barbers on preventing beard itch, frizz, and asymmetry during the UAE warmer months.",
     content: `
@@ -87,7 +94,7 @@ Regular edging maintains the distinction between jawline definition and neckline
     category: blogCategories[1],
     authorName: "Tariq Al-Mansoor",
     authorRole: "Creative Director",
-    publishedAt: "2026-08-10T09:00:00.000Z",
+    publishedAt: "2026-07-15T09:00:00.000Z",
     readingTimeMinutes: 4,
     tags: ["Beard Care", "Styling", "Men Grooming"],
     isFeatured: true,
@@ -110,12 +117,87 @@ Before the first scissor cut, our barbers assess your profile, growth direction,
       url: "/site-pics/site-1.jpg",
       alt: "Precision Hair Architecture Guide Reset Men Salon",
     },
-    category: blogCategories[1],
+    category: blogCategories[2],
     authorName: "Marco Rossi",
     authorRole: "Senior Master Barber",
-    publishedAt: "2026-08-28T10:00:00.000Z",
+    publishedAt: "2026-07-02T10:00:00.000Z",
     readingTimeMinutes: 4,
     tags: ["Haircut", "Precision", "Barbering"],
     isFeatured: true,
+  },
+  {
+    id: "post-4",
+    slug: "the-executive-scalp-protocol-reversing-fatigue",
+    title: "The Executive Scalp Protocol: Reversing Desert Sun Damage & Mental Fatigue",
+    excerpt:
+      "Clinical trichology meets sensory restoration. How targeted acupressure relieves cranial tension and restores follicle vitality.",
+    content: `
+# Reversing Scalp Fatigue
+
+Extended screen exposure and UV radiation cause chronic micro-tension in the scalp muscles, restricting blood circulation to hair roots.
+
+## The Acupressure Technique
+Targeting the gallbladder and urinary bladder meridians across the cranium triggers immediate parasympathetic relaxation.
+    `,
+    coverImage: {
+      url: "/picture.png",
+      alt: "Executive Scalp Therapy Protocol Reset Men Salon",
+    },
+    category: blogCategories[0],
+    authorName: "Maria Santos",
+    authorRole: "Head Spa Master",
+    publishedAt: "2026-06-28T10:00:00.000Z",
+    readingTimeMinutes: 6,
+    tags: ["Scalp Care", "Wellness", "Relaxation"],
+    isFeatured: true,
+  },
+  {
+    id: "post-5",
+    slug: "straight-razor-precision-vs-modern-blades",
+    title: "Straight Razor Precision vs Modern Blades: The Art of the Hot Towel Shave",
+    excerpt:
+      "Why traditional Japanese steel and triple-steamed botanical towels remain the gold standard in clean executive shaving.",
+    content: `
+# The Art of the Hot Towel Shave
+
+Nothing matches the smoothness of a freshly stropped razor guided at a precise 30-degree angle by a master barber.
+
+## The Preparation Ritual
+Pre-shave eucalyptus oils soften the coarsest stubble while warm steam opens pores for frictionless gliding.
+    `,
+    coverImage: {
+      url: "/site-pics/site-2.jpg",
+      alt: "Traditional Straight Razor Shave at Reset Men Salon Dubai",
+    },
+    category: blogCategories[2],
+    authorName: "Kenji Takahashi",
+    authorRole: "Master Stylist",
+    publishedAt: "2026-06-17T09:00:00.000Z",
+    readingTimeMinutes: 5,
+    tags: ["Shaving", "Barbering", "Grooming"],
+    isFeatured: false,
+  },
+  {
+    id: "post-6",
+    slug: "essential-self-care-protocols-business-bay",
+    title: "Essential Self-Care Protocols for the Modern Executive in Business Bay",
+    excerpt:
+      "Balancing high-pace corporate performance with calculated grooming recovery rituals in downtown Dubai.",
+    content: `
+# Self-Care in Business Bay
+
+In the heart of Dubai's business district, carving out 60 minutes for tailored grooming is a vital strategy for clarity and confidence.
+    `,
+    coverImage: {
+      url: "/site-pics/site-4.jpg",
+      alt: "Executive Grooming in Business Bay Dubai",
+    },
+    category: blogCategories[3],
+    authorName: "Tariq Al-Mansoor",
+    authorRole: "Creative Director",
+    publishedAt: "2026-06-16T11:00:00.000Z",
+    readingTimeMinutes: 4,
+    tags: ["Lifestyle", "Dubai", "Executive"],
+    isFeatured: false,
   },
 ];

@@ -17,7 +17,7 @@ const navItems = [
 
 export function Header() {
   const pathname = usePathname();
-  const isHomePage = pathname === "/";
+  const isDarkHero = pathname === "/" || pathname === "/about";
 
   return (
     <header className="absolute top-0 left-0 right-0 z-40 w-full py-5 sm:py-8 transition-all duration-300">
@@ -32,13 +32,13 @@ export function Header() {
               width={40}
               height={40}
               className={`h-8 sm:h-9 md:h-10 w-auto object-contain transition-all duration-200 ${
-                isHomePage ? "" : "brightness-0"
+                isDarkHero ? "" : "brightness-0"
               }`}
               priority
             />
             <span
               className={`font-editorial text-2xl sm:text-3xl font-bold tracking-[-0.03em] uppercase transition-colors duration-200 ${
-                isHomePage ? "text-white" : "text-noir-950"
+                isDarkHero ? "text-white" : "text-noir-950"
               }`}
             >
               RESET
@@ -56,7 +56,7 @@ export function Header() {
                     key={item.href}
                     href={item.href}
                     className={`inline-flex items-center justify-center px-5 lg:px-6 py-2 rounded-full font-jakarta text-xs font-bold uppercase tracking-[0.18em] transition-all duration-200 shadow-md hover:scale-105 active:scale-95 ${
-                      isHomePage
+                      isDarkHero
                         ? "bg-white text-noir-950 shadow-[0_4px_20px_rgba(255,255,255,0.35)] hover:bg-neutral-100"
                         : "bg-noir-950 text-white hover:bg-noir-800"
                     }`}
@@ -71,7 +71,7 @@ export function Header() {
                   key={item.href}
                   href={item.href}
                   className={`font-jakarta text-xs font-semibold uppercase tracking-[0.18em] transition-all duration-200 hover:scale-105 ${
-                    isHomePage
+                    isDarkHero
                       ? "text-white hover:text-white/80"
                       : "text-noir-900 hover:text-noir-600"
                   }`}
@@ -90,7 +90,7 @@ export function Header() {
             target="_blank"
             rel="noopener noreferrer"
             className={`hidden sm:inline-flex items-center justify-center px-6 md:px-8 py-2.5 md:py-3 rounded-full text-xs sm:text-sm font-semibold tracking-wide transition-all duration-300 hover:scale-[1.02] ${
-              isHomePage
+              isDarkHero
                 ? "bg-white/20 hover:bg-white/30 active:bg-white/40 backdrop-blur-md border border-white/35 text-white"
                 : "bg-noir-950 hover:bg-noir-800 text-white shadow-md"
             }`}
@@ -99,7 +99,7 @@ export function Header() {
           </a>
 
           {/* Mobile Menu Trigger */}
-          <MobileNav isHomePage={isHomePage} />
+          <MobileNav isHomePage={isDarkHero} />
         </div>
       </div>
     </header>

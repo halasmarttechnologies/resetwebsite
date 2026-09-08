@@ -3,168 +3,173 @@
 import * as React from "react";
 import Image from "next/image";
 import Link from "next/link";
-import { motion, type Variants } from "framer-motion";
-import { blogPosts } from "@/data/blog";
-
-const LUXURY_EASE = [0.16, 1, 0.3, 1] as [number, number, number, number];
-
-const containerVariants: Variants = {
-  hidden: { opacity: 0 },
-  visible: {
-    opacity: 1,
-    transition: { staggerChildren: 0.1, delayChildren: 0.05 },
-  },
-};
-
-const cardVariants: Variants = {
-  hidden: { opacity: 0, y: 24 },
-  visible: {
-    opacity: 1,
-    y: 0,
-    transition: { duration: 0.75, ease: LUXURY_EASE },
-  },
-};
+import { motion, AnimatePresence } from "framer-motion";
+import { blogCategories, blogPosts } from "@/data/blog";
 
 export function BlogEditorialSection() {
-  const featuredPosts = blogPosts.slice(0, 3);
+  const [selectedCategory, setSelectedCategory] = React.useState<string>("all");
+  const [searchQuery, setSearchQuery] = React.useState<string>("");
+
+  const filteredPosts = React.useMemo(() => {
+    return blogPosts.filter((post) => {
+      const matchesCategory =
+        selectedCategory === "all" || post.category.slug === selectedCategory;
+      const matchesSearch =
+        searchQuery.trim() === "" ||
+        post.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
+        post.excerpt.toLowerCase().includes(searchQuery.toLowerCase());
+      return matchesCategory && matchesSearch;
+    });
+  }, [selectedCategory, searchQuery]);
+
+  const formatDate = (dateStr: string) => {
+    const d = new Date(dateStr);
+    const day = d.getDate();
+    const month = d.toLocaleString("en-US", { month: "long" });
+    const year = d.getFullYear();
+    return `${day}. ${month} ${year}`;
+  };
 
   return (
     <section
       id="journal"
-      className="relative w-full overflow-hidden bg-white text-noir-950 py-20 sm:py-28 md:py-32 border-b border-noir-950/10"
+      className="relative w-full overflow-hidden bg-white text-noir-950 py-16 sm:py-24 md:py-28 border-b border-noir-950/10"
     >
-      <div className="relative mx-auto w-full max-w-[1400px] px-4 sm:px-8 md:px-12">
-        {/* ── Section Header (Neat & Clean White Aesthetic) ── */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, amount: 0.3 }}
-          transition={{ duration: 0.8, ease: LUXURY_EASE }}
-          className="mx-auto max-w-2xl text-center"
-        >
-          <span className="font-editorial text-xs font-semibold uppercase tracking-[0.2em] text-noir-500">
-            The Editorial Journal
-          </span>
+      <div className="max-w-[1400px] mx-auto px-4 sm:px-8 md:px-12 lg:px-16">
+        {/* ── Top Header Bar (Title & Subtitle on Left, Search Bar on Right) ── */}
+        <div className="flex flex-col lg:flex-row lg:items-start lg:justify-between gap-6 sm:gap-8 mb-10 sm:mb-12">
+          {/* Left Column */}
+          <div className="max-w-2xl">
+            <h2 className="font-editorial font-bold text-4xl sm:text-5xl md:text-6xl text-noir-950 tracking-tight">
+              Blog
+            </h2>
+            <p className="mt-3 font-jakarta text-sm sm:text-base text-noir-600 leading-relaxed max-w-xl">
+              Stay informed and inspired with Reset’s grooming journal — your
+              source for need-to-know trends, strategic insights, and helpful
+              resources.
+            </p>
+          </div>
 
-          <h2 className="mt-3 font-editorial text-3xl sm:text-4xl md:text-5xl font-bold tracking-tight text-noir-950 uppercase">
-            Grooming & Scalp Insights
-          </h2>
-
-          <p className="mt-4 font-jakarta text-sm sm:text-base leading-relaxed text-noir-600">
-            Thoughtful guides on Japanese head spa rituals, beard sculpting, and
-            hair architecture from our master specialists in Business Bay, Dubai.
-          </p>
-        </motion.div>
-
-        {/* ── Blog Grid (3 Clean, Neat White Editorial Cards) ── */}
-        <motion.div
-          variants={containerVariants}
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, amount: 0.1 }}
-          className="mt-12 sm:mt-16 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8 w-full max-w-[1300px] mx-auto"
-        >
-          {featuredPosts.map((post) => (
-            <motion.article
-              key={post.id}
-              variants={cardVariants}
-              className="group relative flex flex-col overflow-hidden rounded-2xl sm:rounded-3xl bg-white border border-noir-950/10 transition-all duration-500 hover:shadow-xl hover:border-noir-950/25"
-            >
-              {/* Cover Image Frame */}
-              <Link
-                href={`/blog/${post.slug}`}
-                className="relative aspect-[16/10] w-full overflow-hidden bg-neutral-100 block"
+          {/* Right Column: Search Bar with Magnifying Glass Icon */}
+          <div className="w-full sm:w-auto self-start">
+            <div className="relative w-full sm:w-80">
+              <svg
+                className="absolute left-4 top-1/2 -translate-y-1/2 w-4 h-4 text-noir-400 pointer-events-none"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth="2"
+                strokeLinecap="round"
+                strokeLinejoin="round"
               >
-                <Image
-                  src={post.coverImage.url}
-                  alt={post.coverImage.alt}
-                  fill
-                  sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
-                  className="object-cover transition-transform duration-700 ease-out group-hover:scale-105"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent opacity-40 group-hover:opacity-20 transition-opacity duration-500" />
-
-                {/* Category Badge */}
-                <span className="absolute top-4 left-4 rounded-full bg-white/90 backdrop-blur-md px-3 py-1 font-editorial text-2xs font-semibold uppercase tracking-wider text-noir-950 shadow-sm">
-                  {post.category.title}
-                </span>
-
-                {/* Reading Time */}
-                <span className="absolute bottom-4 right-4 rounded-full bg-black/70 backdrop-blur-md px-2.5 py-0.5 font-jakarta text-2xs text-white/90">
-                  {post.readingTimeMinutes} min read
-                </span>
-              </Link>
-
-              {/* Editorial Content */}
-              <div className="flex flex-1 flex-col justify-between p-6 sm:p-7 bg-white">
-                <div>
-                  <span className="font-jakarta text-2xs font-medium uppercase tracking-wider text-noir-400">
-                    {new Date(post.publishedAt).toLocaleDateString("en-US", {
-                      month: "short",
-                      day: "numeric",
-                      year: "numeric",
-                    })}
-                  </span>
-
-                  <h3 className="mt-2 font-editorial text-xl sm:text-2xl font-bold leading-snug tracking-tight text-noir-950 group-hover:text-brand-DEFAULT transition-colors duration-300">
-                    <Link href={`/blog/${post.slug}`} className="hover:underline">
-                      {post.title}
-                    </Link>
-                  </h3>
-
-                  <p className="mt-3 font-jakarta text-sm leading-relaxed text-noir-600 line-clamp-2">
-                    {post.excerpt}
-                  </p>
-                </div>
-
-                {/* Author Byline & Read Link */}
-                <div className="mt-6 pt-4 border-t border-noir-950/10 flex items-center justify-between">
-                  <div>
-                    <p className="font-editorial text-xs font-semibold text-noir-950">
-                      {post.authorName}
-                    </p>
-                    <p className="font-jakarta text-2xs text-noir-500">
-                      {post.authorRole}
-                    </p>
-                  </div>
-
-                  <Link
-                    href={`/blog/${post.slug}`}
-                    className="font-editorial text-xs font-bold uppercase tracking-wider text-noir-950 inline-flex items-center gap-1.5 group/link hover:text-brand-DEFAULT transition-colors"
-                  >
-                    <span>Read</span>
-                    <span className="transition-transform duration-300 group-hover/link:translate-x-1">
-                      →
-                    </span>
-                  </Link>
-                </div>
-              </div>
-            </motion.article>
-          ))}
-        </motion.div>
-
-        {/* ── View All Journal Articles CTA ── */}
-        <div className="mt-12 sm:mt-16 text-center">
-          <Link
-            href="/blog"
-            className="inline-flex items-center justify-center gap-2 rounded-full border border-noir-950/20 bg-white px-8 py-3.5 font-editorial text-xs sm:text-sm font-semibold tracking-wider text-noir-950 transition-all duration-300 hover:scale-105 hover:bg-noir-950 hover:text-white shadow-sm"
-          >
-            <span>Explore All Journal Articles</span>
-            <svg
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="currentColor"
-              strokeWidth="1.75"
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              className="h-3.5 w-3.5"
-              aria-hidden
-            >
-              <line x1="5" y1="12" x2="19" y2="12" />
-              <polyline points="12 5 19 12 12 19" />
-            </svg>
-          </Link>
+                <circle cx="11" cy="11" r="8" />
+                <line x1="21" y1="21" x2="16.65" y2="16.65" />
+              </svg>
+              <input
+                type="text"
+                placeholder="Search articles..."
+                value={searchQuery}
+                onChange={(e) => setSearchQuery(e.target.value)}
+                className="w-full pl-11 pr-4 py-2.5 rounded-full border border-noir-200 bg-white font-jakarta text-sm text-noir-900 placeholder:text-noir-400 focus:outline-none focus:border-noir-950 focus:ring-1 focus:ring-noir-950 transition-all shadow-sm"
+              />
+            </div>
+          </div>
         </div>
+
+        {/* ── Categories Row ── */}
+        <div className="mb-8">
+          <span className="block font-jakarta text-xs sm:text-sm font-semibold text-noir-900 mb-3">
+            Categories
+          </span>
+          <div className="flex flex-wrap items-center gap-2 sm:gap-2.5">
+            <button
+              onClick={() => setSelectedCategory("all")}
+              className={`px-4 py-1.5 rounded-full font-jakarta text-xs sm:text-sm transition-all duration-200 border ${
+                selectedCategory === "all"
+                  ? "bg-noir-950 text-white font-medium border-noir-950 shadow-sm"
+                  : "bg-white text-noir-700 border-noir-200/90 hover:border-noir-400"
+              }`}
+            >
+              All
+            </button>
+            {blogCategories.map((cat) => (
+              <button
+                key={cat.id}
+                onClick={() => setSelectedCategory(cat.slug)}
+                className={`px-4 py-1.5 rounded-full font-jakarta text-xs sm:text-sm transition-all duration-200 border ${
+                  selectedCategory === cat.slug
+                    ? "bg-noir-950 text-white font-medium border-noir-950 shadow-sm"
+                    : "bg-white text-noir-700 border-noir-200/90 hover:border-noir-400"
+                }`}
+              >
+                {cat.title}
+              </button>
+            ))}
+          </div>
+        </div>
+
+        {/* ── Subtle Horizontal Divider Line ── */}
+        <div className="w-full border-b border-noir-200/80 mb-10 sm:mb-12" />
+
+        {/* ── Articles Grid (3 Cards per Row, matching screenshot) ── */}
+        <AnimatePresence mode="wait">
+          <motion.div
+            key={`${selectedCategory}-${searchQuery}`}
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.3 }}
+            className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-x-8 gap-y-12"
+          >
+            {filteredPosts.map((post) => (
+              <article key={post.id} className="flex flex-col group">
+                {/* 1. Cover Image */}
+                <Link
+                  href={`/blog/${post.slug}`}
+                  className="relative aspect-[16/10] w-full rounded-2xl overflow-hidden bg-neutral-100 block mb-4"
+                >
+                  <Image
+                    src={post.coverImage.url}
+                    alt={post.coverImage.alt}
+                    fill
+                    sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                    className="object-cover transition-transform duration-700 ease-out group-hover:scale-105"
+                  />
+                </Link>
+
+                {/* 2. Date */}
+                <span className="font-jakarta text-xs text-noir-500 font-normal mb-2">
+                  {formatDate(post.publishedAt)}
+                </span>
+
+                {/* 3. Headline */}
+                <h3 className="font-editorial font-bold text-lg sm:text-xl text-noir-950 leading-snug tracking-tight group-hover:text-brand-DEFAULT transition-colors duration-200 line-clamp-2">
+                  <Link href={`/blog/${post.slug}`} className="hover:underline">
+                    {post.title}
+                  </Link>
+                </h3>
+
+                {/* 4. Category Tag Pill (below headline) */}
+                <div className="mt-3">
+                  <span className="inline-block rounded-md border border-noir-200 bg-white px-2.5 py-1 font-jakarta text-2xs font-medium text-noir-700 tracking-wide">
+                    {post.category.title}
+                  </span>
+                </div>
+
+                {/* 5. Bottom Divider Line */}
+                <div className="w-full border-b border-noir-300/60 mt-6" />
+              </article>
+            ))}
+          </motion.div>
+        </AnimatePresence>
+
+        {filteredPosts.length === 0 && (
+          <div className="text-center py-20">
+            <p className="font-jakarta text-base text-noir-500">
+              No articles found matching your criteria.
+            </p>
+          </div>
+        )}
       </div>
     </section>
   );
