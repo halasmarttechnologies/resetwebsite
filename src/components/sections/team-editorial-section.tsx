@@ -57,13 +57,13 @@ export function TeamEditorialSection() {
           </p>
         </motion.div>
 
-        {/* ── Simple Cards in One Row (No names, no years, no description) ── */}
+        {/* ── Team Cards: Single and bigger on mobile, 5 in one row on desktop ── */}
         <motion.div
           variants={containerVariants}
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true, amount: 0.1 }}
-          className="mt-10 sm:mt-12 grid grid-cols-5 gap-3 sm:gap-4 md:gap-6 w-full max-w-[1300px] mx-auto"
+          className="mt-8 sm:mt-12 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-5 gap-5 sm:gap-4 md:gap-6 w-full max-w-[380px] sm:max-w-[1300px] mx-auto"
         >
           {teamMembers.map((member) => (
             <motion.article
@@ -75,7 +75,7 @@ export function TeamEditorialSection() {
                 src={member.avatar.url}
                 alt={member.avatar.alt}
                 fill
-                sizes="(max-width: 640px) 20vw, (max-width: 1024px) 20vw, 20vw"
+                sizes="(max-width: 640px) 90vw, (max-width: 1024px) 45vw, 20vw"
                 className="object-cover transition-transform duration-700 ease-out group-hover:scale-105"
               />
             </motion.article>

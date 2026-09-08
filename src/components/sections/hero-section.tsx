@@ -57,17 +57,28 @@ export function HeroSection() {
         style={{ y: imageY, scale: imageScale }}
         className="absolute inset-0 h-full w-full will-change-transform"
       >
+        {/* Desktop / Tablet Hero Image */}
         <Image
           src="/hero.png"
           alt="Reset Men Salon — Dubai Luxury Grooming"
           fill
           priority
           quality={90}
-          sizes="100vw"
-          className="object-cover object-center"
+          sizes="(max-width: 640px) 1px, 100vw"
+          className="hidden sm:block object-cover object-center"
+        />
+        {/* Mobile Hero Image */}
+        <Image
+          src="/phoneview.png"
+          alt="Reset Men Salon — Dubai Luxury Grooming Japanese Head Spa"
+          fill
+          priority
+          quality={90}
+          sizes="(max-width: 640px) 100vw, 1px"
+          className="block sm:hidden object-cover object-center"
         />
         {/* Subtle Contrast Gradient Overlay for Text Readability */}
-        <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/30 to-black/10 pointer-events-none" />
+        <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/35 to-black/10 sm:from-black/80 sm:via-black/30 sm:to-black/10 pointer-events-none" />
       </motion.div>
 
       {/* 2. Hero Bottom Content Overlay (Anchored to Bottom Edge, Aligned to Grid) */}
