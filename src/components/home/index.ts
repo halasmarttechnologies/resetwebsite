@@ -11,7 +11,4 @@ export { FaqEditorialSection } from "@/components/sections/faq-editorial-section
 export { SlideDownBrandImage } from "@/components/sections/slide-down-brand-image";
 export { TrueParallaxShowcaseSection } from "@/components/sections/true-parallax-showcase-section";
 export { ImageFlowSection } from "@/components/sections/image-flow-section";
-
-
-
-
+export { BlogEditorialSection } from "@/components/sections/blog-editorial-section";

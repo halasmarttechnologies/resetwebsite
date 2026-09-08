@@ -52,7 +52,7 @@ At Reset Men Salon, our head spa begins with a 200x microscopic lens. You will v
 7. Trichological Tonic Application
     `,
     coverImage: {
-      url: "https://images.unsplash.com/photo-1540555700478-4be289fbecef?auto=format&fit=crop&q=80&w=1200",
+      url: "/site-pics/site-3.jpg",
       alt: "Japanese Head Spa Scalp Hydrotherapy in Dubai",
     },
     category: blogCategories[0],
@@ -81,7 +81,7 @@ Over-washing strips the natural oils produced by your skin. Use a sulfate-free b
 Regular edging maintains the distinction between jawline definition and neckline stray hairs.
     `,
     coverImage: {
-      url: "https://images.unsplash.com/photo-1621605815971-fbc98d665033?auto=format&fit=crop&q=80&w=1200",
+      url: "/site-pics/site-6.jpg",
       alt: "Beard Grooming Guide Reset Men Salon",
     },
     category: blogCategories[1],
@@ -90,6 +90,32 @@ Regular edging maintains the distinction between jawline definition and neckline
     publishedAt: "2026-08-10T09:00:00.000Z",
     readingTimeMinutes: 4,
     tags: ["Beard Care", "Styling", "Men Grooming"],
+    isFeatured: true,
+  },
+  {
+    id: "post-3",
+    slug: "precision-hair-architecture-face-shape-guide",
+    title: "Precision Hair Architecture: Matching Cuts to Facial Bone Structure",
+    excerpt:
+      "How scissor taper angles, temple fades, and vertex proportions sculpt an effortless executive silhouette.",
+    content: `
+# Precision Hair Architecture
+
+Every skull and facial contour is distinct. At Reset, our master stylists tailor haircuts based on cranial proportions, hairline patterns, and jawline angles.
+
+## The Architectural Consultation
+Before the first scissor cut, our barbers assess your profile, growth direction, and styling habits to engineer a cut that grows out impeccably.
+    `,
+    coverImage: {
+      url: "/site-pics/site-1.jpg",
+      alt: "Precision Hair Architecture Guide Reset Men Salon",
+    },
+    category: blogCategories[1],
+    authorName: "Marco Rossi",
+    authorRole: "Senior Master Barber",
+    publishedAt: "2026-08-28T10:00:00.000Z",
+    readingTimeMinutes: 4,
+    tags: ["Haircut", "Precision", "Barbering"],
     isFeatured: true,
   },
 ];
