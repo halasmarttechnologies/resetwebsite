@@ -1,1 +1,1 @@
-export { AboutStatementSection } from "@/components/sections/about-statement-section";
+export * from "@/frontend/about";

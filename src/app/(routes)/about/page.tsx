@@ -1,5 +1,5 @@
 import { Metadata } from "next";
-import { TeamEditorialSection, TestimonialEditorialSection } from "@/components/home";
+import { TeamEditorialSection, TestimonialEditorialSection } from "@/frontend/about";
 
 export const metadata: Metadata = {
   title: "Our Team & Testimonials | Reset Men Salon Dubai",

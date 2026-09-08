@@ -1,6 +1,6 @@
 import { Metadata } from "next";
 import { getCmsClient } from "@/lib/cms";
-import { ServicesCatalogView } from "@/components/sections/services-catalog-view";
+import { ServicesCatalogView } from "@/frontend/services";
 
 export const metadata: Metadata = {
   title: "Grooming Services & Rituals Menu | Reset Men Salon Dubai",
