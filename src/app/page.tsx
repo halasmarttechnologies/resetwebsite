@@ -6,6 +6,11 @@ import {
   ServicesOverviewSection,
   ServicesCatalogView,
   PhilosophyEditorialSection,
+  ImageFlowSection,
+  TeamEditorialSection,
+  TestimonialEditorialSection,
+  FaqEditorialSection,
+  TrueParallaxShowcaseSection,
 } from "@/components/home";
 
 export const metadata: Metadata = {
@@ -30,11 +35,26 @@ export default async function HomePage() {
       {/* 3. Our Services (3-Card Showcase Grid with View All) */}
       <ServicesOverviewSection />
 
+      {/* True Parallax Image Multi-Image Showcase */}
+      <TrueParallaxShowcaseSection />
+
       {/* 4. Interactive Services Catalog & Treatment Explorer */}
       <ServicesCatalogView categories={categories} services={services} />
 
       {/* 5. Philosophy Editorial Section with Smooth Lens Motion */}
       <PhilosophyEditorialSection />
+
+      {/* 6. Image Flow Carousel (Replacing Studio Editorial Bento Section) */}
+      <ImageFlowSection />
+
+      {/* 7. Our Team — Specialists Showcase */}
+      <TeamEditorialSection />
+
+      {/* 7. Testimonials — What Our Clients Say */}
+      <TestimonialEditorialSection />
+
+      {/* 8. Frequently Asked Questions (with FAQPage JSON-LD) */}
+      <FaqEditorialSection />
     </div>
   );
 }

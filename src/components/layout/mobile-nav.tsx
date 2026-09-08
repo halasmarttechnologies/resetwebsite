@@ -1,6 +1,7 @@
 "use client";
 
 import * as React from "react";
+import Image from "next/image";
 import Link from "next/link";
 import { navigationConfig } from "@/config/navigation";
 import { siteConfig } from "@/config/site";
@@ -45,9 +46,16 @@ export function MobileNav({ isHomePage = false }: MobileNavProps) {
             <Link
               href="/"
               onClick={() => setIsOpen(false)}
-              className="font-editorial text-2xl font-bold tracking-[-0.03em] uppercase text-noir-950"
+              className="inline-flex items-center gap-2.5 font-editorial text-2xl font-bold tracking-[-0.03em] uppercase text-noir-950"
             >
-              RESET
+              <Image
+                src="/logo.webp"
+                alt="Reset Men Salon"
+                width={32}
+                height={32}
+                className="h-8 w-auto object-contain brightness-0"
+              />
+              <span>RESET</span>
             </Link>
             <button
               onClick={() => setIsOpen(false)}

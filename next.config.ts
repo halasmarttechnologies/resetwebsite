@@ -37,6 +37,7 @@ const nextConfig: NextConfig = {
   devIndicators: false, // Disables Next.js DevTools Segment Explorer overlay that causes React Client Manifest crashes
   images: {
     formats: ["image/avif", "image/webp"],
+    qualities: [75, 90, 100],
     remotePatterns: [
       {
         protocol: "https",

@@ -1,27 +1,17 @@
 import { Metadata } from "next";
-import { DevelopmentBanner } from "@/components/layout/development-banner";
-import { getCmsClient } from "@/lib/cms";
+import { TeamEditorialSection, TestimonialEditorialSection } from "@/components/home";
 
 export const metadata: Metadata = {
-  title: "About Us | The Reset Sanctuary & Master Barbers",
+  title: "Our Team & Testimonials | Reset Men Salon Dubai",
   description:
-    "Learn about Reset Men Salon's heritage, master barbers, craftsmanship, and our Business Bay sanctuary in Dubai.",
+    "Meet Reset Men Salon's master barbers and specialists in Business Bay, Dubai. Discover client testimonials and our sanctuary craftsmanship.",
 };
 
-export default async function AboutPage() {
-  const cms = getCmsClient();
-  const team = await cms.getTeamMembers();
-
+export default function AboutPage() {
   return (
-    <DevelopmentBanner
-      pageTitle="About Reset Men Salon"
-      category="About Sanctuary"
-      description="The master barbers, philosophy, and architectural sanctuary in Business Bay, Dubai. Architecture and team data model configured."
-      metaData={{
-        "Team Specialists": team.length,
-        Location: "Business Bay Flagship",
-        Status: "Phase 1 In Development",
-      }}
-    />
+    <div className="w-full bg-white">
+      <TeamEditorialSection />
+      <TestimonialEditorialSection />
+    </div>
   );
 }

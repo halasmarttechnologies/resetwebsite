@@ -14,7 +14,7 @@ export function Badge({
   return (
     <span
       className={cn(
-        "inline-flex items-center gap-1.5 px-2.5 py-0.5 text-2xs font-semibold uppercase tracking-luxury rounded-sm select-none",
+        "inline-flex items-center gap-1.5 px-2.5 py-0.5 text-2xs font-semibold uppercase tracking-luxury rounded-sm",
         variant === "gold" &&
           "bg-brand-gold/15 text-brand-300 border border-brand-gold/30",
         variant === "noir" &&

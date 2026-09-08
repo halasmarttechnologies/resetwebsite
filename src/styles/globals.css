@@ -31,6 +31,13 @@
     overflow-x: clip;
     scrollbar-width: none;
     -ms-overflow-style: none;
+    user-select: text;
+    -webkit-user-select: text;
+  }
+
+  ::selection {
+    background-color: #111113;
+    color: #FFFFFF;
   }
 
   /* Completely Invisible Scrollbar across all Webkit browsers */
@@ -85,3 +92,5 @@ html.lenis, html.lenis body {
 nextjs-portal [data-nextjs-toast="error"] {
   opacity: 0.9;
 }
+
+

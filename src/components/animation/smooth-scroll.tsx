@@ -2,6 +2,7 @@
 
 import * as React from "react";
 import Lenis from "lenis";
+import "lenis/dist/lenis.css";
 import { useReducedMotion } from "@/hooks/use-reduced-motion";
 
 interface SmoothScrollProviderProps {

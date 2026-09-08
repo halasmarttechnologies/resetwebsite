@@ -6,7 +6,7 @@ import { motion } from "framer-motion";
 
 export function AboutStatementSection() {
   return (
-    <section className="relative w-full min-h-[560px] md:min-h-screen py-16 sm:py-24 md:py-32 bg-white overflow-hidden flex flex-col justify-center items-center select-none border-b border-noir-950/[0.08]">
+    <section className="relative w-full py-16 sm:py-20 md:py-28 bg-white overflow-hidden flex flex-col justify-center items-center border-b border-noir-950/[0.08]">
       <div className="w-full max-w-[1200px] mx-auto px-4 sm:px-8 md:px-14 lg:px-16 flex flex-col items-center text-center">
         {/* 1. Monumental Statement Headline (Clean, Highly Readable Neo-Grotesque Font Matching Screenshot 1:1) */}
         <motion.div
