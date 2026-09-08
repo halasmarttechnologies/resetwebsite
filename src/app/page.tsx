@@ -54,11 +54,11 @@ export default async function HomePage() {
       {/* 7. Testimonials — What Our Clients Say */}
       <TestimonialEditorialSection />
 
-      {/* 8. Editorial Journal — Grooming & Scalp Insights (Clean & Neat White Background) */}
-      <BlogEditorialSection />
-
-      {/* 9. Frequently Asked Questions (with FAQPage JSON-LD) */}
+      {/* 8. Frequently Asked Questions (with FAQPage JSON-LD) */}
       <FaqEditorialSection />
+
+      {/* 9. Editorial Journal — Grooming & Scalp Insights (Clean & Neat White Background) */}
+      <BlogEditorialSection />
     </div>
   );
 }
