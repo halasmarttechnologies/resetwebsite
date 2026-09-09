@@ -35,7 +35,7 @@ const cspDirectives: Record<string, string[]> = {
   "script-src": [
     "'self'",
     "'unsafe-inline'",
-    "'strict-dynamic'",
+    "'unsafe-eval'",
     "https:",
   ],
   // Framer Motion writes inline styles.
@@ -45,13 +45,7 @@ const cspDirectives: Record<string, string[]> = {
     "'self'",
     "data:",
     "blob:",
-    "https://resetmensalon.ae",
-    "https://images.unsplash.com",
-    "https://cdn.sanity.io",
-    // Google Maps embed leaks tile imagery.
-    "https://maps.gstatic.com",
-    "https://maps.googleapis.com",
-    "https://www.google.com",
+    "https:",
   ],
   "media-src": ["'self'", "blob:", "data:"],
   "connect-src": [
@@ -83,7 +77,7 @@ function buildCspHeader(): string {
 }
 
 const CSP_HEADER_NAME =
-  process.env.CSP_ENFORCE === "0"
+  process.env.NODE_ENV === "development" || process.env.CSP_ENFORCE === "0"
     ? "Content-Security-Policy-Report-Only"
     : "Content-Security-Policy";
 
@@ -102,16 +96,7 @@ const securityHeaders = [
     value: "camera=(), microphone=(), geolocation=(self)",
   },
   { key: CSP_HEADER_NAME, value: buildCspHeader() },
-  // Cross-Origin isolation headers — mitigates Spectre-class side-channel attacks.
-  { key: "Cross-Origin-Opener-Policy", value: "same-origin" },
-  { key: "Cross-Origin-Resource-Policy", value: "same-origin" },
-  // "credentialless" is safer than "require-corp" — doesn't break Google Maps embed.
-  { key: "Cross-Origin-Embedder-Policy", value: "credentialless" },
-  // Modern Reporting API — pairs with `report-to` in CSP above.
-  // The older `Report-To` (JSON, deprecated) is intentionally omitted:
-  // the built-in Node server strips subsequent headers when it sees the
-  // stringified JSON, but `Reporting-Endpoints` alone works everywhere
-  // Report-To once was needed and browsers now prefer.
+  { key: "Cross-Origin-Opener-Policy", value: "same-origin-allow-popups" },
   { key: "Reporting-Endpoints", value: `csp-endpoint="/api/csp-report"` },
 ];
 
