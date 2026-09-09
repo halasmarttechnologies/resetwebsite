@@ -16,22 +16,22 @@ export interface TrueParallaxItem {
 const defaultParallaxItems: TrueParallaxItem[] = [
   {
     id: "parallax-hero",
-    src: "/hero.png",
+    src: "/hero.webp",
     alt: "Reset Men Salon Experience - Hero",
   },
   {
     id: "parallax-picture",
-    src: "/picture.png",
+    src: "/picture.webp",
     alt: "Reset Men Salon Experience - Feature",
   },
   {
     id: "parallax-2",
-    src: "/2.png",
+    src: "/2.webp",
     alt: "Reset Men Salon Experience - Editorial 2",
   },
   {
     id: "parallax-3",
-    src: "/3.png",
+    src: "/3.webp",
     alt: "Reset Men Salon Experience - Editorial 3",
   },
 ];

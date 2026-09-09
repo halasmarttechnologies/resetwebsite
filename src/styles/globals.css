@@ -17,6 +17,8 @@
     scroll-behavior: smooth;
     background-color: #FFFFFF;
     color: #111113;
+    overflow-x: clip;
+    max-width: 100vw;
     scrollbar-width: none; /* Firefox - hide scrollbar */
     -ms-overflow-style: none; /* IE and Edge */
   }

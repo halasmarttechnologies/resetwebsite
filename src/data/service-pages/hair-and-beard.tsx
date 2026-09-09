@@ -24,7 +24,7 @@ export const hairAndBeardPage = {
   hero: {
     desktopImageSrc: "/images/services/service-hair-beard.webp",
     desktopImageAlt: "Reset Men Salon — Hair & Beard Grooming Dubai",
-    mobileImageSrc: "/phoneview.png",
+    mobileImageSrc: "/phoneview.webp",
     mobileImageAlt: "Reset Men Salon — Hair & Beard Precision Barbering",
     titleWords: ["HAIR &", "BEARD"] as [string, string],
     subtitle: "Precision haircuts, tailored fades, and bespoke beard architecture in Business Bay. Welcome to Reset.",

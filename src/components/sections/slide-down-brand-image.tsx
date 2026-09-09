@@ -37,7 +37,7 @@ export function SlideDownBrandImage() {
           className="relative w-full overflow-hidden rounded-xl sm:rounded-2xl md:rounded-3xl shadow-2xl border border-noir-950/[0.08] bg-noir-950 will-change-transform"
         >
           <Image
-            src="/picture.png"
+            src="/picture.webp"
             alt="Reset Men Salon Experience"
             width={1672}
             height={941}

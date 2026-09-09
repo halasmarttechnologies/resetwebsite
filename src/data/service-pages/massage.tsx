@@ -24,7 +24,7 @@ export const massagePage = {
   hero: {
     desktopImageSrc: "/images/parallax/parallax-2.png",
     desktopImageAlt: "Reset Men Salon — Best Massage for Men in Business Bay Dubai",
-    mobileImageSrc: "/phoneview.png",
+    mobileImageSrc: "/phoneview.webp",
     mobileImageAlt: "Reset Men Salon — Best Massage for Men",
     titleWords: ["MASSAGE", "THERAPY"] as [string, string],
     subtitle: "Targeted muscle tension relief, physical recovery, and deep mental relaxation in Business Bay. Welcome to Reset.",

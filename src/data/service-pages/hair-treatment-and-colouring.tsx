@@ -24,7 +24,7 @@ export const hairTreatmentAndColouringPage = {
   hero: {
     desktopImageSrc: "/images/services/service-colouring.jpg",
     desktopImageAlt: "Reset Men Salon — Hair Coloring and Treatment For Men in Dubai",
-    mobileImageSrc: "/phoneview.png",
+    mobileImageSrc: "/phoneview.webp",
     mobileImageAlt: "Reset Men Salon — Hair Coloring and Treatment For Men",
     titleWords: ["HAIR &", "COLOUR"] as [string, string],
     subtitle: "Custom color blending, grey coverage, and deep hair restorative treatments in Business Bay. Welcome to Reset.",

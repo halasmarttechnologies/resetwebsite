@@ -24,7 +24,7 @@ export const facialPage = {
   hero: {
     desktopImageSrc: "/images/services/service-facial.webp",
     desktopImageAlt: "Reset Men Salon — Executive Facial Skincare Dubai",
-    mobileImageSrc: "/phoneview.png",
+    mobileImageSrc: "/phoneview.webp",
     mobileImageAlt: "Reset Men Salon — Gentlemen's Facial Therapy",
     titleWords: ["FACIAL", "CARE"] as [string, string],
     subtitle: "Dermatological cleansing, deep blackhead extraction, and active botanical hydration in Business Bay. Welcome to Reset.",

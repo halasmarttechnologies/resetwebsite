@@ -59,7 +59,7 @@ export function AboutHeroSection() {
       >
         {/* Desktop / Tablet Hero Image */}
         <Image
-          src="/2.png"
+          src="/2.webp"
           alt="About Reset Men Salon Dubai — Luxury Grooming & Head Spa Sanctuary"
           fill
           priority
@@ -69,7 +69,7 @@ export function AboutHeroSection() {
         />
         {/* Mobile Hero Image */}
         <Image
-          src="/phoneview.png"
+          src="/phoneview.webp"
           alt="About Reset Men Salon — Dubai Luxury Grooming Japanese Head Spa"
           fill
           priority
@@ -115,7 +115,7 @@ export function AboutHeroSection() {
 
           {/* Monumental Typography: ABOUT on line 1, US on line 2 on mobile; horizontal on desktop */}
           <div className="w-full overflow-hidden pt-1">
-            <h1 className="flex flex-col sm:flex-row items-start sm:items-center gap-y-0.5 sm:gap-x-4 md:gap-x-6 lg:gap-x-8 font-editorial font-bold sm:font-black tracking-[-0.03em] text-white text-[clamp(4.8rem,18vw,12rem)] sm:text-[clamp(4.2rem,13vw,13rem)] leading-[0.86] uppercase text-left">
+            <h1 className="flex flex-col sm:flex-row items-start sm:items-center gap-y-0.5 sm:gap-x-4 md:gap-x-6 lg:gap-x-8 font-editorial font-bold sm:font-black tracking-[-0.03em] text-white text-[clamp(3.2rem,14vw,12rem)] sm:text-[clamp(4.2rem,13vw,13rem)] leading-[0.86] uppercase text-left">
               {/* Word 1: ABOUT */}
               <span className="inline-flex items-center whitespace-nowrap">
                 <RollingLetter char="A" delay={0.08} />

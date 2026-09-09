@@ -24,7 +24,7 @@ export const waxingPage = {
   hero: {
     desktopImageSrc: "/images/services/service-waxing.jpg",
     desktopImageAlt: "Reset Men Salon — Waxing for Men in Business Bay Dubai",
-    mobileImageSrc: "/phoneview.png",
+    mobileImageSrc: "/phoneview.webp",
     mobileImageAlt: "Reset Men Salon — Waxing for Men",
     titleWords: ["MEN'S", "WAXING"] as [string, string],
     subtitle: "Simple, clean, and skin-safe grooming in Business Bay. Welcome to Reset.",

@@ -24,7 +24,7 @@ export const nailsPage = {
   hero: {
     desktopImageSrc: "/images/services/service-nails.jpg",
     desktopImageAlt: "Reset Men Salon — Manicure and Pedicure for Men in Business Bay Dubai",
-    mobileImageSrc: "/phoneview.png",
+    mobileImageSrc: "/phoneview.webp",
     mobileImageAlt: "Reset Men Salon — Men's Nail Care",
     titleWords: ["MEN'S", "NAILS"] as [string, string],
     subtitle: "Clean, precise, and hygienic hand and foot grooming in Business Bay. Welcome to Reset.",

@@ -103,7 +103,7 @@ export function PricingHeroSection() {
 
           {/* Monumental Typography: PRICE LIST on desktop / mobile */}
           <div className="w-full overflow-hidden pt-1">
-            <h1 className="flex flex-col sm:flex-row items-start sm:items-center gap-y-0.5 sm:gap-x-4 md:gap-x-6 lg:gap-x-8 font-editorial font-bold sm:font-black tracking-[-0.03em] text-white text-[clamp(4.2rem,16vw,11.5rem)] sm:text-[clamp(3.8rem,11.5vw,11.5rem)] leading-[0.86] uppercase text-left">
+            <h1 className="flex flex-col sm:flex-row items-start sm:items-center gap-y-0.5 sm:gap-x-4 md:gap-x-6 lg:gap-x-8 font-editorial font-bold sm:font-black tracking-[-0.03em] text-white text-[clamp(3rem,14vw,11.5rem)] sm:text-[clamp(3.8rem,11.5vw,11.5rem)] leading-[0.86] uppercase text-left">
               {/* Word 1: PRICE */}
               <span className="inline-flex items-center whitespace-nowrap">
                 <RollingLetter char="P" delay={0.08} />

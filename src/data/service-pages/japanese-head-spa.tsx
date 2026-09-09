@@ -24,7 +24,7 @@ export const japaneseHeadSpaPage = {
   hero: {
     desktopImageSrc: "/images/services/service-head-spa.webp",
     desktopImageAlt: "Reset Men Salon — Japanese Head Spa in Dubai",
-    mobileImageSrc: "/phoneview.png",
+    mobileImageSrc: "/phoneview.webp",
     mobileImageAlt: "Reset Men Salon — Japanese Head Spa",
     titleWords: ["HEAD", "SPA"] as [string, string],
     subtitle: "Traditional Japanese scalp hydrotherapy and mental reset in Business Bay. Welcome to Reset.",

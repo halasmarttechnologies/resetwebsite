@@ -150,7 +150,7 @@ export function PricingGridSection() {
                         className="py-3.5 flex items-center justify-between gap-4 group hover:bg-noir-50/50 px-2 -mx-2 transition-colors"
                       >
                         <div className="flex-1 min-w-0 pr-2">
-                          <div className="flex items-center gap-2">
+                          <div className="flex flex-wrap items-center gap-1.5 sm:gap-2">
                             <span className="font-jakarta text-sm sm:text-base font-medium text-noir-900 group-hover:text-black">
                               {item.name}
                             </span>

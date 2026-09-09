@@ -34,7 +34,7 @@ interface ServiceHeroSectionProps {
 }
 
 const DEFAULT_TITLE_CLASS =
-  "flex flex-col sm:flex-row items-start sm:items-center gap-y-0.5 sm:gap-x-4 md:gap-x-6 lg:gap-x-8 font-editorial font-bold sm:font-black tracking-[-0.03em] text-white text-[clamp(4.2rem,16vw,11.5rem)] sm:text-[clamp(4.2rem,12vw,12rem)] leading-[0.86] uppercase text-left";
+  "flex flex-col sm:flex-row items-start sm:items-center gap-y-0.5 sm:gap-x-4 md:gap-x-6 lg:gap-x-8 font-editorial font-bold sm:font-black tracking-[-0.03em] text-white text-[clamp(2.9rem,13.5vw,11.5rem)] sm:text-[clamp(4.2rem,12vw,12rem)] leading-[0.86] uppercase text-left";
 
 function RollingLetter({
   char,
@@ -83,7 +83,7 @@ function RollingWord({ word, startDelay }: { word: string; startDelay: number })
 export function ServiceHeroSection({
   desktopImageSrc,
   desktopImageAlt,
-  mobileImageSrc = "/phoneview.png",
+  mobileImageSrc = "/phoneview.webp",
   mobileImageAlt,
   titleWords,
   subtitle,
