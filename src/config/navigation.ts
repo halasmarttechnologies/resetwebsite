@@ -23,38 +23,30 @@ export const navigationConfig = {
         {
           title: "Hair & Beard",
           href: "/services/hair-and-beard",
-          description: "Precision haircuts, tailored fades, beard sculpting & hot towel shaves.",
-        },
-        {
-          title: "Japanese Head Spa",
-          href: "/services/japanese-head-spa",
-          description: "Signature 15-step scalp detox, hydrotherapy waterfall & acupressure.",
-          badge: "Signature",
-        },
-        {
-          title: "Facial Treatments",
-          href: "/services/facial",
-          description: "High-performance male dermatological skincare & detox.",
         },
         {
           title: "Hair Treatment & Colouring",
           href: "/services/hair-treatment-and-colouring",
-          description: "Keratin smoothing, deep conditioning & natural grey blending.",
+        },
+        {
+          title: "Facial",
+          href: "/services/facial",
         },
         {
           title: "Massage",
           href: "/services/massage",
-          description: "Deep tissue tension relief & posture restoration.",
         },
         {
-          title: "Waxing & Detailing",
+          title: "Waxing",
           href: "/services/waxing",
-          description: "Brow architecture, waxing and threading services.",
         },
         {
-          title: "Nails & Hand Care",
+          title: "Nails",
           href: "/services/nails",
-          description: "Executive manicure, spa pedicure & paraffin care.",
+        },
+        {
+          title: "Japanese Head Spa",
+          href: "/services/japanese-head-spa",
         },
       ],
     },

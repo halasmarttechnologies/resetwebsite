@@ -32,8 +32,6 @@ const cardVariants: Variants = {
 };
 
 function ServiceCard({ service }: { service: HomeServiceEntry }) {
-  const isExternal = service.href.startsWith("http");
-
   const cardInner = (
     <div className="group relative block w-full aspect-[16/10] sm:aspect-[16/11] overflow-hidden bg-noir-900 rounded-none cursor-pointer">
       {/* Background Photography with Smooth Zoom on Hover */}
@@ -81,23 +79,12 @@ function ServiceCard({ service }: { service: HomeServiceEntry }) {
 
   return (
     <motion.div variants={cardVariants} className="w-full">
-      {isExternal ? (
-        <a
-          href={service.href}
-          target="_blank"
-          rel="noopener noreferrer"
-          className="block w-full outline-none focus-visible:ring-2 focus-visible:ring-noir-950"
-        >
-          {cardInner}
-        </a>
-      ) : (
-        <Link
-          href={service.href}
-          className="block w-full outline-none focus-visible:ring-2 focus-visible:ring-noir-950"
-        >
-          {cardInner}
-        </Link>
-      )}
+      <Link
+        href={service.href}
+        className="block w-full outline-none focus-visible:ring-2 focus-visible:ring-noir-950"
+      >
+        {cardInner}
+      </Link>
     </motion.div>
   );
 }

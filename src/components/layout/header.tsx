@@ -5,11 +5,15 @@ import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { siteConfig } from "@/config/site";
+import { navigationConfig } from "@/config/navigation";
+import { ChevronDown } from "lucide-react";
 import { MobileNav } from "./mobile-nav";
+
+import { usePriceList } from "@/context/price-list-context";
 
 const navItems = [
   { href: "/about", label: "ABOUT US" },
-  { href: "/services", label: "SERVICES" },
+  { href: "/services", label: "SERVICES", hasDropdown: true },
   { href: "/pricing", label: "PRICING" },
   { href: "/blog", label: "BLOG" },
   { href: "/contact", label: "CONTACTS" },
@@ -17,7 +21,39 @@ const navItems = [
 
 export function Header() {
   const pathname = usePathname();
-  const isDarkHero = pathname === "/" || pathname === "/about";
+  const { openPriceList } = usePriceList();
+  const isDarkHero =
+    pathname === "/" ||
+    pathname === "/about" ||
+    pathname === "/contact" ||
+    pathname === "/pricing" ||
+    pathname === "/services/hair-and-beard" ||
+    pathname === "/services/hair-treatment-and-colouring" ||
+    pathname === "/services/facial" ||
+    pathname === "/services/massage" ||
+    pathname === "/services/waxing" ||
+    pathname === "/services/nails" ||
+    pathname === "/services/japanese-head-spa";
+
+  const [isServicesOpen, setIsServicesOpen] = React.useState(false);
+  const dropdownTimeoutRef = React.useRef<NodeJS.Timeout | null>(null);
+
+  const handleMouseEnter = () => {
+    if (dropdownTimeoutRef.current) {
+      clearTimeout(dropdownTimeoutRef.current);
+    }
+    setIsServicesOpen(true);
+  };
+
+  const handleMouseLeave = () => {
+    dropdownTimeoutRef.current = setTimeout(() => {
+      setIsServicesOpen(false);
+    }, 180);
+  };
+
+  React.useEffect(() => {
+    setIsServicesOpen(false);
+  }, [pathname]);
 
   return (
     <header className="absolute top-0 left-0 right-0 z-40 w-full py-5 sm:py-8 transition-all duration-300">
@@ -52,17 +88,62 @@ export function Header() {
 
               if (isPricing) {
                 return (
-                  <Link
+                  <button
                     key={item.href}
-                    href={item.href}
-                    className={`inline-flex items-center justify-center px-5 lg:px-6 py-2 rounded-full font-jakarta text-xs font-bold uppercase tracking-[0.18em] transition-all duration-200 shadow-md hover:scale-105 active:scale-95 ${
+                    type="button"
+                    onClick={() => openPriceList()}
+                    className={`inline-flex items-center justify-center px-5 lg:px-6 py-2 rounded-full font-jakarta text-xs font-bold uppercase tracking-[0.18em] transition-all duration-200 shadow-md hover:scale-105 active:scale-95 cursor-pointer ${
                       isDarkHero
                         ? "bg-white text-noir-950 shadow-[0_4px_20px_rgba(255,255,255,0.35)] hover:bg-neutral-100"
                         : "bg-noir-950 text-white hover:bg-noir-800"
                     }`}
                   >
                     {item.label}
-                  </Link>
+                  </button>
+                );
+              }
+
+              if (item.hasDropdown) {
+                return (
+                  <div
+                    key={item.href}
+                    className="relative"
+                    onMouseEnter={handleMouseEnter}
+                    onMouseLeave={handleMouseLeave}
+                  >
+                    <Link
+                      href={item.href}
+                      className={`inline-flex items-center gap-1.5 font-jakarta text-xs font-semibold uppercase tracking-[0.18em] transition-all duration-200 hover:scale-105 ${
+                        isDarkHero
+                          ? "text-white hover:text-white/80"
+                          : "text-noir-900 hover:text-noir-600"
+                      }`}
+                    >
+                      <span>{item.label}</span>
+                      <ChevronDown
+                        className={`w-3.5 h-3.5 transition-transform duration-200 ${
+                          isServicesOpen ? "rotate-180" : ""
+                        }`}
+                      />
+                    </Link>
+
+                    {/* Clean Single-Column Services Dropdown matching user requested list */}
+                    {isServicesOpen && (
+                      <div className="absolute top-full left-0 pt-3 w-64 sm:w-72 animate-fade-in z-50">
+                        <div className="rounded-2xl bg-white border border-neutral-200/90 p-2 sm:p-2.5 shadow-[0_20px_50px_rgba(0,0,0,0.12)] text-noir-950 flex flex-col space-y-0.5">
+                          {(navigationConfig.mainNav.find((n) => n.href === "/services")?.children || []).map((service) => (
+                            <Link
+                              key={service.href}
+                              href={service.href}
+                              className="group block px-3.5 py-2.5 rounded-xl font-jakarta text-[15px] font-semibold tracking-tight text-noir-900 hover:text-black hover:bg-neutral-100/80 transition-all duration-150"
+                            >
+                              {service.title}
+                            </Link>
+                          ))}
+                        </div>
+                      </div>
+                    )}
+                  </div>
                 );
               }
 

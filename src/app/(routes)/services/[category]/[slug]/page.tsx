@@ -3,6 +3,7 @@ import { notFound } from "next/navigation";
 import { DevelopmentBanner } from "@/components/layout/development-banner";
 import { getCmsClient } from "@/lib/cms";
 import { generateServiceJsonLd } from "@/lib/seo/schema";
+import { safeJsonLd } from "@/lib/security/sanitize-json-ld";
 
 interface ServiceDetailPageProps {
   params: Promise<{
@@ -56,7 +57,7 @@ export default async function ServiceDetailPage({
     <>
       <script
         type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+        dangerouslySetInnerHTML={{ __html: safeJsonLd(jsonLd) }}
       />
       <DevelopmentBanner
         pageTitle={service.title}

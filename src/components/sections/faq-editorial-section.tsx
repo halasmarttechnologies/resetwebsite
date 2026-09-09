@@ -4,6 +4,7 @@ import * as React from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { faqs } from "@/data/faqs";
 import { generateFaqJsonLd } from "@/lib/seo/schema";
+import { safeJsonLd } from "@/lib/security/sanitize-json-ld";
 
 export function FaqEditorialSection() {
   const [openId, setOpenId] = React.useState<string | null>(null);
@@ -17,7 +18,7 @@ export function FaqEditorialSection() {
       {/* Rich result eligibility for the questions rendered below */}
       <script
         type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }}
+        dangerouslySetInnerHTML={{ __html: safeJsonLd(faqJsonLd) }}
       />
 
       <div className="relative mx-auto w-full max-w-[1200px] px-4 sm:px-8 md:px-12">

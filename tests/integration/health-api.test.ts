@@ -1,14 +1,31 @@
 import { describe, it, expect } from "vitest";
-import { GET } from "@/app/api/health/route";
+import { GET, POST } from "@/app/api/health/route";
 
+/**
+ * Health endpoint contract test.
+ *
+ * Every JSON API in the codebase returns the unified envelope from
+ * `src/lib/api/response.ts`:
+ *   { success: true, data: {...}, message?: string }
+ *
+ * If this test starts failing, either the envelope changed (audit every
+ * client fetch) or the health payload lost fields platform monitors read.
+ */
 describe("Health API Route", () => {
-  it("should return status 200 with service details", async () => {
+  it("returns 200 with the standard success envelope", async () => {
     const response = await GET();
-    const data = await response.json();
+    const json = await response.json();
 
     expect(response.status).toBe(200);
-    expect(data.status).toBe("ok");
-    expect(data.service).toBe("Reset Men Salon");
-    expect(data.location).toContain("Business Bay");
+    expect(json.success).toBe(true);
+    expect(json.data.status).toBe("ok");
+    expect(json.data.service).toBe("Reset Men Salon");
+    expect(typeof json.data.timestamp).toBe("string");
+  });
+
+  it("rejects non-GET methods with 405 + Allow header", () => {
+    const response = POST();
+    expect(response.status).toBe(405);
+    expect(response.headers.get("allow")).toBe("GET");
   });
 });

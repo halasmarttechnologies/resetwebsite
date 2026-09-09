@@ -31,9 +31,20 @@ export async function generateMetadata({
 export async function generateStaticParams() {
   const cms = getCmsClient();
   const categories = await cms.getServiceCategories();
-  return categories.map((cat) => ({
-    category: cat.slug,
-  }));
+  const dedicatedSlugs = [
+    "hair-and-beard",
+    "hair-treatment-and-colouring",
+    "facial",
+    "massage",
+    "waxing",
+    "nails",
+    "japanese-head-spa",
+  ];
+  return categories
+    .filter((cat) => !dedicatedSlugs.includes(cat.slug))
+    .map((cat) => ({
+      category: cat.slug,
+    }));
 }
 
 export default async function CategoryPage({ params }: CategoryPageProps) {

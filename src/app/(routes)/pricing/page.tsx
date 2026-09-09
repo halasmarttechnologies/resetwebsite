@@ -1,29 +1,92 @@
 import { Metadata } from "next";
-import { DevelopmentBanner } from "@/components/layout/development-banner";
-import { getCmsClient } from "@/lib/cms";
+import {
+  PricingHeroSection,
+  PricingGridSection,
+} from "@/components/pricing";
+import {
+  TrueParallaxShowcaseSection,
+  TestimonialEditorialSection,
+} from "@/components/home";
+import { safeJsonLd } from "@/lib/security/sanitize-json-ld";
+
+const pricingParallaxItems = [
+  {
+    id: "pricing-parallax-1",
+    src: "/site-pics/site-1.jpg",
+    alt: "Reset Men Salon Business Bay Barbering Suite",
+  },
+  {
+    id: "pricing-parallax-2",
+    src: "/site-pics/site-9.jpg",
+    alt: "Reset Men Salon Japanese Head Spa & Relaxation Sanctuary",
+  },
+];
 
 export const metadata: Metadata = {
-  title: "Pricing Menu & Luxury Packages | Reset Men Salon Dubai",
+  title: "Service Price List | Reset Men Salon Business Bay Dubai",
   description:
-    "Transparent pricing for all grooming treatments, signature Japanese Head Spa sessions, and curated executive packages in Business Bay, Dubai.",
+    "Explore the official service price list for Reset Men Salon in Business Bay Dubai. Transparent rates for haircuts, beard styling, hair coloring, botox treatments, head spa, massage, nails, and waxing.",
+  keywords: [
+    "Reset Men Salon price list",
+    "Men haircut price Dubai",
+    "Barbershop prices Business Bay",
+    "Japanese head spa price Dubai",
+    "Beard trim price Dubai",
+    "Men salon rates Dubai",
+  ],
+  openGraph: {
+    title: "Services & Price List | Reset Men Salon Dubai",
+    description:
+      "All-inclusive rates for precision haircutting, beard grooming, Japanese head spa, massage, and nail care in Business Bay.",
+    url: "https://resetmensalon.ae/pricing",
+    images: [
+      {
+        url: "/images/contact-hero.webp",
+        width: 1200,
+        height: 630,
+        alt: "Reset Men Salon Services & Price List",
+      },
+    ],
+  },
 };
 
-export default async function PricingPage() {
-  const cms = getCmsClient();
-  const packages = await cms.getPricingPackages();
-  const groups = await cms.getPricingCategories();
+export default function PricingPage() {
+  const jsonLd = {
+    "@context": "https://schema.org",
+    "@type": "HairSalon",
+    name: "Reset Men Salon",
+    priceRange: "AED 20 - AED 500",
+    url: "https://resetmensalon.ae/pricing",
+    telephone: "+97145655688",
+    address: {
+      "@type": "PostalAddress",
+      streetAddress: "Business Bay",
+      addressLocality: "Dubai",
+      addressCountry: "AE",
+    },
+    currenciesAccepted: "AED",
+    paymentAccepted: "Cash, Credit Card, Apple Pay",
+  };
 
   return (
-    <DevelopmentBanner
-      pageTitle="Pricing & Curated Packages"
-      category="Grooming Menu"
-      description="Transparent, all-inclusive luxury pricing across all 7 categories and executive packages. Ready for CMS-backed dynamic price updates."
-      metaData={{
-        "Curated Packages": packages.length,
-        "Menu Categories": groups.length,
-        VAT: "Inclusive",
-        Status: "Phase 1 In Development",
-      }}
-    />
+    <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: safeJsonLd(jsonLd) }}
+      />
+      <div className="relative w-full bg-white text-noir-900 min-h-screen flex flex-col items-center">
+        {/* 1. Hero Section: Monumental PRICE LIST Typography with Parallax */}
+        <PricingHeroSection />
+
+        {/* 2. Full Services Price List Grid (8 Categories, 36 Services matching Menu Sheet) */}
+        <PricingGridSection />
+
+        {/* 3. Parallax Image Showcase */}
+        <TrueParallaxShowcaseSection items={pricingParallaxItems} />
+
+        {/* 4. Client Testimonials */}
+        <TestimonialEditorialSection />
+      </div>
+    </>
   );
 }

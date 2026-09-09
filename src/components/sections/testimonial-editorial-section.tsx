@@ -18,7 +18,7 @@ export function TestimonialEditorialSection() {
     >
       <div className="relative mx-auto w-full max-w-[1200px] px-4 sm:px-8 md:px-12 text-center">
         {/* Eyebrow */}
-        <span className="font-editorial text-xs font-semibold uppercase tracking-[0.2em] text-noir-500">
+        <span className="font-editorial text-xs font-semibold tracking-[0.2em] text-noir-500">
           Testimonials
         </span>
 
