@@ -59,11 +59,19 @@ export function Footer() {
               </p>
             ) : (
               <form
+                id="newsletter-form"
+                name="newsletter_form"
+                data-name="Reset Newsletter Form"
+                data-formid="newsletter-form"
                 onSubmit={handleSubscribe}
                 className="flex items-center justify-between border-b border-white/40 pb-2.5 transition-colors focus-within:border-white"
               >
                 <input
+                  id="newsletter-email"
+                  name="email"
+                  data-name="Newsletter Email"
                   type="email"
+                  autoComplete="email"
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
                   placeholder="Enter Your Email"
@@ -72,6 +80,7 @@ export function Footer() {
                 />
                 <button
                   type="submit"
+                  data-submission-type="submit"
                   aria-label="Subscribe to newsletter"
                   className="text-white/80 hover:text-white transition-transform hover:translate-x-0.5 hover:-translate-y-0.5 focus:outline-none p-1"
                 >

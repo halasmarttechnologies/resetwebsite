@@ -1,6 +1,7 @@
 "use client";
 
 import * as React from "react";
+import Script from "next/script";
 import {
   Phone,
   Mail,
@@ -243,6 +244,14 @@ export function ContactMainSection() {
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-12 items-start">
           {/* Left Column: Interactive Contact Form (7 cols) */}
           <div className="lg:col-span-7 bg-white border border-noir-200 p-6 sm:p-10 shadow-sm">
+            {/* GoHighLevel / LeadConnector External Form Tracking */}
+            <Script
+              id="ghl-external-tracking"
+              src="https://link.msgsndr.com/js/external-tracking.js"
+              data-tracking-id="tk_5eb25ed2a9be4a22ac9722ee93a6f4aa"
+              strategy="afterInteractive"
+            />
+
             <div className="mb-8">
               <span className="font-editorial text-xs font-semibold tracking-wider text-noir-500">
                 Direct Inquiry
@@ -298,7 +307,17 @@ export function ContactMainSection() {
                 </div>
               </div>
             ) : (
-              <form onSubmit={handleSubmit} className="space-y-6" noValidate>
+              <form
+                id="contact-form"
+                name="contact_form"
+                data-name="Reset Men Salon Contact Form"
+                data-formid="contact-form"
+                method="POST"
+                action="/api/contact"
+                onSubmit={handleSubmit}
+                className="space-y-6"
+                noValidate
+              >
                 {/* Honeypot — visually hidden from humans, ignored by design.
                     Bots that fill every input on the page will populate this
                     and be rejected server-side. */}
@@ -348,8 +367,11 @@ export function ContactMainSection() {
                     </label>
                     <input
                       id="fullName"
+                      name="full_name"
                       type="text"
                       required
+                      autoComplete="name"
+                      data-name="Full Name"
                       placeholder="e.g. John Doe"
                       value={formData.fullName}
                       onChange={(e) => setFormData({ ...formData, fullName: e.target.value })}
@@ -367,8 +389,11 @@ export function ContactMainSection() {
                     </label>
                     <input
                       id="email"
+                      name="email"
                       type="email"
                       required
+                      autoComplete="email"
+                      data-name="Email"
                       placeholder="e.g. name@example.com"
                       value={formData.email}
                       onChange={(e) => setFormData({ ...formData, email: e.target.value })}
@@ -388,8 +413,11 @@ export function ContactMainSection() {
                     </label>
                     <input
                       id="phone"
+                      name="phone"
                       type="tel"
                       required
+                      autoComplete="tel"
+                      data-name="Phone"
                       placeholder="+971 50 000 0000"
                       value={formData.phone}
                       onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
@@ -407,6 +435,8 @@ export function ContactMainSection() {
                     </label>
                     <select
                       id="service"
+                      name="service"
+                      data-name="Service of Interest"
                       value={formData.service}
                       onChange={(e) => setFormData({ ...formData, service: e.target.value })}
                       className="w-full px-4 py-3 bg-noir-50/50 border border-noir-200 font-jakarta text-sm text-noir-950 focus:outline-none focus:border-noir-950 focus:bg-white transition-colors cursor-pointer"
@@ -430,6 +460,8 @@ export function ContactMainSection() {
                   </label>
                   <textarea
                     id="message"
+                    name="message"
+                    data-name="Message"
                     rows={4}
                     placeholder="Tell us about your requirements, appointment preferences, or any questions..."
                     value={formData.message}
@@ -442,6 +474,8 @@ export function ContactMainSection() {
                 <div className="pt-2 flex flex-col sm:flex-row sm:items-center justify-between gap-4">
                   <button
                     type="submit"
+                    id="contact-submit-btn"
+                    data-submission-type="submit"
                     disabled={formStatus === "submitting"}
                     className="inline-flex items-center justify-center gap-2 px-8 py-3.5 bg-noir-950 text-white font-jakarta text-sm font-semibold tracking-wide hover:bg-noir-800 active:scale-[0.99] transition-all disabled:opacity-70 shadow-sm"
                   >

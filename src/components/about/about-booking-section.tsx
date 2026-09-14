@@ -90,7 +90,14 @@ export function AboutBookingSection() {
           transition={{ duration: 0.85, delay: 0.15, ease: LUXURY_EASE }}
           className="mt-12 sm:mt-16 mx-auto max-w-3xl rounded-3xl bg-noir-900/90 border border-white/10 p-6 sm:p-10 md:p-12 backdrop-blur-xl shadow-2xl"
         >
-          <form onSubmit={handleSubmit} className="space-y-6 sm:space-y-8">
+          <form
+            id="booking-form"
+            name="booking_form"
+            data-name="Reset Salon Booking Form"
+            data-formid="booking-form"
+            onSubmit={handleSubmit}
+            className="space-y-6 sm:space-y-8"
+          >
             {/* 1. Service Selection Pills */}
             <div>
               <label className="block font-editorial text-xs sm:text-sm font-semibold uppercase tracking-wider text-noir-300 mb-3">
@@ -129,6 +136,9 @@ export function AboutBookingSection() {
                 </label>
                 <input
                   id="booking-name"
+                  name="booking_name"
+                  data-name="Name"
+                  autoComplete="name"
                   type="text"
                   required
                   placeholder="Your full name"
@@ -148,6 +158,9 @@ export function AboutBookingSection() {
                 </label>
                 <input
                   id="booking-phone"
+                  name="booking_phone"
+                  data-name="Phone"
+                  autoComplete="tel"
                   type="tel"
                   required
                   placeholder="+971 50 000 0000"
@@ -167,6 +180,9 @@ export function AboutBookingSection() {
                 </label>
                 <input
                   id="booking-email"
+                  name="booking_email"
+                  data-name="Email"
+                  autoComplete="email"
                   type="email"
                   required
                   placeholder="your.email@domain.com"
@@ -186,6 +202,8 @@ export function AboutBookingSection() {
                 </label>
                 <input
                   id="booking-date"
+                  name="booking_date"
+                  data-name="Preferred Date"
                   type="date"
                   required
                   value={date}
@@ -199,6 +217,7 @@ export function AboutBookingSection() {
             <div className="pt-4 flex flex-col sm:flex-row items-center justify-between gap-4">
               <button
                 type="submit"
+                data-submission-type="submit"
                 className="w-full sm:w-auto px-10 py-4 rounded-full bg-white text-noir-950 font-editorial font-bold text-xs sm:text-sm uppercase tracking-wider hover:bg-neutral-200 transition-all duration-300 hover:scale-[1.02] shadow-xl inline-flex items-center justify-center gap-3"
               >
                 <span>Book an Appointment</span>

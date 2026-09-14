@@ -37,6 +37,7 @@ const cspDirectives: Record<string, string[]> = {
     "'unsafe-inline'",
     "'unsafe-eval'",
     "https:",
+    "https://link.msgsndr.com",
   ],
   // Framer Motion writes inline styles.
   "style-src": ["'self'", "'unsafe-inline'", "https://fonts.googleapis.com"],
@@ -54,6 +55,11 @@ const cspDirectives: Record<string, string[]> = {
     // Vercel/analytics defaults — safe fallbacks that do nothing until
     // the corresponding env var is set.
     "https://vitals.vercel-insights.com",
+    // GoHighLevel / LeadConnector external form tracking
+    "https://backend.leadconnectorhq.com",
+    "https://*.leadconnectorhq.com",
+    "https://link.msgsndr.com",
+    "https://*.msgsndr.com",
   ],
   "frame-src": [
     "'self'",
