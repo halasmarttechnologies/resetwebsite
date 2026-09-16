@@ -6,7 +6,7 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { siteConfig } from "@/config/site";
 import { navigationConfig } from "@/config/navigation";
-import { ChevronDown, ShoppingBag } from "lucide-react";
+import { ChevronDown } from "lucide-react";
 import { MobileNav } from "./mobile-nav";
 import { usePriceList } from "@/context/price-list-context";
 
@@ -14,7 +14,6 @@ const navItems = [
   { href: "/about", label: "About" },
   { href: "/services", label: "Services", hasDropdown: true },
   { href: "/pricing", label: "Pricing", isDrawer: true },
-  { href: "/shop", label: "Shop" },
   { href: "/blog", label: "Blog" },
   { href: "/contact", label: "Contact" },
 ];
@@ -60,9 +59,6 @@ export function Header() {
             className="h-6 sm:h-7 w-auto object-contain brightness-0 transition-transform duration-200 group-hover:scale-105"
             priority
           />
-          <span className="font-editorial text-sm sm:text-base font-bold tracking-wider text-noir-950 uppercase">
-            RESET
-          </span>
         </Link>
 
         {/* Center: Apple-style Minimalist Desktop Navigation Links */}
@@ -136,7 +132,7 @@ export function Header() {
           })}
         </nav>
 
-        {/* Right Side: Book Appointment Button + Shopping Bag + Mobile Menu */}
+        {/* Right Side: Book Appointment Button + Mobile Menu */}
         <div className="flex items-center gap-2 sm:gap-4 shrink-0">
           {/* Compact "Book" Pill Button */}
           <a
@@ -147,19 +143,6 @@ export function Header() {
           >
             Book
           </a>
-
-          {/* Apple-style Shopping Bag Icon */}
-          <Link
-            href="/shop"
-            aria-label="Shopping Bag"
-            title="Shopping Bag"
-            className="relative p-1 text-neutral-700 hover:text-black transition-colors flex items-center justify-center"
-          >
-            <ShoppingBag className="w-4 h-4" />
-            <span className="absolute -top-1 -right-1 min-w-[13px] h-[13px] px-0.5 rounded-full flex items-center justify-center text-[8px] font-jakarta font-bold leading-none bg-noir-950 text-white">
-              0
-            </span>
-          </Link>
 
           {/* Mobile Menu Trigger */}
           <MobileNav />
