@@ -17,6 +17,7 @@ import {
   MapPin,
   Instagram,
   ArrowUpRight,
+  Calendar,
 } from "lucide-react";
 import { usePriceList } from "@/context/price-list-context";
 
@@ -99,14 +100,17 @@ export function MobileNav({}: MobileNavProps = {}) {
 
   const overlay = isOpen ? (
     <div
-      className="fixed inset-0 flex flex-col bg-white text-black animate-fade-in md:hidden"
-      style={{ zIndex: 9999 }}
+      data-lenis-prevent="true"
+      className="fixed inset-0 flex flex-col bg-white text-black z-[9999] h-[100dvh] max-h-[100dvh] w-full overflow-hidden shadow-2xl lg:hidden"
       role="dialog"
       aria-modal="true"
       aria-label="Navigation Menu"
     >
-      {/* 1. Header Bar: Brand Logo & Close Action */}
-      <div className="flex items-center justify-between px-5 h-[58px] border-b border-neutral-100 shrink-0 bg-white">
+      {/* 1. Top Header Bar */}
+      <div
+        className="flex items-center justify-between px-5 h-[58px] sm:h-[64px] border-b border-neutral-100 shrink-0 bg-white"
+        style={{ paddingTop: "env(safe-area-inset-top, 0px)" }}
+      >
         <Link
           href="/"
           onClick={close}
@@ -122,10 +126,10 @@ export function MobileNav({}: MobileNavProps = {}) {
             priority
           />
           <div className="flex flex-col">
-            <span className="font-editorial text-[14px] font-bold tracking-[0.2em] uppercase text-black leading-none">
+            <span className="font-editorial text-[14px] sm:text-[15px] font-bold tracking-[0.2em] uppercase text-black leading-none">
               RESET
             </span>
-            <span className="font-jakarta text-[9px] font-semibold tracking-[0.22em] uppercase text-neutral-400 mt-0.5">
+            <span className="font-jakarta text-[8px] sm:text-[9px] font-semibold tracking-[0.22em] uppercase text-neutral-400 mt-0.5">
               Men Salon · Dubai
             </span>
           </div>
@@ -135,24 +139,27 @@ export function MobileNav({}: MobileNavProps = {}) {
           type="button"
           onClick={close}
           aria-label="Close Navigation Menu"
-          className="w-9 h-9 rounded-full border border-neutral-200 hover:border-black hover:bg-black hover:text-white text-black flex items-center justify-center transition-all active:scale-95"
+          className="w-9 h-9 rounded-full border border-neutral-200 hover:border-black hover:bg-black hover:text-white text-black flex items-center justify-center transition-all active:scale-95 cursor-pointer"
         >
           <X className="w-4 h-4" strokeWidth={2} />
         </button>
       </div>
 
       {/* 2. Section Subtitle Strip */}
-      <div className="px-5 pt-4 pb-2 flex items-center justify-between shrink-0">
-        <span className="font-jakarta text-[10px] font-bold tracking-[0.25em] uppercase text-neutral-400">
-          Directory
+      <div className="px-5 pt-3 pb-1.5 flex items-center justify-between shrink-0 bg-neutral-50/70 border-b border-neutral-100/60">
+        <span className="font-jakarta text-[10px] font-bold tracking-[0.25em] uppercase text-neutral-500">
+          Navigation
         </span>
-        <span className="font-jakarta text-[10px] font-medium tracking-[0.15em] uppercase text-neutral-400">
-          Business Bay
+        <span className="font-jakarta text-[10px] font-semibold tracking-[0.15em] uppercase text-neutral-500">
+          Business Bay, Dubai
         </span>
       </div>
 
-      {/* 3. Navigation List (Scrollable) */}
-      <div className="flex-1 overflow-y-auto overscroll-contain px-5 py-2 divide-y divide-neutral-100">
+      {/* 3. Navigation List (Scrollable with Lenis prevention) */}
+      <div
+        data-lenis-prevent="true"
+        className="flex-1 overflow-y-auto overscroll-contain px-5 py-3 divide-y divide-neutral-100"
+      >
         <nav className="flex flex-col">
           {primaryNav.map((item, index) => {
             const active = isActive(item.href);
@@ -166,7 +173,7 @@ export function MobileNav({}: MobileNavProps = {}) {
                     <button
                       type="button"
                       onClick={() => setServicesExpanded((prev) => !prev)}
-                      className="flex-1 flex items-center gap-3 py-1.5 text-left group"
+                      className="flex-1 flex items-center gap-3 py-1.5 text-left group cursor-pointer"
                       aria-expanded={servicesExpanded}
                       aria-label="Toggle Services menu"
                     >
@@ -174,7 +181,7 @@ export function MobileNav({}: MobileNavProps = {}) {
                         {num}
                       </span>
                       <span
-                        className={`font-editorial text-[22px] sm:text-[24px] leading-tight tracking-tight transition-colors ${
+                        className={`font-editorial text-[20px] sm:text-[22px] leading-tight tracking-tight transition-colors ${
                           active
                             ? "font-bold text-black"
                             : "font-normal text-neutral-800 group-hover:text-black"
@@ -192,7 +199,7 @@ export function MobileNav({}: MobileNavProps = {}) {
                       onClick={() => setServicesExpanded((prev) => !prev)}
                       aria-label="Toggle Services submenu"
                       aria-expanded={servicesExpanded}
-                      className="w-8 h-8 rounded-full border border-neutral-200 hover:border-black flex items-center justify-center text-black transition-colors"
+                      className="w-8 h-8 rounded-full border border-neutral-200 hover:border-black flex items-center justify-center text-black transition-colors cursor-pointer"
                     >
                       <ChevronDown
                         className={`w-4 h-4 transition-transform duration-200 ${
@@ -205,11 +212,11 @@ export function MobileNav({}: MobileNavProps = {}) {
 
                   {/* Submenu Accordion */}
                   {servicesExpanded && (
-                    <div className="ml-8 pl-4 my-2 border-l border-neutral-200 space-y-2 animate-fade-in">
+                    <div className="ml-8 pl-4 my-2 border-l-2 border-brand-500/30 space-y-2 animate-fade-in">
                       <Link
                         href="/services"
                         onClick={close}
-                        className="block py-1 font-jakarta text-[12px] font-semibold tracking-wider uppercase text-black hover:underline underline-offset-4"
+                        className="block py-1 font-jakarta text-[12px] font-bold tracking-wider uppercase text-brand-600 hover:underline underline-offset-4"
                       >
                         All Services Overview →
                       </Link>
@@ -220,9 +227,9 @@ export function MobileNav({}: MobileNavProps = {}) {
                             key={sub.href}
                             href={sub.href}
                             onClick={close}
-                            className={`block py-1 font-jakarta text-[13px] tracking-tight transition-colors ${
+                            className={`block py-1.5 font-jakarta text-[13px] tracking-tight transition-colors ${
                               subActive
-                                ? "font-semibold text-black"
+                                ? "font-bold text-black"
                                 : "font-normal text-neutral-600 hover:text-black"
                             }`}
                           >
@@ -250,7 +257,7 @@ export function MobileNav({}: MobileNavProps = {}) {
                         {num}
                       </span>
                       <span
-                        className={`font-editorial text-[22px] sm:text-[24px] leading-tight tracking-tight transition-colors ${
+                        className={`font-editorial text-[20px] sm:text-[22px] leading-tight tracking-tight transition-colors ${
                           active
                             ? "font-bold text-black"
                             : "font-normal text-neutral-800 group-hover:text-black"
@@ -269,7 +276,7 @@ export function MobileNav({}: MobileNavProps = {}) {
                         close();
                         openPriceList();
                       }}
-                      className="px-3 py-1 rounded-full border border-black text-[10px] font-jakarta font-semibold tracking-wider uppercase text-black hover:bg-black hover:text-white transition-all active:scale-95 shrink-0"
+                      className="px-3 py-1 rounded-full border border-black text-[10px] font-jakarta font-semibold tracking-wider uppercase text-black hover:bg-black hover:text-white transition-all active:scale-95 shrink-0 cursor-pointer"
                     >
                       Instant Menu
                     </button>
@@ -290,7 +297,7 @@ export function MobileNav({}: MobileNavProps = {}) {
                     {num}
                   </span>
                   <span
-                    className={`font-editorial text-[22px] sm:text-[24px] leading-tight tracking-tight transition-colors ${
+                    className={`font-editorial text-[20px] sm:text-[22px] leading-tight tracking-tight transition-colors ${
                       active
                         ? "font-bold text-black"
                         : "font-normal text-neutral-800 group-hover:text-black"
@@ -310,8 +317,8 @@ export function MobileNav({}: MobileNavProps = {}) {
 
       {/* 4. Bottom Concierge & Action Bar */}
       <div
-        className="shrink-0 px-5 pt-4 pb-5 border-t border-neutral-100 bg-white space-y-3"
-        style={{ paddingBottom: "max(1.25rem, env(safe-area-inset-bottom))" }}
+        className="shrink-0 px-5 pt-3.5 pb-4 border-t border-neutral-100 bg-white space-y-2.5"
+        style={{ paddingBottom: "max(1.25rem, env(safe-area-inset-bottom, 1rem))" }}
       >
         {/* Primary Booking CTA */}
         <a
@@ -320,19 +327,20 @@ export function MobileNav({}: MobileNavProps = {}) {
           rel="noopener noreferrer"
           className="w-full h-11 rounded-full bg-black hover:bg-neutral-800 text-white font-jakarta text-[12px] font-semibold tracking-[0.12em] uppercase flex items-center justify-center gap-2 transition-all active:scale-[0.98] shadow-sm"
         >
+          <Calendar className="w-4 h-4 text-brand-gold" />
           <span>Book Appointment</span>
-          <ArrowUpRight className="w-4 h-4 text-white" />
+          <ArrowUpRight className="w-4 h-4 text-neutral-400" />
         </a>
 
-        {/* Secondary Contact Actions (Pure Black & White) */}
-        <div className="grid grid-cols-2 gap-2.5">
+        {/* Secondary Contact Actions */}
+        <div className="grid grid-cols-2 gap-2">
           <a
             href={siteConfig.booking.primaryUrl}
             target="_blank"
             rel="noopener noreferrer"
             className="h-10 rounded-full border border-neutral-200 hover:border-black hover:bg-neutral-50 text-black font-jakarta text-[11px] font-medium tracking-wider uppercase flex items-center justify-center gap-1.5 transition-colors active:scale-[0.98]"
           >
-            <MessageSquare className="w-3.5 h-3.5 text-black" strokeWidth={1.75} />
+            <MessageSquare className="w-3.5 h-3.5 text-[#25D366]" strokeWidth={2} />
             <span>WhatsApp</span>
           </a>
 
@@ -346,11 +354,11 @@ export function MobileNav({}: MobileNavProps = {}) {
         </div>
 
         {/* Concierge Details Strip */}
-        <div className="pt-2.5 grid grid-cols-2 gap-3 border-t border-neutral-100">
+        <div className="pt-2 grid grid-cols-2 gap-2.5 border-t border-neutral-100">
           <div className="flex items-start gap-2">
-            <MapPin className="w-3.5 h-3.5 text-black mt-0.5 shrink-0" strokeWidth={1.75} />
+            <MapPin className="w-3.5 h-3.5 text-neutral-500 mt-0.5 shrink-0" strokeWidth={1.75} />
             <div className="flex flex-col">
-              <span className="font-jakarta text-[9px] font-bold tracking-[0.2em] uppercase text-neutral-400">
+              <span className="font-jakarta text-[8px] font-bold tracking-[0.2em] uppercase text-neutral-400">
                 Location
               </span>
               <span className="font-jakarta text-[11px] font-medium text-black leading-tight mt-0.5">
@@ -360,9 +368,9 @@ export function MobileNav({}: MobileNavProps = {}) {
           </div>
 
           <div className="flex items-start gap-2">
-            <Clock className="w-3.5 h-3.5 text-black mt-0.5 shrink-0" strokeWidth={1.75} />
+            <Clock className="w-3.5 h-3.5 text-neutral-500 mt-0.5 shrink-0" strokeWidth={1.75} />
             <div className="flex flex-col">
-              <span className="font-jakarta text-[9px] font-bold tracking-[0.2em] uppercase text-neutral-400">
+              <span className="font-jakarta text-[8px] font-bold tracking-[0.2em] uppercase text-neutral-400">
                 Hours
               </span>
               <span className="font-jakarta text-[11px] font-medium text-black leading-tight mt-0.5">
@@ -374,7 +382,7 @@ export function MobileNav({}: MobileNavProps = {}) {
 
         {/* Footer Signature & Social */}
         <div className="flex items-center justify-between pt-2 border-t border-neutral-100">
-          <span className="font-editorial text-[10px] font-bold tracking-[0.25em] uppercase text-neutral-400">
+          <span className="font-editorial text-[9px] font-bold tracking-[0.25em] uppercase text-neutral-400">
             RESET · EST. DUBAI
           </span>
           {siteConfig.socials?.instagram && (
@@ -394,18 +402,19 @@ export function MobileNav({}: MobileNavProps = {}) {
   ) : null;
 
   return (
-    <div className="md:hidden flex items-center">
+    <div className="flex items-center">
       <button
         type="button"
         onClick={() => setIsOpen(true)}
         aria-label="Open Navigation Menu"
         aria-expanded={isOpen}
-        className="w-8 h-8 rounded-full border border-neutral-200 hover:border-black text-black flex items-center justify-center transition-all active:scale-95"
+        className="w-9 h-9 sm:w-10 sm:h-10 rounded-full border border-neutral-200 hover:border-black hover:bg-neutral-50 text-black flex items-center justify-center transition-all active:scale-95 cursor-pointer shadow-sm"
       >
-        <Menu className="w-4 h-4 text-black" strokeWidth={2} />
+        <Menu className="w-4 h-4 sm:w-5 sm:h-5 text-black" strokeWidth={2} />
       </button>
 
       {portalTarget && overlay ? createPortal(overlay, portalTarget) : null}
     </div>
   );
 }
+
