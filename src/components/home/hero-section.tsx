@@ -50,7 +50,7 @@ export function HeroSection() {
   return (
     <section
       ref={containerRef}
-      className="relative w-full h-[calc(100vh-44px)] sm:h-[calc(100vh-48px)] min-h-[580px] sm:min-h-[660px] overflow-hidden bg-noir-950 flex items-center justify-center"
+      className="relative w-full h-[calc(100dvh-46px)] sm:h-[calc(100vh-48px)] min-h-[520px] sm:min-h-[660px] overflow-hidden bg-noir-950 flex items-center justify-center"
     >
       {/* 1. Full Viewport Responsive Fitted Image (Fully Visible, Perfectly Framed) */}
       <motion.div
@@ -65,18 +65,18 @@ export function HeroSection() {
           priority
           quality={100}
           sizes="100vw"
-          className="object-cover object-center sm:object-[center_30%]"
+          className="object-cover object-[center_20%] sm:object-[center_30%]"
         />
         {/* Subtle Contrast Gradient Overlay for Text Readability */}
-        <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/25 to-transparent pointer-events-none" />
+        <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/35 to-black/10 pointer-events-none" />
       </motion.div>
 
-      {/* 2. Hero Bottom Content Overlay (Anchored to Bottom Edge, Aligned to Grid) */}
-      <div className="absolute bottom-0 left-0 right-0 z-20 w-full pb-8 sm:pb-8 md:pb-10 pointer-events-none">
+      {/* 2. Hero Content Overlay (Lifted up safely in viewport on mobile) */}
+      <div className="absolute bottom-0 left-0 right-0 z-20 w-full pb-14 sm:pb-8 md:pb-10 pb-[max(3.5rem,env(safe-area-inset-bottom))] pointer-events-none">
         <div className="w-full max-w-[1600px] mx-auto px-4 sm:px-8 md:px-12 lg:px-16">
-          {/* Bottom-Left Micro Copy & Action Link (Book an Appointment on TOP, Subtext UNDER it) */}
-          <div className="mb-4 sm:mb-6 max-w-lg pointer-events-auto overflow-hidden flex flex-col items-start gap-2.5 sm:gap-3">
-            {/* Action Link: Book an Appointment (First) */}
+          {/* Micro Copy & Action Link (Lifted with responsive gap) */}
+          <div className="mb-3 sm:mb-6 max-w-lg pointer-events-auto overflow-hidden flex flex-col items-start gap-1.5 sm:gap-3">
+            {/* Action Link: Book an Appointment */}
             <motion.div
               initial={{ y: "100%" }}
               animate={{ y: "0%" }}
@@ -86,26 +86,26 @@ export function HeroSection() {
                 href={siteConfig.booking.primaryUrl}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="font-red-rose group inline-flex items-center text-white text-xl sm:text-2xl md:text-2xl font-bold underline underline-offset-8 decoration-white/90 hover:decoration-white hover:text-white/85 transition-all duration-300"
+                className="font-red-rose group inline-flex items-center text-white text-lg sm:text-2xl md:text-2xl font-bold underline underline-offset-6 sm:underline-offset-8 decoration-white/90 hover:decoration-white hover:text-white/85 transition-all duration-300"
               >
                 <span>Book an Appointment</span>
               </a>
             </motion.div>
 
-            {/* Subtext: Your glow begins here. Welcome to Reset. (Underneath Book an Appointment) */}
+            {/* Subtext: Your glow begins here. Welcome to Reset. */}
             <motion.p
               initial={{ y: "100%" }}
               animate={{ y: "0%" }}
               transition={{ duration: 0.8, delay: 0.32, ease: [0.16, 1, 0.3, 1] }}
-              className="font-red-rose text-white/90 text-base sm:text-lg md:text-lg font-normal tracking-wide leading-relaxed pt-0.5"
+              className="font-red-rose text-white/90 text-sm sm:text-base md:text-lg font-normal tracking-wide leading-relaxed"
             >
               Your glow begins here. Welcome to Reset.
             </motion.p>
           </div>
 
           {/* Monumental Typography: MEN'S on line 1, SALON on line 2 on mobile; horizontal on desktop */}
-          <div className="w-full overflow-hidden pt-1">
-            <h1 className="flex flex-col sm:flex-row items-start sm:items-center gap-y-0.5 sm:gap-x-4 md:gap-x-6 lg:gap-x-8 font-red-rose font-bold sm:font-bold tracking-tight text-white text-[clamp(3.2rem,14vw,12rem)] sm:text-[clamp(4.2rem,13vw,13rem)] leading-[0.86] uppercase text-left">
+          <div className="w-full overflow-hidden pt-0.5">
+            <h1 className="flex flex-col sm:flex-row items-start sm:items-center gap-y-1 sm:gap-x-4 md:gap-x-6 lg:gap-x-8 font-red-rose font-bold tracking-tight text-white text-[clamp(2.6rem,11.5vw,12rem)] sm:text-[clamp(4.2rem,13vw,13rem)] leading-[0.88] uppercase text-left">
               {/* Word 1: MEN'S */}
               <span className="inline-flex items-center whitespace-nowrap">
                 <RollingLetter char="M" delay={0.08} />

@@ -55,6 +55,10 @@ export const navigationConfig = {
       href: "/pricing",
     },
     {
+      title: "Shop",
+      href: "/shop",
+    },
+    {
       title: "Journal",
       href: "/blog",
     },

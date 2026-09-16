@@ -48,7 +48,7 @@ export function PricingHeroSection() {
   return (
     <section
       ref={containerRef}
-      className="relative w-full h-[calc(100vh-44px)] sm:h-[calc(100vh-48px)] min-h-[580px] sm:min-h-[660px] overflow-hidden bg-noir-950 flex items-center justify-center"
+      className="relative w-full h-[calc(100dvh-46px)] sm:h-[calc(100vh-48px)] min-h-[520px] sm:min-h-[660px] overflow-hidden bg-noir-950 flex items-center justify-center"
     >
       {/* 1. Full Viewport Responsive Fitted Image */}
       <motion.div
@@ -69,12 +69,12 @@ export function PricingHeroSection() {
         <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/40 to-black/20 pointer-events-none" />
       </motion.div>
 
-      {/* 2. Hero Bottom Content Overlay (Identical to other pages) */}
-      <div className="absolute bottom-0 left-0 right-0 z-20 w-full pb-16 sm:pb-8 md:pb-10 pointer-events-none">
+      {/* 2. Hero Content Overlay (Lifted up safely in viewport on mobile) */}
+      <div className="absolute bottom-0 left-0 right-0 z-20 w-full pb-14 sm:pb-8 md:pb-10 pb-[max(3.5rem,env(safe-area-inset-bottom))] pointer-events-none">
         <div className="w-full max-w-[1600px] mx-auto px-4 sm:px-8 md:px-12 lg:px-16">
-          {/* Bottom-Left Micro Copy & Action Link */}
-          <div className="mb-4 sm:mb-6 max-w-lg pointer-events-auto overflow-hidden flex flex-col items-start gap-2.5 sm:gap-3">
-            {/* Action Link: Book an Appointment (Identical on all hero sections) */}
+          {/* Micro Copy & Action Link */}
+          <div className="mb-3 sm:mb-6 max-w-lg pointer-events-auto overflow-hidden flex flex-col items-start gap-1.5 sm:gap-3">
+            {/* Action Link: Book an Appointment */}
             <motion.div
               initial={{ y: "100%" }}
               animate={{ y: "0%" }}
@@ -84,7 +84,7 @@ export function PricingHeroSection() {
                 href={siteConfig.booking.primaryUrl}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="font-jakarta group inline-flex items-center text-white text-xl sm:text-2xl md:text-2xl font-bold underline underline-offset-8 decoration-white/90 hover:decoration-white hover:text-white/85 transition-all duration-300"
+                className="font-jakarta group inline-flex items-center text-white text-lg sm:text-2xl md:text-2xl font-bold underline underline-offset-6 sm:underline-offset-8 decoration-white/90 hover:decoration-white hover:text-white/85 transition-all duration-300"
               >
                 <span>Book an Appointment</span>
               </a>
@@ -95,15 +95,15 @@ export function PricingHeroSection() {
               initial={{ y: "100%" }}
               animate={{ y: "0%" }}
               transition={{ duration: 0.8, delay: 0.32, ease: [0.16, 1, 0.3, 1] }}
-              className="font-jakarta text-white/90 text-base sm:text-lg md:text-lg font-normal tracking-wide leading-relaxed pt-0.5"
+              className="font-jakarta text-white/90 text-sm sm:text-base md:text-lg font-normal tracking-wide leading-relaxed"
             >
               Transparent rates and curated grooming services in Business Bay. Welcome to Reset.
             </motion.p>
           </div>
 
           {/* Monumental Typography: PRICE LIST on desktop / mobile */}
-          <div className="w-full overflow-hidden pt-1">
-            <h1 className="flex flex-col sm:flex-row items-start sm:items-center gap-y-0.5 sm:gap-x-4 md:gap-x-6 lg:gap-x-8 font-editorial font-bold sm:font-black tracking-[-0.03em] text-white text-[clamp(3rem,14vw,11.5rem)] sm:text-[clamp(3.8rem,11.5vw,11.5rem)] leading-[0.86] uppercase text-left">
+          <div className="w-full overflow-hidden pt-0.5">
+            <h1 className="flex flex-col sm:flex-row items-start sm:items-center gap-y-1 sm:gap-x-4 md:gap-x-6 lg:gap-x-8 font-editorial font-bold sm:font-black tracking-[-0.03em] text-white text-[clamp(2.5rem,11vw,11.5rem)] sm:text-[clamp(3.8rem,11.5vw,11.5rem)] leading-[0.88] uppercase text-left">
               {/* Word 1: PRICE */}
               <span className="inline-flex items-center whitespace-nowrap">
                 <RollingLetter char="P" delay={0.08} />

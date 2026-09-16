@@ -44,12 +44,12 @@ export function Header() {
   }, [pathname]);
 
   return (
-    <header className="sticky top-0 z-40 w-full bg-[#fbfbfd]/95 backdrop-blur-md border-b border-black/[0.08] shadow-[0_1px_3px_rgba(0,0,0,0.02)] transition-all">
-      <div className="max-w-[1280px] mx-auto w-full px-4 sm:px-6 md:px-8 h-[44px] sm:h-[48px] flex items-center justify-between gap-4">
-        {/* Left Side: Compact Brand Mark (Logo Only) */}
+    <header className="sticky top-0 z-40 w-full bg-white/95 backdrop-blur-md border-b border-black/[0.06] shadow-[0_1px_3px_rgba(0,0,0,0.03)] transition-all">
+      <div className="max-w-[1280px] mx-auto w-full px-4 sm:px-6 md:px-8 h-[46px] sm:h-[48px] flex items-center justify-between gap-3 sm:gap-4">
+        {/* Left Side: Compact Brand Mark */}
         <Link
           href="/"
-          className="inline-flex items-center group shrink-0"
+          className="inline-flex items-center gap-2 group shrink-0"
           aria-label="Reset Men Salon Home"
         >
           <Image
@@ -60,6 +60,9 @@ export function Header() {
             className="h-6 sm:h-7 w-auto object-contain brightness-0 transition-transform duration-200 group-hover:scale-105"
             priority
           />
+          <span className="font-editorial text-sm sm:text-base font-bold tracking-wider text-noir-950 uppercase">
+            RESET
+          </span>
         </Link>
 
         {/* Center: Apple-style Minimalist Desktop Navigation Links */}
@@ -134,13 +137,13 @@ export function Header() {
         </nav>
 
         {/* Right Side: Book Appointment Button + Shopping Bag + Mobile Menu */}
-        <div className="flex items-center gap-3 sm:gap-4 shrink-0">
+        <div className="flex items-center gap-2 sm:gap-4 shrink-0">
           {/* Compact "Book" Pill Button */}
           <a
             href={siteConfig.booking.primaryUrl}
             target="_blank"
             rel="noopener noreferrer"
-            className="hidden sm:inline-flex items-center justify-center px-3.5 py-1 rounded-full text-[11px] font-jakarta font-semibold tracking-wide bg-noir-950 hover:bg-neutral-800 text-white transition-all active:scale-95 shadow-sm"
+            className="inline-flex items-center justify-center px-3 sm:px-3.5 py-1 rounded-full text-[11px] font-jakarta font-semibold tracking-wide bg-noir-950 hover:bg-neutral-800 text-white transition-all active:scale-95 shadow-sm"
           >
             Book
           </a>
