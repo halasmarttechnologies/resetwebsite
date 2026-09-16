@@ -1,6 +1,10 @@
 import { NextRequest } from "next/server";
 import { z } from "zod";
-import { checkRateLimit, rateLimitHeaders } from "@/lib/security/rate-limiter";
+import {
+  checkRateLimit,
+  rateLimitHeaders,
+  RateLimits,
+} from "@/lib/security/rate-limiter";
 import {
   resolveClientIp,
   readBoundedJsonText,
@@ -93,7 +97,7 @@ export async function POST(req: NextRequest) {
   const ip = resolveClientIp(req);
 
   try {
-    const rl = checkRateLimit(`booking:${ip}`, 5, 60);
+    const rl = checkRateLimit(`booking:${ip}`, RateLimits.booking.limit, RateLimits.booking.windowSeconds);
     if (!rl.success) {
       logger.warn("booking.rate_limited", { requestId, ip });
       return fail(429, {
@@ -101,7 +105,7 @@ export async function POST(req: NextRequest) {
         code: "RATE_LIMITED",
         message:
           "Too many requests. Please connect with us directly via WhatsApp.",
-        headers: rateLimitHeaders(rl, 5),
+        headers: rateLimitHeaders(rl, RateLimits.booking.limit),
       });
     }
 
@@ -155,7 +159,7 @@ export async function POST(req: NextRequest) {
           {
             requestId,
             message: "Booking already received — reopening WhatsApp.",
-            headers: rateLimitHeaders(rl, 5),
+            headers: rateLimitHeaders(rl, RateLimits.booking.limit),
           },
         );
       }
@@ -176,7 +180,7 @@ export async function POST(req: NextRequest) {
       {
         requestId,
         message: "Booking intent recorded. Redirecting to WhatsApp concierge.",
-        headers: rateLimitHeaders(rl, 5),
+        headers: rateLimitHeaders(rl, RateLimits.booking.limit),
       },
     );
   } catch (err) {

@@ -1,6 +1,10 @@
 import { NextRequest } from "next/server";
 import { z } from "zod";
-import { checkRateLimit, rateLimitHeaders } from "@/lib/security/rate-limiter";
+import {
+  checkRateLimit,
+  rateLimitHeaders,
+  RateLimits,
+} from "@/lib/security/rate-limiter";
 import {
   resolveClientIp,
   readBoundedJsonText,
@@ -64,7 +68,11 @@ export async function POST(req: NextRequest) {
 
   try {
     // 1. Rate-limit first — cheapest gate.
-    const rl = checkRateLimit(`contact:${ip}`, 5, 60);
+    const rl = checkRateLimit(
+      `contact:${ip}`,
+      RateLimits.contact.limit,
+      RateLimits.contact.windowSeconds,
+    );
     if (!rl.success) {
       logger.warn("contact.rate_limited", { requestId, ip });
       return fail(429, {
@@ -72,7 +80,7 @@ export async function POST(req: NextRequest) {
         code: "RATE_LIMITED",
         message:
           "Too many requests. Please wait a minute before submitting another inquiry.",
-        headers: rateLimitHeaders(rl, 5),
+        headers: rateLimitHeaders(rl, RateLimits.contact.limit),
       });
     }
 
@@ -133,7 +141,7 @@ export async function POST(req: NextRequest) {
           {
             requestId,
             message: "Thank you. Our salon concierge will reach out to you shortly.",
-            headers: rateLimitHeaders(rl, 5),
+            headers: rateLimitHeaders(rl, RateLimits.contact.limit),
           },
         );
       }
@@ -178,7 +186,7 @@ export async function POST(req: NextRequest) {
       {
         requestId,
         message: "Thank you. Our salon concierge will reach out to you shortly.",
-        headers: rateLimitHeaders(rl, 5),
+        headers: rateLimitHeaders(rl, RateLimits.contact.limit),
       },
     );
   } catch (err) {

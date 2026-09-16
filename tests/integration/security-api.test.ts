@@ -159,9 +159,12 @@ describe("/api/booking", () => {
 /* ------------------------------------------------------------------ */
 
 describe("/api/health", () => {
+  const healthReq = () =>
+    new Request("http://localhost/api/health") as unknown as import("next/server").NextRequest;
+
   it("returns 200 with status ok", async () => {
     const { GET } = await import("@/app/api/health/route");
-    const response = GET();
+    const response = GET(healthReq());
     expect(response.status).toBe(200);
     const body = await response.json();
     expect(body.success).toBe(true);
@@ -170,7 +173,7 @@ describe("/api/health", () => {
 
   it("does NOT expose architecture or CMS details", async () => {
     const { GET } = await import("@/app/api/health/route");
-    const response = GET();
+    const response = GET(healthReq());
     const body = await response.json();
     expect(body.data).not.toHaveProperty("architecture");
     expect(body.data).not.toHaveProperty("cms");

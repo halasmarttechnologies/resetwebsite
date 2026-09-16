@@ -1,46 +1,54 @@
 import { NextRequest, NextResponse } from "next/server";
+import { checkRateLimit } from "@/lib/security/rate-limiter";
 
 /**
  * Edge Middleware — runs on every request before route handlers.
  *
  * Responsibilities:
- *   1. CORS enforcement on API routes (same-origin + trusted origins only).
- *   2. Preflight (OPTIONS) handling with correct Access-Control-* headers.
- *   3. Content-Type enforcement: API POST/PUT/PATCH must be application/json.
- *   4. Bot user-agent blocking: known scanner signatures → 403.
- *   5. Path traversal guard: reject encoded traversal sequences.
+ *   1. Path traversal guard (all routes).
+ *   2. Scanner / bot user-agent block (all routes).
+ *   3. Coarse per-IP soft rate limit for the entire site — cuts off
+ *      request-flooding before a route handler is ever loaded.
+ *   4. CORS enforcement + preflight handling on `/api/*`.
+ *   5. Content-Type enforcement on API mutating methods.
  *
- * This middleware does NOT touch pages or static assets — only `/api/*`
- * paths carry enforcement logic. Pages get a pass-through so design,
- * animations, and transitions remain completely unaffected.
+ * Pages and static assets are passed through unmodified — no design,
+ * animation, or transition behaviour is affected by this file.
  */
 
 /* ------------------------------------------------------------------ */
-/*  Trusted origins — extend this list for staging / preview domains  */
+/*  Trusted origins                                                    */
 /* ------------------------------------------------------------------ */
 
-const TRUSTED_ORIGINS = new Set([
+const CONFIGURED_TRUSTED = [
   "https://resetmensalon.ae",
   "https://www.resetmensalon.ae",
-  // Vercel preview deployments use *.vercel.app
-]);
+];
 
-/** In development, localhost is always trusted. */
+if (process.env.NEXT_PUBLIC_SITE_URL) {
+  try {
+    CONFIGURED_TRUSTED.push(new URL(process.env.NEXT_PUBLIC_SITE_URL).origin);
+  } catch {
+    /* ignore invalid env value */
+  }
+}
+
+const TRUSTED_ORIGINS = new Set(CONFIGURED_TRUSTED);
+
+/** localhost is always trusted; Vercel previews match the request host. */
 function isTrustedOrigin(origin: string | null, host: string | null): boolean {
-  if (!origin) return true; // Same-origin requests omit the header.
+  if (!origin) return true; // Same-origin requests omit Origin.
   if (TRUSTED_ORIGINS.has(origin)) return true;
 
-  // Allow localhost in any port during development.
   try {
     const url = new URL(origin);
     if (url.hostname === "localhost" || url.hostname === "127.0.0.1") return true;
+    // Same-host (Vercel preview: e.g. reset-git-branch.vercel.app).
+    if (host && url.host === host) return true;
+    if (url.hostname.endsWith(".vercel.app")) return true;
   } catch {
     return false;
   }
-
-  // Allow same-host (e.g. Vercel preview: xyz.vercel.app)
-  if (host && origin.endsWith(`://${host}`)) return true;
-
   return false;
 }
 
@@ -66,13 +74,41 @@ const BLOCKED_UA_PATTERNS = [
   "havij",
   "webinspect",
   "appscan",
+  "openvas",
+  "wapiti",
+  "arachni",
+  "hydra",
+  "medusa",
+  "commix",
+  "xsstrike",
+  "fuzzdb",
+  "ffuf",
+  "wfuzz",
+  "netsparker",
+  "nexpose",
+  "qualys",
 ];
 
 /* ------------------------------------------------------------------ */
 /*  Path traversal patterns                                           */
 /* ------------------------------------------------------------------ */
 
-const TRAVERSAL_PATTERN = /(?:\.\.|%2e%2e|%252e%252e)/i;
+const TRAVERSAL_PATTERN =
+  /(?:\.\.|%2e%2e|%252e%252e|\/\.\.\/|\\\.\.\\)/i;
+
+/* ------------------------------------------------------------------ */
+/*  Client IP resolution (mirrors lib/api/request-utils resolveClientIp)*/
+/* ------------------------------------------------------------------ */
+
+function resolveIp(req: NextRequest): string {
+  const h = req.headers;
+  const forwarded = h.get("x-forwarded-for");
+  if (forwarded) {
+    const first = forwarded.split(",")[0]?.trim();
+    if (first) return first;
+  }
+  return h.get("x-real-ip") || h.get("cf-connecting-ip") || "unknown";
+}
 
 /* ------------------------------------------------------------------ */
 /*  Middleware handler                                                */
@@ -82,9 +118,14 @@ export function middleware(request: NextRequest) {
   const { pathname } = request.nextUrl;
   const origin = request.headers.get("origin");
   const host = request.headers.get("host");
+  const ip = resolveIp(request);
+  const isApi = pathname.startsWith("/api/");
 
   // ── 1. Path traversal guard (all routes) ──────────────────────────
-  if (TRAVERSAL_PATTERN.test(pathname) || TRAVERSAL_PATTERN.test(request.nextUrl.search)) {
+  if (
+    TRAVERSAL_PATTERN.test(pathname) ||
+    TRAVERSAL_PATTERN.test(request.nextUrl.search)
+  ) {
     return new NextResponse("Forbidden", { status: 403 });
   }
 
@@ -94,12 +135,40 @@ export function middleware(request: NextRequest) {
     return new NextResponse("Forbidden", { status: 403 });
   }
 
-  // ── Only enforce CORS + content-type on API routes ────────────────
-  if (!pathname.startsWith("/api/")) {
-    return NextResponse.next();
+  // ── 3. Coarse global rate limit ───────────────────────────────────
+  //    120 requests/min per IP for pages, 60/min for API. Blunt
+  //    protection against request flooding before the route stack
+  //    even runs. Individual API routes still apply their own,
+  //    stricter, per-endpoint limits.
+  const globalLimit = isApi ? 60 : 120;
+  const rl = checkRateLimit(`edge:${isApi ? "api" : "page"}:${ip}`, globalLimit, 60);
+  if (!rl.success) {
+    return new NextResponse(
+      isApi
+        ? JSON.stringify({
+            success: false,
+            code: "RATE_LIMITED",
+            message: "Too many requests. Please slow down.",
+          })
+        : "Too Many Requests",
+      {
+        status: 429,
+        headers: {
+          "Content-Type": isApi ? "application/json" : "text/plain",
+          "Retry-After": String(Math.ceil(rl.retryAfterMs / 1000)),
+          "X-RateLimit-Limit": String(globalLimit),
+          "X-RateLimit-Remaining": "0",
+          "X-RateLimit-Reset": String(Math.ceil(rl.reset / 1000)),
+          "Cache-Control": "no-store",
+        },
+      },
+    );
   }
 
-  // ── 3. CORS: Preflight (OPTIONS) ─────────────────────────────────
+  // Non-API routes pass through untouched from here.
+  if (!isApi) return NextResponse.next();
+
+  // ── 4. CORS: Preflight (OPTIONS) ─────────────────────────────────
   if (request.method === "OPTIONS") {
     if (!isTrustedOrigin(origin, host)) {
       return new NextResponse(null, { status: 403 });
@@ -111,23 +180,23 @@ export function middleware(request: NextRequest) {
         "Access-Control-Allow-Methods": "GET, POST, OPTIONS",
         "Access-Control-Allow-Headers": "Content-Type, Idempotency-Key",
         "Access-Control-Max-Age": "86400",
+        "Vary": "Origin",
       },
     });
   }
 
-  // ── 4. CORS: Actual request origin check ──────────────────────────
+  // ── 5. CORS: Actual request origin check ──────────────────────────
   if (!isTrustedOrigin(origin, host)) {
     return NextResponse.json(
       { success: false, code: "CORS_REJECTED", message: "Origin not allowed." },
-      { status: 403 },
+      { status: 403, headers: { "Cache-Control": "no-store" } },
     );
   }
 
-  // ── 5. Content-Type enforcement for mutating methods ──────────────
+  // ── 6. Content-Type enforcement for mutating methods ──────────────
   const mutatingMethods = ["POST", "PUT", "PATCH"];
   if (mutatingMethods.includes(request.method)) {
     const contentType = request.headers.get("content-type") || "";
-    // CSP report endpoint accepts different content types from browsers.
     const isCspReport = pathname === "/api/csp-report";
     const isJson = contentType.includes("application/json");
     const isCspContentType =
@@ -141,12 +210,12 @@ export function middleware(request: NextRequest) {
           code: "INVALID_CONTENT_TYPE",
           message: "Content-Type must be application/json.",
         },
-        { status: 415 },
+        { status: 415, headers: { "Cache-Control": "no-store" } },
       );
     }
   }
 
-  // ── 6. Add CORS headers to the response ───────────────────────────
+  // ── 7. CORS response headers ──────────────────────────────────────
   const response = NextResponse.next();
   if (origin) {
     response.headers.set("Access-Control-Allow-Origin", origin);
@@ -155,16 +224,12 @@ export function middleware(request: NextRequest) {
   return response;
 }
 
-/* ------------------------------------------------------------------ */
-/*  Matcher — skip static assets and internal Next.js routes          */
-/* ------------------------------------------------------------------ */
-
 export const config = {
   matcher: [
     /*
      * Match all request paths EXCEPT:
      * - _next/static (static files)
-     * - _next/image (image optimization)
+     * - _next/image (image optimisation)
      * - favicon.ico, sitemap.xml, robots.txt
      * - Public assets (images, fonts, etc.)
      */

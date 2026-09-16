@@ -1,5 +1,10 @@
 import { describe, it, expect } from "vitest";
 import { GET, POST } from "@/app/api/health/route";
+import type { NextRequest } from "next/server";
+
+function makeReq(): NextRequest {
+  return new Request("http://localhost/api/health") as unknown as NextRequest;
+}
 
 /**
  * Health endpoint contract test.
@@ -13,7 +18,7 @@ import { GET, POST } from "@/app/api/health/route";
  */
 describe("Health API Route", () => {
   it("returns 200 with the standard success envelope", async () => {
-    const response = await GET();
+    const response = await GET(makeReq());
     const json = await response.json();
 
     expect(response.status).toBe(200);

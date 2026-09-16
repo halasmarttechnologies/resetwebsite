@@ -12,7 +12,13 @@ export default function Error({
   reset: () => void;
 }) {
   useEffect(() => {
-    console.error("App Error Boundary caught:", error);
+    // Only surface stack details in development. In production we
+    // deliberately keep the client console quiet — the same error is
+    // captured server-side with its `digest` for correlation, and
+    // exposing a stack in DevTools would leak internal file paths.
+    if (process.env.NODE_ENV !== "production") {
+      console.error("App Error Boundary caught:", error);
+    }
   }, [error]);
 
   return (
