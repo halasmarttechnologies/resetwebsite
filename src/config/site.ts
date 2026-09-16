@@ -4,7 +4,7 @@ export const siteConfig = {
   tagline: "The Architecture of Modern Grooming",
   description:
     "Dubai's premier luxury men's grooming destination in Business Bay. Specializing in precision haircuts, beard architecture, facial therapies, and signature Japanese Head Spa.",
-  url: process.env.NEXT_PUBLIC_SITE_URL || "https://resetmensalon.ae",
+  url: "https://resetmensalon.ae",
   locale: "en_AE",
   contact: {
     phoneDisplay: "+971 4 565 5688",

@@ -20,20 +20,10 @@ import { checkRateLimit } from "@/lib/security/rate-limiter";
 /*  Trusted origins                                                    */
 /* ------------------------------------------------------------------ */
 
-const CONFIGURED_TRUSTED = [
+const TRUSTED_ORIGINS = new Set([
   "https://resetmensalon.ae",
   "https://www.resetmensalon.ae",
-];
-
-if (process.env.NEXT_PUBLIC_SITE_URL) {
-  try {
-    CONFIGURED_TRUSTED.push(new URL(process.env.NEXT_PUBLIC_SITE_URL).origin);
-  } catch {
-    /* ignore invalid env value */
-  }
-}
-
-const TRUSTED_ORIGINS = new Set(CONFIGURED_TRUSTED);
+]);
 
 /** localhost is always trusted; Vercel previews match the request host. */
 function isTrustedOrigin(origin: string | null, host: string | null): boolean {
