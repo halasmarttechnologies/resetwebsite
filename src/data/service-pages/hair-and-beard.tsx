@@ -22,9 +22,9 @@ export const hairAndBeardPage = {
   whatsappUrl: WHATSAPP_URL,
 
   hero: {
-    desktopImageSrc: "/images/services/service-hair-beard.webp",
+    desktopImageSrc: "/images/salon/haircut-skin-fade-profile.webp",
     desktopImageAlt: "Reset Men Salon — Hair & Beard Grooming Dubai",
-    mobileImageSrc: "/phoneview.webp",
+    mobileImageSrc: "/images/salon/stylist-haircut-mirror.webp",
     mobileImageAlt: "Reset Men Salon — Hair & Beard Precision Barbering",
     titleWords: ["HAIR &", "BEARD"] as [string, string],
     subtitle: "Precision haircuts, tailored fades, and bespoke beard architecture in Business Bay. Welcome to Reset.",
@@ -47,7 +47,7 @@ export const hairAndBeardPage = {
     description:
       "Haircuts designed to match your face shape and personal style. Expect clean lines and a sharp finish that lasts.",
     price: "180 AED",
-    image: "/images/services/service-hair-beard.webp"
+    image: "/images/salon/haircut-skin-fade-profile.webp"
   },
   {
     id: "srv-kids-haircut",
@@ -56,7 +56,7 @@ export const hairAndBeardPage = {
     description:
       "Our kids haircut in Dubai service is calm and friendly. We create styles that suit kids of all ages while keeping parents and children relaxed.",
     price: "100 AED",
-    image: "/site-pics/site-10.jpg"
+    image: "/images/salon/scissor-taper-styling.webp"
   },
   {
     id: "srv-hairstyle-men",
@@ -65,7 +65,7 @@ export const hairAndBeardPage = {
     description:
       "We create modern and classic hairstyles based on your hair texture, face shape and lifestyle. Every cut is made to look clean and natural.",
     price: "70 AED",
-    image: "/images/hero/hero-model.jpg"
+    image: "/images/salon/stylist-client-satisfaction.webp"
   },
   {
     id: "srv-classic-beard-trim",
@@ -74,7 +74,7 @@ export const hairAndBeardPage = {
     description:
       "Our beard shaving salon service gives you a close and comfortable shave. We use professional methods to keep skin smooth and irritation free.",
     price: "60 AED",
-    image: "/site-pics/site-1.jpg"
+    image: "/images/salon/beard-sculpting-foil-shaver.webp"
   },
   {
     id: "srv-classic-beard-shaving",
@@ -83,7 +83,7 @@ export const hairAndBeardPage = {
     description:
       "Our beard shaving salon service gives you a close and comfortable shave. We use professional methods to keep skin smooth and irritation free.",
     price: "60 AED",
-    image: "/site-pics/site-7.jpg"
+    image: "/images/salon/barber-straight-razor-shave.webp"
   },
   {
     id: "srv-reset-beard-trim-style",
@@ -92,7 +92,7 @@ export const hairAndBeardPage = {
     description:
       "A premium beard grooming experience with precision trimming, detailed shaping, and expert styling to enhance your look while maintaining a sharp, polished finish.",
     price: "80 AED",
-    image: "/site-pics/site-11.jpg"
+    image: "/images/salon/beard-razor-contouring.webp"
   },
   {
     id: "srv-beard-brushing-styling",
@@ -101,7 +101,7 @@ export const hairAndBeardPage = {
     description:
       "Shapes and softens your beard using precise grooming techniques, enhancing texture and definition while keeping it neat, healthy, and easy to manage daily.",
     price: "50 AED",
-    image: "/site-pics/site-4.jpg"
+    image: "/images/salon/beard-scissor-sculpting.webp"
   },
 ] as Omit<ServiceItemCard, "whatsappUrl">[]).map(
       (it) => ({ ...it, whatsappUrl: WHATSAPP_URL }),
@@ -273,7 +273,7 @@ export const hairAndBeardPage = {
     headline: "Book Your Service for the Best Hair Salon in Dubai",
     description: "If you’re looking for a reliable hair and beard salon near me, Reset Men Salon offers expert grooming in a calm, premium space. From men’s grooming to family friendly services like kids haircut, we help you look sharp and feel confident every day. Each appointment is personal. Our barbers focus on precision, cleanliness and steady results. Every visit is relaxed and easy, with grooming you can count on.",
     backgroundImage: {
-      src: "/images/services/service-hair-beard.webp",
+      src: "/images/salon/salon-chairs-floor.webp",
       alt: "Reset Barbering Atmosphere",
     },
     trustBadges: [
@@ -286,12 +286,12 @@ export const hairAndBeardPage = {
   parallax: [
   {
     id: "hair-beard-1",
-    src: "/images/services/service-hair-beard.webp",
+    src: "/images/salon/haircut-scissor-detailing.webp",
     alt: "Reset Men Salon Haircut & Beard Architecture Mastery",
   },
   {
     id: "hair-beard-2",
-    src: "/site-pics/site-1.jpg",
+    src: "/images/salon/barber-straight-razor-shave.webp",
     alt: "Reset Men Salon Business Bay Styling Suite",
   },
 ] as { id: string; src: string; alt: string }[],
@@ -316,7 +316,7 @@ export const hairAndBeardPage = {
     url: "https://resetbarbershop.com/services/hair-and-beard",
     images: [
       {
-        url: "/images/services/service-hair-beard.webp",
+        url: "/images/salon/haircut-skin-fade-profile.webp",
         width: 1200,
         height: 630,
         alt: "Reset Men Salon Hair & Beard Grooming Dubai",

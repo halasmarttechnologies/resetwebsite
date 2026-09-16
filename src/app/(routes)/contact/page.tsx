@@ -28,7 +28,7 @@ export const metadata: Metadata = {
     url: CONTACT_URL,
     images: [
       {
-        url: "/images/parallax/parallax-1.png",
+        url: "/images/salon/salon-lounge-interior.webp",
         width: 1200,
         height: 630,
         alt: "Reset Men Salon Business Bay Dubai Concierge",

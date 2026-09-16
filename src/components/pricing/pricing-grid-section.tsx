@@ -111,52 +111,62 @@ export function PricingGridSection() {
           </div>
         </div>
 
-        {/* 2-Column Luxury Grid matching the provided Menu Sheet */}
+        {/* 2-Column Luxury Grid with High-Legibility Cards */}
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-10">
           {filteredCategories.length === 0 ? (
-            <div className="col-span-full py-20 text-center text-noir-500 bg-noir-50 border border-noir-200 p-8">
-              <p className="font-editorial text-2xl font-semibold">No treatments found</p>
-              <p className="font-jakarta text-sm mt-1">
-                No services match your search query. Please select another category.
+            <div className="col-span-full py-20 text-center text-noir-500 bg-neutral-50 border border-neutral-200 rounded-2xl p-8">
+              <p className="font-editorial text-2xl font-bold text-noir-950">No treatments found</p>
+              <p className="font-jakarta text-sm mt-2 text-neutral-600">
+                No services match &ldquo;{searchQuery}&rdquo;. Try another search term or click &ldquo;All Services&rdquo;.
               </p>
+              <button
+                type="button"
+                onClick={() => {
+                  setSearchQuery("");
+                  setActiveCategory("all");
+                }}
+                className="mt-5 px-6 py-2.5 rounded-full bg-noir-950 text-white font-jakarta text-xs font-semibold hover:bg-noir-800 transition-colors"
+              >
+                Reset Search
+              </button>
             </div>
           ) : (
             filteredCategories.map((cat) => (
               <div
                 key={cat.id}
-                className="bg-white border border-noir-200 p-6 sm:p-8 flex flex-col justify-between shadow-sm hover:border-noir-400 transition-colors"
+                className="bg-white border border-neutral-200 rounded-2xl p-6 sm:p-8 flex flex-col justify-between shadow-sm hover:shadow-md transition-shadow"
               >
                 <div>
                   {/* Category Header */}
-                  <div className="flex items-center justify-between border-b border-noir-200 pb-3 mb-4">
+                  <div className="flex flex-col sm:flex-row sm:items-center justify-between border-b border-neutral-200 pb-4 mb-4 gap-2">
                     <div>
-                      <h3 className="font-editorial text-xl sm:text-2xl font-bold text-noir-950 tracking-tight">
+                      <h3 className="font-editorial text-2xl font-bold text-noir-950 tracking-tight">
                         {cat.title}
                       </h3>
-                      <p className="font-jakarta text-xs text-noir-500 mt-0.5">
+                      <p className="font-jakarta text-xs text-neutral-500 mt-0.5">
                         {cat.description}
                       </p>
                     </div>
-                    <span className="font-jakarta text-xs font-semibold px-2.5 py-1 bg-noir-100 text-noir-700">
-                      {cat.items.length} items
+                    <span className="font-jakarta text-xs font-bold px-3 py-1 bg-neutral-100 border border-neutral-200 text-neutral-800 rounded-full shrink-0 self-start sm:self-center">
+                      {cat.items.length} options
                     </span>
                   </div>
 
-                  {/* Services Rows */}
-                  <div className="divide-y divide-noir-100">
+                  {/* Services Cards */}
+                  <div className="space-y-2.5">
                     {cat.items.map((item) => (
                       <div
                         key={item.id}
-                        className="py-3.5 flex items-center justify-between gap-4 group hover:bg-noir-50/50 px-2 -mx-2 transition-colors"
+                        className="p-3.5 sm:p-4 rounded-xl border border-neutral-100 bg-neutral-50/50 hover:bg-white hover:border-neutral-300 hover:shadow-sm flex items-center justify-between gap-3 transition-all group"
                       >
                         <div className="flex-1 min-w-0 pr-2">
-                          <div className="flex flex-wrap items-center gap-1.5 sm:gap-2">
-                            <span className="font-jakarta text-sm sm:text-base font-medium text-noir-900 group-hover:text-black">
+                          <div className="flex flex-wrap items-center gap-2">
+                            <span className="font-jakarta text-sm sm:text-base font-bold text-noir-950 group-hover:text-black">
                               {item.name}
                             </span>
                             {item.popular && (
-                              <span className="inline-flex items-center gap-0.5 px-2 py-0.5 rounded-full bg-noir-100 text-noir-800 text-[10px] font-jakarta font-semibold">
-                                <Sparkles className="w-2.5 h-2.5" />
+                              <span className="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full bg-amber-50 border border-amber-300 text-[10px] sm:text-[11px] font-jakarta font-bold text-amber-900 shadow-sm">
+                                <Sparkles className="w-2.5 h-2.5 text-amber-600" />
                                 Popular
                               </span>
                             )}
@@ -164,9 +174,9 @@ export function PricingGridSection() {
                         </div>
 
                         <div className="flex items-center gap-3 shrink-0">
-                          <span className="font-editorial text-base sm:text-lg font-bold text-noir-950 tracking-tight">
+                          <span className="font-editorial text-lg sm:text-xl font-bold text-noir-950 tracking-tight">
                             {item.priceAED}{" "}
-                            <span className="font-jakarta text-xs font-semibold text-noir-500">
+                            <span className="font-jakarta text-xs font-bold text-neutral-500">
                               AED
                             </span>
                           </span>
@@ -175,7 +185,7 @@ export function PricingGridSection() {
                             href={getWhatsAppBookingUrlForService(item.name, item.priceAED)}
                             target="_blank"
                             rel="noopener noreferrer"
-                            className="inline-flex items-center gap-1 px-3 py-1.5 bg-noir-950 hover:bg-[#25D366] text-white text-xs font-jakarta font-semibold transition-all hover:scale-105 active:scale-95"
+                            className="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-full bg-noir-950 hover:bg-[#25D366] text-white text-xs font-jakarta font-bold transition-all hover:scale-105 active:scale-95 shadow-sm"
                             title={`Book ${item.name} via WhatsApp`}
                           >
                             <MessageCircle className="w-3.5 h-3.5" />

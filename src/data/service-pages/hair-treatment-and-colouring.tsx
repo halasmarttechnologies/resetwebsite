@@ -22,9 +22,9 @@ export const hairTreatmentAndColouringPage = {
   whatsappUrl: WHATSAPP_URL,
 
   hero: {
-    desktopImageSrc: "/images/services/service-colouring.jpg",
+    desktopImageSrc: "/images/salon/haircut-scissor-detailing.webp",
     desktopImageAlt: "Reset Men Salon — Hair Coloring and Treatment For Men in Dubai",
-    mobileImageSrc: "/phoneview.webp",
+    mobileImageSrc: "/images/salon/haircut-skin-fade-profile.webp",
     mobileImageAlt: "Reset Men Salon — Hair Coloring and Treatment For Men",
     titleWords: ["HAIR &", "COLOUR"] as [string, string],
     subtitle: "Custom color blending, grey coverage, and deep hair restorative treatments in Business Bay. Welcome to Reset.",
@@ -49,7 +49,7 @@ export const hairTreatmentAndColouringPage = {
     description:
       "Coloring designed to look natural while keeping your hair healthy and balanced. A great option for men who want a clean and refreshed look from a trusted hair coloring salon in Dubai.",
     price: "140 AED",
-    image: "/images/services/service-colouring.jpg"
+    image: "/images/salon/haircut-scissor-detailing.webp"
   },
   {
     id: "srv-color-long",
@@ -58,7 +58,7 @@ export const hairTreatmentAndColouringPage = {
     description:
       "This service adds depth and tone while helping hair stay soft and strong. Ideal for men looking for professional hair coloring Dubai services with smooth, natural results.",
     price: "200 AED",
-    image: "/site-pics/site-12.jpg"
+    image: "/images/salon/scissor-taper-styling.webp"
   },
   {
     id: "srv-highlight-short",
@@ -67,7 +67,7 @@ export const hairTreatmentAndColouringPage = {
     description:
       "Short hair highlights add dimension without losing a sharp style. Our experienced stylists focus on precision for a clean and modern finish.",
     price: "300 AED",
-    image: "/site-pics/site-8.jpg"
+    image: "/images/salon/haircut-fade-triptych.webp"
   },
   {
     id: "srv-highlight-long",
@@ -76,7 +76,7 @@ export const hairTreatmentAndColouringPage = {
     description:
       "Long hair highlights create natural looking layers of color while keeping shine and smoothness. A strong choice for men who want advanced hair coloring Dubai techniques with subtle results.",
     price: "500 AED",
-    image: "/site-pics/site-3.jpg"
+    image: "/images/salon/stylist-haircut-mirror.webp"
   },
   {
     id: "srv-beard-coloring",
@@ -85,7 +85,7 @@ export const hairTreatmentAndColouringPage = {
     description:
       "Beard coloring that blends naturally with your hair for an even look. It reduces the look of grey hairs and keeps your beard clean and well defined.",
     price: "60 AED",
-    image: "/site-pics/site-9.jpg"
+    image: "/images/salon/beard-razor-contouring.webp"
   },
 
   // --- Hair Treatment Services (4) ---
@@ -96,7 +96,7 @@ export const hairTreatmentAndColouringPage = {
     description:
       "Helps smooth hair texture and reduce frizz, making hair easier to style and manage every day.",
     price: "200 AED",
-    image: "/site-pics/site-2.jpg"
+    image: "/images/salon/shampoo-wash-station.webp"
   },
   {
     id: "srv-caviar-treatment",
@@ -105,7 +105,7 @@ export const hairTreatmentAndColouringPage = {
     description:
       "A treatment designed to bring back shine, hydration, and softness. Great for hair that feels dry or tired.",
     price: "250 AED",
-    image: "/site-pics/site-5.jpg"
+    image: "/images/salon/scalp-rinse-treatment.webp"
   },
   {
     id: "srv-botox-normal",
@@ -114,7 +114,7 @@ export const hairTreatmentAndColouringPage = {
     description:
       "A deep care treatment that restores moisture and improves strength. Hair feels smoother, healthier, and easier to handle.",
     price: "300 AED",
-    image: "/site-pics/site-7.jpg"
+    image: "/images/salon/haircut-curly-fade.webp"
   },
   {
     id: "srv-botox-long",
@@ -123,7 +123,7 @@ export const hairTreatmentAndColouringPage = {
     description:
       "Repairs damaged strands while improving shine and softness. Long hair becomes more manageable and looks naturally healthy.",
     price: "450 AED",
-    image: "/site-pics/site-10.jpg"
+    image: "/images/salon/stylist-client-satisfaction.webp"
   },
 ] as Omit<ServiceItemCard, "whatsappUrl">[]).map(
       (it) => ({ ...it, whatsappUrl: WHATSAPP_URL }),
@@ -277,7 +277,7 @@ export const hairTreatmentAndColouringPage = {
     headline: "Book Your Hair Coloring and Hair Treatment in Dubai",
     description: "If you’re searching for expert hair coloring and treatment, Reset Men Salon offers services that go beyond basic grooming. Every appointment is tailored to your hair type, routine, and goals. From color services to treatments like botox and caviar care, we help you maintain healthier, stronger hair. We use quality products and modern techniques that protect your hair while improving long term results. Our stylists focus on consistency, comfort, and detail. Expect a smooth experience in a clean and relaxed environment built for real results.",
     backgroundImage: {
-      src: "/images/services/service-colouring.jpg",
+      src: "/images/salon/salon-chairs-floor.webp",
       alt: "Hair Coloring and Treatment Dubai Atmosphere",
     },
     trustBadges: [
@@ -290,12 +290,12 @@ export const hairTreatmentAndColouringPage = {
   parallax: [
   {
     id: "hair-treatment-1",
-    src: "/images/services/service-colouring.jpg",
+    src: "/images/salon/haircut-scissor-detailing.webp",
     alt: "Reset Men Salon Hair Colouring & Treatment Precision",
   },
   {
     id: "hair-treatment-2",
-    src: "/site-pics/site-2.jpg",
+    src: "/images/salon/salon-rotunda-boutique.webp",
     alt: "Reset Men Salon Treatment & Styling Suite",
   },
 ] as { id: string; src: string; alt: string }[],
@@ -318,7 +318,7 @@ export const hairTreatmentAndColouringPage = {
     url: "https://resetbarbershop.com/services/hair-treatment-and-colouring",
     images: [
       {
-        url: "/images/services/service-colouring.jpg",
+        url: "/images/salon/haircut-scissor-detailing.webp",
         width: 1200,
         height: 630,
         alt: "Reset Men Salon Hair Treatment & Colouring",

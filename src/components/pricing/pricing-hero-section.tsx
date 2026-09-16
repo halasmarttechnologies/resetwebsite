@@ -48,7 +48,7 @@ export function PricingHeroSection() {
   return (
     <section
       ref={containerRef}
-      className="relative w-full h-screen min-h-screen overflow-hidden bg-noir-950 flex items-center justify-center"
+      className="relative w-full h-[calc(100vh-44px)] sm:h-[calc(100vh-48px)] min-h-[580px] sm:min-h-[660px] overflow-hidden bg-noir-950 flex items-center justify-center"
     >
       {/* 1. Full Viewport Responsive Fitted Image */}
       <motion.div
@@ -57,7 +57,7 @@ export function PricingHeroSection() {
       >
         {/* Luxury Hero Image */}
         <Image
-          src="/images/contact-hero.webp"
+          src="/images/salon/salon-rotunda-boutique.webp"
           alt="Reset Men Salon — Services & Price List Business Bay Dubai"
           fill
           priority

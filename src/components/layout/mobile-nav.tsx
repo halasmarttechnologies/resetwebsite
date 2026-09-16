@@ -11,9 +11,10 @@ import { usePriceList } from "@/context/price-list-context";
 
 interface MobileNavProps {
   isHomePage?: boolean;
+  isScrolled?: boolean;
 }
 
-export function MobileNav({ isHomePage = false }: MobileNavProps) {
+export function MobileNav({}: MobileNavProps = {}) {
   const { openPriceList } = usePriceList();
   const [isOpen, setIsOpen] = React.useState(false);
   const [expandedItem, setExpandedItem] = React.useState<string | null>("/services");
@@ -34,9 +35,7 @@ export function MobileNav({ isHomePage = false }: MobileNavProps) {
       <button
         onClick={() => setIsOpen(true)}
         aria-label="Open Navigation Menu"
-        className={`p-2 transition-colors ${
-          isHomePage ? "text-white hover:text-white/80" : "text-noir-950 hover:text-noir-700"
-        }`}
+        className="p-2 transition-colors rounded-lg text-noir-950 hover:text-black"
       >
         <Menu className="w-6 h-6" />
       </button>

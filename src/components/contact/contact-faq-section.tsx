@@ -58,31 +58,33 @@ export function ContactFaqSection() {
           </p>
         </div>
 
-        <div className="space-y-4">
+        <div className="space-y-3.5 sm:space-y-4">
           {contactFaqs.map((faq, index) => {
             const isOpen = openIndex === index;
             return (
               <div
                 key={faq.question}
-                className="bg-white border border-noir-200 transition-colors duration-200"
+                className="bg-white border border-neutral-200/90 rounded-2xl shadow-sm hover:border-neutral-400 transition-all overflow-hidden"
               >
                 <button
                   type="button"
                   onClick={() => toggleFaq(index)}
                   className="w-full flex items-center justify-between gap-4 p-5 sm:p-6 text-left"
                 >
-                  <span className="font-editorial text-base sm:text-lg font-semibold text-noir-950">
+                  <span className="font-editorial text-base sm:text-lg font-bold text-noir-950">
                     {faq.question}
                   </span>
-                  <ChevronDown
-                    className={`w-5 h-5 text-noir-500 shrink-0 transition-transform duration-300 ${
-                      isOpen ? "rotate-180 text-noir-950" : ""
+                  <div
+                    className={`w-8 h-8 rounded-full flex items-center justify-center transition-all duration-300 shrink-0 ${
+                      isOpen ? "bg-noir-950 text-white rotate-180" : "bg-neutral-100 text-noir-950"
                     }`}
-                  />
+                  >
+                    <ChevronDown className="w-4 h-4" />
+                  </div>
                 </button>
 
                 {isOpen && (
-                  <div className="px-5 pb-6 sm:px-6 sm:pb-7 font-jakarta text-sm sm:text-base text-noir-600 leading-relaxed border-t border-noir-100 pt-4">
+                  <div className="px-5 pb-6 sm:px-6 sm:pb-7 font-jakarta text-sm sm:text-base text-neutral-600 leading-relaxed border-t border-neutral-100 pt-4 bg-neutral-50/30">
                     {faq.answer}
                   </div>
                 )}

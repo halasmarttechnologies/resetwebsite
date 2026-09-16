@@ -2,7 +2,7 @@
 
 import * as React from "react";
 import Link from "next/link";
-import { motion, AnimatePresence, type PanInfo } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
 import {
   X,
   Search,
@@ -10,6 +10,7 @@ import {
   ArrowUpRight,
   Sparkles,
   Phone,
+  CheckCircle2,
 } from "lucide-react";
 import { usePriceList } from "@/context/price-list-context";
 import {
@@ -36,12 +37,38 @@ export function PriceListDrawer() {
     }
   }, [isOpen]);
 
-  // Handle drag to dismiss (swipe left)
-  const handleDragEnd = (_: MouseEvent | TouchEvent | PointerEvent, info: PanInfo) => {
-    if (info.offset.x < -70 || info.velocity.x < -300) {
-      closePriceList();
-    }
-  };
+  // Lock background body scroll completely while drawer is open
+  React.useEffect(() => {
+    if (!isOpen) return;
+
+    const scrollY = window.scrollY;
+    const originalOverflow = document.body.style.overflow;
+    const originalPosition = document.body.style.position;
+    const originalTop = document.body.style.top;
+    const originalWidth = document.body.style.width;
+
+    // Prevent background scrolling across desktop and mobile iOS
+    document.body.style.overflow = "hidden";
+    document.body.style.position = "fixed";
+    document.body.style.top = `-${scrollY}px`;
+    document.body.style.width = "100%";
+
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (e.key === "Escape") {
+        closePriceList();
+      }
+    };
+    window.addEventListener("keydown", handleKeyDown);
+
+    return () => {
+      window.removeEventListener("keydown", handleKeyDown);
+      document.body.style.overflow = originalOverflow;
+      document.body.style.position = originalPosition;
+      document.body.style.top = originalTop;
+      document.body.style.width = originalWidth;
+      window.scrollTo(0, scrollY);
+    };
+  }, [isOpen, closePriceList]);
 
   // Filtered categories & items
   const filteredCategories = React.useMemo(() => {
@@ -53,9 +80,10 @@ export function PriceListDrawer() {
         }
 
         // Search query filter
-        const matchingItems = cat.items.filter((item) =>
-          item.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
-          cat.title.toLowerCase().includes(searchQuery.toLowerCase())
+        const matchingItems = cat.items.filter(
+          (item) =>
+            item.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
+            cat.title.toLowerCase().includes(searchQuery.toLowerCase())
         );
 
         if (matchingItems.length === 0) return null;
@@ -72,169 +100,193 @@ export function PriceListDrawer() {
     <AnimatePresence>
       {isOpen && (
         <div className="fixed inset-0 z-50 flex">
-          {/* Backdrop with Soft Blur */}
+          {/* Backdrop with Soft Dark Blur */}
           <motion.div
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             transition={{ duration: 0.25 }}
             onClick={closePriceList}
-            className="fixed inset-0 bg-black/40 backdrop-blur-sm"
+            className="fixed inset-0 bg-black/60 backdrop-blur-sm"
             aria-hidden="true"
           />
 
-          {/* Left Slide-In Panel / Page - Pure Crisp Luxury White */}
+          {/* Left Slide-In Panel / Page - Ultra-Legible, Pure Luxury White */}
           <motion.div
             initial={{ x: "-100%" }}
             animate={{ x: 0 }}
             exit={{ x: "-100%" }}
-            transition={{ type: "spring", damping: 30, stiffness: 300, mass: 0.8 }}
-            drag="x"
-            dragConstraints={{ left: 0, right: 0 }}
-            dragElastic={{ left: 0.6, right: 0.05 }}
-            onDragEnd={handleDragEnd}
-            className="relative z-10 w-full sm:max-w-xl md:max-w-2xl lg:max-w-3xl h-full bg-white text-noir-950 shadow-[10px_0_40px_rgba(0,0,0,0.18)] border-r border-noir-200 flex flex-col will-change-transform select-none touch-pan-y"
+            transition={{ type: "spring", damping: 28, stiffness: 260, mass: 0.8 }}
+            className="relative z-10 w-full sm:max-w-xl md:max-w-2xl lg:max-w-3xl h-full max-h-screen bg-white text-noir-950 shadow-[10px_0_50px_rgba(0,0,0,0.25)] border-r border-neutral-200 flex flex-col will-change-transform"
           >
-            {/* Top Bar / Header - Clean, Crisp White */}
-            <div className="flex-none p-4 sm:p-6 border-b border-noir-200 bg-white/95 backdrop-blur-md">
+            {/* Top Bar / Header - Fixed, High Contrast */}
+            <div className="flex-none p-4 sm:p-6 border-b border-neutral-200 bg-white shadow-sm z-20">
               <div className="flex items-center justify-between gap-3">
-                {/* Brand & Kicker - Clean, No Dots */}
+                {/* Brand Kicker & Main Title */}
                 <div>
-                  <span className="block font-jakarta text-[11px] font-semibold text-noir-500 tracking-[0.2em] uppercase">
-                    Reset Men Salon Dubai
-                  </span>
-                  <h2 className="font-editorial text-2xl sm:text-3xl font-bold tracking-tight text-noir-950">
+                  <div className="flex items-center gap-2">
+                    <span className="font-jakarta text-[11px] font-bold text-neutral-500 tracking-[0.2em] uppercase">
+                      Reset Men Salon Dubai
+                    </span>
+                    <span className="inline-flex items-center gap-1 px-2 py-0.5 rounded-full bg-neutral-100 text-[10px] font-semibold text-neutral-700">
+                      <CheckCircle2 className="w-2.5 h-2.5 text-emerald-600" />
+                      All-Inclusive AED
+                    </span>
+                  </div>
+                  <h2 className="font-editorial text-2xl sm:text-3xl font-bold tracking-tight text-noir-950 mt-0.5">
                     Services & Price List
                   </h2>
                 </div>
 
-                {/* Close Button & Swipe Hint */}
-                <div className="flex items-center gap-2">
-                  <span className="hidden sm:inline font-jakarta text-xs text-noir-400">
-                    Swipe left
-                  </span>
-                  <button
-                    type="button"
-                    onClick={closePriceList}
-                    aria-label="Close price list"
-                    className="w-10 h-10 rounded-full bg-noir-100 hover:bg-noir-200 active:bg-noir-300 border border-noir-200 flex items-center justify-center text-noir-900 transition-all hover:scale-105 active:scale-95"
-                  >
-                    <X className="w-5 h-5" />
-                  </button>
-                </div>
+                {/* Prominent Close Button */}
+                <button
+                  type="button"
+                  onClick={closePriceList}
+                  aria-label="Close price list"
+                  className="w-10 h-10 sm:w-11 sm:h-11 rounded-full bg-neutral-100 hover:bg-noir-950 hover:text-white border border-neutral-200 flex items-center justify-center text-noir-950 transition-all hover:scale-105 active:scale-95 shadow-sm"
+                >
+                  <X className="w-5 h-5" />
+                </button>
               </div>
 
-              {/* Search Bar */}
+              {/* Search Bar with Instant Clear */}
               <div className="mt-4 relative">
-                <Search className="absolute left-3.5 top-1/2 -translate-y-1/2 w-4 h-4 text-noir-400" />
+                <Search className="absolute left-3.5 top-1/2 -translate-y-1/2 w-4 h-4 text-neutral-400" />
                 <input
                   type="text"
-                  placeholder="Search haircuts, beard, head spa, massage..."
+                  placeholder="Search haircuts, beard, head spa, massage, nails..."
                   value={searchQuery}
                   onChange={(e) => setSearchQuery(e.target.value)}
-                  className="w-full pl-10 pr-12 py-2.5 rounded-lg bg-noir-50 border border-noir-200 font-jakarta text-sm text-noir-950 placeholder:text-noir-400 focus:outline-none focus:border-noir-950 focus:bg-white transition-all"
+                  className="w-full pl-10 pr-14 py-2.5 sm:py-3 rounded-xl bg-neutral-100/90 border border-neutral-200/90 font-jakarta text-sm text-noir-950 placeholder:text-neutral-500 focus:outline-none focus:border-noir-950 focus:bg-white focus:ring-2 focus:ring-noir-950/10 transition-all"
                 />
                 {searchQuery && (
                   <button
                     type="button"
                     onClick={() => setSearchQuery("")}
-                    className="absolute right-3 top-1/2 -translate-y-1/2 text-xs font-jakarta font-medium text-noir-500 hover:text-noir-950"
+                    className="absolute right-3 top-1/2 -translate-y-1/2 px-2 py-1 rounded-md text-xs font-jakarta font-semibold text-neutral-600 hover:text-noir-950 hover:bg-neutral-200 transition-colors"
                   >
                     Clear
                   </button>
                 )}
               </div>
 
-              {/* Category Quick Filter Pills */}
-              <div className="mt-3 flex items-center gap-1.5 overflow-x-auto no-scrollbar py-1 text-xs">
+              {/* Category Quick Filter Pills - Scrollable Horizontally */}
+              <div className="mt-3.5 flex items-center gap-2 overflow-x-auto no-scrollbar py-1 text-xs">
                 <button
                   type="button"
                   onClick={() => setActiveCategory("all")}
-                  className={`px-3.5 py-1.5 rounded-full font-jakarta font-semibold transition-all whitespace-nowrap ${
+                  className={`px-4 py-2 rounded-full font-jakarta font-bold transition-all whitespace-nowrap shadow-sm ${
                     activeCategory === "all"
-                      ? "bg-noir-950 text-white shadow-sm"
-                      : "bg-noir-100 text-noir-700 hover:bg-noir-200 hover:text-noir-950 border border-noir-200"
+                      ? "bg-noir-950 text-white shadow-md scale-[1.02]"
+                      : "bg-neutral-100 text-neutral-800 hover:bg-neutral-200 hover:text-noir-950 border border-neutral-200"
                   }`}
                 >
-                  All Services
+                  All Services ({priceListCategories.reduce((acc, c) => acc + c.items.length, 0)})
                 </button>
                 {priceListCategories.map((cat) => (
                   <button
                     key={cat.id}
                     type="button"
                     onClick={() => setActiveCategory(cat.slug)}
-                    className={`px-3.5 py-1.5 rounded-full font-jakarta font-semibold transition-all whitespace-nowrap ${
+                    className={`px-3.5 py-2 rounded-full font-jakarta font-semibold transition-all whitespace-nowrap ${
                       activeCategory === cat.slug
-                        ? "bg-noir-950 text-white shadow-sm"
-                        : "bg-noir-100 text-noir-700 hover:bg-noir-200 hover:text-noir-950 border border-noir-200"
+                        ? "bg-noir-950 text-white shadow-md scale-[1.02]"
+                        : "bg-neutral-100 text-neutral-700 hover:bg-neutral-200 hover:text-noir-950 border border-neutral-200"
                     }`}
                   >
-                    {cat.title}
+                    {cat.title} ({cat.items.length})
                   </button>
                 ))}
               </div>
             </div>
 
-            {/* Scrollable Price List Body */}
-            <div className="flex-1 overflow-y-auto overscroll-contain p-4 sm:p-6 md:p-8 space-y-8 custom-scrollbar bg-white">
+            {/* Dedicated Scrollable Price List Body (Only this area scrolls!) */}
+            <div
+              onWheel={(e) => e.stopPropagation()}
+              onTouchMove={(e) => e.stopPropagation()}
+              className="flex-1 overflow-y-auto overscroll-contain p-4 sm:p-6 md:p-8 space-y-6 sm:space-y-8 bg-neutral-50/60"
+              style={{ WebkitOverflowScrolling: "touch" }}
+            >
               {filteredCategories.length === 0 ? (
-                <div className="py-20 text-center text-noir-500 bg-noir-50/50 border border-noir-200 rounded-xl p-8">
-                  <p className="font-editorial text-xl font-bold text-noir-900">No services found</p>
-                  <p className="font-jakarta text-sm mt-1 text-noir-600">Try another search term or select All Services</p>
+                <div className="py-20 text-center text-neutral-600 bg-white border border-neutral-200 rounded-2xl p-8 shadow-sm">
+                  <p className="font-editorial text-2xl font-bold text-noir-950">No treatments found</p>
+                  <p className="font-jakarta text-sm mt-2 text-neutral-600">
+                    No services match &ldquo;{searchQuery}&rdquo;. Try another search term or click &ldquo;All Services&rdquo;.
+                  </p>
+                  <button
+                    type="button"
+                    onClick={() => {
+                      setSearchQuery("");
+                      setActiveCategory("all");
+                    }}
+                    className="mt-5 px-6 py-2.5 rounded-full bg-noir-950 text-white font-jakarta text-xs font-semibold hover:bg-noir-800 transition-colors"
+                  >
+                    Reset Filters
+                  </button>
                 </div>
               ) : (
                 filteredCategories.map((cat) => (
                   <div key={cat.id} className="space-y-3">
-                    {/* Category Title Header - Clean, No Dots */}
-                    <div className="flex items-center justify-between border-b border-noir-200 pb-2">
-                      <h3 className="font-editorial text-lg sm:text-xl font-bold tracking-tight text-noir-950">
-                        {cat.title}
-                      </h3>
-                      <span className="font-jakarta text-xs font-semibold px-2 py-0.5 rounded-md bg-noir-100 text-noir-700">
+                    {/* Category Title Header & Description */}
+                    <div className="flex flex-col sm:flex-row sm:items-center justify-between pb-2.5 border-b border-neutral-200 gap-1">
+                      <div>
+                        <h3 className="font-editorial text-xl sm:text-2xl font-bold tracking-tight text-noir-950">
+                          {cat.title}
+                        </h3>
+                        <p className="font-jakarta text-xs text-neutral-500 mt-0.5">
+                          {cat.description}
+                        </p>
+                      </div>
+                      <span className="font-jakarta text-xs font-bold px-2.5 py-1 rounded-full bg-white border border-neutral-200 text-neutral-800 shadow-sm shrink-0 self-start sm:self-center">
                         {cat.items.length} options
                       </span>
                     </div>
 
-                    {/* Services Items List */}
-                    <div className="divide-y divide-noir-100">
+                    {/* Highly Legible Service Cards */}
+                    <div className="grid grid-cols-1 gap-2.5 sm:gap-3">
                       {cat.items.map((item) => (
                         <div
                           key={item.id}
-                          className="group py-3.5 flex items-center justify-between gap-3 hover:bg-neutral-50 px-2 -mx-2 transition-colors rounded-lg"
+                          className="bg-white rounded-xl sm:rounded-2xl border border-neutral-200/90 p-4 sm:p-5 flex items-center justify-between gap-3 sm:gap-4 shadow-sm hover:shadow-md hover:border-neutral-400 transition-all group"
                         >
-                          {/* Service Name & Popular Badge */}
+                          {/* Service Name & Tag */}
                           <div className="flex-1 min-w-0 pr-2">
-                            <div className="flex flex-wrap items-center gap-1.5 sm:gap-2">
-                              <span className="font-jakarta text-sm sm:text-base font-semibold text-noir-900 group-hover:text-black">
+                            <div className="flex flex-wrap items-center gap-2">
+                              <h4 className="font-jakarta text-sm sm:text-base font-bold text-noir-950 group-hover:text-black leading-snug">
                                 {item.name}
-                              </span>
+                              </h4>
                               {item.popular && (
-                                <span className="inline-flex items-center gap-0.5 px-2 py-0.5 rounded-full bg-amber-50 border border-amber-200/70 text-[10px] font-jakarta font-semibold text-amber-900">
-                                  <Sparkles className="w-2.5 h-2.5 text-amber-700" />
+                                <span className="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full bg-amber-50 border border-amber-300 text-[10px] sm:text-[11px] font-jakarta font-bold text-amber-900 shadow-sm">
+                                  <Sparkles className="w-3 h-3 text-amber-600" />
                                   Popular
                                 </span>
                               )}
                             </div>
+                            <span className="font-jakarta text-xs text-neutral-500 block mt-0.5">
+                              {cat.title}
+                            </span>
                           </div>
 
-                          {/* Price Tag & WhatsApp Booking Trigger */}
-                          <div className="flex items-center gap-2.5 sm:gap-3 shrink-0">
-                            <span className="font-editorial text-base sm:text-lg font-bold text-noir-950 tracking-tight whitespace-nowrap">
-                              {item.priceAED}{" "}
-                              <span className="text-xs font-jakarta font-semibold text-noir-500">
-                                AED
-                              </span>
-                            </span>
+                          {/* Price Tag & WhatsApp Direct Booking Action */}
+                          <div className="flex items-center gap-3 sm:gap-4 shrink-0">
+                            <div className="text-right">
+                              <div className="font-editorial text-lg sm:text-2xl font-bold text-noir-950 tracking-tight whitespace-nowrap">
+                                {item.priceAED}{" "}
+                                <span className="text-xs sm:text-sm font-jakarta font-bold text-neutral-600">
+                                  AED
+                                </span>
+                              </div>
+                            </div>
 
                             <a
                               href={getWhatsAppBookingUrlForService(item.name, item.priceAED)}
                               target="_blank"
                               rel="noopener noreferrer"
-                              className="inline-flex items-center gap-1 sm:gap-1.5 px-3 py-1.5 rounded-full bg-noir-950 hover:bg-[#25D366] text-white text-xs font-jakarta font-semibold transition-all hover:scale-105 active:scale-95 shadow-sm"
+                              className="inline-flex items-center gap-1.5 px-3.5 sm:px-4 py-2 rounded-full bg-noir-950 hover:bg-[#25D366] text-white text-xs sm:text-sm font-jakarta font-bold transition-all hover:scale-105 active:scale-95 shadow-sm whitespace-nowrap"
                               title={`Book ${item.name} via WhatsApp`}
                             >
-                              <MessageCircle className="w-3.5 h-3.5" />
-                              <span className="text-xs">Book</span>
+                              <MessageCircle className="w-3.5 h-3.5 sm:w-4 sm:h-4" />
+                              <span>Book</span>
                             </a>
                           </div>
                         </div>
@@ -245,27 +297,27 @@ export function PriceListDrawer() {
               )}
             </div>
 
-            {/* Bottom Footer Bar - Clean, No Dots */}
-            <div className="flex-none p-4 sm:p-5 border-t border-noir-200 bg-white/95 backdrop-blur-md flex flex-col sm:flex-row items-center justify-between gap-3 text-xs font-jakarta text-noir-600">
-              <div className="flex items-center gap-4">
+            {/* Bottom Footer Bar - Fixed, Clean & Friendly */}
+            <div className="flex-none p-4 sm:p-5 border-t border-neutral-200 bg-white flex flex-col sm:flex-row items-center justify-between gap-3 text-xs font-jakarta text-neutral-700 shadow-md">
+              <div className="flex items-center gap-3">
                 <a
                   href="tel:+97145655688"
-                  className="inline-flex items-center gap-1.5 text-noir-900 font-semibold hover:text-brand-500 transition-colors"
+                  className="inline-flex items-center gap-1.5 text-noir-950 font-bold hover:text-black transition-colors"
                 >
-                  <Phone className="w-3.5 h-3.5 text-noir-700" />
+                  <Phone className="w-3.5 h-3.5 text-noir-950" />
                   <span>+971 4565 5688</span>
                 </a>
-                <span className="text-noir-400">|</span>
-                <span className="text-noir-600">Business Bay, Dubai</span>
+                <span className="text-neutral-300">|</span>
+                <span className="text-neutral-600 font-medium">Business Bay, Dubai</span>
               </div>
 
               <div className="flex items-center gap-3">
                 <Link
                   href="/pricing"
                   onClick={closePriceList}
-                  className="inline-flex items-center gap-1 text-noir-950 font-semibold underline underline-offset-4 decoration-noir-300 hover:decoration-noir-950 transition-colors"
+                  className="inline-flex items-center gap-1 text-noir-950 font-bold underline underline-offset-4 decoration-neutral-400 hover:decoration-noir-950 transition-colors"
                 >
-                  <span>View Full Page</span>
+                  <span>Open Full Pricing Page</span>
                   <ArrowUpRight className="w-3.5 h-3.5" />
                 </Link>
               </div>

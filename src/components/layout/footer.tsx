@@ -25,8 +25,8 @@ export function Footer() {
       {/* Background Image with Cinematic Luxury Gradient Matching Screenshot */}
       <div className="absolute inset-0 w-full h-full pointer-events-none">
         <Image
-          src="/images/footer/footer-bg.webp"
-          alt="Reset Men Salon"
+          src="/images/salon/salon-armchair-neon.webp"
+          alt="Reset Men Salon Sanctuary Lounge Business Bay Dubai"
           fill
           priority
           sizes="100vw"

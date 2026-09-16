@@ -22,9 +22,9 @@ export const waxingPage = {
   whatsappUrl: WHATSAPP_URL,
 
   hero: {
-    desktopImageSrc: "/images/services/service-waxing.jpg",
+    desktopImageSrc: "/images/salon/beard-razor-contouring.webp",
     desktopImageAlt: "Reset Men Salon — Waxing for Men in Business Bay Dubai",
-    mobileImageSrc: "/phoneview.webp",
+    mobileImageSrc: "/images/salon/beard-sculpting-foil-shaver.webp",
     mobileImageAlt: "Reset Men Salon — Waxing for Men",
     titleWords: ["MEN'S", "WAXING"] as [string, string],
     subtitle: "Simple, clean, and skin-safe grooming in Business Bay. Welcome to Reset.",
@@ -41,7 +41,7 @@ export const waxingPage = {
     description:
       "Removes unwanted hair from the outer ear area for a cleaner look. The service is quick and comfortable, helping you stay neat without constant trimming. Simple care, long lasting results.",
     price: "20 AED",
-    image: "/images/services/service-waxing.jpg"
+    image: "/images/salon/beard-razor-contouring.webp"
   },
   {
     id: "srv-nose-waxing",
@@ -49,7 +49,7 @@ export const waxingPage = {
     description:
       "A safe way to remove visible nose hair without daily trimming. It keeps your look clean, helps slow regrowth and makes grooming easier. Fast service, smooth results, no hassle.",
     price: "20 AED",
-    image: "/site-pics/site-8.jpg"
+    image: "/images/salon/beard-sculpting-foil-shaver.webp"
   },
   {
     id: "srv-face-waxing",
@@ -57,7 +57,7 @@ export const waxingPage = {
     description:
       "Face waxing removes unwanted facial hair while keeping skin smooth and fresh. It reduces rough stubble, gives longer lasting results and helps your face look clean and even.",
     price: "60 AED",
-    image: "/site-pics/site-9.jpg"
+    image: "/images/salon/barber-straight-razor-shave.webp"
   },
 ] as Omit<ServiceItemCard, "whatsappUrl">[]).map(
       (it) => ({ ...it, whatsappUrl: WHATSAPP_URL }),
@@ -211,7 +211,7 @@ export const waxingPage = {
     headline: "Book the Best Waxing for Men in Dubai",
     description: "Looking for reliable waxing for men near me? Reset Men Salon offers services that keep you clean, sharp and confident without extra effort. From ear and nose waxing to full face waxing, clients across Business Bay trust our team for steady results and a smooth experience every visit.",
     backgroundImage: {
-      src: "/images/services/service-waxing.jpg",
+      src: "/images/salon/salon-chairs-floor.webp",
       alt: "Gentlemen Waxing Atmosphere Dubai",
     },
     trustBadges: [
@@ -224,12 +224,12 @@ export const waxingPage = {
   parallax: [
   {
     id: "waxing-1",
-    src: "/images/services/service-waxing.jpg",
+    src: "/images/salon/barber-straight-razor-shave.webp",
     alt: "Reset Men Salon Male Waxing & Skin Detailing",
   },
   {
     id: "waxing-2",
-    src: "/site-pics/site-4.jpg",
+    src: "/images/salon/salon-rotunda-boutique.webp",
     alt: "Reset Men Salon Private Grooming Suite Business Bay",
   },
 ] as { id: string; src: string; alt: string }[],
@@ -253,7 +253,7 @@ export const waxingPage = {
     url: "https://resetbarbershop.com/services/waxing",
     images: [
       {
-        url: "/images/services/service-waxing.jpg",
+        url: "/images/salon/beard-razor-contouring.webp",
         width: 1200,
         height: 630,
         alt: "Reset Men Salon Waxing for Men Business Bay Dubai",

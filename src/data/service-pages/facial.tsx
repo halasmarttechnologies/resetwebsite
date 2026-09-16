@@ -22,9 +22,9 @@ export const facialPage = {
   whatsappUrl: WHATSAPP_URL,
 
   hero: {
-    desktopImageSrc: "/images/services/service-facial.webp",
+    desktopImageSrc: "/images/salon/japanese-head-spa-massage.webp",
     desktopImageAlt: "Reset Men Salon — Executive Facial Skincare Dubai",
-    mobileImageSrc: "/phoneview.webp",
+    mobileImageSrc: "/images/salon/scalp-rinse-treatment.webp",
     mobileImageAlt: "Reset Men Salon — Gentlemen's Facial Therapy",
     titleWords: ["FACIAL", "CARE"] as [string, string],
     subtitle: "Dermatological cleansing, deep blackhead extraction, and active botanical hydration in Business Bay. Welcome to Reset.",
@@ -47,7 +47,7 @@ export const facialPage = {
     description:
       "Ultrasonic scrubber, blackhead extraction, antibacterial high-frequency therapy, and calming algae mask targeting Dubai dust and oil buildup.",
     price: "320 AED",
-    image: "/images/services/service-facial.webp"
+    image: "/images/salon/japanese-head-spa-massage.webp"
   },
   {
     id: "srv-gold-facial",
@@ -56,7 +56,7 @@ export const facialPage = {
     description:
       "Pure 24K gold infusion, micro-current jawline lifting, and active collagen peptides to diminish stress lines and stimulate elasticity.",
     price: "490 AED",
-    image: "/site-pics/site-7.jpg"
+    image: "/images/salon/scalp-rinse-treatment.webp"
   },
   {
     id: "srv-eye-contour",
@@ -65,7 +65,7 @@ export const facialPage = {
     description:
       "Targeted lymphatic drainage, caffeine serum compression, and cold cryo-globes that erase dark circles and puffy screen fatigue.",
     price: "140 AED",
-    image: "/site-pics/site-3.jpg"
+    image: "/images/salon/shampoo-wash-station.webp"
   },
   {
     id: "srv-pore-extraction",
@@ -74,7 +74,7 @@ export const facialPage = {
     description:
       "Painless pore clearing with ultrasonic acoustic vibration, clearing congested T-zones and preventing ingrown beard hairs.",
     price: "260 AED",
-    image: "/site-pics/site-2.jpg"
+    image: "/images/salon/manicure-massage-care.webp"
   },
   {
     id: "srv-hydrating-botanical",
@@ -83,7 +83,7 @@ export const facialPage = {
     description:
       "Deep moisture replenishment utilizing clinical hyaluronic acid and calming chamomile to soothe sun-exposed, sensitive skin.",
     price: "280 AED",
-    image: "/site-pics/site-6.jpg"
+    image: "/images/salon/japanese-head-spa-halo.webp"
   },
   {
     id: "srv-jet-lag",
@@ -92,7 +92,7 @@ export const facialPage = {
     description:
       "Fast 35-minute invigorating facial featuring oxygen mist and vitamin C antioxidants, revitalizing tired skin after travel.",
     price: "220 AED",
-    image: "/site-pics/site-11.jpg"
+    image: "/images/salon/salon-lounge-interior.webp"
   },
 ] as Omit<ServiceItemCard, "whatsappUrl">[]).map(
       (it) => ({ ...it, whatsappUrl: WHATSAPP_URL }),
@@ -248,7 +248,7 @@ export const facialPage = {
     headline: "Book Your Service for the Best Facial Salon in Dubai",
     description: "Reclaim clear, energised, and irritation-free skin. Our master aestheticians specialize in male facial therapies, combining ultrasonic deep pore extraction, active botanical hydration, and anti-aging cell renewal.",
     backgroundImage: {
-      src: "/images/services/service-facial.webp",
+      src: "/images/salon/salon-armchair-neon.webp",
       alt: "Reset Facial Skincare Atmosphere",
     },
     trustBadges: [
@@ -261,12 +261,12 @@ export const facialPage = {
   parallax: [
   {
     id: "facial-1",
-    src: "/images/services/service-facial.webp",
+    src: "/images/salon/japanese-head-spa-massage.webp",
     alt: "Reset Men Salon Clinical Facial & Dermatological Hydration",
   },
   {
     id: "facial-2",
-    src: "/site-pics/site-8.jpg",
+    src: "/images/salon/salon-lounge-interior.webp",
     alt: "Reset Men Salon Private Aesthetic Suite Business Bay",
   },
 ] as { id: string; src: string; alt: string }[],
@@ -289,7 +289,7 @@ export const facialPage = {
     url: "https://resetbarbershop.com/services/facial",
     images: [
       {
-        url: "/images/services/service-facial.webp",
+        url: "/images/salon/japanese-head-spa-massage.webp",
         width: 1200,
         height: 630,
         alt: "Reset Men Salon Facial Skincare Dubai",

@@ -10,7 +10,7 @@ export const serviceCategories: ServiceCategory[] = [
       "Crafted by senior barbers utilizing bespoke cutting techniques, traditional hot-towel steam rituals, and organic grooming elixirs.",
     order: 1,
     heroImage: {
-      url: "https://images.unsplash.com/photo-1503951914875-452162b0f3f1?auto=format&fit=crop&q=80&w=1200",
+      url: "/images/salon/haircut-skin-fade-profile.webp",
       alt: "Precision Hair & Beard Grooming at Reset Men Salon Dubai",
     },
   },
@@ -23,7 +23,7 @@ export const serviceCategories: ServiceCategory[] = [
       "Dubai's definitive head spa ritual combining microscopic scalp diagnosis, herbal steam mist, cascading waterfall hydrotherapy, and acupressure tension release.",
     order: 2,
     heroImage: {
-      url: "https://images.unsplash.com/photo-1540555700478-4be289fbecef?auto=format&fit=crop&q=80&w=1200",
+      url: "/images/salon/japanese-head-spa-halo.webp",
       alt: "Signature Japanese Head Spa Hydrotherapy Waterfall",
     },
   },
@@ -36,7 +36,7 @@ export const serviceCategories: ServiceCategory[] = [
       "Targeted therapies to combat city pollution, deep blackheads, and premature aging with active botanical and gold extracts.",
     order: 3,
     heroImage: {
-      url: "https://images.unsplash.com/photo-1570172619644-dfd03ed5d881?auto=format&fit=crop&q=80&w=1200",
+      url: "/images/salon/japanese-head-spa-massage.webp",
       alt: "Gentlemen's Luxury Facial Treatment",
     },
   },
@@ -49,7 +49,7 @@ export const serviceCategories: ServiceCategory[] = [
       "Advanced hair reconstruction therapies, protein infusions, and discreet grey blending tailored for a subtle, youthful appearance.",
     order: 4,
     heroImage: {
-      url: "https://images.unsplash.com/photo-1585747860715-2ba37e788b70?auto=format&fit=crop&q=80&w=1200",
+      url: "/images/salon/haircut-scissor-detailing.webp",
       alt: "Hair Conditioning and Colouring for Men",
     },
   },
@@ -62,7 +62,7 @@ export const serviceCategories: ServiceCategory[] = [
       "Specialized bodywork targeting executive stress points across neck, shoulders, and upper back in serene private rooms.",
     order: 5,
     heroImage: {
-      url: "https://images.unsplash.com/photo-1544161515-4ab6ce6db874?auto=format&fit=crop&q=80&w=1200",
+      url: "/images/salon/scalp-rinse-treatment.webp",
       alt: "Deep Tissue Massage Therapy for Gentlemen",
     },
   },
@@ -75,7 +75,7 @@ export const serviceCategories: ServiceCategory[] = [
       "Hygienic, gentle hair removal and brow sculpting utilizing hypoallergenic waxes and organic soothing aftercare.",
     order: 6,
     heroImage: {
-      url: "https://images.unsplash.com/photo-1560066984-138dadb4c035?auto=format&fit=crop&q=80&w=1200",
+      url: "/images/salon/beard-razor-contouring.webp",
       alt: "Gentlemen's Brow Detailing and Waxing",
     },
   },
@@ -88,7 +88,7 @@ export const serviceCategories: ServiceCategory[] = [
       "Impeccable nail shaping, cuticle nourishment, and warm paraffin therapy designed specifically for modern gentlemen.",
     order: 7,
     heroImage: {
-      url: "https://images.unsplash.com/photo-1607779097040-26e80aa78e66?auto=format&fit=crop&q=80&w=1200",
+      url: "/images/salon/pedicure-luxury-soak.webp",
       alt: "Executive Manicure and Pedicure for Men",
     },
   },
@@ -110,7 +110,7 @@ export const serviceItems: ServiceItem[] = [
     isSignature: true,
     isPopular: true,
     featuredImage: {
-      url: "https://images.unsplash.com/photo-1503951914875-452162b0f3f1?auto=format&fit=crop&q=80&w=800",
+      url: "/images/salon/haircut-skin-fade-profile.webp",
       alt: "Reset Signature Haircut",
     },
     benefits: [
@@ -139,7 +139,7 @@ export const serviceItems: ServiceItem[] = [
     priceAED: 120,
     isPopular: true,
     featuredImage: {
-      url: "https://images.unsplash.com/photo-1621605815971-fbc98d665033?auto=format&fit=crop&q=80&w=800",
+      url: "/images/salon/beard-scissor-sculpting.webp",
       alt: "Master Beard Sculpting at Reset Men Salon",
     },
     benefits: [
@@ -161,7 +161,7 @@ export const serviceItems: ServiceItem[] = [
     durationMinutes: 40,
     priceAED: 150,
     featuredImage: {
-      url: "https://images.unsplash.com/photo-1585747860715-2ba37e788b70?auto=format&fit=crop&q=80&w=800",
+      url: "/images/salon/barber-straight-razor-shave.webp",
       alt: "Royal Hot Towel Shave",
     },
     benefits: ["Baby-smooth finish with zero razor burn", "Deep facial pore opening with herbal steam", "Cold towel post-shave pore sealing"],
@@ -183,7 +183,7 @@ export const serviceItems: ServiceItem[] = [
     isSignature: true,
     isPopular: true,
     featuredImage: {
-      url: "https://images.unsplash.com/photo-1540555700478-4be289fbecef?auto=format&fit=crop&q=80&w=800",
+      url: "/images/salon/japanese-head-spa-halo.webp",
       alt: "Japanese Head Spa Ritual",
     },
     benefits: [
@@ -206,7 +206,7 @@ export const serviceItems: ServiceItem[] = [
     durationMinutes: 35,
     priceAED: 250,
     featuredImage: {
-      url: "https://images.unsplash.com/photo-1519735777090-ec97162dc266?auto=format&fit=crop&q=80&w=800",
+      url: "/images/salon/scalp-rinse-treatment.webp",
       alt: "Express Scalp Revive Head Spa",
     },
     benefits: ["Instant headache and screen fatigue relief", "Purified hair follicles", "Fast turnaround"],
@@ -225,7 +225,7 @@ export const serviceItems: ServiceItem[] = [
     durationMinutes: 60,
     priceAED: 320,
     featuredImage: {
-      url: "https://images.unsplash.com/photo-1570172619644-dfd03ed5d881?auto=format&fit=crop&q=80&w=800",
+      url: "/images/salon/japanese-head-spa-massage.webp",
       alt: "Executive Deep Cleansing Facial",
     },
     benefits: ["Pore unclogging & blackhead extraction", "Balanced oil production", "Healthy, energized matte complexion"],
@@ -244,7 +244,7 @@ export const serviceItems: ServiceItem[] = [
     durationMinutes: 90,
     priceAED: 550,
     featuredImage: {
-      url: "https://images.unsplash.com/photo-1585747860715-2ba37e788b70?auto=format&fit=crop&q=80&w=800",
+      url: "/images/salon/haircut-scissor-detailing.webp",
       alt: "Keratin Hair Smoothing",
     },
     benefits: ["100% frizz control in high humidity", "Lasts 10-12 weeks", "Formaldehyde-free luxury formula"],
@@ -263,7 +263,7 @@ export const serviceItems: ServiceItem[] = [
     durationMinutes: 60,
     priceAED: 280,
     featuredImage: {
-      url: "https://images.unsplash.com/photo-1544161515-4ab6ce6db874?auto=format&fit=crop&q=80&w=800",
+      url: "/images/salon/shampoo-wash-station.webp",
       alt: "Executive Deep Tissue Massage",
     },
     benefits: ["Breaks down stubborn muscle adhesions", "Improves posture and spinal mobility", "Releases deep cortisol and stress"],
@@ -282,7 +282,7 @@ export const serviceItems: ServiceItem[] = [
     durationMinutes: 35,
     priceAED: 110,
     featuredImage: {
-      url: "https://images.unsplash.com/photo-1607779097040-26e80aa78e66?auto=format&fit=crop&q=80&w=800",
+      url: "/images/salon/manicure-hand-grooming.webp",
       alt: "Executive Hand Grooming Manicure",
     },
     benefits: ["Neat, professional executive hands", "Hydrated cuticles and smooth palms", "Relieves hand fatigue from typing"],
@@ -301,7 +301,7 @@ export const serviceItems: ServiceItem[] = [
     durationMinutes: 20,
     priceAED: 70,
     featuredImage: {
-      url: "https://images.unsplash.com/photo-1560066984-138dadb4c035?auto=format&fit=crop&q=80&w=800",
+      url: "/images/salon/beard-razor-contouring.webp",
       alt: "Precision Brow Detailing",
     },
     benefits: ["Clean, masculine facial contours", "Long-lasting sharpness (3-4 weeks)", "Rapid, gentle process"],

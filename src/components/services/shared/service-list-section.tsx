@@ -146,7 +146,7 @@ export function ServiceListSection({
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true, amount: 0.1 }}
-          className="w-full grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-5 md:gap-6 mb-10 sm:mb-14"
+          className="w-full grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 sm:gap-6 md:gap-7 mb-12 sm:mb-16"
         >
           <AnimatePresence mode="popLayout">
             {filteredItems.map((service) => (
@@ -158,61 +158,47 @@ export function ServiceListSection({
                 animate={{ opacity: 1, scale: 1 }}
                 exit={{ opacity: 0, scale: 0.96 }}
                 transition={{ duration: 0.4 }}
-                className="w-full"
+                className="w-full h-full"
               >
                 <a
                   href={service.whatsappUrl}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="group relative block w-full aspect-[16/10] sm:aspect-[16/11] overflow-hidden bg-noir-900 rounded-none cursor-pointer outline-none focus-visible:ring-2 focus-visible:ring-noir-950"
+                  className="group relative flex flex-col h-full bg-white transition-all duration-300 outline-none focus-visible:ring-2 focus-visible:ring-noir-950 cursor-pointer"
                 >
-                  <Image
-                    src={service.image}
-                    alt={service.title}
-                    fill
-                    sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
-                    className="object-cover transition-transform duration-700 ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:scale-105"
-                  />
-
-                  <div className="absolute top-4 right-4 z-20 flex items-center gap-1.5">
-                    {service.duration ? (
-                      <span className="font-jakarta text-[11px] font-semibold text-white/90 bg-black/60 backdrop-blur-md px-2.5 py-1 border border-white/15">
-                        {service.duration}
-                      </span>
-                    ) : null}
-                    <span className="font-editorial text-xs sm:text-sm font-bold text-white bg-black/75 backdrop-blur-md px-3 py-1 border border-white/20 tracking-wider">
-                      {service.price}
-                    </span>
+                  {/* 1. Top Media Container */}
+                  <div className="relative w-full aspect-[4/4.4] overflow-hidden bg-[#f4f4f6] shrink-0 border border-black/[0.06]">
+                    <Image
+                      src={service.image}
+                      alt={service.title}
+                      fill
+                      sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                      className="object-cover object-center transition-transform duration-700 ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:scale-104"
+                    />
                   </div>
 
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/40 to-transparent pointer-events-none" />
-
-                  <div className="absolute inset-x-0 bottom-0 p-4 sm:p-6 md:p-7 flex items-end justify-between z-10">
-                    <div className="flex flex-col text-left pr-3">
-                      <h3 className="font-editorial font-semibold text-base sm:text-xl md:text-2xl text-white tracking-[-0.02em] leading-tight transition-colors duration-300">
+                  {/* 2. Text & Meta Information Area */}
+                  <div className="pt-3 pb-2.5 px-0.5 flex flex-col bg-white">
+                    <div className="flex items-baseline justify-between gap-2">
+                      <h3 className="font-jakarta font-medium text-sm sm:text-[15px] md:text-base text-noir-950 tracking-tight group-hover:text-neutral-700 transition-colors">
                         {service.title}
                       </h3>
-                      <p className="font-jakarta text-2xs sm:text-xs text-white/80 font-normal mt-1 tracking-wide line-clamp-2 max-w-xs">
-                        {service.description}
-                      </p>
-                      <span className="mt-2.5 inline-flex items-center gap-1 font-jakarta text-[11px] tracking-wider text-white font-semibold underline underline-offset-4 decoration-white/60 group-hover:decoration-white">
-                        <span>Schedule a Visit</span>
+                      <span className="font-jakarta text-xs sm:text-sm font-normal text-noir-950 shrink-0">
+                        {service.price}
                       </span>
                     </div>
 
-                    <div className="shrink-0 flex items-center justify-center text-white/90 group-hover:text-white transition-all duration-300 transform group-hover:rotate-45">
-                      <svg
-                        viewBox="0 0 24 24"
-                        fill="none"
-                        stroke="currentColor"
-                        strokeWidth="2.5"
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        className="w-4 h-4 sm:w-6 sm:h-6"
-                      >
-                        <line x1="18" y1="6" x2="6" y2="18" />
-                        <line x1="6" y1="6" x2="18" y2="18" />
-                      </svg>
+                    <div className="mt-0.5">
+                      <span className="font-jakarta text-xs text-neutral-500 font-normal">
+                        {service.duration || service.category}
+                      </span>
+                    </div>
+                  </div>
+
+                  {/* 3. Bottom Full-Width Solid Button */}
+                  <div className="mt-1 w-full">
+                    <div className="w-full py-2.5 sm:py-3 bg-noir-950 group-hover:bg-neutral-800 text-white text-xs sm:text-[13px] font-jakarta font-medium tracking-wide text-center transition-colors">
+                      Select Service
                     </div>
                   </div>
                 </a>

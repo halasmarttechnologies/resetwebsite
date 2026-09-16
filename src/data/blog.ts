@@ -59,7 +59,7 @@ At Reset Men Salon, our head spa begins with a 200x microscopic lens. You will v
 7. Trichological Tonic Application
     `,
     coverImage: {
-      url: "/site-pics/site-3.jpg",
+      url: "/images/salon/japanese-head-spa-halo.webp",
       alt: "Japanese Head Spa Scalp Hydrotherapy in Dubai",
     },
     category: blogCategories[0],
@@ -88,7 +88,7 @@ Over-washing strips the natural oils produced by your skin. Use a sulfate-free b
 Regular edging maintains the distinction between jawline definition and neckline stray hairs.
     `,
     coverImage: {
-      url: "/site-pics/site-6.jpg",
+      url: "/images/salon/beard-scissor-sculpting.webp",
       alt: "Beard Grooming Guide Reset Men Salon",
     },
     category: blogCategories[1],
@@ -114,7 +114,7 @@ Every skull and facial contour is distinct. At Reset, our master stylists tailor
 Before the first scissor cut, our barbers assess your profile, growth direction, and styling habits to engineer a cut that grows out impeccably.
     `,
     coverImage: {
-      url: "/site-pics/site-1.jpg",
+      url: "/images/salon/haircut-skin-fade-profile.webp",
       alt: "Precision Hair Architecture Guide Reset Men Salon",
     },
     category: blogCategories[2],
@@ -140,7 +140,7 @@ Extended screen exposure and UV radiation cause chronic micro-tension in the sca
 Targeting the gallbladder and urinary bladder meridians across the cranium triggers immediate parasympathetic relaxation.
     `,
     coverImage: {
-      url: "/picture.png",
+      url: "/images/salon/scalp-rinse-treatment.webp",
       alt: "Executive Scalp Therapy Protocol Reset Men Salon",
     },
     category: blogCategories[0],
@@ -166,7 +166,7 @@ Nothing matches the smoothness of a freshly stropped razor guided at a precise 3
 Pre-shave eucalyptus oils soften the coarsest stubble while warm steam opens pores for frictionless gliding.
     `,
     coverImage: {
-      url: "/site-pics/site-2.jpg",
+      url: "/images/salon/barber-straight-razor-shave.webp",
       alt: "Traditional Straight Razor Shave at Reset Men Salon Dubai",
     },
     category: blogCategories[2],
@@ -189,7 +189,7 @@ Pre-shave eucalyptus oils soften the coarsest stubble while warm steam opens por
 In the heart of Dubai's business district, carving out 60 minutes for tailored grooming is a vital strategy for clarity and confidence.
     `,
     coverImage: {
-      url: "/site-pics/site-4.jpg",
+      url: "/images/salon/salon-lounge-interior.webp",
       alt: "Executive Grooming in Business Bay Dubai",
     },
     category: blogCategories[3],

@@ -22,9 +22,9 @@ export const japaneseHeadSpaPage = {
   whatsappUrl: WHATSAPP_URL,
 
   hero: {
-    desktopImageSrc: "/images/services/service-head-spa.webp",
+    desktopImageSrc: "/images/salon/japanese-head-spa-halo.webp",
     desktopImageAlt: "Reset Men Salon — Japanese Head Spa in Dubai",
-    mobileImageSrc: "/phoneview.webp",
+    mobileImageSrc: "/images/salon/japanese-head-spa-massage.webp",
     mobileImageAlt: "Reset Men Salon — Japanese Head Spa",
     titleWords: ["HEAD", "SPA"] as [string, string],
     subtitle: "Traditional Japanese scalp hydrotherapy and mental reset in Business Bay. Welcome to Reset.",
@@ -42,7 +42,7 @@ export const japaneseHeadSpaPage = {
     description:
       "Dubai's premier scalp wellness ritual featuring microscopic 200x diagnosis, herbal steam therapy, acupressure meridian massage, and circular waterfall hydrotherapy.",
     price: "450 AED",
-    image: "/images/services/service-head-spa.webp"
+    image: "/images/salon/japanese-head-spa-halo.webp"
   },
   {
     id: "srv-express-head-spa",
@@ -51,7 +51,7 @@ export const japaneseHeadSpaPage = {
     description:
       "Focused scalp exfoliation, steam therapy, and stimulating waterfall hydrotherapy designed for busy Business Bay executives needing instant headache and fatigue relief.",
     price: "250 AED",
-    image: "/site-pics/site-5.jpg"
+    image: "/images/salon/scalp-rinse-treatment.webp"
   },
   {
     id: "srv-sanctuary-head-spa",
@@ -60,7 +60,7 @@ export const japaneseHeadSpaPage = {
     description:
       "The ultimate multisensory relaxation experience combining our 15-step Japanese head spa with high-performance hair conditioning and luxury hand care.",
     price: "590 AED",
-    image: "/site-pics/site-3.jpg"
+    image: "/images/salon/shampoo-wash-station.webp"
   },
 ] as Omit<ServiceItemCard, "whatsappUrl">[]).map(
       (it) => ({ ...it, whatsappUrl: WHATSAPP_URL }),
@@ -214,7 +214,7 @@ export const japaneseHeadSpaPage = {
     headline: "Book the Best Japanese Head Spa in Dubai",
     description: "If you want the best Japanese head spa in Dubai, Reset Men Salon offers a calm and private setting made for men. Our head spa for men works well for regular care or when you need a break from daily pressure. Take time for yourself. Relax your mind. Refresh your scalp. Feel better from the inside out.",
     backgroundImage: {
-      src: "/images/services/service-head-spa.webp",
+      src: "/images/salon/japanese-head-spa-massage.webp",
       alt: "Japanese Head Spa Hydrotherapy Atmosphere Dubai",
     },
     trustBadges: [
@@ -227,12 +227,12 @@ export const japaneseHeadSpaPage = {
   parallax: [
   {
     id: "head-spa-1",
-    src: "/images/services/service-head-spa.webp",
+    src: "/images/salon/japanese-head-spa-halo.webp",
     alt: "Reset Men Salon Japanese Head Spa Hydrotherapy Ritual",
   },
   {
     id: "head-spa-2",
-    src: "/site-pics/site-9.jpg",
+    src: "/images/salon/scalp-rinse-treatment.webp",
     alt: "Reset Men Salon Zen Scalp Wellness Retreat Business Bay",
   },
 ] as { id: string; src: string; alt: string }[],
@@ -255,7 +255,7 @@ export const japaneseHeadSpaPage = {
     url: "https://resetbarbershop.com/services/japanese-head-spa",
     images: [
       {
-        url: "/images/services/service-head-spa.webp",
+        url: "/images/salon/japanese-head-spa-halo.webp",
         width: 1200,
         height: 630,
         alt: "Reset Men Salon Japanese Head Spa Dubai",

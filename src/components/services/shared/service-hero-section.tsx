@@ -83,7 +83,7 @@ function RollingWord({ word, startDelay }: { word: string; startDelay: number })
 export function ServiceHeroSection({
   desktopImageSrc,
   desktopImageAlt,
-  mobileImageSrc = "/phoneview.webp",
+  mobileImageSrc = "/images/salon/salon-chairs-floor.webp",
   mobileImageAlt,
   titleWords,
   subtitle,
@@ -107,7 +107,7 @@ export function ServiceHeroSection({
   return (
     <section
       ref={containerRef}
-      className="relative w-full h-screen min-h-screen overflow-hidden bg-noir-950 flex items-center justify-center"
+      className="relative w-full h-[calc(100vh-44px)] sm:h-[calc(100vh-48px)] min-h-[580px] sm:min-h-[660px] overflow-hidden bg-noir-950 flex items-center justify-center"
     >
       {/* 1. Full Viewport Responsive Fitted Image */}
       <motion.div

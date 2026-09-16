@@ -12,12 +12,12 @@ import { safeJsonLd } from "@/lib/security/sanitize-json-ld";
 const pricingParallaxItems = [
   {
     id: "pricing-parallax-1",
-    src: "/site-pics/site-1.jpg",
+    src: "/images/salon/haircut-skin-fade-profile.webp",
     alt: "Reset Men Salon Business Bay Barbering Suite",
   },
   {
     id: "pricing-parallax-2",
-    src: "/site-pics/site-9.jpg",
+    src: "/images/salon/japanese-head-spa-halo.webp",
     alt: "Reset Men Salon Japanese Head Spa & Relaxation Sanctuary",
   },
 ];
@@ -41,7 +41,7 @@ export const metadata: Metadata = {
     url: "https://resetmensalon.ae/pricing",
     images: [
       {
-        url: "/images/contact-hero.webp",
+        url: "/images/salon/salon-rotunda-boutique.webp",
         width: 1200,
         height: 630,
         alt: "Reset Men Salon Services & Price List",

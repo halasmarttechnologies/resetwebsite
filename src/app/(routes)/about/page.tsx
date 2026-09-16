@@ -4,7 +4,7 @@ import {
   AboutTeamSection,
   AboutServicesShowcase,
   AboutBookingSection,
-} from "@/components/about";
+} from "@/components/about-us";
 import { TestimonialEditorialSection } from "@/components/home";
 
 export const metadata: Metadata = {

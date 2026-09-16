@@ -22,9 +22,9 @@ export const massagePage = {
   whatsappUrl: WHATSAPP_URL,
 
   hero: {
-    desktopImageSrc: "/images/parallax/parallax-2.png",
+    desktopImageSrc: "/images/salon/scalp-rinse-treatment.webp",
     desktopImageAlt: "Reset Men Salon — Best Massage for Men in Business Bay Dubai",
-    mobileImageSrc: "/phoneview.webp",
+    mobileImageSrc: "/images/salon/japanese-head-spa-massage.webp",
     mobileImageAlt: "Reset Men Salon — Best Massage for Men",
     titleWords: ["MASSAGE", "THERAPY"] as [string, string],
     subtitle: "Targeted muscle tension relief, physical recovery, and deep mental relaxation in Business Bay. Welcome to Reset.",
@@ -42,7 +42,7 @@ export const massagePage = {
     description:
       "You need a calming head massage that helps reduce mental stress and tension. It improves circulation of blood, supports focus, relaxes tense facial muscles and gives you a quiet moment to slow down and reset during busy days.",
     price: "120 AED",
-    image: "/site-pics/site-5.jpg"
+    image: "/images/salon/japanese-head-spa-massage.webp"
   },
   {
     id: "srv-head-shoulders",
@@ -50,7 +50,7 @@ export const massagePage = {
     description:
       "This massage focuses on stressed areas around the neck and shoulders. It helps reduce stiffness caused by long hours at work, daily stress or poor posture. This treatment helps leave your upper body relaxed and comfortable.",
     price: "130 AED",
-    image: "/site-pics/site-4.jpg"
+    image: "/images/salon/scalp-rinse-treatment.webp"
   },
   {
     id: "srv-feet-massage",
@@ -58,7 +58,7 @@ export const massagePage = {
     description:
       "A refreshing foot massage from an expert that targets pressure points and improves blood circulation. It helps reduce full body fatigue, ease stiffness and bring back balance after long days of walking, standing or intense routines.",
     price: "150 AED",
-    image: "/site-pics/site-7.jpg"
+    image: "/images/salon/pedicure-luxury-soak.webp"
   },
   {
     id: "srv-back-massage",
@@ -66,7 +66,7 @@ export const massagePage = {
     description:
       "Focused back therapy by our experts is designed to release deep muscle tension and stiffness. This massage helps improve movement, reduce discomfort, and support better posture. It will leave your back feeling lighter and more flexible.",
     price: "170 AED",
-    image: "/site-pics/site-1.jpg"
+    image: "/images/salon/manicure-massage-care.webp"
   },
 ] as Omit<ServiceItemCard, "whatsappUrl">[]).map(
       (it) => ({ ...it, whatsappUrl: WHATSAPP_URL }),
@@ -221,7 +221,7 @@ export const massagePage = {
     headline: "Book the Best Massage for Men in Dubai",
     description: "Whether you need a head massage, back massage or a full stress relief session, Reset Men’s Salon offers a men massage in Dubai experience built around your needs. Each treatment is designed to ease tension, restore balance and help your body recover naturally. Our calm and private space makes it easy to relax while our therapists focus on your comfort. You walk out feeling refreshed, recharged and ready to move through your day with more energy and clarity.",
     backgroundImage: {
-      src: "/images/parallax/parallax-2.png",
+      src: "/images/salon/salon-lounge-interior.webp",
       alt: "Massage Therapy Atmosphere Dubai",
     },
     trustBadges: [
@@ -234,12 +234,12 @@ export const massagePage = {
   parallax: [
   {
     id: "massage-1",
-    src: "/site-pics/site-6.jpg",
+    src: "/images/salon/japanese-head-spa-halo.webp",
     alt: "Reset Men Salon Massage Therapy & Body Recovery",
   },
   {
     id: "massage-2",
-    src: "/site-pics/site-11.jpg",
+    src: "/images/salon/salon-armchair-neon.webp",
     alt: "Reset Men Salon Relaxation & Wellness Sanctuary",
   },
 ] as { id: string; src: string; alt: string }[],
@@ -263,7 +263,7 @@ export const massagePage = {
     url: "https://resetbarbershop.com/services/massage",
     images: [
       {
-        url: "/images/parallax/parallax-2.png",
+        url: "/images/salon/scalp-rinse-treatment.webp",
         width: 1200,
         height: 630,
         alt: "Reset Men Salon Massage Business Bay Dubai",

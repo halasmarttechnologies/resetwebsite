@@ -3,9 +3,9 @@ import dynamic from "next/dynamic";
 import { getCmsClient } from "@/lib/cms";
 
 // ── Above-the-fold: eager import so hero paints on first response. ─────────
-import { HeroSection } from "@/components/sections/hero-section";
-import { AboutStatementSection } from "@/components/sections/about-statement-section";
-import { ServicesOverviewSection } from "@/components/sections/services-overview-section";
+import { HeroSection } from "@/components/home/hero-section";
+import { AboutStatementSection } from "@/components/home/about-statement-section";
+import { ServicesOverviewSection } from "@/components/home/services-overview-section";
 
 // ── Below-the-fold: separate JS chunks. Each still SSR-renders (default
 //    ssr: true) so SEO/JSON-LD stay intact and no visual placeholder flash
@@ -14,42 +14,47 @@ import { ServicesOverviewSection } from "@/components/sections/services-overview
 //    animations, or content order. ──────────────────────────────────────────
 const TrueParallaxShowcaseSection = dynamic(
   () =>
-    import("@/components/sections/true-parallax-showcase-section").then(
+    import("@/components/home/true-parallax-showcase-section").then(
       (m) => m.TrueParallaxShowcaseSection,
     ),
 );
 const ServicesCatalogView = dynamic(() =>
-  import("@/components/sections/services-catalog-view").then(
+  import("@/components/home/services-catalog-view").then(
     (m) => m.ServicesCatalogView,
   ),
 );
+const BenefitsGridSection = dynamic(() =>
+  import("@/components/home/benefits-grid-section").then(
+    (m) => m.BenefitsGridSection,
+  ),
+);
 const PhilosophyEditorialSection = dynamic(() =>
-  import("@/components/sections/philosophy-editorial-section").then(
+  import("@/components/home/philosophy-editorial-section").then(
     (m) => m.PhilosophyEditorialSection,
   ),
 );
 const ImageFlowSection = dynamic(() =>
-  import("@/components/sections/image-flow-section").then(
+  import("@/components/home/image-flow-section").then(
     (m) => m.ImageFlowSection,
   ),
 );
 const TeamEditorialSection = dynamic(() =>
-  import("@/components/sections/team-editorial-section").then(
+  import("@/components/home/team-editorial-section").then(
     (m) => m.TeamEditorialSection,
   ),
 );
 const TestimonialEditorialSection = dynamic(() =>
-  import("@/components/sections/testimonial-editorial-section").then(
+  import("@/components/home/testimonial-editorial-section").then(
     (m) => m.TestimonialEditorialSection,
   ),
 );
 const FaqEditorialSection = dynamic(() =>
-  import("@/components/sections/faq-editorial-section").then(
+  import("@/components/home/faq-editorial-section").then(
     (m) => m.FaqEditorialSection,
   ),
 );
 const BlogEditorialSection = dynamic(() =>
-  import("@/components/sections/blog-editorial-section").then(
+  import("@/components/home/blog-editorial-section").then(
     (m) => m.BlogEditorialSection,
   ),
 );
@@ -77,6 +82,9 @@ export default async function HomePage() {
 
       {/* 3. Our Services (3-Card Showcase Grid with View All) */}
       <ServicesOverviewSection />
+
+      {/* 4. Benefits Showcase Grid (Elevated Care for Modern Skin / Craft) */}
+      <BenefitsGridSection />
 
       {/* True Parallax Image Multi-Image Showcase */}
       <TrueParallaxShowcaseSection />

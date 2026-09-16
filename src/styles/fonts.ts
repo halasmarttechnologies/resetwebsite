@@ -3,6 +3,7 @@ import {
   Outfit,
   Plus_Jakarta_Sans,
 } from "next/font/google";
+import localFont from "next/font/local";
 
 /**
  * Font strategy — critical path only.
@@ -75,7 +76,8 @@ export const fontSerif = Cormorant_Garamond({
   subsets: ["latin"],
   variable: "--font-serif",
   display: "swap",
-  weight: ["400", "500"],
+  weight: ["400", "500", "600"],
+  style: ["normal", "italic"],
   preload: false,
   fallback: [
     "ui-serif",
@@ -84,4 +86,12 @@ export const fontSerif = Cormorant_Garamond({
     "Times New Roman",
     "serif",
   ],
+});
+
+export const fontRedRose = localFont({
+  src: "../../public/fonts/red-rose-latin.woff2",
+  variable: "--font-red-rose",
+  display: "swap",
+  weight: "300 700",
+  fallback: ["ui-serif", "Georgia", "serif"],
 });

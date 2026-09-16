@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { fontJakarta, fontEditorial, fontSerif } from "@/styles/fonts";
+import { fontJakarta, fontEditorial, fontSerif, fontRedRose } from "@/styles/fonts";
 import "@/styles/globals.css";
 import { defaultSeoConfig } from "@/config/seo";
 import { Header } from "@/components/layout/header";
@@ -23,9 +23,15 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${fontJakarta.variable} ${fontEditorial.variable} ${fontSerif.variable}`}
+      className={`${fontJakarta.variable} ${fontEditorial.variable} ${fontSerif.variable} ${fontRedRose?.variable || ""}`}
     >
       <head>
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
+        <link
+          href="https://fonts.googleapis.com/css2?family=Red+Rose:wght@300..700&display=swap"
+          rel="stylesheet"
+        />
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: safeJsonLd(jsonLd) }}

@@ -77,6 +77,7 @@ const config: Config = {
         inter: ["var(--font-inter)", "sans-serif"],
         serif: ["var(--font-serif)", "Cormorant Garamond", "serif"],
         display: ["var(--font-display)", "Cinzel", "serif"],
+        "red-rose": ["var(--font-red-rose)", "'Red Rose'", "serif"],
       },
       fontSize: {
         "2xs": ["0.65rem", { lineHeight: "0.85rem" }],
