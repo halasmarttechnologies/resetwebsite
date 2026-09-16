@@ -3,23 +3,12 @@ import type { NextConfig } from "next";
 /**
  * Production security headers.
  *
- * CSP is emitted as `Content-Security-Policy` in production and as
- * `Content-Security-Policy-Report-Only` in development so that missed
- * sources surface in `/api/csp-report` logs instead of breaking a
- * developer page. Set `CSP_ENFORCE=0` in the environment to force
- * report-only mode on a preview deployment while auditing.
- *
- * Trade-off notes:
- * • `'unsafe-inline'` on `script-src` is limited to production because
- *   Next injects tiny bootstrap scripts and we render one intentional
- *   JSON-LD `<script>` tag. A nonce-based CSP requires request-scoped
- *   middleware and buys little on a static marketing site.
- * • `'unsafe-eval'` is only allowed in development (Next HMR + refresh
- *   loop). Production builds do not need it.
- * • `'strict-dynamic'` keeps any trusted script from pulling in an
- *   untrusted one.
- * • `style-src 'unsafe-inline'` remains because Framer Motion writes
- *   inline style attributes on every animated element.
+ * Key decisions:
+ * - CSP is report-only in dev, enforced in production (set CSP_ENFORCE=0 to override).
+ * - Cross-Origin-Resource-Policy is NOT set globally — it would block Vercel's CDN
+ *   from delivering /_next/static chunks to the browser.
+ * - Cross-Origin-Opener-Policy uses same-origin-allow-popups so WhatsApp / booking
+ *   links that open in a new tab still work.
  */
 
 const isProd = process.env.NODE_ENV === "production";
@@ -28,7 +17,7 @@ const scriptSrc = [
   "'self'",
   "'unsafe-inline'",
   "'strict-dynamic'",
-  // GoHighLevel form tracker (contact page) — origin-scoped, not wildcarded.
+  // GoHighLevel form tracker (contact page)
   "https://link.msgsndr.com",
   // Dev/HMR needs eval; production build does not.
   ...(isProd ? [] : ["'unsafe-eval'"]),
@@ -38,15 +27,12 @@ const cspDirectives: Record<string, string[]> = {
   "default-src": ["'self'"],
   "base-uri": ["'self'"],
   "form-action": ["'self'", "https://api.whatsapp.com", "https://wa.me"],
-  "frame-ancestors": ["'self'"],
+  "frame-ancestors": ["'none'"],
   "object-src": ["'none'"],
   "script-src": scriptSrc,
-  // Framer Motion writes inline styles; Google Fonts host stylesheets.
+  // Framer Motion writes inline styles; Google Fonts hosts stylesheets.
   "style-src": ["'self'", "'unsafe-inline'", "https://fonts.googleapis.com"],
   "font-src": ["'self'", "data:", "https://fonts.gstatic.com"],
-  // Narrowed from the previous `https:` wildcard to the actual image
-  // sources Next optimises: same-origin, blob:/data: for image processing,
-  // and the two CDNs registered in `images.remotePatterns` below.
   "img-src": [
     "'self'",
     "data:",
@@ -56,12 +42,11 @@ const cspDirectives: Record<string, string[]> = {
     "https://resetmensalon.ae",
     "https://www.resetmensalon.ae",
   ],
-  "media-src": ["'self'", "blob:", "data:"],
+  "media-src": ["'self'", "blob:", "data:", "https:"],
   "connect-src": [
     "'self'",
     "https://api.resend.com",
     "https://vitals.vercel-insights.com",
-    // GoHighLevel / LeadConnector external form tracking.
     "https://backend.leadconnectorhq.com",
     "https://*.leadconnectorhq.com",
     "https://link.msgsndr.com",
@@ -75,8 +60,6 @@ const cspDirectives: Record<string, string[]> = {
   "worker-src": ["'self'", "blob:"],
   "manifest-src": ["'self'"],
   "upgrade-insecure-requests": [],
-  // Where CSP violation reports POST to. Kept alongside `report-to` for
-  // older browsers that ignore the Reporting API endpoint group.
   "report-uri": ["/api/csp-report"],
   "report-to": ["csp-endpoint"],
 };
@@ -125,6 +108,7 @@ const permissionsPolicy = [
   "xr-spatial-tracking=()",
 ].join(", ");
 
+// Safe headers that work on all routes including static assets on Vercel CDN
 const securityHeaders = [
   { key: "X-DNS-Prefetch-Control", value: "on" },
   {
@@ -136,8 +120,11 @@ const securityHeaders = [
   { key: "Referrer-Policy", value: "strict-origin-when-cross-origin" },
   { key: "Permissions-Policy", value: permissionsPolicy },
   { key: CSP_HEADER_NAME, value: buildCspHeader() },
+  // same-origin-allow-popups: keeps WhatsApp / booking popups working
   { key: "Cross-Origin-Opener-Policy", value: "same-origin-allow-popups" },
-  { key: "Cross-Origin-Resource-Policy", value: "same-origin" },
+  // NOTE: Cross-Origin-Resource-Policy is intentionally omitted globally.
+  // Setting it to "same-origin" on /:path* would block Vercel's CDN from
+  // delivering /_next/static JS/CSS chunks, breaking the entire site.
   { key: "Origin-Agent-Cluster", value: "?1" },
   {
     key: "Reporting-Endpoints",
@@ -153,9 +140,7 @@ const securityHeaders = [
   },
 ];
 
-// API responses must never be cached by a shared CDN. We set no-store in
-// application code too (see `src/lib/api/response.ts`), but pin it at the
-// edge as belt-and-braces so a misconfigured route cannot leak.
+// API responses must never be cached by a shared CDN.
 const noStoreForApis = [
   { key: "Cache-Control", value: "no-store, max-age=0, must-revalidate" },
   { key: "Pragma", value: "no-cache" },
