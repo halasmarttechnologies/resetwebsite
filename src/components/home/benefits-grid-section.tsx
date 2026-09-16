@@ -47,7 +47,7 @@ const defaultMediaItems: BenefitMediaItem[] = [
   {
     id: "media-3",
     title: "Precision Styling & Detail",
-    posterImage: "/images/salon/haircut-client-front-mirror.webp",
+    posterImage: "/images/salon/stylist-haircut-mirror.webp",
     videoSrc: "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerBlazes.mp4",
   },
   // 4. Bottom-Center Media (Row 3, Column 2)
@@ -279,7 +279,7 @@ export function BenefitsGridSection({
                 className="group relative aspect-square bg-noir-950 overflow-hidden rounded-sm cursor-pointer border border-black/[0.06]"
               >
                 <Image
-                  src={mediaItems[2]?.posterImage || "/images/salon/haircut-client-front-mirror.webp"}
+                  src={mediaItems[2]?.posterImage || "/images/salon/stylist-haircut-mirror.webp"}
                   alt={mediaItems[2]?.title || "Treatment"}
                   fill
                   sizes="(max-width: 768px) 33vw, 220px"
