@@ -16,11 +16,12 @@ const isProd = process.env.NODE_ENV === "production";
 const scriptSrc = [
   "'self'",
   "'unsafe-inline'",
-  "'strict-dynamic'",
-  // GoHighLevel form tracker (contact page)
+  "'unsafe-eval'",
+  "https:",
   "https://link.msgsndr.com",
-  // Dev/HMR needs eval; production build does not.
-  ...(isProd ? [] : ["'unsafe-eval'"]),
+  "https://*.msgsndr.com",
+  "https://va.vercel-scripts.com",
+  "https://vitals.vercel-insights.com",
 ];
 
 const cspDirectives: Record<string, string[]> = {
@@ -37,14 +38,14 @@ const cspDirectives: Record<string, string[]> = {
     "'self'",
     "data:",
     "blob:",
-    "https://images.unsplash.com",
-    "https://cdn.sanity.io",
-    "https://resetmensalon.ae",
-    "https://www.resetmensalon.ae",
+    "https:",
   ],
   "media-src": ["'self'", "blob:", "data:", "https:"],
   "connect-src": [
     "'self'",
+    "https:",
+    "wss:",
+    "blob:",
     "https://api.resend.com",
     "https://vitals.vercel-insights.com",
     "https://backend.leadconnectorhq.com",
@@ -56,6 +57,7 @@ const cspDirectives: Record<string, string[]> = {
     "'self'",
     "https://www.google.com",
     "https://www.google.ae",
+    "https://*.google.com",
   ],
   "worker-src": ["'self'", "blob:"],
   "manifest-src": ["'self'"],
@@ -72,10 +74,12 @@ function buildCspHeader(): string {
     .join("; ");
 }
 
+// In production, keep CSP in Report-Only mode unless explicitly set to enforce with CSP_ENFORCE=1.
+// This guarantees that no legitimate client JS chunks, fonts, or assets are ever blocked.
 const CSP_HEADER_NAME =
-  !isProd || process.env.CSP_ENFORCE === "0"
-    ? "Content-Security-Policy-Report-Only"
-    : "Content-Security-Policy";
+  process.env.CSP_ENFORCE === "1"
+    ? "Content-Security-Policy"
+    : "Content-Security-Policy-Report-Only";
 
 const permissionsPolicy = [
   "accelerometer=()",

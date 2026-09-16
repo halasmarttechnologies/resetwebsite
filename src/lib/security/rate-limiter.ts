@@ -31,18 +31,12 @@ interface RateLimitRecord {
 
 const rateLimitStore = new Map<string, RateLimitRecord>();
 
-let pruneScheduled = false;
-function schedulePrune(): void {
-  if (pruneScheduled) return;
-  pruneScheduled = true;
-  const timer = setInterval(() => {
-    const now = Date.now();
+function pruneExpired(now: number): void {
+  // Prune expired entries periodically to keep memory bounded without background timers
+  if (rateLimitStore.size > 200) {
     for (const [key, record] of rateLimitStore) {
       if (now > record.resetTime) rateLimitStore.delete(key);
     }
-  }, 60_000);
-  if (typeof timer === "object" && timer && "unref" in timer) {
-    (timer as { unref?: () => void }).unref?.();
   }
 }
 
@@ -58,8 +52,8 @@ function memoryCheck(
   limit: number,
   windowSeconds: number,
 ): RateLimitResult {
-  schedulePrune();
   const now = Date.now();
+  pruneExpired(now);
   const windowMs = windowSeconds * 1000;
   const record = rateLimitStore.get(identifier);
 

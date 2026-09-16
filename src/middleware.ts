@@ -221,8 +221,8 @@ export const config = {
      * - _next/static (static files)
      * - _next/image (image optimisation)
      * - favicon.ico, sitemap.xml, robots.txt
-     * - Public assets (images, fonts, etc.)
+     * - Static assets (images, fonts, media, etc.)
      */
-    "/((?!_next/static|_next/image|favicon\\.ico|sitemap\\.xml|robots\\.txt|brand/|images/|fonts/).*)",
+    "/((?!_next/static|_next/image|favicon\\.ico|sitemap\\.xml|robots\\.txt|.*\\.(?:svg|png|jpg|jpeg|gif|webp|woff|woff2|ico|css|js)$).*)",
   ],
 };
