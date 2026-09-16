@@ -114,25 +114,17 @@ export function MobileNav({}: MobileNavProps = {}) {
         <Link
           href="/"
           onClick={close}
-          className="inline-flex items-center gap-2.5 group"
+          className="inline-flex items-center group py-1"
           aria-label="Reset Men Salon Home"
         >
           <Image
             src="/logo.webp"
             alt="Reset Men Salon"
-            width={28}
-            height={28}
-            className="h-6 w-auto object-contain brightness-0"
+            width={48}
+            height={48}
+            className="h-9 sm:h-10 w-auto object-contain brightness-0 transition-transform duration-200 group-hover:scale-105"
             priority
           />
-          <div className="flex flex-col">
-            <span className="font-editorial text-[14px] sm:text-[15px] font-bold tracking-[0.2em] uppercase text-black leading-none">
-              RESET
-            </span>
-            <span className="font-jakarta text-[8px] sm:text-[9px] font-semibold tracking-[0.22em] uppercase text-neutral-400 mt-0.5">
-              Men Salon · Dubai
-            </span>
-          </div>
         </Link>
 
         <button
