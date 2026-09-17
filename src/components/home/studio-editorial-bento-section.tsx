@@ -38,7 +38,7 @@ export function StudioEditorialBentoSection() {
             >
               <div className="relative w-11 h-11 rounded-full overflow-hidden border border-white/20 shrink-0 bg-neutral-900">
                 <Image
-                  src="/team/A7R07317-1-922x1024.webp"
+                  src="/team/A7R07323-1-922x1024.webp"
                   alt="Reset Master Barber & Sanctuary"
                   fill
                   sizes="48px"

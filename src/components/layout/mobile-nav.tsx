@@ -153,9 +153,8 @@ export function MobileNav({}: MobileNavProps = {}) {
         className="flex-1 overflow-y-auto overscroll-contain px-5 py-3 divide-y divide-neutral-100"
       >
         <nav className="flex flex-col">
-          {primaryNav.map((item, index) => {
+          {primaryNav.map((item) => {
             const active = isActive(item.href);
-            const num = String(index + 1).padStart(2, "0");
 
             // Services Item (Accordion)
             if (item.hasChildren) {
@@ -165,13 +164,10 @@ export function MobileNav({}: MobileNavProps = {}) {
                     <button
                       type="button"
                       onClick={() => setServicesExpanded((prev) => !prev)}
-                      className="flex-1 flex items-center gap-3 py-1.5 text-left group cursor-pointer"
+                      className="flex-1 flex items-center gap-2 py-1.5 text-left group cursor-pointer"
                       aria-expanded={servicesExpanded}
                       aria-label="Toggle Services menu"
                     >
-                      <span className="font-jakarta text-[11px] font-medium tracking-widest text-neutral-400 select-none w-5">
-                        {num}
-                      </span>
                       <span
                         className={`font-editorial text-[20px] sm:text-[22px] leading-tight tracking-tight transition-colors ${
                           active
@@ -204,7 +200,7 @@ export function MobileNav({}: MobileNavProps = {}) {
 
                   {/* Submenu Accordion */}
                   {servicesExpanded && (
-                    <div className="ml-8 pl-4 my-2 border-l-2 border-brand-500/30 space-y-2 animate-fade-in">
+                    <div className="ml-3 pl-3.5 my-2 border-l-2 border-brand-500/30 space-y-2 animate-fade-in">
                       <Link
                         href="/services"
                         onClick={close}
@@ -243,11 +239,8 @@ export function MobileNav({}: MobileNavProps = {}) {
                     <Link
                       href={item.href}
                       onClick={close}
-                      className="flex-1 flex items-center gap-3 py-1.5 group"
+                      className="flex-1 flex items-center gap-2 py-1.5 group"
                     >
-                      <span className="font-jakarta text-[11px] font-medium tracking-widest text-neutral-400 select-none w-5">
-                        {num}
-                      </span>
                       <span
                         className={`font-editorial text-[20px] sm:text-[22px] leading-tight tracking-tight transition-colors ${
                           active
@@ -283,11 +276,8 @@ export function MobileNav({}: MobileNavProps = {}) {
                 <Link
                   href={item.href}
                   onClick={close}
-                  className="flex items-center gap-3 py-1.5 group"
+                  className="flex items-center gap-2 py-1.5 group"
                 >
-                  <span className="font-jakarta text-[11px] font-medium tracking-widest text-neutral-400 select-none w-5">
-                    {num}
-                  </span>
                   <span
                     className={`font-editorial text-[20px] sm:text-[22px] leading-tight tracking-tight transition-colors ${
                       active
