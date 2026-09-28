@@ -137,7 +137,9 @@ export function ContactMainSection() {
           email: formData.email,
           phone: formData.phone,
           serviceCategory: formData.service,
-          message: `${formData.preferredDate ? `[Preferred Date/Time: ${formData.preferredDate}] ` : ""}${formData.message}`,
+          message:
+            `${formData.preferredDate ? `[Preferred Date/Time: ${formData.preferredDate}] ` : ""}${formData.message}`.trim() ||
+            "No additional notes provided.",
           honeypot: formData.website,
           formRenderedAt: formRenderedAtRef.current,
         }),
@@ -409,6 +411,7 @@ export function ContactMainSection() {
                       type="text"
                       required
                       autoComplete="name"
+                      data-name="Full Name"
                       placeholder="e.g. Alexander Vance"
                       value={formData.fullName}
                       onChange={(e) => setFormData({ ...formData, fullName: e.target.value })}
@@ -430,6 +433,7 @@ export function ContactMainSection() {
                       type="email"
                       required
                       autoComplete="email"
+                      data-name="Email"
                       placeholder="e.g. alexander@example.com"
                       value={formData.email}
                       onChange={(e) => setFormData({ ...formData, email: e.target.value })}
@@ -453,6 +457,7 @@ export function ContactMainSection() {
                       type="tel"
                       required
                       autoComplete="tel"
+                      data-name="Phone"
                       placeholder="+971 50 000 0000"
                       value={formData.phone}
                       onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
@@ -471,6 +476,7 @@ export function ContactMainSection() {
                     <select
                       id="service"
                       name="service"
+                      data-name="Service of Interest"
                       value={formData.service}
                       onChange={(e) => setFormData({ ...formData, service: e.target.value })}
                       className="w-full px-4 py-3 rounded-xl bg-neutral-50/70 border border-neutral-200 font-jakarta text-sm text-noir-950 focus:outline-none focus:border-noir-950 focus:bg-white focus:ring-2 focus:ring-noir-950/10 transition-all cursor-pointer"
@@ -486,15 +492,19 @@ export function ContactMainSection() {
 
                 {/* Preferred Date & Time */}
                 <div>
-                  <label
-                    htmlFor="preferredDate"
-                    className="block font-jakarta text-xs font-bold text-noir-950 mb-1.5"
-                  >
-                    Preferred Date & Time <span className="text-neutral-400 font-normal">(Optional)</span>
-                  </label>
+                  <div className="flex items-center justify-between mb-1.5">
+                    <label
+                      htmlFor="preferred_date_and_time"
+                      className="block font-jakarta text-xs font-bold text-noir-950 cursor-pointer"
+                    >
+                      Preferred Date & Time
+                    </label>
+                    <span className="text-neutral-400 font-normal text-xs">(Optional)</span>
+                  </div>
                   <input
-                    id="preferredDate"
-                    name="preferredDate"
+                    id="preferred_date_and_time"
+                    name="preferred_date_and_time"
+                    data-name="Preferred Date & Time"
                     type="text"
                     placeholder="e.g. Tomorrow around 4:00 PM, or this Saturday afternoon"
                     value={formData.preferredDate}
@@ -505,15 +515,19 @@ export function ContactMainSection() {
 
                 {/* Message */}
                 <div>
-                  <label
-                    htmlFor="message"
-                    className="block font-jakarta text-xs font-bold text-noir-950 mb-1.5"
-                  >
-                    Special Notes or Questions <span className="text-neutral-400 font-normal">(Optional)</span>
-                  </label>
+                  <div className="flex items-center justify-between mb-1.5">
+                    <label
+                      htmlFor="message"
+                      className="block font-jakarta text-xs font-bold text-noir-950 cursor-pointer"
+                    >
+                      Special Notes or Questions
+                    </label>
+                    <span className="text-neutral-400 font-normal text-xs">(Optional)</span>
+                  </div>
                   <textarea
                     id="message"
                     name="message"
+                    data-name="Message"
                     rows={4}
                     placeholder="Tell us about any specific styling requests, group bookings, or questions..."
                     value={formData.message}
@@ -527,6 +541,7 @@ export function ContactMainSection() {
                   <button
                     type="submit"
                     id="contact-submit-btn"
+                    data-submission-type="submit"
                     disabled={formStatus === "submitting"}
                     className="inline-flex items-center justify-center gap-2 px-8 py-3.5 rounded-full bg-noir-950 text-white font-jakarta text-sm font-bold tracking-wide hover:bg-neutral-800 active:scale-[0.98] transition-all disabled:opacity-70 shadow-md"
                   >
