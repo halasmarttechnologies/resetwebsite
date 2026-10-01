@@ -48,7 +48,7 @@ export const hairTreatmentAndColouringPage = {
     category: "coloring",
     description:
       "Coloring designed to look natural while keeping your hair healthy and balanced. A great option for men who want a clean and refreshed look from a trusted hair coloring salon in Dubai.",
-    price: "140 AED",
+    price: "155 AED",
     image: "/images/salon/haircut-scissor-detailing.webp"
   },
   {
@@ -57,7 +57,7 @@ export const hairTreatmentAndColouringPage = {
     category: "coloring",
     description:
       "This service adds depth and tone while helping hair stay soft and strong. Ideal for men looking for professional hair coloring Dubai services with smooth, natural results.",
-    price: "200 AED",
+    price: "220 AED",
     image: "/images/salon/scissor-taper-styling.webp"
   },
   {
@@ -66,7 +66,7 @@ export const hairTreatmentAndColouringPage = {
     category: "coloring",
     description:
       "Short hair highlights add dimension without losing a sharp style. Our experienced stylists focus on precision for a clean and modern finish.",
-    price: "300 AED",
+    price: "330 AED",
     image: "/images/salon/haircut-fade-triptych.webp"
   },
   {
@@ -75,7 +75,7 @@ export const hairTreatmentAndColouringPage = {
     category: "coloring",
     description:
       "Long hair highlights create natural looking layers of color while keeping shine and smoothness. A strong choice for men who want advanced hair coloring Dubai techniques with subtle results.",
-    price: "500 AED",
+    price: "550 AED",
     image: "/images/salon/stylist-haircut-mirror.webp"
   },
   {
@@ -84,7 +84,7 @@ export const hairTreatmentAndColouringPage = {
     category: "coloring",
     description:
       "Beard coloring that blends naturally with your hair for an even look. It reduces the look of grey hairs and keeps your beard clean and well defined.",
-    price: "60 AED",
+    price: "70 AED",
     image: "/images/salon/beard-razor-contouring.webp"
   },
 
@@ -95,7 +95,7 @@ export const hairTreatmentAndColouringPage = {
     category: "treatment",
     description:
       "Helps smooth hair texture and reduce frizz, making hair easier to style and manage every day.",
-    price: "200 AED",
+    price: "220 AED",
     image: "/images/salon/shampoo-wash-station.webp"
   },
   {
@@ -104,7 +104,7 @@ export const hairTreatmentAndColouringPage = {
     category: "treatment",
     description:
       "A treatment designed to bring back shine, hydration, and softness. Great for hair that feels dry or tired.",
-    price: "250 AED",
+    price: "275 AED",
     image: "/images/salon/scalp-rinse-treatment.webp"
   },
   {
@@ -113,7 +113,7 @@ export const hairTreatmentAndColouringPage = {
     category: "treatment",
     description:
       "A deep care treatment that restores moisture and improves strength. Hair feels smoother, healthier, and easier to handle.",
-    price: "300 AED",
+    price: "330 AED",
     image: "/images/salon/haircut-curly-fade.webp"
   },
   {
@@ -122,7 +122,7 @@ export const hairTreatmentAndColouringPage = {
     category: "treatment",
     description:
       "Repairs damaged strands while improving shine and softness. Long hair becomes more manageable and looks naturally healthy.",
-    price: "450 AED",
+    price: "500 AED",
     image: "/images/salon/stylist-client-satisfaction.webp"
   },
 ] as Omit<ServiceItemCard, "whatsappUrl">[]).map(

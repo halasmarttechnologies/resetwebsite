@@ -35,63 +35,63 @@ export const facialPage = {
     subtitle: "High-performance dermatological skincare formulated specifically for male skin, combating environmental pollution and fatigue.",
     filters: {
     categories: [
-    { id: "cleansing", label: "Deep Cleansing", count: 3 },
-    { id: "anti-aging", label: "Anti-Aging & Revival", count: 3 },
+    { id: "cleansing", label: "Deep Cleansing", count: 4 },
+    { id: "anti-aging", label: "Rejuvenation & Care", count: 2 },
     ],
   } as { allLabel?: string; categories: ServiceFilterCategory[] } | undefined,
     items: ([
   {
-    id: "srv-exec-facial",
-    title: "Executive Deep Cleansing Facial",
+    id: "srv-nose-strip",
+    title: "Nose Strip",
     category: "cleansing",
     description:
-      "Ultrasonic scrubber, blackhead extraction, antibacterial high-frequency therapy, and calming algae mask targeting Dubai dust and oil buildup.",
-    price: "320 AED",
+      "Targeted pore purification to extract stubborn blackheads and excess sebum around the nose for a clean, clear finish.",
+    price: "55 AED",
     image: "/images/salon/japanese-head-spa-massage.webp"
   },
   {
-    id: "srv-gold-facial",
-    title: "24K Luxury Anti-Aging Facial",
-    category: "anti-aging",
+    id: "srv-black-mask",
+    title: "Black Mask",
+    category: "cleansing",
     description:
-      "Pure 24K gold infusion, micro-current jawline lifting, and active collagen peptides to diminish stress lines and stimulate elasticity.",
-    price: "490 AED",
+      "Deep purifying charcoal peel-off mask that detoxifies skin pores, removes impurities, and controls facial oil.",
+    price: "90 AED",
     image: "/images/salon/scalp-rinse-treatment.webp"
   },
   {
-    id: "srv-eye-contour",
-    title: "Instant Eye Contour & Dark Circle Relief",
-    category: "anti-aging",
-    description:
-      "Targeted lymphatic drainage, caffeine serum compression, and cold cryo-globes that erase dark circles and puffy screen fatigue.",
-    price: "140 AED",
-    image: "/images/salon/shampoo-wash-station.webp"
-  },
-  {
-    id: "srv-pore-extraction",
-    title: "Ultrasonic Blackhead & Pore Extraction",
+    id: "srv-face-scrub",
+    title: "Face Scrub",
     category: "cleansing",
     description:
-      "Painless pore clearing with ultrasonic acoustic vibration, clearing congested T-zones and preventing ingrown beard hairs.",
-    price: "260 AED",
+      "Gentle dermatological exfoliation buffing away dead epidermal cells, smoothing rough texture and reviving complexion.",
+    price: "110 AED",
     image: "/images/salon/manicure-massage-care.webp"
   },
   {
-    id: "srv-hydrating-botanical",
-    title: "Hydrating Botanical Therapy",
+    id: "srv-basic-facial",
+    title: "Basic Facial",
     category: "cleansing",
     description:
-      "Deep moisture replenishment utilizing clinical hyaluronic acid and calming chamomile to soothe sun-exposed, sensitive skin.",
-    price: "280 AED",
+      "Essential skin reset tailored for men: active cleanse, gentle pore refinement, and protective barrier hydration.",
+    price: "275 AED",
+    image: "/images/salon/shampoo-wash-station.webp"
+  },
+  {
+    id: "srv-classic-facial",
+    title: "Classic Facial",
+    category: "anti-aging",
+    description:
+      "Complete restorative facial combining deep pore cleansing, steam extraction, facial massage, and calming botanical hydration.",
+    price: "165 AED",
     image: "/images/salon/japanese-head-spa-halo.webp"
   },
   {
-    id: "srv-jet-lag",
-    title: "Post-Flight Jet-Lag Skin Revival",
+    id: "srv-vitamin-c",
+    title: "Vitamin C Facial",
     category: "anti-aging",
     description:
-      "Fast 35-minute invigorating facial featuring oxygen mist and vitamin C antioxidants, revitalizing tired skin after travel.",
-    price: "220 AED",
+      "High-potency antioxidant treatment infusing pure Vitamin C to brighten dull skin, combat sun damage, and boost elasticity.",
+    price: "450 AED",
     image: "/images/salon/salon-lounge-interior.webp"
   },
 ] as Omit<ServiceItemCard, "whatsappUrl">[]).map(

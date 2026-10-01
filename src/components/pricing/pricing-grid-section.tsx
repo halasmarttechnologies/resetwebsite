@@ -11,6 +11,7 @@ import {
 } from "lucide-react";
 import {
   priceListCategories,
+  priceListMeta,
   getWhatsAppBookingUrlForService,
 } from "@/data/price-list";
 
@@ -19,16 +20,22 @@ export function PricingGridSection() {
   const [searchQuery, setSearchQuery] = React.useState<string>("");
 
   const filteredCategories = React.useMemo(() => {
+    const query = searchQuery.trim().toLowerCase();
+
     return priceListCategories
       .map((cat) => {
         if (activeCategory !== "all" && cat.slug !== activeCategory) {
           return null;
         }
 
+        if (!query) {
+          return cat;
+        }
+
         const matchingItems = cat.items.filter(
           (item) =>
-            item.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
-            cat.title.toLowerCase().includes(searchQuery.toLowerCase())
+            item.name.toLowerCase().includes(query) ||
+            cat.title.toLowerCase().includes(query)
         );
 
         if (matchingItems.length === 0) return null;
@@ -92,7 +99,7 @@ export function PricingGridSection() {
                   : "bg-neutral-100 text-neutral-700 hover:bg-neutral-200 border border-neutral-200"
               }`}
             >
-              All Services ({priceListCategories.reduce((acc, c) => acc + c.items.length, 0)})
+              All Services ({priceListMeta.totalServices})
             </button>
             {priceListCategories.map((cat) => (
               <button

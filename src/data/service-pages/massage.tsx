@@ -41,7 +41,7 @@ export const massagePage = {
     title: "Head Massage",
     description:
       "You need a calming head massage that helps reduce mental stress and tension. It improves circulation of blood, supports focus, relaxes tense facial muscles and gives you a quiet moment to slow down and reset during busy days.",
-    price: "120 AED",
+    price: "135 AED",
     image: "/images/salon/japanese-head-spa-massage.webp"
   },
   {
@@ -49,7 +49,7 @@ export const massagePage = {
     title: "Head & Shoulders Massage",
     description:
       "This massage focuses on stressed areas around the neck and shoulders. It helps reduce stiffness caused by long hours at work, daily stress or poor posture. This treatment helps leave your upper body relaxed and comfortable.",
-    price: "130 AED",
+    price: "145 AED",
     image: "/images/salon/scalp-rinse-treatment.webp"
   },
   {
@@ -65,7 +65,7 @@ export const massagePage = {
     title: "Back Massage",
     description:
       "Focused back therapy by our experts is designed to release deep muscle tension and stiffness. This massage helps improve movement, reduce discomfort, and support better posture. It will leave your back feeling lighter and more flexible.",
-    price: "170 AED",
+    price: "190 AED",
     image: "/images/salon/manicure-massage-care.webp"
   },
 ] as Omit<ServiceItemCard, "whatsappUrl">[]).map(

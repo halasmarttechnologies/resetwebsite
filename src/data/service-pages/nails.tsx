@@ -46,7 +46,7 @@ export const nailsPage = {
     category: "manicure",
     description:
       "A professional manicure for men that includes nail trimming, shaping, cuticle care, and hydration. It keeps hands looking clean, healthy, and neat while helping you maintain a polished everyday appearance.",
-    price: "80 AED",
+    price: "90 AED",
     image: "/images/salon/manicure-hand-grooming.webp"
   },
   {
@@ -55,7 +55,7 @@ export const nailsPage = {
     category: "pedicure",
     description:
       "Our pedicure for men focuses on deep cleaning, gentle exfoliation, nail care, and moisturizing. It helps reduce dryness, keeps feet comfortable, and supports men who spend long hours standing or walking daily.",
-    price: "120 AED",
+    price: "135 AED",
     image: "/images/salon/pedicure-luxury-soak.webp"
   },
   {
@@ -64,7 +64,7 @@ export const nailsPage = {
     category: "manicure",
     description:
       "A premium manicure designed for men who want more than basic grooming. It combines detailed nail care with relaxing steps that help reduce stress while leaving hands looking smooth, clean and refreshed.",
-    price: "120 AED",
+    price: "135 AED",
     image: "/images/salon/manicure-massage-care.webp"
   },
   {
@@ -73,7 +73,7 @@ export const nailsPage = {
     category: "pedicure",
     description:
       "Our reformed pedicure is designed for complete foot care and relaxation. It improves comfort and softens the rough skin while you feel like a new man after each session. Our goal is to make your feet cleaner and lighter so that you feel refreshed, comfortable and confident with every step.",
-    price: "150 AED",
+    price: "165 AED",
     image: "/images/salon/pedicure-nail-care.webp"
   },
   {
@@ -82,7 +82,7 @@ export const nailsPage = {
     category: "pedicure",
     description:
       "A warm paraffin treatment that deeply hydrates dry skin and improves softness. It helps tired hands or feet feel smoother while supporting better comfort and leaving skin looking fresh and well cared for.",
-    price: "99 AED",
+    price: "110 AED",
     image: "/images/salon/pedicure-luxury-soak.webp"
   },
   {
@@ -91,7 +91,7 @@ export const nailsPage = {
     category: "manicure",
     description:
       "Our services are efficient and smooth for those who want neat nails without spending too much time. At Resetmen, we make sure that your hands and feet look clean, keeping your appearance well maintained.",
-    price: "99 AED",
+    price: "110 AED",
     image: "/images/salon/manicure-hand-grooming.webp"
   },
 ] as Omit<ServiceItemCard, "whatsappUrl">[]).map(

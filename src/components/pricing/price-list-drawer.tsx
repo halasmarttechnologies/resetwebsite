@@ -15,6 +15,7 @@ import {
 import { usePriceList } from "@/context/price-list-context";
 import {
   priceListCategories,
+  priceListMeta,
   getWhatsAppBookingUrlForService,
 } from "@/data/price-list";
 
@@ -72,6 +73,8 @@ export function PriceListDrawer() {
 
   // Filtered categories & items
   const filteredCategories = React.useMemo(() => {
+    const query = searchQuery.trim().toLowerCase();
+
     return priceListCategories
       .map((cat) => {
         // Category filter
@@ -79,11 +82,15 @@ export function PriceListDrawer() {
           return null;
         }
 
+        if (!query) {
+          return cat;
+        }
+
         // Search query filter
         const matchingItems = cat.items.filter(
           (item) =>
-            item.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
-            cat.title.toLowerCase().includes(searchQuery.toLowerCase())
+            item.name.toLowerCase().includes(query) ||
+            cat.title.toLowerCase().includes(query)
         );
 
         if (matchingItems.length === 0) return null;
@@ -181,7 +188,7 @@ export function PriceListDrawer() {
                       : "bg-neutral-100 text-neutral-800 hover:bg-neutral-200 hover:text-noir-950 border border-neutral-200"
                   }`}
                 >
-                  All Services ({priceListCategories.reduce((acc, c) => acc + c.items.length, 0)})
+                  All Services ({priceListMeta.totalServices})
                 </button>
                 {priceListCategories.map((cat) => (
                   <button
