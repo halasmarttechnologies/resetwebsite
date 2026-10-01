@@ -22,7 +22,7 @@ export const homeServices: HomeServiceEntry[] = [
     href: "/services/hair-and-beard",
     image: "/images/salon/haircut-skin-fade-profile.webp",
     alt: "Precision haircut and beard architecture at Reset Men Salon, Business Bay Dubai",
-    price: "180.00 AED",
+    price: "150.00 AED",
     volumeOrDuration: "45 mins · Precision Sculpting",
   },
   {
@@ -35,8 +35,8 @@ export const homeServices: HomeServiceEntry[] = [
     href: "/services/japanese-head-spa",
     image: "/images/salon/japanese-head-spa-halo.webp",
     alt: "Signature Japanese Head Spa waterfall hydrotherapy at Reset Men Salon Dubai",
-    price: "450.00 AED",
-    volumeOrDuration: "60 mins · Hydrotherapy Ritual",
+    price: "249.00 AED",
+    volumeOrDuration: "30-60 mins · Hydrotherapy Ritual",
   },
   {
     index: "03",
@@ -48,8 +48,8 @@ export const homeServices: HomeServiceEntry[] = [
     href: "/services/facial",
     image: "/images/salon/japanese-head-spa-massage.webp",
     alt: "Men's revitalizing facial treatment at Reset Men Salon Dubai",
-    price: "320.00 AED",
-    volumeOrDuration: "50 mins · Deep Skin Cleanse",
+    price: "165.00 AED",
+    volumeOrDuration: "45 mins · Deep Skin Cleanse",
   },
   {
     index: "04",
@@ -61,7 +61,7 @@ export const homeServices: HomeServiceEntry[] = [
     href: "/services/hair-treatment-and-colouring",
     image: "/images/salon/haircut-scissor-detailing.webp",
     alt: "Professional hair treatment and natural color blending for men in Dubai",
-    price: "140.00 AED",
+    price: "155.00 AED",
     volumeOrDuration: "45 mins · Organic Conditioning",
   },
   {
@@ -74,7 +74,7 @@ export const homeServices: HomeServiceEntry[] = [
     href: "/services/massage",
     image: "/images/salon/scalp-rinse-treatment.webp",
     alt: "Therapeutic tension release massage for men at Reset Men Salon Dubai",
-    price: "120.00 AED",
+    price: "135.00 AED",
     volumeOrDuration: "30 mins · Acupressure Focus",
   },
   {
@@ -87,7 +87,7 @@ export const homeServices: HomeServiceEntry[] = [
     href: "/services/waxing",
     image: "/images/salon/beard-razor-contouring.webp",
     alt: "Private and comfortable men's waxing service at Reset Men Salon Dubai",
-    price: "20.00 AED",
+    price: "25.00 AED",
     volumeOrDuration: "15 mins · Clean & Defined",
   },
   {
@@ -100,7 +100,7 @@ export const homeServices: HomeServiceEntry[] = [
     href: "/services/nails",
     image: "/images/salon/pedicure-luxury-soak.webp",
     alt: "Men's executive manicure and pedicure hand and foot care at Reset Men Salon Dubai",
-    price: "80.00 AED",
+    price: "90.00 AED",
     volumeOrDuration: "40 mins · Polish & Hygiene",
   },
 ];

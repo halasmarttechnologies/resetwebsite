@@ -36,30 +36,30 @@ export const japaneseHeadSpaPage = {
     filters: undefined as { allLabel?: string; categories: ServiceFilterCategory[] } | undefined,
     items: ([
   {
-    id: "srv-sig-head-spa",
-    title: "Signature Japanese Head Spa Ritual",
-    duration: "75 Minutes",
+    id: "srv-head-spa-30",
+    title: "30 Min Head Spa",
+    duration: "30 Minutes",
     description:
-      "Dubai's premier scalp wellness ritual featuring microscopic 200x diagnosis, herbal steam therapy, acupressure meridian massage, and circular waterfall hydrotherapy.",
-    price: "450 AED",
-    image: "/images/salon/japanese-head-spa-halo.webp"
-  },
-  {
-    id: "srv-express-head-spa",
-    title: "Express Scalp Detox & Revive",
-    duration: "35 Minutes",
-    description:
-      "Focused scalp exfoliation, steam therapy, and stimulating waterfall hydrotherapy designed for busy Business Bay executives needing instant headache and fatigue relief.",
-    price: "250 AED",
+      "Focused scalp exfoliation, herbal steam therapy, and stimulating waterfall hydrotherapy designed for quick, effective headache and fatigue relief.",
+    price: "249 AED",
     image: "/images/salon/scalp-rinse-treatment.webp"
   },
   {
-    id: "srv-sanctuary-head-spa",
-    title: "The Japanese Sanctuary Ritual",
-    duration: "120 Minutes",
+    id: "srv-head-spa-45",
+    title: "45 Min Head Spa",
+    duration: "45 Minutes",
     description:
-      "The ultimate multisensory relaxation experience combining our 15-step Japanese head spa with high-performance hair conditioning and luxury hand care.",
-    price: "590 AED",
+      "Deep scalp detoxification featuring herbal steam mist, acupressure meridian massage, and cascading circular waterfall hydrotherapy.",
+    price: "299 AED",
+    image: "/images/salon/japanese-head-spa-halo.webp"
+  },
+  {
+    id: "srv-head-spa-60",
+    title: "60 Min Head Spa",
+    duration: "60 Minutes",
+    description:
+      "The complete luxury head spa ritual combining microscopic scalp diagnosis, deep sebum extraction, extended hydrotherapy, and soothing neck massage.",
+    price: "349 AED",
     image: "/images/salon/shampoo-wash-station.webp"
   },
 ] as Omit<ServiceItemCard, "whatsappUrl">[]).map(

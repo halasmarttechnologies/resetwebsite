@@ -40,7 +40,7 @@ export const waxingPage = {
     title: "Ear Waxing",
     description:
       "Removes unwanted hair from the outer ear area for a cleaner look. The service is quick and comfortable, helping you stay neat without constant trimming. Simple care, long lasting results.",
-    price: "20 AED",
+    price: "25 AED",
     image: "/images/salon/beard-razor-contouring.webp"
   },
   {
@@ -48,7 +48,7 @@ export const waxingPage = {
     title: "Nose Waxing",
     description:
       "A safe way to remove visible nose hair without daily trimming. It keeps your look clean, helps slow regrowth and makes grooming easier. Fast service, smooth results, no hassle.",
-    price: "20 AED",
+    price: "25 AED",
     image: "/images/salon/beard-sculpting-foil-shaver.webp"
   },
   {
@@ -56,7 +56,7 @@ export const waxingPage = {
     title: "Face Waxing",
     description:
       "Face waxing removes unwanted facial hair while keeping skin smooth and fresh. It reduces rough stubble, gives longer lasting results and helps your face look clean and even.",
-    price: "60 AED",
+    price: "70 AED",
     image: "/images/salon/barber-straight-razor-shave.webp"
   },
 ] as Omit<ServiceItemCard, "whatsappUrl">[]).map(

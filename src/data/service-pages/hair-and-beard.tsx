@@ -46,7 +46,7 @@ export const hairAndBeardPage = {
     category: "hair",
     description:
       "Haircuts designed to match your face shape and personal style. Expect clean lines and a sharp finish that lasts.",
-    price: "180 AED",
+    price: "150 AED",
     image: "/images/salon/haircut-skin-fade-profile.webp"
   },
   {
@@ -55,7 +55,7 @@ export const hairAndBeardPage = {
     category: "hair",
     description:
       "Our kids haircut in Dubai service is calm and friendly. We create styles that suit kids of all ages while keeping parents and children relaxed.",
-    price: "100 AED",
+    price: "110 AED",
     image: "/images/salon/scissor-taper-styling.webp"
   },
   {
@@ -64,7 +64,7 @@ export const hairAndBeardPage = {
     category: "hair",
     description:
       "We create modern and classic hairstyles based on your hair texture, face shape and lifestyle. Every cut is made to look clean and natural.",
-    price: "70 AED",
+    price: "80 AED",
     image: "/images/salon/stylist-client-satisfaction.webp"
   },
   {
@@ -73,7 +73,7 @@ export const hairAndBeardPage = {
     category: "beard",
     description:
       "Our beard shaving salon service gives you a close and comfortable shave. We use professional methods to keep skin smooth and irritation free.",
-    price: "60 AED",
+    price: "70 AED",
     image: "/images/salon/beard-sculpting-foil-shaver.webp"
   },
   {
@@ -82,7 +82,7 @@ export const hairAndBeardPage = {
     category: "beard",
     description:
       "Our beard shaving salon service gives you a close and comfortable shave. We use professional methods to keep skin smooth and irritation free.",
-    price: "60 AED",
+    price: "55 AED",
     image: "/images/salon/barber-straight-razor-shave.webp"
   },
   {
@@ -100,7 +100,7 @@ export const hairAndBeardPage = {
     category: "beard",
     description:
       "Shapes and softens your beard using precise grooming techniques, enhancing texture and definition while keeping it neat, healthy, and easy to manage daily.",
-    price: "50 AED",
+    price: "55 AED",
     image: "/images/salon/beard-scissor-sculpting.webp"
   },
 ] as Omit<ServiceItemCard, "whatsappUrl">[]).map(
@@ -238,7 +238,7 @@ export const hairAndBeardPage = {
   },
   {
     id: "faq-hb-2",
-    question: "What is included in the Reset Men’s Haircut (180 AED)?",
+    question: "What is included in the Reset Men’s Haircut (150 AED)?",
     answer:
       "Every haircut at Reset includes an in-depth facial architecture consultation, revitalizing scalp shampoo wash, precision scissor and clipper craftsmanship, hot towel essential oil ritual, razor neck detailing, and finishing with premium matte clay or pomade.",
   },
@@ -246,7 +246,7 @@ export const hairAndBeardPage = {
     id: "faq-hb-3",
     question: "Do you offer friendly kids haircut services in Dubai?",
     answer:
-      "Yes! Our Kid’s Haircut service (100 AED) is gentle, calm, and welcoming. Our experienced barbers know how to keep children relaxed while crafting modern, age-appropriate haircuts that look sharp and natural.",
+      "Yes! Our Kid’s Haircut service (110 AED) is gentle, calm, and welcoming. Our experienced barbers know how to keep children relaxed while crafting modern, age-appropriate haircuts that look sharp and natural.",
   },
   {
     id: "faq-hb-4",

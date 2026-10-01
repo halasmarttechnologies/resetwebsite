@@ -25,19 +25,20 @@ const pricingParallaxItems = [
 export const metadata: Metadata = {
   title: "Service Price List | Reset Men Salon Business Bay Dubai",
   description:
-    "Explore the official service price list for Reset Men Salon in Business Bay Dubai. Transparent rates for haircuts, beard styling, hair coloring, botox treatments, head spa, massage, nails, and waxing.",
+    "Explore the official service price list for Reset Men Salon in Business Bay Dubai. Transparent rates for haircuts, beard styling, hair coloring, botox treatments, head spa, therapeutic massage, reflexology, nails, waxing, and VIP suite.",
   keywords: [
     "Reset Men Salon price list",
     "Men haircut price Dubai",
     "Barbershop prices Business Bay",
     "Japanese head spa price Dubai",
     "Beard trim price Dubai",
+    "Full body massage Dubai",
     "Men salon rates Dubai",
   ],
   openGraph: {
     title: "Services & Price List | Reset Men Salon Dubai",
     description:
-      "All-inclusive rates for precision haircutting, beard grooming, Japanese head spa, massage, and nail care in Business Bay.",
+      "All-inclusive rates for precision haircutting, beard grooming, Japanese head spa, therapeutic massage, and nail care in Business Bay.",
     url: "https://resetmensalon.ae/pricing",
     images: [
       {
@@ -55,7 +56,7 @@ export default function PricingPage() {
     "@context": "https://schema.org",
     "@type": "HairSalon",
     name: "Reset Men Salon",
-    priceRange: "AED 20 - AED 500",
+    priceRange: "AED 25 - AED 550",
     url: "https://resetmensalon.ae/pricing",
     telephone: "+97145655688",
     address: {
@@ -78,7 +79,7 @@ export default function PricingPage() {
         {/* 1. Hero Section: Monumental PRICE LIST Typography with Parallax */}
         <PricingHeroSection />
 
-        {/* 2. Full Services Price List Grid (8 Categories, 36 Services matching Menu Sheet) */}
+        {/* 2. Full Services Price List Grid (11 Categories, 44 Services matching Menu Sheet) */}
         <PricingGridSection />
 
         {/* 3. Parallax Image Showcase */}
