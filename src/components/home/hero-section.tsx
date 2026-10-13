@@ -68,9 +68,9 @@ export function HeroSection() {
   return (
     <section
       ref={containerRef}
-      className="relative w-full h-[calc(100dvh-46px)] sm:h-[calc(100vh-48px)] min-h-[520px] sm:min-h-[660px] overflow-hidden bg-noir-950 flex items-center justify-center"
+      className="relative w-full h-[calc(100dvh-52px)] sm:h-[calc(100dvh-56px)] md:h-[calc(100dvh-60px)] min-h-[540px] sm:min-h-[660px] overflow-hidden bg-noir-950 flex items-center justify-center"
     >
-      {/* 1. Full Viewport Responsive Fitted Image (Fully Visible, Perfectly Framed) */}
+      {/* 1. Full Viewport Responsive Fitted Image (Landscape 16:9 Architectural View) */}
       <motion.div
         style={{ y: imageY, scale: imageScale }}
         className="absolute inset-0 h-full w-full will-change-transform"
@@ -80,7 +80,7 @@ export function HeroSection() {
             for the whole hero; the video itself is decorative. */}
         <Image
           src="/video/reset-hero-poster.webp"
-          alt="Reset Men Salon — Dubai Luxury Grooming Sanctuary Business Bay"
+          alt="Reset Men Salon — Luxury Interior Business Bay Dubai"
           fill
           priority
           quality={75}
@@ -104,8 +104,9 @@ export function HeroSection() {
         >
           <source src="/video/reset-hero.mp4" type="video/mp4" />
         </video>
-        {/* Subtle Contrast Gradient Overlay for Text Readability */}
-        <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/35 to-black/10 pointer-events-none" />
+        {/* Contrast Gradient Overlays — sit above the video for text legibility */}
+        <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/35 to-black/15 pointer-events-none" />
+        <div className="absolute inset-0 bg-gradient-to-r from-black/50 via-transparent to-black/30 pointer-events-none" />
       </motion.div>
 
       {/* 2. Hero Content Overlay (Lifted up safely in viewport on mobile) */}

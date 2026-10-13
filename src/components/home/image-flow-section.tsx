@@ -65,7 +65,6 @@ const flowCards: FlowCard[] = [
 export function ImageFlowSection() {
   const containerRef = React.useRef<HTMLElement>(null);
   const [activeIndex, setActiveIndex] = React.useState<number>(0);
-  const [mode, setMode] = React.useState<"manual" | "auto">("manual");
   const [isHovered, setIsHovered] = React.useState<boolean>(false);
 
   // Smooth lens scroll-driven subtle breathing motion
@@ -82,16 +81,16 @@ export function ImageFlowSection() {
 
   const lensScale = useTransform(smoothScroll, [0, 0.5, 1], [0.97, 1, 0.97]);
 
-  // Auto-play interval when in "auto" mode and not actively hovering
+  // Gentle auto-rotation that pauses when hovering over any card
   React.useEffect(() => {
-    if (mode !== "auto" || isHovered) return;
+    if (isHovered) return;
 
     const interval = setInterval(() => {
       setActiveIndex((prev) => (prev + 1) % flowCards.length);
-    }, 3400);
+    }, 4000);
 
     return () => clearInterval(interval);
-  }, [mode, isHovered]);
+  }, [isHovered]);
 
   return (
     <motion.section
@@ -185,35 +184,6 @@ export function ImageFlowSection() {
               </div>
             );
           })}
-        </div>
-
-        {/* ────────────────────────────────────────────────────────
-            BOTTOM CONTROLS PILL: [ Manual ] / [ Auto ]
-            Matching Screenshot 1:1
-            ──────────────────────────────────────────────────────── */}
-        <div className="flex justify-center items-center mt-6 sm:mt-8">
-          <div className="inline-flex items-center gap-1 p-1 rounded-full bg-[#161618] border border-white/10 shadow-lg backdrop-blur-md">
-            <button
-              onClick={() => setMode("manual")}
-              className={`px-4 sm:px-5 py-1 sm:py-1.5 rounded-full font-jakarta text-[11px] sm:text-xs font-semibold tracking-wide transition-all duration-300 ${
-                mode === "manual"
-                  ? "bg-white text-noir-950 shadow-md scale-100"
-                  : "text-neutral-400 hover:text-white"
-              }`}
-            >
-              Manual
-            </button>
-            <button
-              onClick={() => setMode("auto")}
-              className={`px-4 sm:px-5 py-1 sm:py-1.5 rounded-full font-jakarta text-[11px] sm:text-xs font-semibold tracking-wide transition-all duration-300 ${
-                mode === "auto"
-                  ? "bg-white text-noir-950 shadow-md scale-100"
-                  : "text-neutral-400 hover:text-white"
-              }`}
-            >
-              Auto
-            </button>
-          </div>
         </div>
       </div>
     </motion.section>

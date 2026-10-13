@@ -63,7 +63,7 @@ export function TeamEditorialSection() {
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true, amount: 0.1 }}
-          className="mt-8 sm:mt-12 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-5 gap-5 sm:gap-4 md:gap-6 w-full max-w-[380px] sm:max-w-[1300px] mx-auto"
+          className="mt-8 sm:mt-12 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-5 sm:gap-4 md:gap-6 w-full max-w-[380px] sm:max-w-[1200px] mx-auto"
         >
           {teamMembers.map((member) => (
             <motion.article

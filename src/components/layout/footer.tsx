@@ -3,6 +3,7 @@
 import * as React from "react";
 import Image from "next/image";
 import Link from "next/link";
+import Script from "next/script";
 import { siteConfig } from "@/config/site";
 
 export function Footer() {
@@ -269,6 +270,14 @@ export function Footer() {
           </Link>
         </div>
       </div>
+
+      {/* LeadConnector Chat Widget */}
+      <Script
+        src="https://widgets.leadconnectorhq.com/loader.js"
+        data-resources-url="https://widgets.leadconnectorhq.com/chat-widget/loader.js"
+        data-widget-id="6aaadec59190baf11e21b53c"
+        strategy="afterInteractive"
+      />
     </footer>
   );
 }
