@@ -4,6 +4,7 @@ import * as React from "react";
 import Image from "next/image";
 import { motion, useScroll, useTransform } from "framer-motion";
 import { siteConfig } from "@/config/site";
+import { useReducedMotion } from "@/hooks/use-reduced-motion";
 
 // Smooth 3D Rolling Letter component for elegant entrance without shadows or highlights
 function RollingLetter({
@@ -37,6 +38,23 @@ function RollingLetter({
 
 export function HeroSection() {
   const containerRef = React.useRef<HTMLDivElement>(null);
+  const videoRef = React.useRef<HTMLVideoElement>(null);
+  const prefersReducedMotion = useReducedMotion();
+
+  // Honour the OS "reduce motion" setting: hold the hero on its poster
+  // frame instead of looping the studio footage indefinitely.
+  React.useEffect(() => {
+    const video = videoRef.current;
+    if (!video) return;
+
+    if (prefersReducedMotion) {
+      video.pause();
+    } else {
+      // Autoplay can still be refused (low-power mode, data saver) —
+      // the poster frame stays visible, so there is nothing to recover.
+      void video.play().catch(() => {});
+    }
+  }, [prefersReducedMotion]);
 
   const { scrollYProgress } = useScroll({
     target: containerRef,
@@ -57,16 +75,35 @@ export function HeroSection() {
         style={{ y: imageY, scale: imageScale }}
         className="absolute inset-0 h-full w-full will-change-transform"
       >
-        {/* High-Resolution Hero Background Image */}
+        {/* Poster frame — identical to the video's first frame, so the
+            hand-off from image to video is seamless. Carries the alt text
+            for the whole hero; the video itself is decorative. */}
         <Image
-          src="/3.png"
+          src="/video/reset-hero-poster.webp"
           alt="Reset Men Salon — Dubai Luxury Grooming Sanctuary Business Bay"
           fill
           priority
-          quality={100}
+          quality={75}
           sizes="100vw"
-          className="object-cover object-[center_20%] sm:object-[center_30%]"
+          className="object-cover object-center"
         />
+        {/* Hero Background Video (muted + playsInline required for mobile autoplay).
+            Paused for visitors who prefer reduced motion — WCAG 2.2.2. */}
+        <video
+          ref={videoRef}
+          id="home-hero-video"
+          className="absolute inset-0 h-full w-full object-cover object-center"
+          autoPlay={!prefersReducedMotion}
+          muted
+          loop
+          playsInline
+          preload="auto"
+          poster="/video/reset-hero-poster.webp"
+          aria-hidden="true"
+          tabIndex={-1}
+        >
+          <source src="/video/reset-hero.mp4" type="video/mp4" />
+        </video>
         {/* Subtle Contrast Gradient Overlay for Text Readability */}
         <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/35 to-black/10 pointer-events-none" />
       </motion.div>
