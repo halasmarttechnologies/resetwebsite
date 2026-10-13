@@ -10,7 +10,7 @@ export const serviceCategories: ServiceCategory[] = [
       "Crafted by senior barbers utilizing bespoke cutting techniques, traditional hot-towel steam rituals, and organic grooming elixirs.",
     order: 1,
     heroImage: {
-      url: "/images/salon/haircut-skin-fade-profile.webp",
+      url: "/images/newimages/DSC07834.jpg",
       alt: "Precision Hair & Beard Grooming at Reset Men Salon Dubai",
     },
   },
@@ -36,7 +36,7 @@ export const serviceCategories: ServiceCategory[] = [
       "Targeted therapies to combat city pollution, deep blackheads, and premature aging with active botanical and gold extracts.",
     order: 3,
     heroImage: {
-      url: "/images/salon/japanese-head-spa-massage.webp",
+      url: "/images/newimages/DSC07245.jpg",
       alt: "Gentlemen's Luxury Facial Treatment",
     },
   },
@@ -75,7 +75,7 @@ export const serviceCategories: ServiceCategory[] = [
       "Hygienic, gentle hair removal and brow sculpting utilizing hypoallergenic waxes and organic soothing aftercare.",
     order: 6,
     heroImage: {
-      url: "/images/salon/beard-razor-contouring.webp",
+      url: "/images/newimages/DSC07657.jpg",
       alt: "Gentlemen's Brow Detailing and Waxing",
     },
   },
@@ -88,7 +88,7 @@ export const serviceCategories: ServiceCategory[] = [
       "Impeccable nail shaping, cuticle nourishment, and warm paraffin therapy designed specifically for modern gentlemen.",
     order: 7,
     heroImage: {
-      url: "/images/salon/pedicure-luxury-soak.webp",
+      url: "/images/newimages/DSC07745.jpg",
       alt: "Executive Manicure and Pedicure for Men",
     },
   },
@@ -110,7 +110,7 @@ export const serviceItems: ServiceItem[] = [
     isSignature: true,
     isPopular: true,
     featuredImage: {
-      url: "/images/salon/haircut-skin-fade-profile.webp",
+      url: "/images/newimages/DSC07834.jpg",
       alt: "Reset Signature Haircut",
     },
     benefits: [
@@ -225,7 +225,7 @@ export const serviceItems: ServiceItem[] = [
     durationMinutes: 60,
     priceAED: 320,
     featuredImage: {
-      url: "/images/salon/japanese-head-spa-massage.webp",
+      url: "/images/newimages/DSC07093.jpg",
       alt: "Executive Deep Cleansing Facial",
     },
     benefits: ["Pore unclogging & blackhead extraction", "Balanced oil production", "Healthy, energized matte complexion"],
@@ -282,7 +282,7 @@ export const serviceItems: ServiceItem[] = [
     durationMinutes: 35,
     priceAED: 110,
     featuredImage: {
-      url: "/images/salon/manicure-hand-grooming.webp",
+      url: "/images/newimages/DSC07507.jpg",
       alt: "Executive Hand Grooming Manicure",
     },
     benefits: ["Neat, professional executive hands", "Hydrated cuticles and smooth palms", "Relieves hand fatigue from typing"],

@@ -22,9 +22,9 @@ export const hairAndBeardPage = {
   whatsappUrl: WHATSAPP_URL,
 
   hero: {
-    desktopImageSrc: "/images/salon/haircut-skin-fade-profile.webp",
+    desktopImageSrc: "/images/newimages/DSC07834.jpg",
     desktopImageAlt: "Reset Men Salon — Hair & Beard Grooming Dubai",
-    mobileImageSrc: "/images/salon/stylist-haircut-mirror.webp",
+    mobileImageSrc: "/images/newimages/DSC07838.jpg",
     mobileImageAlt: "Reset Men Salon — Hair & Beard Precision Barbering",
     titleWords: ["HAIR &", "BEARD"] as [string, string],
     subtitle: "Precision haircuts, tailored fades, and bespoke beard architecture in Business Bay. Welcome to Reset.",
@@ -47,7 +47,7 @@ export const hairAndBeardPage = {
     description:
       "Haircuts designed to match your face shape and personal style. Expect clean lines and a sharp finish that lasts.",
     price: "150 AED",
-    image: "/images/salon/haircut-skin-fade-profile.webp"
+    image: "/images/newimages/DSC07834.jpg"
   },
   {
     id: "srv-kids-haircut",
@@ -65,7 +65,7 @@ export const hairAndBeardPage = {
     description:
       "We create modern and classic hairstyles based on your hair texture, face shape and lifestyle. Every cut is made to look clean and natural.",
     price: "80 AED",
-    image: "/images/salon/stylist-client-satisfaction.webp"
+    image: "/images/newimages/DSC07838.jpg"
   },
   {
     id: "srv-classic-beard-trim",
@@ -286,7 +286,7 @@ export const hairAndBeardPage = {
   parallax: [
   {
     id: "hair-beard-1",
-    src: "/images/salon/haircut-scissor-detailing.webp",
+    src: "/images/newimages/DSC07795.jpg",
     alt: "Reset Men Salon Haircut & Beard Architecture Mastery",
   },
   {
@@ -316,7 +316,7 @@ export const hairAndBeardPage = {
     url: "https://resetbarbershop.com/services/hair-and-beard",
     images: [
       {
-        url: "/images/salon/haircut-skin-fade-profile.webp",
+        url: "/images/newimages/DSC07834.jpg",
         width: 1200,
         height: 630,
         alt: "Reset Men Salon Hair & Beard Grooming Dubai",

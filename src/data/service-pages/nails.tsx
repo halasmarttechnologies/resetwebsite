@@ -22,9 +22,9 @@ export const nailsPage = {
   whatsappUrl: WHATSAPP_URL,
 
   hero: {
-    desktopImageSrc: "/images/salon/pedicure-luxury-soak.webp",
+    desktopImageSrc: "/images/newimages/DSC07745.jpg",
     desktopImageAlt: "Reset Men Salon — Manicure and Pedicure for Men in Business Bay Dubai",
-    mobileImageSrc: "/images/salon/manicure-hand-grooming.webp",
+    mobileImageSrc: "/images/newimages/DSC07539.jpg",
     mobileImageAlt: "Reset Men Salon — Men's Nail Care",
     titleWords: ["MEN'S", "NAILS"] as [string, string],
     subtitle: "Clean, precise, and hygienic hand and foot grooming in Business Bay. Welcome to Reset.",
@@ -47,7 +47,7 @@ export const nailsPage = {
     description:
       "A professional manicure for men that includes nail trimming, shaping, cuticle care, and hydration. It keeps hands looking clean, healthy, and neat while helping you maintain a polished everyday appearance.",
     price: "90 AED",
-    image: "/images/salon/manicure-hand-grooming.webp"
+    image: "/images/newimages/DSC07507.jpg"
   },
   {
     id: "srv-pedicure",
@@ -56,7 +56,7 @@ export const nailsPage = {
     description:
       "Our pedicure for men focuses on deep cleaning, gentle exfoliation, nail care, and moisturizing. It helps reduce dryness, keeps feet comfortable, and supports men who spend long hours standing or walking daily.",
     price: "135 AED",
-    image: "/images/salon/pedicure-luxury-soak.webp"
+    image: "/images/newimages/DSC07745.jpg"
   },
   {
     id: "srv-majestic-manicure",
@@ -65,7 +65,7 @@ export const nailsPage = {
     description:
       "A premium manicure designed for men who want more than basic grooming. It combines detailed nail care with relaxing steps that help reduce stress while leaving hands looking smooth, clean and refreshed.",
     price: "135 AED",
-    image: "/images/salon/manicure-massage-care.webp"
+    image: "/images/newimages/DSC07539.jpg"
   },
   {
     id: "srv-majestic-pedicure",
@@ -74,7 +74,7 @@ export const nailsPage = {
     description:
       "Our reformed pedicure is designed for complete foot care and relaxation. It improves comfort and softens the rough skin while you feel like a new man after each session. Our goal is to make your feet cleaner and lighter so that you feel refreshed, comfortable and confident with every step.",
     price: "165 AED",
-    image: "/images/salon/pedicure-nail-care.webp"
+    image: "/images/newimages/DSC07754.jpg"
   },
   {
     id: "srv-paraffin",
@@ -92,7 +92,7 @@ export const nailsPage = {
     description:
       "Our services are efficient and smooth for those who want neat nails without spending too much time. At Resetmen, we make sure that your hands and feet look clean, keeping your appearance well maintained.",
     price: "110 AED",
-    image: "/images/salon/manicure-hand-grooming.webp"
+    image: "/images/newimages/DSC07600.jpg"
   },
 ] as Omit<ServiceItemCard, "whatsappUrl">[]).map(
       (it) => ({ ...it, whatsappUrl: WHATSAPP_URL }),
@@ -259,12 +259,12 @@ export const nailsPage = {
   parallax: [
   {
     id: "nails-1",
-    src: "/images/salon/pedicure-luxury-soak.webp",
+    src: "/images/newimages/DSC07745.jpg",
     alt: "Reset Men Salon Executive Manicure & Pedicure Detail",
   },
   {
     id: "nails-2",
-    src: "/images/salon/manicure-massage-care.webp",
+    src: "/images/newimages/DSC07539.jpg",
     alt: "Reset Men Salon Grooming & Nail Care Bay Suite",
   },
 ] as { id: string; src: string; alt: string }[],
@@ -287,7 +287,7 @@ export const nailsPage = {
     url: "https://resetbarbershop.com/services/nails",
     images: [
       {
-        url: "/images/salon/pedicure-luxury-soak.webp",
+        url: "/images/newimages/DSC07745.jpg",
         width: 1200,
         height: 630,
         alt: "Reset Men Salon Manicure and Pedicure Business Bay Dubai",

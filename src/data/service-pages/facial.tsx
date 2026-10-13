@@ -22,9 +22,9 @@ export const facialPage = {
   whatsappUrl: WHATSAPP_URL,
 
   hero: {
-    desktopImageSrc: "/images/salon/japanese-head-spa-massage.webp",
+    desktopImageSrc: "/images/newimages/DSC07245.jpg",
     desktopImageAlt: "Reset Men Salon — Executive Facial Skincare Dubai",
-    mobileImageSrc: "/images/salon/scalp-rinse-treatment.webp",
+    mobileImageSrc: "/images/newimages/DSC08093.jpg",
     mobileImageAlt: "Reset Men Salon — Gentlemen's Facial Therapy",
     titleWords: ["FACIAL", "CARE"] as [string, string],
     subtitle: "Dermatological cleansing, deep blackhead extraction, and active botanical hydration in Business Bay. Welcome to Reset.",
@@ -47,7 +47,7 @@ export const facialPage = {
     description:
       "Targeted pore purification to extract stubborn blackheads and excess sebum around the nose for a clean, clear finish.",
     price: "55 AED",
-    image: "/images/salon/japanese-head-spa-massage.webp"
+    image: "/images/newimages/DSC07093.jpg"
   },
   {
     id: "srv-black-mask",
@@ -56,7 +56,7 @@ export const facialPage = {
     description:
       "Deep purifying charcoal peel-off mask that detoxifies skin pores, removes impurities, and controls facial oil.",
     price: "90 AED",
-    image: "/images/salon/scalp-rinse-treatment.webp"
+    image: "/images/newimages/DSC08093.jpg"
   },
   {
     id: "srv-face-scrub",
@@ -65,7 +65,7 @@ export const facialPage = {
     description:
       "Gentle dermatological exfoliation buffing away dead epidermal cells, smoothing rough texture and reviving complexion.",
     price: "110 AED",
-    image: "/images/salon/manicure-massage-care.webp"
+    image: "/images/newimages/DSC07093.jpg"
   },
   {
     id: "srv-basic-facial",
@@ -74,7 +74,7 @@ export const facialPage = {
     description:
       "Essential skin reset tailored for men: active cleanse, gentle pore refinement, and protective barrier hydration.",
     price: "275 AED",
-    image: "/images/salon/shampoo-wash-station.webp"
+    image: "/images/newimages/DSC07245.jpg"
   },
   {
     id: "srv-classic-facial",
@@ -83,7 +83,7 @@ export const facialPage = {
     description:
       "Complete restorative facial combining deep pore cleansing, steam extraction, facial massage, and calming botanical hydration.",
     price: "165 AED",
-    image: "/images/salon/japanese-head-spa-halo.webp"
+    image: "/images/newimages/DSC07245.jpg"
   },
   {
     id: "srv-vitamin-c",
@@ -92,7 +92,7 @@ export const facialPage = {
     description:
       "High-potency antioxidant treatment infusing pure Vitamin C to brighten dull skin, combat sun damage, and boost elasticity.",
     price: "450 AED",
-    image: "/images/salon/salon-lounge-interior.webp"
+    image: "/images/newimages/DSC07263.jpg"
   },
 ] as Omit<ServiceItemCard, "whatsappUrl">[]).map(
       (it) => ({ ...it, whatsappUrl: WHATSAPP_URL }),
@@ -261,12 +261,12 @@ export const facialPage = {
   parallax: [
   {
     id: "facial-1",
-    src: "/images/salon/japanese-head-spa-massage.webp",
+    src: "/images/newimages/DSC07245.jpg",
     alt: "Reset Men Salon Clinical Facial & Dermatological Hydration",
   },
   {
     id: "facial-2",
-    src: "/images/salon/salon-lounge-interior.webp",
+    src: "/images/newimages/DSC07263.jpg",
     alt: "Reset Men Salon Private Aesthetic Suite Business Bay",
   },
 ] as { id: string; src: string; alt: string }[],
@@ -289,7 +289,7 @@ export const facialPage = {
     url: "https://resetbarbershop.com/services/facial",
     images: [
       {
-        url: "/images/salon/japanese-head-spa-massage.webp",
+        url: "/images/newimages/DSC07245.jpg",
         width: 1200,
         height: 630,
         alt: "Reset Men Salon Facial Skincare Dubai",
