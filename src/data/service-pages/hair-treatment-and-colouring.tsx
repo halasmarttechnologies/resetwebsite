@@ -37,7 +37,7 @@ export const hairTreatmentAndColouringPage = {
     filters: {
     categories: [
     { id: "coloring", label: "Hair Coloring", count: 5 },
-    { id: "treatment", label: "Hair Treatment", count: 4 },
+    { id: "treatment", label: "Hair Treatment", count: 6 },
     ],
   } as { allLabel?: string; categories: ServiceFilterCategory[] } | undefined,
     items: ([
@@ -88,7 +88,7 @@ export const hairTreatmentAndColouringPage = {
     image: "/images/salon/beard-razor-contouring.webp"
   },
 
-  // --- Hair Treatment Services (4) ---
+  // --- Hair Treatment Services (6) ---
   {
     id: "srv-hair-relaxing",
     title: "Hair Relaxing",
@@ -124,6 +124,24 @@ export const hairTreatmentAndColouringPage = {
       "Repairs damaged strands while improving shine and softness. Long hair becomes more manageable and looks naturally healthy.",
     price: "500 AED",
     image: "/images/salon/stylist-client-satisfaction.webp"
+  },
+  {
+    id: "srv-nashi-armonia",
+    title: "Nashi Armonia Treatment",
+    category: "treatment",
+    description:
+      "A soothing Nashi scalp treatment that rebalances the scalp, calms irritation and supports healthier-looking hair from the root.",
+    price: "250 AED",
+    image: "/images/salon/japanese-head-spa-halo.webp"
+  },
+  {
+    id: "srv-nashi-filler",
+    title: "Nashi Filler Treatment",
+    category: "treatment",
+    description:
+      "A Nashi filler treatment that fills in weak, damaged strands to restore body, thickness and shine for fuller, stronger-looking hair.",
+    price: "200 AED",
+    image: "/images/salon/haircut-skin-fade-profile.webp"
   },
 ] as Omit<ServiceItemCard, "whatsappUrl">[]).map(
       (it) => ({ ...it, whatsappUrl: WHATSAPP_URL }),

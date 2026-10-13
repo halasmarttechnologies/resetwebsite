@@ -31,15 +31,6 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     priority: 0.9,
   }));
 
-  // Dynamic Individual Service detail routes
-  const services = await cms.getServices();
-  const serviceRoutes = services.map((service) => ({
-    url: `${baseUrl}/services/${service.categorySlug}/${service.slug}`,
-    lastModified: now,
-    changeFrequency: "monthly" as const,
-    priority: 0.7,
-  }));
-
   // Dynamic Blog Post routes
   const posts = await cms.getBlogPosts();
   const blogRoutes = posts.map((post) => ({
@@ -49,5 +40,5 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     priority: 0.6,
   }));
 
-  return [...staticRoutes, ...categoryRoutes, ...serviceRoutes, ...blogRoutes];
+  return [...staticRoutes, ...categoryRoutes, ...blogRoutes];
 }
