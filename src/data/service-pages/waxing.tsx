@@ -22,9 +22,9 @@ export const waxingPage = {
   whatsappUrl: WHATSAPP_URL,
 
   hero: {
-    desktopImageSrc: "/images/salon/beard-razor-contouring.webp",
+    desktopImageSrc: "/images/newimages/DSC07657.jpg",
     desktopImageAlt: "Reset Men Salon — Waxing for Men in Business Bay Dubai",
-    mobileImageSrc: "/images/salon/beard-sculpting-foil-shaver.webp",
+    mobileImageSrc: "/images/newimages/DSC07662.jpg",
     mobileImageAlt: "Reset Men Salon — Waxing for Men",
     titleWords: ["MEN'S", "WAXING"] as [string, string],
     subtitle: "Simple, clean, and skin-safe grooming in Business Bay. Welcome to Reset.",
@@ -224,7 +224,7 @@ export const waxingPage = {
   parallax: [
   {
     id: "waxing-1",
-    src: "/images/salon/barber-straight-razor-shave.webp",
+    src: "/images/newimages/DSC07662.jpg",
     alt: "Reset Men Salon Male Waxing & Skin Detailing",
   },
   {
@@ -253,7 +253,7 @@ export const waxingPage = {
     url: "https://resetbarbershop.com/services/waxing",
     images: [
       {
-        url: "/images/salon/beard-razor-contouring.webp",
+        url: "/images/newimages/DSC07657.jpg",
         width: 1200,
         height: 630,
         alt: "Reset Men Salon Waxing for Men Business Bay Dubai",
