@@ -222,7 +222,13 @@ export const config = {
      * - _next/image (image optimisation)
      * - favicon.ico, sitemap.xml, robots.txt
      * - Static assets (images, fonts, media, etc.)
+     *
+     * Media extensions matter here: a video is fetched in many ranged
+     * chunks, and without this exclusion each chunk would burn one tick
+     * of the same coarse per-IP budget as real page views (120/min).
+     * A single visitor behind a shared NAT could rate-limit themselves
+     * off the site just by watching the hero loop.
      */
-    "/((?!_next/static|_next/image|favicon\\.ico|sitemap\\.xml|robots\\.txt|.*\\.(?:svg|png|jpg|jpeg|gif|webp|woff|woff2|ico|css|js)$).*)",
+    "/((?!_next/static|_next/image|favicon\\.ico|sitemap\\.xml|robots\\.txt|.*\\.(?:svg|png|jpg|jpeg|gif|webp|avif|woff|woff2|ico|css|js|mp4|webm|mov|m4v)$).*)",
   ],
 };
