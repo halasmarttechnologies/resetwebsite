@@ -33,7 +33,7 @@ const aboutServices: AboutServiceItem[] = [
     image: "/images/salon/haircut-skin-fade-profile.webp",
     alt: "Reset Men Salon Haircut and Beard Architecture in Business Bay Dubai",
     href: "/services/hair-and-beard",
-    price: "180.00 AED",
+    price: "150.00 AED",
     volumeOrDuration: "45 mins · Precision Sculpting",
   },
   {
@@ -47,8 +47,8 @@ const aboutServices: AboutServiceItem[] = [
     image: "/images/salon/japanese-head-spa-halo.webp",
     alt: "Reset Signature Japanese Head Spa Waterfall Scalp Therapy in Dubai",
     href: "/services/japanese-head-spa",
-    price: "450.00 AED",
-    volumeOrDuration: "60 mins · Hydrotherapy Ritual",
+    price: "249.00 AED",
+    volumeOrDuration: "30-60 mins · Hydrotherapy Ritual",
   },
   {
     id: "facial",
@@ -61,8 +61,8 @@ const aboutServices: AboutServiceItem[] = [
     image: "/images/salon/japanese-head-spa-massage.webp",
     alt: "Reset Men Salon Deep Cleansing and Revitalizing Facial Care",
     href: "/services/facial",
-    price: "320.00 AED",
-    volumeOrDuration: "50 mins · Deep Skin Cleanse",
+    price: "165.00 AED",
+    volumeOrDuration: "45 mins · Deep Skin Cleanse",
   },
   {
     id: "hair-treatment-colouring",
@@ -75,7 +75,7 @@ const aboutServices: AboutServiceItem[] = [
     image: "/images/salon/haircut-scissor-detailing.webp",
     alt: "Reset Men Salon Professional Hair Treatment and Natural Colouring",
     href: "/services/hair-treatment-and-colouring",
-    price: "140.00 AED",
+    price: "155.00 AED",
     volumeOrDuration: "45 mins · Organic Conditioning",
   },
   {
@@ -89,7 +89,7 @@ const aboutServices: AboutServiceItem[] = [
     image: "/images/salon/scalp-rinse-treatment.webp",
     alt: "Reset Men Salon Therapeutic Massage and Stress Relief Therapy",
     href: "/services/massage",
-    price: "120.00 AED",
+    price: "135.00 AED",
     volumeOrDuration: "30 mins · Acupressure Focus",
   },
   {
@@ -103,7 +103,7 @@ const aboutServices: AboutServiceItem[] = [
     image: "/images/salon/beard-razor-contouring.webp",
     alt: "Reset Men Salon Hygienic Body and Facial Waxing Grooming",
     href: "/services/waxing",
-    price: "20.00 AED",
+    price: "25.00 AED",
     volumeOrDuration: "15 mins · Clean & Defined",
   },
   {
@@ -117,7 +117,7 @@ const aboutServices: AboutServiceItem[] = [
     image: "/images/salon/pedicure-luxury-soak.webp",
     alt: "Reset Men Salon Executive Manicure and Pedicure Nail Care",
     href: "/services/nails",
-    price: "80.00 AED",
+    price: "90.00 AED",
     volumeOrDuration: "40 mins · Polish & Hygiene",
   },
 ];

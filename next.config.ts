@@ -169,6 +169,17 @@ const nextConfig: NextConfig = {
       { protocol: "https", hostname: "cdn.sanity.io" },
     ],
   },
+  async redirects() {
+    // Old placeholder service detail pages were removed; send any
+    // bookmarked or indexed URL to its category page instead.
+    return [
+      {
+        source: "/services/:category/:slug",
+        destination: "/services/:category",
+        permanent: true,
+      },
+    ];
+  },
   async headers() {
     return [
       { source: "/:path*", headers: securityHeaders },

@@ -36,7 +36,7 @@ export const hairAndBeardPage = {
     filters: {
     categories: [
     { id: "hair", label: "Haircuts", count: 3 },
-    { id: "beard", label: "Beard", count: 4 },
+    { id: "beard", label: "Beard", count: 3 },
     ],
   } as { allLabel?: string; categories: ServiceFilterCategory[] } | undefined,
     items: ([
@@ -93,15 +93,6 @@ export const hairAndBeardPage = {
       "A premium beard grooming experience with precision trimming, detailed shaping, and expert styling to enhance your look while maintaining a sharp, polished finish.",
     price: "80 AED",
     image: "/images/salon/beard-razor-contouring.webp"
-  },
-  {
-    id: "srv-beard-brushing-styling",
-    title: "Beard Brushing & Styling",
-    category: "beard",
-    description:
-      "Shapes and softens your beard using precise grooming techniques, enhancing texture and definition while keeping it neat, healthy, and easy to manage daily.",
-    price: "55 AED",
-    image: "/images/salon/beard-scissor-sculpting.webp"
   },
 ] as Omit<ServiceItemCard, "whatsappUrl">[]).map(
       (it) => ({ ...it, whatsappUrl: WHATSAPP_URL }),

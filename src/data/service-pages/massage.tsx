@@ -53,12 +53,20 @@ export const massagePage = {
     image: "/images/salon/scalp-rinse-treatment.webp"
   },
   {
-    id: "srv-feet-massage",
-    title: "Feet Massage",
+    id: "srv-reflexology-30",
+    title: "30 Min Reflexology",
     description:
-      "A refreshing foot massage from an expert that targets pressure points and improves blood circulation. It helps reduce full body fatigue, ease stiffness and bring back balance after long days of walking, standing or intense routines.",
+      "A refreshing foot reflexology session from an expert that targets pressure points and improves blood circulation. It helps reduce full body fatigue, ease stiffness and bring back balance after long days of walking, standing or intense routines.",
     price: "150 AED",
     image: "/images/salon/pedicure-luxury-soak.webp"
+  },
+  {
+    id: "srv-reflexology-60",
+    title: "60 Min Reflexology",
+    description:
+      "An extended reflexology session that works through every pressure point of the feet for deeper relief. Ideal after long weeks on your feet, it eases built-up fatigue, improves circulation and leaves your whole body feeling lighter.",
+    price: "250 AED",
+    image: "/images/salon/pedicure-nail-care.webp"
   },
   {
     id: "srv-back-massage",
