@@ -229,7 +229,7 @@ export function PricingGridSection() {
                 Open 7 days a week
               </h4>
               <p className="font-jakarta text-xs text-noir-600 mt-1">
-                Open daily from 10:00 AM to 10:00 PM in Business Bay. Walk-ins and appointments welcome.
+                Open daily from 10:00 AM to 12:00 AM (midnight) in Business Bay. Walk-ins and appointments welcome.
               </p>
             </div>
           </div>

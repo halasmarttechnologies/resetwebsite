@@ -12,9 +12,9 @@ export const siteConfig = {
     whatsappDisplay: "+971 58 102 1540",
     whatsappLink: "https://wa.me/971581021540?text=Hello%20Reset%20Men%20Salon,%20I%20would%20like%20to%20inquire%20about%20booking.",
     email: "info@resetmensalon.ae",
-    googleMaps: "https://maps.google.com/?q=Reset+Men+Salon+Business+Bay+Dubai",
+    googleMaps: "https://maps.app.goo.gl/zbrDGgY2UeAhDVtN8",
     address: {
-      street: "Business Bay",
+      street: "The Pad by Omniyat, Shop, 3 Marasi Dr, Business Bay",
       city: "Dubai",
       emirate: "Dubai",
       country: "United Arab Emirates",
@@ -25,9 +25,9 @@ export const siteConfig = {
       longitude: 55.2744,
     },
     hours: {
-      weekdays: "10:00 AM - 10:00 PM",
-      weekends: "10:00 AM - 10:00 PM",
-      daysSummary: "Monday – Sunday, 10:00 AM – 10:00 PM",
+      weekdays: "10:00 AM - 12:00 AM",
+      weekends: "10:00 AM - 12:00 AM",
+      daysSummary: "Monday – Sunday, 10:00 AM – 12:00 AM",
     },
   },
   socials: {

@@ -61,7 +61,7 @@ export default function PricingPage() {
     telephone: "+97145655688",
     address: {
       "@type": "PostalAddress",
-      streetAddress: "Business Bay",
+      streetAddress: "The Pad by Omniyat, Shop, 3 Marasi Dr, Business Bay",
       addressLocality: "Dubai",
       addressCountry: "AE",
     },

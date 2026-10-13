@@ -12,7 +12,7 @@ const CONTACT_URL = `${siteConfig.url}/contact`;
 export const metadata: Metadata = {
   title: "Contact Us & Concierge | Business Bay, Dubai | Reset Men Salon",
   description:
-    "Get in touch with Reset Men Salon in Business Bay, Dubai. Call +971 4565 5688, chat via WhatsApp at +971 581 021 540, or email info@resetmensalon.ae. Open daily 10 AM – 10 PM.",
+    "Get in touch with Reset Men Salon in Business Bay, Dubai. Call +971 4565 5688, chat via WhatsApp at +971 581 021 540, or email info@resetmensalon.ae. Open daily 10 AM – 12 AM.",
   keywords: [
     "Contact Reset Men Salon",
     "Reset Men Salon Business Bay",
@@ -49,7 +49,7 @@ export default function ContactPage() {
     url: CONTACT_URL,
     address: {
       "@type": "PostalAddress",
-      streetAddress: "Business Bay",
+      streetAddress: "The Pad by Omniyat, Shop, 3 Marasi Dr, Business Bay",
       addressLocality: "Dubai",
       addressRegion: "Dubai",
       addressCountry: "AE",
@@ -67,7 +67,7 @@ export default function ContactPage() {
           "Sunday",
         ],
         opens: "10:00",
-        closes: "22:00",
+        closes: "23:59",
       },
     ],
   };
