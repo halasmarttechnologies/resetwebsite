@@ -62,7 +62,7 @@ const contactCards = [
     value: "Business Bay, Dubai",
     badge: "Executive Bay District",
     detail: "Overlooking Dubai Canal with dedicated valet parking",
-    href: "https://maps.google.com/?q=Reset+Men+Salon+Business+Bay+Dubai",
+    href: "https://maps.app.goo.gl/zbrDGgY2UeAhDVtN8",
     actionLabel: "Get directions",
     isExternal: true,
     highlight: false,
@@ -88,7 +88,7 @@ function useSalonStatus() {
       const now = new Date();
       // Dubai is UTC+4
       const gstHours = (now.getUTCHours() + 4) % 24;
-      setIsOpen(gstHours >= 10 && gstHours < 22);
+      setIsOpen(gstHours >= 10);
     };
 
     checkStatus();
@@ -600,7 +600,7 @@ export function ContactMainSection() {
               <div className="space-y-3 font-jakarta text-sm border-t border-white/10 pt-4">
                 <div className="flex items-center justify-between">
                   <span className="text-neutral-400">Monday – Sunday</span>
-                  <span className="font-bold text-white">10:00 AM – 10:00 PM</span>
+                  <span className="font-bold text-white">10:00 AM – 12:00 AM</span>
                 </div>
                 <div className="flex items-center justify-between">
                   <span className="text-neutral-400">Walk-ins</span>
@@ -664,7 +664,7 @@ export function ContactMainSection() {
                   </h4>
                 </div>
                 <a
-                  href="https://maps.google.com/?q=Reset+Men+Salon+Business+Bay+Dubai"
+                  href="https://maps.app.goo.gl/zbrDGgY2UeAhDVtN8"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="font-jakarta text-xs font-bold text-noir-950 hover:text-black inline-flex items-center gap-1 underline underline-offset-4"
@@ -682,7 +682,7 @@ export function ContactMainSection() {
               <div className="w-full h-56 sm:h-64 rounded-xl sm:rounded-2xl border border-neutral-200 overflow-hidden relative bg-neutral-100">
                 <iframe
                   title="Reset Men Salon Business Bay Dubai Location"
-                  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d14441.139683935293!2d55.2643697!3d25.186714!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3e5f682d33454b81%3A0x6d8efec009d13db7!2sBusiness%20Bay%20-%20Dubai%20-%20United%20Arab%20Emirates!5e0!3m2!1sen!2sae!4v1700000000000!5m2!1sen!2sae"
+                  src="https://www.google.com/maps?q=Reset+Men+Salon,+The+Pad+by+Omniyat,+3+Marasi+Dr,+Business+Bay,+Dubai&output=embed"
                   width="100%"
                   height="100%"
                   style={{ border: 0, filter: "grayscale(15%) contrast(1.05)" }}
@@ -697,7 +697,7 @@ export function ContactMainSection() {
               <div className="mt-4 pt-3 border-t border-neutral-100 flex flex-col gap-2 font-jakarta text-xs text-neutral-600">
                 <div className="flex items-center gap-2">
                   <CalendarCheck className="w-3.5 h-3.5 text-noir-950 shrink-0" />
-                  <span>Open 7 days a week, 10:00 AM – 10:00 PM</span>
+                  <span>Open 7 days a week, 10:00 AM – 12:00 AM</span>
                 </div>
                 <div className="flex items-center gap-2">
                   <MapPin className="w-3.5 h-3.5 text-noir-950 shrink-0" />

@@ -5,7 +5,7 @@ export const salonLocations: SalonLocation[] = [
     id: "loc-business-bay",
     name: "Reset Men Salon — Business Bay Flagship",
     address: {
-      line1: "Business Bay",
+      line1: "The Pad by Omniyat, Shop, 3 Marasi Dr",
       line2: "Downtown Adjacent",
       district: "Business Bay",
       city: "Dubai",
@@ -19,9 +19,9 @@ export const salonLocations: SalonLocation[] = [
     whatsapp: "+971 58 102 1540",
     email: "info@resetmensalon.ae",
     openingHours: [
-      { days: "Monday – Sunday", hours: "10:00 AM – 10:00 PM", isOpen: true },
+      { days: "Monday – Sunday", hours: "10:00 AM – 12:00 AM", isOpen: true },
     ],
     parkingInfo: "Dedicated customer parking and valet service available at entrance.",
-    directionsUrl: "https://maps.google.com/?q=Reset+Men+Salon+Business+Bay+Dubai",
+    directionsUrl: "https://maps.app.goo.gl/zbrDGgY2UeAhDVtN8",
   },
 ];

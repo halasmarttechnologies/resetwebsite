@@ -356,7 +356,7 @@ export function MobileNav({}: MobileNavProps = {}) {
                 Hours
               </span>
               <span className="font-jakarta text-[11px] font-medium text-black leading-tight mt-0.5">
-                10 AM – 10 PM Daily
+                10 AM – 12 AM Daily
               </span>
             </div>
           </div>

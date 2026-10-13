@@ -11,7 +11,7 @@ export function ContactView() {
           Contact Us
         </h1>
         <p className="font-jakarta text-noir-600 mb-8 max-w-lg mx-auto">
-          Business Bay, Dubai, UAE • Open Daily 10:00 AM – 10:00 PM
+          Business Bay, Dubai, UAE • Open Daily 10:00 AM – 12:00 AM
         </p>
         <div className="flex justify-center gap-4">
           <a
