@@ -27,12 +27,15 @@ export function SmoothScrollProvider({ children }: SmoothScrollProviderProps) {
       infinite: false,
     });
 
+    // Track the latest frame id so cleanup cancels the live loop, not just
+    // the first frame (otherwise the loop keeps running after unmount).
+    let animationFrameId = 0;
     function raf(time: number) {
       lenis.raf(time);
-      requestAnimationFrame(raf);
+      animationFrameId = requestAnimationFrame(raf);
     }
 
-    const animationFrameId = requestAnimationFrame(raf);
+    animationFrameId = requestAnimationFrame(raf);
 
     return () => {
       cancelAnimationFrame(animationFrameId);

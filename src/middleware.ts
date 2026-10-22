@@ -34,8 +34,9 @@ function isTrustedOrigin(origin: string | null, host: string | null): boolean {
     const url = new URL(origin);
     if (url.hostname === "localhost" || url.hostname === "127.0.0.1") return true;
     // Same-host (Vercel preview: e.g. reset-git-branch.vercel.app).
+    // Deliberately no blanket `*.vercel.app` allowance — anyone can deploy
+    // there, so it would let third-party sites call our APIs cross-origin.
     if (host && url.host === host) return true;
-    if (url.hostname.endsWith(".vercel.app")) return true;
   } catch {
     return false;
   }
@@ -130,9 +131,15 @@ export function middleware(request: NextRequest) {
   //    protection against request flooding before the route stack
   //    even runs. Individual API routes still apply their own,
   //    stricter, per-endpoint limits.
+  //    Link prefetches are not counted: every page prefetches ~20 static
+  //    routes, so a visitor clicking around quickly would otherwise get
+  //    a 429 on a real navigation.
   const globalLimit = isApi ? 60 : 120;
-  const rl = checkRateLimit(`edge:${isApi ? "api" : "page"}:${ip}`, globalLimit, 60);
-  if (!rl.success) {
+  const isPrefetch = !isApi && request.headers.get("next-router-prefetch") === "1";
+  const rl = isPrefetch
+    ? null
+    : checkRateLimit(`edge:${isApi ? "api" : "page"}:${ip}`, globalLimit, 60);
+  if (rl && !rl.success) {
     return new NextResponse(
       isApi
         ? JSON.stringify({

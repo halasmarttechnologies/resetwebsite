@@ -32,8 +32,15 @@ const cspDirectives: Record<string, string[]> = {
   "object-src": ["'none'"],
   "script-src": scriptSrc,
   // Framer Motion writes inline styles; Google Fonts hosts stylesheets.
-  "style-src": ["'self'", "'unsafe-inline'", "https://fonts.googleapis.com"],
-  "font-src": ["'self'", "data:", "https://fonts.gstatic.com"],
+  // The LeadConnector chat widget pulls its CSS and fonts from its CDN and Bunny Fonts.
+  "style-src": [
+    "'self'",
+    "'unsafe-inline'",
+    "https://fonts.googleapis.com",
+    "https://stcdn.leadconnectorhq.com",
+    "https://fonts.bunny.net",
+  ],
+  "font-src": ["'self'", "data:", "https://fonts.gstatic.com", "https://fonts.bunny.net"],
   "img-src": [
     "'self'",
     "data:",
