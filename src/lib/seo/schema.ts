@@ -47,7 +47,11 @@ export function generateHairSalonJsonLd() {
         closes: "23:59",
       },
     ],
-    sameAs: [siteConfig.socials.instagram, siteConfig.socials.tiktok],
+    sameAs: [
+      siteConfig.socials.instagram,
+      siteConfig.socials.tiktok,
+      siteConfig.socials.facebook,
+    ],
   };
 }
 

@@ -248,6 +248,45 @@ export function Footer() {
                 </li>
               </ul>
             </div>
+
+            {/* Follow Us */}
+            <div>
+              <h4 className="font-editorial text-xs font-bold uppercase tracking-[0.2em] text-white mb-3">
+                Follow Us
+              </h4>
+              <ul className="space-y-2 font-jakarta text-xs text-white/75">
+                <li>
+                  <a
+                    href={siteConfig.socials.instagram}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="hover:text-white transition-colors"
+                  >
+                    Instagram
+                  </a>
+                </li>
+                <li>
+                  <a
+                    href={siteConfig.socials.tiktok}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="hover:text-white transition-colors"
+                  >
+                    TikTok
+                  </a>
+                </li>
+                <li>
+                  <a
+                    href={siteConfig.socials.facebook}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="hover:text-white transition-colors"
+                  >
+                    Facebook
+                  </a>
+                </li>
+              </ul>
+            </div>
           </div>
         </div>
 

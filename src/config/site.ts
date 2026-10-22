@@ -31,8 +31,9 @@ export const siteConfig = {
     },
   },
   socials: {
-    instagram: "https://instagram.com/resetmensalon",
-    tiktok: "https://tiktok.com/@resetmensalon",
+    instagram: "https://www.instagram.com/reset_barber_shop/",
+    tiktok: "https://www.tiktok.com/@reset.barber.dxb",
+    facebook: "https://www.facebook.com/people/Reset-Barber-Shop/61583472291034/",
   },
   booking: {
     primaryUrl: "https://wa.me/971581021540?text=Hello%20Reset%20Men%20Salon,%20I%20would%20like%20to%20book%20an%20appointment.",
