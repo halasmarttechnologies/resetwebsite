@@ -13,6 +13,7 @@ import {
 } from "@/lib/api/request-utils";
 import { ok, fail, serverError, methodNotAllowed } from "@/lib/api/response";
 import { logger, newRequestId } from "@/lib/logger";
+import { siteConfig } from "@/config/site";
 
 /**
  * Booking intent endpoint.
@@ -29,6 +30,8 @@ import { logger, newRequestId } from "@/lib/logger";
  */
 
 const MAX_BODY_BYTES = 4 * 1024;
+/** wa.me link from site config, minus its default `?text=` greeting. */
+const WHATSAPP_BASE_URL = siteConfig.contact.whatsappLink.split("?")[0];
 
 const bookingSchema = z.object({
   serviceSlug: z
@@ -205,7 +208,7 @@ function buildWhatsappUrl(data: z.infer<typeof bookingSchema>): string {
   ];
   if (data.customerEmail) lines.push(`- Email:   ${data.customerEmail}`);
   if (data.notes) lines.push(`- Notes:   ${data.notes}`);
-  return `https://wa.me/971581021540?text=${encodeURIComponent(lines.join("\n"))}`;
+  return `${WHATSAPP_BASE_URL}?text=${encodeURIComponent(lines.join("\n"))}`;
 }
 
 export function GET() {
