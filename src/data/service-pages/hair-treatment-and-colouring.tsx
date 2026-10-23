@@ -333,7 +333,7 @@ export const hairTreatmentAndColouringPage = {
     title: "Hair Treatment & Colouring Dubai | Reset Men Salon",
     description:
       "Advanced hair reconstruction therapies, restorative keratin, and natural grey blending engineered for modern gentlemen.",
-    url: "https://resetbarbershop.com/services/hair-treatment-and-colouring",
+    url: "https://resetmensalon.ae/services/hair-treatment-and-colouring",
     images: [
       {
         url: "/images/salon/haircut-scissor-detailing.webp",

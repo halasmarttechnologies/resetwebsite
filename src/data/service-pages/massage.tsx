@@ -268,7 +268,7 @@ export const massagePage = {
     title: "Best Massage for Men in Business Bay Dubai | Reset Men Salon",
     description:
       "Targeted bodywork and deep tissue therapies engineered to release muscle tension, correct posture stiffness, and restore mental clarity.",
-    url: "https://resetbarbershop.com/services/massage",
+    url: "https://resetmensalon.ae/services/massage",
     images: [
       {
         url: "/images/salon/scalp-rinse-treatment.webp",

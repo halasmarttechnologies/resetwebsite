@@ -284,7 +284,7 @@ export const nailsPage = {
     title: "Manicure and Pedicure for Men in Business Bay Dubai | Reset Men Salon",
     description:
       "Hygienic, precise, and relaxing men's hand and foot grooming engineered for modern professionals.",
-    url: "https://resetbarbershop.com/services/nails",
+    url: "https://resetmensalon.ae/services/nails",
     images: [
       {
         url: "/images/newimages/DSC07745.jpg",
