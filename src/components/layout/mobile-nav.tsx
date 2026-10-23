@@ -142,9 +142,14 @@ export function MobileNav({}: MobileNavProps = {}) {
         <span className="font-jakarta text-[10px] font-bold tracking-[0.25em] uppercase text-neutral-500">
           Navigation
         </span>
-        <span className="font-jakarta text-[10px] font-semibold tracking-[0.15em] uppercase text-neutral-500">
+        <a
+          href={siteConfig.contact.googleMaps}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="font-jakarta text-[10px] font-semibold tracking-[0.15em] uppercase text-neutral-500 hover:text-black transition-colors"
+        >
           Business Bay, Dubai
-        </span>
+        </a>
       </div>
 
       {/* 3. Navigation List (Scrollable with Lenis prevention) */}
@@ -337,17 +342,22 @@ export function MobileNav({}: MobileNavProps = {}) {
 
         {/* Concierge Details Strip */}
         <div className="pt-2 grid grid-cols-2 gap-2.5 border-t border-neutral-100">
-          <div className="flex items-start gap-2">
+          <a
+            href={siteConfig.contact.googleMaps}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="flex items-start gap-2 group"
+          >
             <MapPin className="w-3.5 h-3.5 text-neutral-500 mt-0.5 shrink-0" strokeWidth={1.75} />
             <div className="flex flex-col">
               <span className="font-jakarta text-[8px] font-bold tracking-[0.2em] uppercase text-neutral-400">
                 Location
               </span>
-              <span className="font-jakarta text-[11px] font-medium text-black leading-tight mt-0.5">
+              <span className="font-jakarta text-[11px] font-medium text-black leading-tight mt-0.5 underline underline-offset-2 decoration-neutral-300 group-hover:decoration-black transition-colors">
                 Business Bay, Dubai
               </span>
             </div>
-          </div>
+          </a>
 
           <div className="flex items-start gap-2">
             <Clock className="w-3.5 h-3.5 text-neutral-500 mt-0.5 shrink-0" strokeWidth={1.75} />
