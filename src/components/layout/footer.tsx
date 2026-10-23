@@ -217,11 +217,6 @@ export function Footer() {
               </h4>
               <ul className="space-y-2 font-jakarta text-xs text-white/75">
                 <li>
-                  <a href="tel:+97145655688" className="hover:text-white transition-colors">
-                    +971 4 565 5688
-                  </a>
-                </li>
-                <li>
                   <a
                     href="https://api.whatsapp.com/send?phone=971581021540&text=Hello%20Reset%20Barber%2C%20I%27m%20interested%20in%20your%20services.%20Can%20I%20book%20an%20appointment%3F"
                     target="_blank"
