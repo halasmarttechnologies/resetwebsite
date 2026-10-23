@@ -46,8 +46,8 @@ export const homeServices: HomeServiceEntry[] = [
     description:
       "Our facial for men treatments are built for real results. We cleanse, hydrate and refresh tired skin. It’s a simple way to look healthier and more confident, even with Dubai’s busy lifestyle and climate.",
     href: "/services/facial",
-    image: "/images/salon/japanese-head-spa-massage.webp",
-    alt: "Men's revitalizing facial treatment at Reset Men Salon Dubai",
+    image: "/images/salon/facial-led-mask.webp",
+    alt: "LED light therapy mask during a men's revitalizing facial at Reset Men Salon Dubai",
     price: "165.00 AED",
     volumeOrDuration: "45 mins · Deep Skin Cleanse",
   },

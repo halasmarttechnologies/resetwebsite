@@ -701,7 +701,14 @@ export function ContactMainSection() {
                 </div>
                 <div className="flex items-center gap-2">
                   <MapPin className="w-3.5 h-3.5 text-noir-950 shrink-0" />
-                  <span>Business Bay, Dubai, United Arab Emirates</span>
+                  <a
+                    href="https://maps.app.goo.gl/zbrDGgY2UeAhDVtN8"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="underline underline-offset-4 decoration-neutral-300 hover:text-noir-950 hover:decoration-noir-950 transition-colors"
+                  >
+                    Business Bay, Dubai, United Arab Emirates
+                  </a>
                 </div>
               </div>
             </div>
