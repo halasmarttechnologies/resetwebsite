@@ -252,7 +252,7 @@ export const japaneseHeadSpaPage = {
     title: "Japanese Head Spa in Dubai | Reset Men Salon Business Bay",
     description:
       "Traditional Japanese scalp care and hydrotherapy engineered to relieve stress, purify follicles, and restore mental clarity.",
-    url: "https://resetbarbershop.com/services/japanese-head-spa",
+    url: "https://resetmensalon.ae/services/japanese-head-spa",
     images: [
       {
         url: "/images/salon/japanese-head-spa-halo.webp",

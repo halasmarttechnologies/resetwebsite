@@ -304,7 +304,7 @@ export const hairAndBeardPage = {
     title: "Hair & Beard Salon Dubai | Reset Men Salon Business Bay",
     description:
       "Expert men's grooming in a calm, luxury sanctuary. Clean lines, tailored fades, and precision beard sculpting.",
-    url: "https://resetbarbershop.com/services/hair-and-beard",
+    url: "https://resetmensalon.ae/services/hair-and-beard",
     images: [
       {
         url: "/images/newimages/DSC07834.jpg",

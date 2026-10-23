@@ -286,7 +286,7 @@ export const facialPage = {
     title: "Men's Facial & Skincare Dubai | Reset Men Salon",
     description:
       "High-performance dermatological skincare formulated specifically for male skin, combating environmental pollution and fatigue.",
-    url: "https://resetbarbershop.com/services/facial",
+    url: "https://resetmensalon.ae/services/facial",
     images: [
       {
         url: "/images/newimages/DSC07245.jpg",

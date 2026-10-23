@@ -250,7 +250,7 @@ export const waxingPage = {
     title: "Waxing for Men in Business Bay Dubai | Reset Men Salon",
     description:
       "Simple, clean, and skin-safe male waxing delivering weeks of smooth results and slower, finer regrowth.",
-    url: "https://resetbarbershop.com/services/waxing",
+    url: "https://resetmensalon.ae/services/waxing",
     images: [
       {
         url: "/images/newimages/DSC07657.jpg",
