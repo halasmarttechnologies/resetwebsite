@@ -287,7 +287,12 @@ export function Footer() {
 
         {/* ── 4. Bottom Legal Bar Matching Screenshot ── */}
         <div className="w-full pt-4 sm:pt-6 border-t border-white/15 flex flex-col sm:flex-row items-center justify-between gap-3 text-2xs sm:text-xs text-white/60 font-jakarta text-center">
-          <p>©2026 All Rights Reserved</p>
+          <div className="space-y-1">
+            <p>© 2026 {siteConfig.legalName}. All Rights Reserved.</p>
+            <p>
+              {siteConfig.name} is a trading name of {siteConfig.legalName} | Business Bay, Dubai, UAE
+            </p>
+          </div>
 
           <Link
             href="/contact"

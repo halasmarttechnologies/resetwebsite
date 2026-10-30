@@ -3,6 +3,7 @@
 import * as React from "react";
 import Script from "next/script";
 import Image from "next/image";
+import { siteConfig } from "@/config/site";
 import {
   Phone,
   Mail,
@@ -707,9 +708,12 @@ export function ContactMainSection() {
                     rel="noopener noreferrer"
                     className="underline underline-offset-4 decoration-neutral-300 hover:text-noir-950 hover:decoration-noir-950 transition-colors"
                   >
-                    Business Bay, Dubai, United Arab Emirates
+                    {siteConfig.contact.address.street}, {siteConfig.contact.address.city}, {siteConfig.contact.address.country}
                   </a>
                 </div>
+                <p>
+                  {siteConfig.name} is a trading name of {siteConfig.legalName}
+                </p>
               </div>
             </div>
           </div>

@@ -1,6 +1,6 @@
 export const siteConfig = {
   name: "Reset Men Salon",
-  legalName: "Reset Men Salon LLC",
+  legalName: "RESET BARBERS GENTS SALON L.L.C",
   tagline: "The Architecture of Modern Grooming",
   description:
     "Dubai's premier luxury men's grooming destination in Business Bay. Specializing in precision haircuts, beard architecture, facial therapies, and signature Japanese Head Spa.",

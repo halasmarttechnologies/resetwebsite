@@ -42,6 +42,7 @@ export default function ContactPage() {
     "@context": "https://schema.org",
     "@type": "HairSalon",
     name: "Reset Men Salon",
+    legalName: siteConfig.legalName,
     description:
       "Dubai's premier luxury men's grooming destination in Business Bay, specializing in precision haircuts, beard styling, massage, facial therapies, and Japanese head spa.",
     telephone: "+97145655688",
