@@ -102,11 +102,12 @@ export const serviceItems: ServiceItem[] = [
     categorySlug: "hair-and-beard",
     title: "Reset Signature Haircut",
     subtitle: "Consultation, Tailored Cut, Wash & Styling",
-    shortDescription: "A bespoke haircut tailored to your head shape, facial contours, and lifestyle.",
+    shortDescription:
+      "A bespoke haircut tailored to your head shape, facial contours, and lifestyle.",
     fullDescription:
       "Experience our benchmark haircut. Includes an in-depth consultation, invigorating scalp cleanse, precision scissor and clipper work, hot towel finish, and bespoke styling with matte finish pomades.",
     durationMinutes: 45,
-    priceAED: 180,
+    priceAED: 150,
     isSignature: true,
     isPopular: true,
     featuredImage: {
@@ -122,7 +123,8 @@ export const serviceItems: ServiceItem[] = [
     faqs: [
       {
         question: "How long does the Signature Haircut take?",
-        answer: "The appointment lasts approximately 45 minutes, allowing time for full consultation, cut, wash, and style.",
+        answer:
+          "The appointment lasts approximately 45 minutes, allowing time for full consultation, cut, wash, and style.",
       },
     ],
   },
@@ -136,7 +138,7 @@ export const serviceItems: ServiceItem[] = [
     fullDescription:
       "Transform and redefine your beard. Our master barbers sculpt the beard length to harmonize with your jawline, apply organic beard oil steams, and finish with a straight razor outline.",
     durationMinutes: 30,
-    priceAED: 120,
+    priceAED: 80,
     isPopular: true,
     featuredImage: {
       url: "/images/salon/beard-scissor-sculpting.webp",
@@ -155,16 +157,21 @@ export const serviceItems: ServiceItem[] = [
     categorySlug: "hair-and-beard",
     title: "The Royal Hot Towel Shave",
     subtitle: "Multi-Towel Traditional Straight Razor Shave",
-    shortDescription: "An indulgent traditional straight razor shaving ritual with rich lather and hot towels.",
+    shortDescription:
+      "An indulgent traditional straight razor shaving ritual with rich lather and hot towels.",
     fullDescription:
       "A classic barbershop ritual elevated to high art. Featuring pre-shave aromatic oils, steaming hot towels, rich badger-brush lather, and a flawless traditional straight razor shave.",
     durationMinutes: 40,
-    priceAED: 150,
+    priceAED: 55,
     featuredImage: {
       url: "/images/salon/barber-straight-razor-shave.webp",
       alt: "Royal Hot Towel Shave",
     },
-    benefits: ["Baby-smooth finish with zero razor burn", "Deep facial pore opening with herbal steam", "Cold towel post-shave pore sealing"],
+    benefits: [
+      "Baby-smooth finish with zero razor burn",
+      "Deep facial pore opening with herbal steam",
+      "Cold towel post-shave pore sealing",
+    ],
   },
 
   // Japanese Head Spa
@@ -178,8 +185,8 @@ export const serviceItems: ServiceItem[] = [
       "Dubai's premier scalp wellness ritual featuring microscopic analysis, herb steam, and hydro waterfall.",
     fullDescription:
       "Our world-renowned head spa experience begins with a high-definition scalp diagnostic camera to analyze sebum and hair density. You then sink into our ergonomic massage bed for deep exfoliation, herbal steam therapy, acupressure scalp massage, cascading water halo hydrotherapy, and custom tonic infusions.",
-    durationMinutes: 75,
-    priceAED: 450,
+    durationMinutes: 60,
+    priceAED: 349,
     isSignature: true,
     isPopular: true,
     featuredImage: {
@@ -200,16 +207,21 @@ export const serviceItems: ServiceItem[] = [
     categorySlug: "japanese-head-spa",
     title: "Express Scalp Revive",
     subtitle: "30-Minute Scalp Detox & Hydro Waterfall",
-    shortDescription: "A focused head spa session ideal for executive lunch breaks and quick rejuvenation.",
+    shortDescription:
+      "A focused head spa session ideal for executive lunch breaks and quick rejuvenation.",
     fullDescription:
       "Designed for the busy Business Bay executive. Includes quick scalp exfoliation, steam treatment, stimulating waterfall wash, and blow dry.",
-    durationMinutes: 35,
-    priceAED: 250,
+    durationMinutes: 30,
+    priceAED: 249,
     featuredImage: {
       url: "/images/salon/scalp-rinse-treatment.webp",
       alt: "Express Scalp Revive Head Spa",
     },
-    benefits: ["Instant headache and screen fatigue relief", "Purified hair follicles", "Fast turnaround"],
+    benefits: [
+      "Instant headache and screen fatigue relief",
+      "Purified hair follicles",
+      "Fast turnaround",
+    ],
   },
 
   // Facial
@@ -219,16 +231,21 @@ export const serviceItems: ServiceItem[] = [
     categorySlug: "facial",
     title: "Executive Deep Cleansing Facial",
     subtitle: "Steam, Ultrasonic Extraction & Purifying Mask",
-    shortDescription: "Dermatological extraction and hydration targeting Dubai dust, heat, and oil buildup.",
+    shortDescription:
+      "Dermatological extraction and hydration targeting Dubai dust, heat, and oil buildup.",
     fullDescription:
       "Restores clear, invigorated skin. Incorporates ultrasonic skin scrubbing, blackhead removal, antibacterial high-frequency therapy, and a calming marine algae cooling mask.",
-    durationMinutes: 60,
-    priceAED: 320,
+    durationMinutes: 45,
+    priceAED: 165,
     featuredImage: {
       url: "/images/newimages/DSC07093.jpg",
       alt: "Executive Deep Cleansing Facial",
     },
-    benefits: ["Pore unclogging & blackhead extraction", "Balanced oil production", "Healthy, energized matte complexion"],
+    benefits: [
+      "Pore unclogging & blackhead extraction",
+      "Balanced oil production",
+      "Healthy, energized matte complexion",
+    ],
   },
 
   // Hair Treatment & Colouring
@@ -238,16 +255,21 @@ export const serviceItems: ServiceItem[] = [
     categorySlug: "hair-and-beard",
     title: "Keratin Anti-Frizz Treatment",
     subtitle: "Manageable, Smooth Hair in Dubai Humidity",
-    shortDescription: "Tames coarse and frizzy hair for up to 3 months with formaldehyde-free keratin.",
+    shortDescription:
+      "Tames coarse and frizzy hair for up to 3 months with formaldehyde-free keratin.",
     fullDescription:
       "Specially formulated for Middle Eastern climate humidity. Infuses keratin proteins deep into the hair cuticle, eliminating frizz while maintaining natural volume and texture.",
     durationMinutes: 90,
-    priceAED: 550,
+    priceAED: 330,
     featuredImage: {
       url: "/images/salon/haircut-scissor-detailing.webp",
       alt: "Keratin Hair Smoothing",
     },
-    benefits: ["100% frizz control in high humidity", "Lasts 10-12 weeks", "Formaldehyde-free luxury formula"],
+    benefits: [
+      "100% frizz control in high humidity",
+      "Lasts 10-12 weeks",
+      "Formaldehyde-free luxury formula",
+    ],
   },
 
   // Massage
@@ -257,16 +279,21 @@ export const serviceItems: ServiceItem[] = [
     categorySlug: "massage",
     title: "Executive Deep Tissue Massage",
     subtitle: "Targeted Upper Body & Shoulder Release",
-    shortDescription: "Relieves muscle knots and tension caused by long desk hours and gym training.",
+    shortDescription:
+      "Relieves muscle knots and tension caused by long desk hours and gym training.",
     fullDescription:
       "A therapeutic deep-pressure massage using organic eucalyptus and arnica oils. Targets tight traps, lower back, and shoulder joints.",
-    durationMinutes: 60,
-    priceAED: 280,
+    durationMinutes: 30,
+    priceAED: 135,
     featuredImage: {
       url: "/images/salon/shampoo-wash-station.webp",
       alt: "Executive Deep Tissue Massage",
     },
-    benefits: ["Breaks down stubborn muscle adhesions", "Improves posture and spinal mobility", "Releases deep cortisol and stress"],
+    benefits: [
+      "Breaks down stubborn muscle adhesions",
+      "Improves posture and spinal mobility",
+      "Releases deep cortisol and stress",
+    ],
   },
 
   // Nails
@@ -280,12 +307,16 @@ export const serviceItems: ServiceItem[] = [
     fullDescription:
       "Hand care designed specifically for men. Includes hand soak, cuticle detailing, nail trimming, natural matte buff, and a relaxing forearm massage.",
     durationMinutes: 35,
-    priceAED: 110,
+    priceAED: 90,
     featuredImage: {
       url: "/images/newimages/DSC07507.jpg",
       alt: "Executive Hand Grooming Manicure",
     },
-    benefits: ["Neat, professional executive hands", "Hydrated cuticles and smooth palms", "Relieves hand fatigue from typing"],
+    benefits: [
+      "Neat, professional executive hands",
+      "Hydrated cuticles and smooth palms",
+      "Relieves hand fatigue from typing",
+    ],
   },
 
   // Waxing
@@ -304,6 +335,10 @@ export const serviceItems: ServiceItem[] = [
       url: "/images/salon/beard-razor-contouring.webp",
       alt: "Precision Brow Detailing",
     },
-    benefits: ["Clean, masculine facial contours", "Long-lasting sharpness (3-4 weeks)", "Rapid, gentle process"],
+    benefits: [
+      "Clean, masculine facial contours",
+      "Long-lasting sharpness (3-4 weeks)",
+      "Rapid, gentle process",
+    ],
   },
 ];

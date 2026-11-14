@@ -1,17 +1,10 @@
 "use client";
 
 import * as React from "react";
+import Image from "next/image";
 import Link from "next/link";
 import { motion, AnimatePresence } from "framer-motion";
-import {
-  X,
-  Search,
-  MessageCircle,
-  ArrowUpRight,
-  Sparkles,
-  Phone,
-  CheckCircle2,
-} from "lucide-react";
+import { X, Search, MessageCircle, Phone, FileText, ListFilter, Maximize2 } from "lucide-react";
 import { usePriceList } from "@/context/price-list-context";
 import {
   priceListCategories,
@@ -23,6 +16,19 @@ export function PriceListDrawer() {
   const { isOpen, closePriceList, selectedCategory } = usePriceList();
   const [activeCategory, setActiveCategory] = React.useState<string>("all");
   const [searchQuery, setSearchQuery] = React.useState<string>("");
+  const [viewMode, setViewMode] = React.useState<"list" | "image">("list");
+  const [isImageExpanded, setIsImageExpanded] = React.useState(false);
+  const [isDesktop, setIsDesktop] = React.useState(false);
+
+  // Track desktop vs mobile for responsive slide direction
+  React.useEffect(() => {
+    const checkDesktop = () => {
+      setIsDesktop(window.innerWidth >= 768);
+    };
+    checkDesktop();
+    window.addEventListener("resize", checkDesktop);
+    return () => window.removeEventListener("resize", checkDesktop);
+  }, []);
 
   // Sync selectedCategory from context if provided
   React.useEffect(() => {
@@ -31,14 +37,16 @@ export function PriceListDrawer() {
     }
   }, [selectedCategory]);
 
-  // Reset search when opened
+  // Reset search and view mode when opened
   React.useEffect(() => {
     if (isOpen) {
       setSearchQuery("");
+      setViewMode("list");
+      setIsImageExpanded(false);
     }
   }, [isOpen]);
 
-  // Lock background body scroll completely while drawer is open
+  // Complete background website freeze when open (iOS, Android, Desktop + Lenis)
   React.useEffect(() => {
     if (!isOpen) return;
 
@@ -48,15 +56,23 @@ export function PriceListDrawer() {
     const originalTop = document.body.style.top;
     const originalWidth = document.body.style.width;
 
-    // Prevent background scrolling across desktop and mobile iOS
+    // Freeze background document completely
     document.body.style.overflow = "hidden";
     document.body.style.position = "fixed";
     document.body.style.top = `-${scrollY}px`;
     document.body.style.width = "100%";
 
+    // Pause Lenis smooth scrolling
+    const win = window as unknown as { __lenis?: { stop: () => void; start: () => void } };
+    win.__lenis?.stop();
+
     const handleKeyDown = (e: KeyboardEvent) => {
       if (e.key === "Escape") {
-        closePriceList();
+        if (isImageExpanded) {
+          setIsImageExpanded(false);
+        } else {
+          closePriceList();
+        }
       }
     };
     window.addEventListener("keydown", handleKeyDown);
@@ -68,16 +84,16 @@ export function PriceListDrawer() {
       document.body.style.top = originalTop;
       document.body.style.width = originalWidth;
       window.scrollTo(0, scrollY);
+      win.__lenis?.start();
     };
-  }, [isOpen, closePriceList]);
+  }, [isOpen, closePriceList, isImageExpanded]);
 
-  // Filtered categories & items
+  // Filter categories & items
   const filteredCategories = React.useMemo(() => {
     const query = searchQuery.trim().toLowerCase();
 
     return priceListCategories
       .map((cat) => {
-        // Category filter
         if (activeCategory !== "all" && cat.slug !== activeCategory) {
           return null;
         }
@@ -86,11 +102,9 @@ export function PriceListDrawer() {
           return cat;
         }
 
-        // Search query filter
         const matchingItems = cat.items.filter(
           (item) =>
-            item.name.toLowerCase().includes(query) ||
-            cat.title.toLowerCase().includes(query)
+            item.name.toLowerCase().includes(query) || cat.title.toLowerCase().includes(query)
         );
 
         if (matchingItems.length === 0) return null;
@@ -103,233 +117,357 @@ export function PriceListDrawer() {
       .filter(Boolean) as typeof priceListCategories;
   }, [activeCategory, searchQuery]);
 
+  // Animation variants: Desktop slides from left; Mobile slides from bottom
+  const desktopVariants = {
+    hidden: { x: "-100%" },
+    visible: { x: 0 },
+    exit: { x: "-100%" },
+  };
+
+  const mobileVariants = {
+    hidden: { y: "100%" },
+    visible: { y: 0 },
+    exit: { y: "100%" },
+  };
+
   return (
     <AnimatePresence>
       {isOpen && (
-        <div className="fixed inset-0 z-50 flex">
-          {/* Backdrop with Soft Dark Blur */}
+        <div
+          data-lenis-prevent="true"
+          className={`fixed inset-0 z-[9999] flex ${
+            isDesktop ? "items-stretch justify-start" : "items-center justify-end"
+          }`}
+        >
+          {/* Backdrop with click to dismiss */}
           <motion.div
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            transition={{ duration: 0.25 }}
+            transition={{ duration: 0.2 }}
             onClick={closePriceList}
-            className="fixed inset-0 bg-black/60 backdrop-blur-sm"
+            className="fixed inset-0 bg-black/60 backdrop-blur-[2px]"
             aria-hidden="true"
           />
 
-          {/* Left Slide-In Panel / Page - Ultra-Legible, Pure Luxury White */}
+          {/* Drawer Panel: Desktop (slide from left) / Mobile (slide from bottom) */}
           <motion.div
-            initial={{ x: "-100%" }}
-            animate={{ x: 0 }}
-            exit={{ x: "-100%" }}
-            transition={{ type: "spring", damping: 28, stiffness: 260, mass: 0.8 }}
-            className="relative z-10 w-full sm:max-w-xl md:max-w-2xl lg:max-w-3xl h-full max-h-screen bg-white text-noir-950 shadow-[10px_0_50px_rgba(0,0,0,0.25)] border-r border-neutral-200 flex flex-col will-change-transform"
+            variants={isDesktop ? desktopVariants : mobileVariants}
+            initial="hidden"
+            animate="visible"
+            exit="exit"
+            transition={{ type: "spring", damping: 30, stiffness: 300, mass: 0.8 }}
+            drag={isDesktop ? false : "y"}
+            dragConstraints={{ top: 0, bottom: 0 }}
+            dragElastic={{ top: 0.05, bottom: 0.5 }}
+            onDragEnd={(_e, info) => {
+              if (!isDesktop && (info.offset.y > 120 || info.velocity.y > 500)) {
+                closePriceList();
+              }
+            }}
+            data-lenis-prevent="true"
+            className={`relative z-10 flex flex-col overflow-hidden bg-white text-noir-950 shadow-2xl will-change-transform ${
+              isDesktop
+                ? "h-full max-h-screen w-full max-w-xl border-r border-neutral-200 lg:max-w-2xl"
+                : "h-[90dvh] max-h-[90dvh] w-full rounded-t-2xl"
+            }`}
           >
-            {/* Top Bar / Header - Fixed, High Contrast */}
-            <div className="flex-none p-3.5 sm:p-6 border-b border-neutral-200 bg-white shadow-sm z-20">
+            {/* Top Drag / Swipe Handle on Mobile */}
+            {!isDesktop && (
+              <div className="flex w-full shrink-0 cursor-grab justify-center bg-white pb-1 pt-2.5 active:cursor-grabbing">
+                <div className="h-1.5 w-12 rounded-full bg-neutral-300" />
+              </div>
+            )}
+
+            {/* Header: Row 1 (Title + Close), Row 2 (View Mode Segmented Control) */}
+            <div className="shrink-0 border-b border-neutral-100 bg-white px-5 pb-3 pt-4 sm:px-7">
+              {/* Row 1: Brand kicker & Main Title on left, Close button on right */}
               <div className="flex items-center justify-between gap-3">
-                {/* Brand Kicker & Main Title */}
-                <div>
-                  <div className="flex items-center gap-2">
-                    <span className="font-jakarta text-[10px] sm:text-[11px] font-bold text-neutral-500 tracking-[0.2em] uppercase">
-                      Reset Men Salon Dubai
-                    </span>
-                    <span className="inline-flex items-center gap-1 px-2 py-0.5 rounded-full bg-neutral-100 text-[10px] font-semibold text-neutral-700">
-                      <CheckCircle2 className="w-2.5 h-2.5 text-emerald-600" />
-                      All-Inclusive AED
-                    </span>
-                  </div>
-                  <h2 className="font-editorial text-xl sm:text-3xl font-bold tracking-tight text-noir-950 mt-0.5">
-                    Services & Price List
+                <div className="min-w-0">
+                  <span className="block font-jakarta text-[10px] font-bold uppercase tracking-[0.2em] text-neutral-400 sm:text-[11px]">
+                    Reset Men Salon Dubai
+                  </span>
+                  <h2 className="whitespace-nowrap font-editorial text-xl font-bold tracking-tight text-noir-950 sm:text-2xl">
+                    Official Price List
                   </h2>
                 </div>
 
-                {/* Prominent Close Button */}
                 <button
                   type="button"
                   onClick={closePriceList}
                   aria-label="Close price list"
-                  className="w-9 h-9 sm:w-11 sm:h-11 rounded-full bg-neutral-100 hover:bg-noir-950 hover:text-white border border-neutral-200 flex items-center justify-center text-noir-950 transition-all hover:scale-105 active:scale-95 shadow-sm"
+                  className="flex h-10 w-10 shrink-0 cursor-pointer items-center justify-center rounded-full bg-neutral-100 text-noir-950 transition-colors hover:bg-neutral-200 active:scale-95"
                 >
-                  <X className="w-4 h-4 sm:w-5 sm:h-5" />
+                  <X className="h-5 w-5" />
                 </button>
               </div>
 
-              {/* Search Bar with Instant Clear */}
-              <div className="mt-3 sm:mt-4 relative">
-                <Search className="absolute left-3.5 top-1/2 -translate-y-1/2 w-4 h-4 text-neutral-400" />
-                <input
-                  type="text"
-                  placeholder="Search haircuts, beard, head spa, massage, nails..."
-                  value={searchQuery}
-                  onChange={(e) => setSearchQuery(e.target.value)}
-                  className="w-full pl-10 pr-14 py-2 sm:py-3 rounded-xl bg-neutral-100/90 border border-neutral-200/90 font-jakarta text-sm text-noir-950 placeholder:text-neutral-500 focus:outline-none focus:border-noir-950 focus:bg-white focus:ring-2 focus:ring-noir-950/10 transition-all"
-                />
-                {searchQuery && (
+              {/* Row 2: View Switcher - Clean, spacious segmented control */}
+              <div className="mt-3 flex items-center justify-center">
+                <div className="inline-flex w-full items-center rounded-full border border-neutral-200/80 bg-neutral-100 p-1 sm:w-auto">
                   <button
                     type="button"
-                    onClick={() => setSearchQuery("")}
-                    className="absolute right-3 top-1/2 -translate-y-1/2 px-2 py-1 rounded-md text-xs font-jakarta font-semibold text-neutral-600 hover:text-noir-950 hover:bg-neutral-200 transition-colors"
-                  >
-                    Clear
-                  </button>
-                )}
-              </div>
-
-              {/* Category Quick Filter Pills - Scrollable Horizontally with Edge Padding */}
-              <div className="mt-3 flex items-center gap-2 overflow-x-auto no-scrollbar py-1 text-xs -mx-3.5 px-3.5 sm:mx-0 sm:px-0">
-                <button
-                  type="button"
-                  onClick={() => setActiveCategory("all")}
-                  className={`px-3.5 py-1.5 sm:py-2 rounded-full font-jakarta font-bold transition-all whitespace-nowrap shadow-sm ${
-                    activeCategory === "all"
-                      ? "bg-noir-950 text-white shadow-md scale-[1.02]"
-                      : "bg-neutral-100 text-neutral-800 hover:bg-neutral-200 hover:text-noir-950 border border-neutral-200"
-                  }`}
-                >
-                  All Services ({priceListMeta.totalServices})
-                </button>
-                {priceListCategories.map((cat) => (
-                  <button
-                    key={cat.id}
-                    type="button"
-                    onClick={() => setActiveCategory(cat.slug)}
-                    className={`px-3 sm:px-3.5 py-1.5 sm:py-2 rounded-full font-jakarta font-semibold transition-all whitespace-nowrap ${
-                      activeCategory === cat.slug
-                        ? "bg-noir-950 text-white shadow-md scale-[1.02]"
-                        : "bg-neutral-100 text-neutral-700 hover:bg-neutral-200 hover:text-noir-950 border border-neutral-200"
+                    onClick={() => setViewMode("list")}
+                    className={`flex flex-1 items-center justify-center gap-1.5 rounded-full px-4 py-1.5 font-jakarta text-xs font-bold transition-all sm:flex-initial ${
+                      viewMode === "list"
+                        ? "bg-noir-950 text-white shadow-sm"
+                        : "text-neutral-600 hover:text-black"
                     }`}
                   >
-                    {cat.title} ({cat.items.length})
+                    <ListFilter className="h-3.5 w-3.5" />
+                    <span>Services Directory ({priceListMeta.totalServices})</span>
                   </button>
-                ))}
-              </div>
-            </div>
-
-            {/* Dedicated Scrollable Price List Body (Only this area scrolls!) */}
-            <div
-              onWheel={(e) => e.stopPropagation()}
-              onTouchMove={(e) => e.stopPropagation()}
-              className="flex-1 overflow-y-auto overscroll-contain p-3.5 sm:p-6 md:p-8 space-y-5 sm:space-y-8 bg-neutral-50/60"
-              style={{ WebkitOverflowScrolling: "touch" }}
-            >
-              {filteredCategories.length === 0 ? (
-                <div className="py-16 text-center text-neutral-600 bg-white border border-neutral-200 rounded-2xl p-6 sm:p-8 shadow-sm">
-                  <p className="font-editorial text-xl sm:text-2xl font-bold text-noir-950">No treatments found</p>
-                  <p className="font-jakarta text-xs sm:text-sm mt-2 text-neutral-600">
-                    No services match &ldquo;{searchQuery}&rdquo;. Try another search term or click &ldquo;All Services&rdquo;.
-                  </p>
                   <button
                     type="button"
-                    onClick={() => {
-                      setSearchQuery("");
-                      setActiveCategory("all");
-                    }}
-                    className="mt-4 px-5 py-2.5 rounded-full bg-noir-950 text-white font-jakarta text-xs font-semibold hover:bg-noir-800 transition-colors"
+                    onClick={() => setViewMode("image")}
+                    className={`flex flex-1 items-center justify-center gap-1.5 rounded-full px-4 py-1.5 font-jakarta text-xs font-bold transition-all sm:flex-initial ${
+                      viewMode === "image"
+                        ? "bg-noir-950 text-white shadow-sm"
+                        : "text-neutral-600 hover:text-black"
+                    }`}
                   >
-                    Reset Filters
+                    <FileText className="h-3.5 w-3.5" />
+                    <span>Menu Sheet (Photo)</span>
                   </button>
                 </div>
-              ) : (
-                filteredCategories.map((cat) => (
-                  <div key={cat.id} className="space-y-2.5 sm:space-y-3">
-                    {/* Category Title Header & Description */}
-                    <div className="flex items-center justify-between pb-2 border-b border-neutral-200 gap-2">
-                      <div className="min-w-0">
-                        <h3 className="font-editorial text-lg sm:text-2xl font-bold tracking-tight text-noir-950 truncate">
-                          {cat.title}
-                        </h3>
-                        <p className="font-jakarta text-[11px] sm:text-xs text-neutral-500 line-clamp-1">
-                          {cat.description}
-                        </p>
-                      </div>
-                      <span className="font-jakarta text-[11px] sm:text-xs font-bold px-2.5 py-0.5 sm:py-1 rounded-full bg-white border border-neutral-200 text-neutral-800 shadow-sm shrink-0">
-                        {cat.items.length} options
-                      </span>
+              </div>
+            </div>
+
+            {/* View Mode 1: Interactive Services List */}
+            {viewMode === "list" && (
+              <div className="flex min-h-0 flex-1 flex-col">
+                {/* Search Bar & Category Filter Pills */}
+                <div className="shrink-0 space-y-2.5 border-b border-neutral-100 bg-white px-5 pb-2.5 pt-3.5 sm:px-7">
+                  {/* Live Search */}
+                  <div className="relative">
+                    <Search className="absolute left-3.5 top-1/2 h-4 w-4 -translate-y-1/2 text-neutral-400" />
+                    <input
+                      type="text"
+                      placeholder="Search haircuts, beard, head spa, massage, nails..."
+                      value={searchQuery}
+                      onChange={(e) => setSearchQuery(e.target.value)}
+                      className="w-full rounded-xl border border-neutral-200 bg-neutral-100 py-2 pl-10 pr-12 font-jakarta text-sm text-noir-950 transition-all placeholder:text-neutral-400 focus:border-noir-950 focus:bg-white focus:outline-none"
+                    />
+                    {searchQuery && (
+                      <button
+                        type="button"
+                        onClick={() => setSearchQuery("")}
+                        className="absolute right-3 top-1/2 -translate-y-1/2 px-1.5 py-0.5 font-jakarta text-xs font-bold text-neutral-500 hover:text-black"
+                      >
+                        Clear
+                      </button>
+                    )}
+                  </div>
+
+                  {/* Horizontal Scrollable Category Pills */}
+                  <div className="no-scrollbar -mx-5 flex items-center gap-1.5 overflow-x-auto px-5 py-1 text-xs sm:mx-0 sm:px-0">
+                    <button
+                      type="button"
+                      onClick={() => setActiveCategory("all")}
+                      className={`shrink-0 whitespace-nowrap rounded-full px-3 py-1.5 font-jakarta font-bold transition-all ${
+                        activeCategory === "all"
+                          ? "bg-noir-950 text-white shadow-sm"
+                          : "bg-neutral-100 text-neutral-700 hover:bg-neutral-200"
+                      }`}
+                    >
+                      All ({priceListMeta.totalServices})
+                    </button>
+                    {priceListCategories.map((cat) => (
+                      <button
+                        key={cat.id}
+                        type="button"
+                        onClick={() => setActiveCategory(cat.slug)}
+                        className={`shrink-0 whitespace-nowrap rounded-full px-3 py-1.5 font-jakarta font-bold transition-all ${
+                          activeCategory === cat.slug
+                            ? "bg-noir-950 text-white shadow-sm"
+                            : "bg-neutral-100 text-neutral-700 hover:bg-neutral-200"
+                        }`}
+                      >
+                        {cat.title} ({cat.items.length})
+                      </button>
+                    ))}
+                  </div>
+                </div>
+
+                {/* Dedicated Scrollable Services Directory Container */}
+                <div
+                  data-lenis-prevent="true"
+                  onWheel={(e) => e.stopPropagation()}
+                  onTouchMove={(e) => e.stopPropagation()}
+                  className="flex-1 space-y-6 overflow-y-auto overscroll-contain bg-neutral-50/40 px-5 py-4 sm:px-7"
+                  style={{
+                    WebkitOverflowScrolling: "touch",
+                    touchAction: "pan-y",
+                  }}
+                >
+                  {filteredCategories.length === 0 ? (
+                    <div className="rounded-xl border border-neutral-200 bg-white p-6 py-12 text-center text-neutral-500">
+                      <p className="font-editorial text-lg font-bold text-noir-950">
+                        No services match &ldquo;{searchQuery}&rdquo;
+                      </p>
+                      <button
+                        type="button"
+                        onClick={() => {
+                          setSearchQuery("");
+                          setActiveCategory("all");
+                        }}
+                        className="mt-3 cursor-pointer rounded-full bg-noir-950 px-4 py-1.5 font-jakarta text-xs font-semibold text-white"
+                      >
+                        Reset Search
+                      </button>
                     </div>
-
-                    {/* Highly Legible Service Cards */}
-                    <div className="grid grid-cols-1 gap-2 sm:gap-3">
-                      {cat.items.map((item) => (
-                        <div
-                          key={item.id}
-                          className="bg-white rounded-xl sm:rounded-2xl border border-neutral-200/90 p-3 sm:p-5 flex flex-col sm:flex-row sm:items-center justify-between gap-2.5 sm:gap-4 shadow-sm hover:shadow-md hover:border-neutral-400 transition-all group"
-                        >
-                          {/* Service Name & Tag */}
-                          <div className="flex-1 min-w-0">
-                            <div className="flex flex-wrap items-center gap-1.5 sm:gap-2">
-                              <h4 className="font-jakarta text-[13px] sm:text-base font-bold text-noir-950 group-hover:text-black leading-snug">
-                                {item.name}
-                              </h4>
-                              {item.popular && (
-                                <span className="inline-flex items-center gap-1 px-2 py-0.5 rounded-full bg-amber-50 border border-amber-300 text-[10px] font-jakarta font-bold text-amber-900 shadow-sm">
-                                  <Sparkles className="w-2.5 h-2.5 text-amber-600" />
-                                  Popular
-                                </span>
-                              )}
-                            </div>
-                            <span className="font-jakarta text-[11px] text-neutral-500 block mt-0.5">
+                  ) : (
+                    filteredCategories.map((cat) => (
+                      <div key={cat.id} className="space-y-2.5">
+                        <div className="flex items-center justify-between border-b border-neutral-200 pb-1.5">
+                          <div>
+                            <h3 className="font-editorial text-lg font-bold text-noir-950 sm:text-xl">
                               {cat.title}
-                            </span>
+                            </h3>
+                            <p className="font-jakarta text-[11px] text-neutral-500">
+                              {cat.description}
+                            </p>
                           </div>
+                          <span className="shrink-0 font-jakarta text-xs font-semibold text-neutral-500">
+                            {cat.items.length} options
+                          </span>
+                        </div>
 
-                          {/* Price Tag & WhatsApp Direct Booking Action */}
-                          <div className="flex items-center justify-between sm:justify-end gap-3 sm:gap-4 shrink-0 pt-1.5 sm:pt-0 border-t border-neutral-100 sm:border-0">
-                            <div className="text-right">
-                              <div className="font-editorial text-base sm:text-2xl font-bold text-noir-950 tracking-tight whitespace-nowrap">
-                                {item.priceAED}{" "}
-                                <span className="text-[11px] sm:text-sm font-jakarta font-bold text-neutral-600">
-                                  AED
+                        <div className="space-y-2">
+                          {cat.items.map((item) => (
+                            <div
+                              key={item.id}
+                              className="flex items-center justify-between gap-3 rounded-xl border border-neutral-200/90 bg-white p-3.5 shadow-[0_1px_2px_rgba(0,0,0,0.03)] transition-colors hover:border-neutral-400 sm:p-4"
+                            >
+                              {/* Service Name & Category: Full text, never truncated */}
+                              <div className="min-w-0 flex-1 pr-2">
+                                <h4 className="font-jakarta text-sm font-bold leading-snug text-noir-950 sm:text-[15px]">
+                                  {item.name}
+                                </h4>
+                                <span className="mt-0.5 block font-jakarta text-[11px] text-neutral-400">
+                                  {cat.title}
                                 </span>
                               </div>
-                            </div>
 
-                            <a
-                              href={getWhatsAppBookingUrlForService(item.name, item.priceAED)}
-                              target="_blank"
-                              rel="noopener noreferrer"
-                              className="inline-flex items-center gap-1.5 px-3.5 sm:px-4 py-1.5 sm:py-2 rounded-full bg-noir-950 hover:bg-[#25D366] text-white text-xs sm:text-sm font-jakarta font-bold transition-all hover:scale-105 active:scale-95 shadow-sm whitespace-nowrap"
-                              title={`Book ${item.name} via WhatsApp`}
-                            >
-                              <MessageCircle className="w-3.5 h-3.5 sm:w-4 sm:h-4" />
-                              <span>Book</span>
-                            </a>
-                          </div>
+                              {/* Price & Direct WhatsApp Booking Action: Always neatly aligned */}
+                              <div className="flex shrink-0 items-center gap-2.5 sm:gap-3">
+                                <span className="whitespace-nowrap font-editorial text-base font-bold text-noir-950 sm:text-lg">
+                                  {item.priceAED}{" "}
+                                  <span className="font-jakarta text-[11px] font-bold text-neutral-500">
+                                    AED
+                                  </span>
+                                </span>
+
+                                <a
+                                  href={getWhatsAppBookingUrlForService(item.name, item.priceAED)}
+                                  target="_blank"
+                                  rel="noopener noreferrer"
+                                  className="inline-flex items-center gap-1 whitespace-nowrap rounded-full bg-noir-950 px-3 py-1.5 font-jakarta text-xs font-bold text-white transition-all hover:bg-[#25D366] active:scale-95"
+                                  title={`Book ${item.name} via WhatsApp`}
+                                >
+                                  <MessageCircle className="h-3.5 w-3.5" />
+                                  <span>Book</span>
+                                </a>
+                              </div>
+                            </div>
+                          ))}
                         </div>
-                      ))}
+                      </div>
+                    ))
+                  )}
+                </div>
+              </div>
+            )}
+
+            {/* View Mode 2: Official Menu Sheet Picture */}
+            {viewMode === "image" && (
+              <div
+                data-lenis-prevent="true"
+                onWheel={(e) => e.stopPropagation()}
+                onTouchMove={(e) => e.stopPropagation()}
+                className="flex flex-1 flex-col items-center justify-start overflow-y-auto overscroll-contain bg-neutral-100 p-4 sm:p-6"
+              >
+                <div className="relative w-full max-w-lg rounded-2xl border border-neutral-200 bg-white p-2.5 shadow-md">
+                  <div
+                    onClick={() => setIsImageExpanded(true)}
+                    className="group relative aspect-[1/1.4] w-full cursor-pointer overflow-hidden rounded-xl bg-neutral-50"
+                    title="Click to view full size"
+                  >
+                    <Image
+                      src="/images/reset-price-list.jpg"
+                      alt="Official Reset Men Salon Price List"
+                      fill
+                      className="group-hover:scale-102 object-contain transition-transform duration-300"
+                      priority
+                    />
+                    <div className="absolute inset-0 flex items-center justify-center bg-black/10 transition-colors group-hover:bg-black/25">
+                      <span className="rounded-full bg-black/80 px-3 py-1.5 font-jakarta text-xs font-bold text-white opacity-0 transition-opacity group-hover:opacity-100">
+                        Click to Expand Full Screen
+                      </span>
                     </div>
                   </div>
-                ))
-              )}
-            </div>
 
-            {/* Bottom Footer Bar - Fixed, Clean & Friendly */}
-            <div className="flex-none p-4 sm:p-5 border-t border-neutral-200 bg-white flex flex-col sm:flex-row items-center justify-between gap-3 text-xs font-jakarta text-neutral-700 shadow-md">
-              <div className="flex items-center gap-3">
-                <a
-                  href="tel:+97145655688"
-                  className="inline-flex items-center gap-1.5 text-noir-950 font-bold hover:text-black transition-colors"
-                >
-                  <Phone className="w-3.5 h-3.5 text-noir-950" />
-                  <span>+971 4565 5688</span>
-                </a>
-                <span className="text-neutral-300">|</span>
-                <span className="text-neutral-600 font-medium">Business Bay, Dubai</span>
+                  <div className="mt-3 flex items-center justify-between border-t border-neutral-100 px-2 pt-2.5 font-jakarta text-xs text-neutral-600">
+                    <span className="font-semibold text-noir-950">
+                      Official In-Salon Menu Sheet
+                    </span>
+                    <button
+                      type="button"
+                      onClick={() => setIsImageExpanded(true)}
+                      className="inline-flex cursor-pointer items-center gap-1 font-bold text-noir-950 hover:underline"
+                    >
+                      <Maximize2 className="h-3.5 w-3.5" />
+                      <span>Full Screen</span>
+                    </button>
+                  </div>
+                </div>
               </div>
+            )}
 
-              <div className="flex items-center gap-3">
-                <Link
-                  href="/pricing"
-                  onClick={closePriceList}
-                  className="inline-flex items-center gap-1 text-noir-950 font-bold underline underline-offset-4 decoration-neutral-400 hover:decoration-noir-950 transition-colors"
-                >
-                  <span>Open Full Pricing Page</span>
-                  <ArrowUpRight className="w-3.5 h-3.5" />
-                </Link>
-              </div>
+            {/* Bottom Bar: Quick direct communication */}
+            <div className="flex shrink-0 items-center justify-between border-t border-neutral-200 bg-white px-5 py-3 font-jakarta text-xs text-neutral-600 sm:px-7">
+              <a
+                href="tel:+97145655688"
+                className="inline-flex items-center gap-1.5 font-bold text-noir-950 transition-colors hover:text-black"
+              >
+                <Phone className="h-3.5 w-3.5" />
+                <span>+971 4 565 5688</span>
+              </a>
+
+              <Link
+                href="/pricing"
+                onClick={closePriceList}
+                className="font-bold text-noir-950 hover:underline"
+              >
+                Pricing Page →
+              </Link>
             </div>
           </motion.div>
+
+          {/* Full Screen Image Modal if expanded */}
+          {isImageExpanded && (
+            <div
+              className="fixed inset-0 z-[10000] flex flex-col items-center justify-center bg-black/95 p-4"
+              onClick={() => setIsImageExpanded(false)}
+            >
+              <button
+                type="button"
+                onClick={() => setIsImageExpanded(false)}
+                className="absolute right-4 top-4 flex h-11 w-11 cursor-pointer items-center justify-center rounded-full bg-white/20 text-white transition-colors hover:bg-white/40"
+                aria-label="Close full view"
+              >
+                <X className="h-6 w-6" />
+              </button>
+              <div className="relative h-[85vh] w-full max-w-2xl">
+                <Image
+                  src="/images/reset-price-list.jpg"
+                  alt="Official Reset Men Salon Price List Full View"
+                  fill
+                  className="object-contain"
+                />
+              </div>
+            </div>
+          )}
         </div>
       )}
     </AnimatePresence>

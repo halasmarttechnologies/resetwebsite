@@ -2,8 +2,10 @@
 
 import * as React from "react";
 import Image from "next/image";
-import { motion, AnimatePresence, type Variants } from "framer-motion";
+import Link from "next/link";
+import { motion, AnimatePresence } from "framer-motion";
 import type { ServiceCategory, ServiceItem } from "@/types/cms";
+import { usePriceList } from "@/context/price-list-context";
 
 export interface ServicesCatalogViewProps {
   categories?: ServiceCategory[];
@@ -12,15 +14,14 @@ export interface ServicesCatalogViewProps {
 
 export function ServicesCatalogView({}: ServicesCatalogViewProps = {}) {
   const [activeCategorySlug, setActiveCategorySlug] = React.useState<string>("facial");
+  const { openPriceList } = usePriceList();
 
-  // Filter tabs definition matching screenshot 1:1
   const tabs = [
     {
       id: "all",
       slug: "all",
-      label: "ALL",
-      count: "54 services",
-      icon: "○",
+      label: "ALL RITUALS",
+      count: "44 services",
       image: "/images/salon/salon-chairs-floor.webp",
       title: "ALL MASTER SERVICES",
       description1:
@@ -32,23 +33,21 @@ export function ServicesCatalogView({}: ServicesCatalogViewProps = {}) {
       id: "facial",
       slug: "facial",
       label: "SKIN CARE",
-      count: "24 services",
-      icon: "✕",
+      count: "6 services",
       image: "/images/salon/japanese-head-spa-massage.webp",
-      title: "SKIN CARE",
+      title: "FACIAL & SKIN CARE",
       description1:
-        "Inspired by nature, light, and the soft rhythm of self-care, our skin treatments are designed to restore balance, nourish deeply, and reveal your natural radiance.",
+        "Inspired by nature, light, and the soft rhythm of self-care, our skin treatments are designed to restore balance, nourish deeply, and reveal your natural skin health.",
       description2:
-        "Whether you seek a glow before a big event or long-term skin health, each treatment is performed with intention, clinical-grade serums, and master touch.",
+        "From targeted blackhead extraction and face scrubs to high-potency Vitamin C infusions, each facial is performed with clinical-grade serums and master technique.",
     },
     {
       id: "japanese-head-spa",
       slug: "japanese-head-spa",
-      label: "BODY RITUALS",
-      count: "18 services",
-      icon: "⬡",
+      label: "HEAD SPA",
+      count: "3 rituals",
       image: "/images/salon/japanese-head-spa-halo.webp",
-      title: "BODY RITUALS",
+      title: "JAPANESE HEAD SPA",
       description1:
         "Dubai's premier Japanese Head Spa and body recovery sanctuary. Immersive hydrotherapy, microscopic scalp analysis, and acupressure tension release.",
       description2:
@@ -57,72 +56,66 @@ export function ServicesCatalogView({}: ServicesCatalogViewProps = {}) {
     {
       id: "hair-and-beard",
       slug: "hair-and-beard",
-      label: "HAIR TREATMENTS",
-      count: "12 services",
-      icon: "✕",
+      label: "HAIR & BEARD",
+      count: "6 services",
       image: "/images/salon/haircut-scissor-detailing.webp",
-      title: "HAIR TREATMENTS",
+      title: "HAIR & BEARD CRAFT",
       description1:
         "Precision scissor-over-comb cuts, architectural fades, and traditional royal hot-towel razor shaves crafted by Dubai's top senior barbers.",
       description2:
-        "Complete grooming consultations paired with organic beard oils, hair reconstruction keratin, and subtle grey blending tailored to your personal aesthetic.",
+        "Complete grooming consultations paired with organic beard oils, hair relaxing, and subtle coloring tailored to your personal aesthetic.",
     },
   ];
 
   const currentTab = tabs.find((t) => t.slug === activeCategorySlug) || tabs[1];
 
-  // Staggered container animations
-  const containerVariants: Variants = {
-    hidden: { opacity: 0 },
-    visible: {
-      opacity: 1,
-      transition: {
-        staggerChildren: 0.1,
-        delayChildren: 0.1,
-      },
-    },
-  };
-
-  const itemVariants: Variants = {
-    hidden: { opacity: 0, y: 30 },
-    visible: {
-      opacity: 1,
-      y: 0,
-      transition: {
-        duration: 0.8,
-        ease: [0.16, 1, 0.3, 1] as [number, number, number, number],
-      },
-    },
-  };
-
   return (
-    <div className="w-full flex flex-col bg-white">
-      <section className="relative w-full bg-white text-noir-950 flex flex-col justify-center items-center py-8 sm:py-12 md:py-16 overflow-hidden border-b border-noir-950/[0.08]">
-        <div className="w-full max-w-[1520px] mx-auto px-4 sm:px-8 md:px-12 lg:px-16 flex flex-col justify-center">
-          {/* Category Cards Grid (Square Boxes, rounded-none) */}
-          <motion.div
-            variants={containerVariants}
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: false, amount: 0.2 }}
-            className="w-full grid grid-cols-2 md:grid-cols-4 gap-3 sm:gap-5 md:gap-6 mb-8 sm:mb-14"
-          >
+    <div className="flex w-full flex-col bg-white">
+      <section className="relative flex w-full flex-col items-center justify-center border-b border-neutral-200 bg-white py-10 text-noir-950 sm:py-16 md:py-20">
+        <div className="mx-auto flex w-full max-w-[1440px] flex-col justify-center px-4 sm:px-8 md:px-12 lg:px-16">
+          {/* Header Title */}
+          <div className="mb-6 flex flex-col justify-between gap-4 sm:mb-10 sm:flex-row sm:items-end">
+            <div>
+              <span className="block font-jakarta text-xs font-bold uppercase tracking-wider text-neutral-400">
+                Treatment Categories
+              </span>
+              <h2 className="mt-1 font-editorial text-2xl font-bold tracking-tight text-noir-950 sm:text-4xl">
+                Explore The Disciplines
+              </h2>
+            </div>
+
+            <div className="flex items-center gap-3">
+              <button
+                type="button"
+                onClick={() => openPriceList()}
+                className="rounded-full bg-noir-950 px-4 py-2 font-jakarta text-xs font-semibold text-white transition-colors hover:bg-neutral-800"
+              >
+                Slide Price List
+              </button>
+              <Link
+                href="/services"
+                className="font-jakarta text-xs font-bold text-noir-950 hover:underline"
+              >
+                View Full Services Menu →
+              </Link>
+            </div>
+          </div>
+
+          {/* Category Cards Grid */}
+          <div className="mb-8 grid w-full grid-cols-2 gap-3 sm:mb-12 sm:gap-5 md:grid-cols-4">
             {tabs.map((tab) => {
               const isActive = tab.slug === activeCategorySlug;
 
               return (
-                <motion.button
+                <button
                   key={tab.id}
-                  variants={itemVariants}
+                  type="button"
                   onClick={() => setActiveCategorySlug(tab.slug)}
                   onMouseEnter={() => setActiveCategorySlug(tab.slug)}
-                  onFocus={() => setActiveCategorySlug(tab.slug)}
-                  whileHover={{ y: -5 }}
-                  whileTap={{ scale: 0.98 }}
-                  className={`group relative w-full aspect-[4/3] sm:aspect-square md:aspect-[4/3] overflow-hidden rounded-none text-left p-3.5 sm:p-5 md:p-6 flex flex-col justify-end transition-all duration-500 cursor-pointer ${
+                  className={`group relative flex aspect-[4/3] w-full cursor-pointer flex-col justify-end overflow-hidden rounded-xl p-4 text-left transition-all duration-300 sm:aspect-square sm:p-5 md:aspect-[4/3] ${
                     isActive
-                      ? "ring-2 ring-noir-950 shadow-2xl scale-[1.02]"
-                      : "border border-noir-300 hover:border-noir-900 shadow-sm"
+                      ? "scale-[1.02] shadow-lg ring-2 ring-noir-950"
+                      : "border border-neutral-200 shadow-sm hover:border-neutral-400"
                   }`}
                 >
                   {/* Background Image */}
@@ -131,69 +124,46 @@ export function ServicesCatalogView({}: ServicesCatalogViewProps = {}) {
                     alt={tab.label}
                     fill
                     sizes="(max-width: 768px) 50vw, 25vw"
-                    className={`object-cover transition-transform duration-700 ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:scale-105 ${
-                      isActive ? "scale-105" : "scale-100"
-                    }`}
+                    className="object-cover transition-transform duration-500 group-hover:scale-105"
                   />
 
-                  {/* Subtle Contrast Gradient for Crystal Clear Text */}
-                  <div
-                    className={`absolute inset-0 transition-opacity duration-500 ${
-                      isActive
-                        ? "bg-gradient-to-t from-black/90 via-black/40 to-transparent opacity-100"
-                        : "bg-gradient-to-t from-black/80 via-black/35 to-black/10 opacity-95 group-hover:opacity-100"
-                    }`}
-                  />
+                  {/* High Contrast Gradient */}
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/40 to-transparent" />
 
-                  {/* Content Anchored at Bottom */}
-                  <div className="relative z-10 w-full flex items-end justify-between">
-                    <div>
-                      <h3 className="font-editorial font-semibold text-sm sm:text-base md:text-lg text-white uppercase tracking-tight">
-                        {tab.label}
-                      </h3>
-                      <p className="font-jakarta text-xs sm:text-xs text-white/80">
-                        {tab.count}
-                      </p>
-                    </div>
-
-                    {/* Icon */}
-                    <span
-                      className={`font-mono text-xs sm:text-base font-bold text-white transition-transform duration-300 ${
-                        isActive ? "rotate-45 scale-110" : "group-hover:rotate-45"
-                      }`}
-                    >
-                      {tab.icon}
-                    </span>
+                  {/* Content */}
+                  <div className="relative z-10 w-full">
+                    <h3 className="font-editorial text-sm font-bold uppercase tracking-tight text-white sm:text-base md:text-lg">
+                      {tab.label}
+                    </h3>
+                    <p className="font-jakarta text-xs text-white/80">{tab.count}</p>
                   </div>
-                </motion.button>
+                </button>
               );
             })}
-          </motion.div>
+          </div>
 
-          {/* 3. Lower Dynamic Detail Section (Title on Left, Philosophy on Right) */}
+          {/* Lower Dynamic Detail Section */}
           <AnimatePresence mode="wait">
             <motion.div
               key={currentTab.slug}
-              initial={{ opacity: 0, y: 15 }}
+              initial={{ opacity: 0, y: 10 }}
               animate={{ opacity: 1, y: 0 }}
               exit={{ opacity: 0, y: -10 }}
-              transition={{ duration: 0.35, ease: [0.16, 1, 0.3, 1] }}
+              transition={{ duration: 0.25 }}
               className="w-full"
             >
-              <div className="grid grid-cols-1 lg:grid-cols-12 gap-5 lg:gap-16 items-start pb-4 sm:pb-6">
-                {/* Left Column: Huge Category Title */}
+              <div className="grid grid-cols-1 items-start gap-5 pb-4 lg:grid-cols-12 lg:gap-16">
                 <div className="lg:col-span-5">
-                  <h3 className="font-editorial font-semibold text-3xl sm:text-4xl md:text-5xl lg:text-6xl text-noir-950 tracking-[-0.035em] uppercase leading-tight">
+                  <h3 className="font-editorial text-2xl font-bold uppercase leading-tight text-noir-950 sm:text-3xl md:text-4xl">
                     {currentTab.title}
                   </h3>
                 </div>
 
-                {/* Right Column: 2 Editorial Philosophy Paragraphs */}
-                <div className="lg:col-span-7 space-y-2.5 sm:space-y-4">
-                  <p className="font-jakarta text-noir-700 text-sm sm:text-base md:text-lg font-normal leading-relaxed">
+                <div className="space-y-3 lg:col-span-7">
+                  <p className="font-jakarta text-sm leading-relaxed text-neutral-700 sm:text-base">
                     {currentTab.description1}
                   </p>
-                  <p className="font-jakarta text-noir-600 text-sm sm:text-base font-normal leading-relaxed">
+                  <p className="font-jakarta text-sm leading-relaxed text-neutral-500">
                     {currentTab.description2}
                   </p>
                 </div>

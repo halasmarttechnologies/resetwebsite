@@ -1,21 +1,16 @@
 import { Metadata } from "next";
-import { getCmsClient } from "@/lib/cms";
-import { ServicesCatalogView } from "@/components/home/services-catalog-view";
+import { ServicesPageView } from "@/components/services/services-page-view";
 
 export const metadata: Metadata = {
-  title: "Grooming Services & Rituals Menu | Reset Men Salon Dubai",
+  title: "Services & Price List | Reset Men Salon Business Bay Dubai",
   description:
-    "Explore our complete service menu: Precision haircuts, beard sculpting, Japanese head spa, facial therapies, keratin, massages, and executive nails.",
+    "Explore our complete service menu with official transparent rates: Precision haircuts, beard sculpting, Japanese head spa, facial therapies, keratin, massages, and executive nails in Business Bay.",
 };
 
-export default async function ServicesPage() {
-  const cms = getCmsClient();
-  const categories = await cms.getServiceCategories();
-  const services = await cms.getServices();
-
+export default function ServicesPage() {
   return (
-    <main className="w-full min-h-screen bg-white">
-      <ServicesCatalogView categories={categories} services={services} />
+    <main className="min-h-screen w-full bg-white">
+      <ServicesPageView />
     </main>
   );
 }

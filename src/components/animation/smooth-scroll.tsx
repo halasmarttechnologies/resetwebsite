@@ -27,6 +27,8 @@ export function SmoothScrollProvider({ children }: SmoothScrollProviderProps) {
       infinite: false,
     });
 
+    (window as unknown as { __lenis?: Lenis }).__lenis = lenis;
+
     // Track the latest frame id so cleanup cancels the live loop, not just
     // the first frame (otherwise the loop keeps running after unmount).
     let animationFrameId = 0;
@@ -40,6 +42,7 @@ export function SmoothScrollProvider({ children }: SmoothScrollProviderProps) {
     return () => {
       cancelAnimationFrame(animationFrameId);
       lenis.destroy();
+      delete (window as unknown as { __lenis?: Lenis }).__lenis;
     };
   }, [prefersReducedMotion]);
 
