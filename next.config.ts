@@ -154,6 +154,33 @@ const securityHeaders = [
   },
 ];
 
+/**
+ * Static media caching.
+ *
+ * Next serves everything under /public with `max-age=0, must-revalidate`,
+ * so a returning visitor re-validates every image, font and the 3.2 MB
+ * hero video on every single page view. The CDN hit is cheap; the
+ * round-trip on a mobile connection is not.
+ *
+ * Fonts and video are content-stable: if either is ever re-cut, it ships
+ * under a new filename, so they are safe to mark immutable for a year.
+ *
+ * Photography is swapped in place more often, so it gets a short fresh
+ * window plus a long stale-while-revalidate tail: repeat views are
+ * instant from cache, and a replaced photo still propagates within a day
+ * without anyone having to purge anything.
+ */
+const immutableAsset = [
+  { key: "Cache-Control", value: "public, max-age=31536000, immutable" },
+];
+
+const photographyAsset = [
+  {
+    key: "Cache-Control",
+    value: "public, max-age=86400, stale-while-revalidate=2592000",
+  },
+];
+
 // API responses must never be cached by a shared CDN.
 const noStoreForApis = [
   { key: "Cache-Control", value: "no-store, max-age=0, must-revalidate" },
@@ -169,6 +196,10 @@ const nextConfig: NextConfig = {
   images: {
     formats: ["image/avif", "image/webp"],
     qualities: [75, 90, 100],
+    // The optimizer mirrors the source asset's Cache-Control, which for
+    // /public is max-age=0. Without this, every optimized derivative is
+    // re-validated on each view too.
+    minimumCacheTTL: 31536000,
     remotePatterns: [
       { protocol: "https", hostname: "resetmensalon.ae" },
       { protocol: "https", hostname: "www.resetmensalon.ae" },
@@ -185,12 +216,25 @@ const nextConfig: NextConfig = {
         destination: "/services/:category",
         permanent: true,
       },
+      // /about-us was a byte-identical copy of /about, down to the title
+      // and description, with no canonical between them — two URLs
+      // competing for the same query. Collapsed onto /about.
+      {
+        source: "/about-us",
+        destination: "/about",
+        permanent: true,
+      },
     ];
   },
   async headers() {
     return [
       { source: "/:path*", headers: securityHeaders },
       { source: "/api/:path*", headers: noStoreForApis },
+      { source: "/video/:path*", headers: immutableAsset },
+      { source: "/fonts/:path*", headers: immutableAsset },
+      { source: "/images/:path*", headers: photographyAsset },
+      { source: "/team/:path*", headers: photographyAsset },
+      { source: "/brand/:path*", headers: photographyAsset },
     ];
   },
 };

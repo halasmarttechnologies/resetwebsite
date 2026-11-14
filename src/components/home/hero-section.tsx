@@ -41,19 +41,57 @@ export function HeroSection() {
   const videoRef = React.useRef<HTMLVideoElement>(null);
   const prefersReducedMotion = useReducedMotion();
 
-  // Honour the OS "reduce motion" setting: hold the hero on its poster
-  // frame instead of looping the studio footage indefinitely.
+  // The hero video is a 3.2 MB decorative loop sitting behind the poster
+  // frame, so it must never compete with the LCP image for bandwidth.
+  // It carries preload="none" and no autoPlay attribute; the fetch is
+  // started here, by hand, only once the browser is idle.
+  //
+  // It is skipped entirely when the visitor prefers reduced motion
+  // (WCAG 2.2.2) or is on a metered/slow connection — in both cases the
+  // poster frame is already a complete hero, so nothing is lost.
   React.useEffect(() => {
     const video = videoRef.current;
     if (!video) return;
 
     if (prefersReducedMotion) {
       video.pause();
-    } else {
-      // Autoplay can still be refused (low-power mode, data saver) —
+      return;
+    }
+
+    const connection = (
+      navigator as Navigator & {
+        connection?: { saveData?: boolean; effectiveType?: string };
+      }
+    ).connection;
+
+    if (
+      connection?.saveData === true ||
+      /(^|-)(2g|slow-2g)$/.test(connection?.effectiveType ?? "")
+    ) {
+      return;
+    }
+
+    const startPlayback = () => {
+      video.load();
+      // Autoplay can still be refused (low-power mode, background tab) —
       // the poster frame stays visible, so there is nothing to recover.
       void video.play().catch(() => {});
+    };
+
+    const idle = (
+      window as Window & {
+        requestIdleCallback?: (cb: () => void, o?: { timeout: number }) => number;
+        cancelIdleCallback?: (id: number) => void;
+      }
+    );
+
+    if (typeof idle.requestIdleCallback === "function") {
+      const handle = idle.requestIdleCallback(startPlayback, { timeout: 2500 });
+      return () => idle.cancelIdleCallback?.(handle);
     }
+
+    const timer = window.setTimeout(startPlayback, 1200);
+    return () => window.clearTimeout(timer);
   }, [prefersReducedMotion]);
 
   const { scrollYProgress } = useScroll({
@@ -93,11 +131,10 @@ export function HeroSection() {
           ref={videoRef}
           id="home-hero-video"
           className="absolute inset-0 h-full w-full object-cover object-center"
-          autoPlay={!prefersReducedMotion}
           muted
           loop
           playsInline
-          preload="auto"
+          preload="none"
           poster="/video/reset-hero-poster.webp"
           aria-hidden="true"
           tabIndex={-1}
