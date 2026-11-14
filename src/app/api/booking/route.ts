@@ -1,7 +1,7 @@
 import { NextRequest } from "next/server";
 import { z } from "zod";
 import {
-  checkRateLimit,
+  checkRateLimitAsync,
   rateLimitHeaders,
   RateLimits,
 } from "@/lib/security/rate-limiter";
@@ -100,7 +100,11 @@ export async function POST(req: NextRequest) {
   const ip = resolveClientIp(req);
 
   try {
-    const rl = checkRateLimit(`booking:${ip}`, RateLimits.booking.limit, RateLimits.booking.windowSeconds);
+    const rl = await checkRateLimitAsync(
+      `booking:${ip}`,
+      RateLimits.booking.limit,
+      RateLimits.booking.windowSeconds,
+    );
     if (!rl.success) {
       logger.warn("booking.rate_limited", { requestId, ip });
       return fail(429, {

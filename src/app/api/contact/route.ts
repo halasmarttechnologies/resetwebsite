@@ -1,7 +1,7 @@
 import { NextRequest } from "next/server";
 import { z } from "zod";
 import {
-  checkRateLimit,
+  checkRateLimitAsync,
   rateLimitHeaders,
   RateLimits,
 } from "@/lib/security/rate-limiter";
@@ -68,7 +68,7 @@ export async function POST(req: NextRequest) {
 
   try {
     // 1. Rate-limit first — cheapest gate.
-    const rl = checkRateLimit(
+    const rl = await checkRateLimitAsync(
       `contact:${ip}`,
       RateLimits.contact.limit,
       RateLimits.contact.windowSeconds,

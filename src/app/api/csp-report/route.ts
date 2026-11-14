@@ -1,7 +1,7 @@
 import { NextRequest, NextResponse } from "next/server";
 import { logger, newRequestId } from "@/lib/logger";
 import { resolveClientIp } from "@/lib/api/request-utils";
-import { checkRateLimit, RateLimits } from "@/lib/security/rate-limiter";
+import { checkRateLimitAsync, RateLimits } from "@/lib/security/rate-limiter";
 
 /**
  * CSP violation report sink.
@@ -45,7 +45,7 @@ export async function POST(req: NextRequest) {
 
   try {
     // Rate-limit to prevent log-flooding (30 req/min per IP — browsers batch reports).
-    const rl = checkRateLimit(
+    const rl = await checkRateLimitAsync(
       `csp-report:${ip}`,
       RateLimits.cspReport.limit,
       RateLimits.cspReport.windowSeconds,
