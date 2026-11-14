@@ -48,6 +48,7 @@ export function ServiceBookingCtaSection({
               src={backgroundImage.src}
               alt={backgroundImage.alt}
               fill
+              sizes="(min-width: 1400px) 1400px, 100vw"
               className="object-cover object-center mix-blend-luminosity"
             />
             <div className="absolute inset-0 bg-gradient-to-r from-noir-950 via-noir-950/95 to-noir-950/80" />

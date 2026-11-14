@@ -108,12 +108,8 @@ export function TrueParallaxShowcaseSection({
   return (
     <section className="relative w-full bg-white py-4 sm:py-6 md:py-8 overflow-hidden">
       <div className="w-full max-w-[1920px] mx-auto px-4 space-y-2 sm:space-y-3">
-        {items.map((item, index) => (
-          <TrueParallaxCard
-            key={item.id}
-            item={item}
-            priority={index === 0}
-          />
+        {items.map((item) => (
+          <TrueParallaxCard key={item.id} item={item} />
         ))}
       </div>
     </section>

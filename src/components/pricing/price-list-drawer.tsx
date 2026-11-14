@@ -397,8 +397,8 @@ export function PriceListDrawer() {
                       src="/images/reset-price-list.jpg"
                       alt="Official Reset Men Salon Price List"
                       fill
+                      sizes="(max-width: 512px) 100vw, 512px"
                       className="group-hover:scale-102 object-contain transition-transform duration-300"
-                      priority
                     />
                     <div className="absolute inset-0 flex items-center justify-center bg-black/10 transition-colors group-hover:bg-black/25">
                       <span className="rounded-full bg-black/80 px-3 py-1.5 font-jakarta text-xs font-bold text-white opacity-0 transition-opacity group-hover:opacity-100">
@@ -463,6 +463,7 @@ export function PriceListDrawer() {
                   src="/images/reset-price-list.jpg"
                   alt="Official Reset Men Salon Price List Full View"
                   fill
+                  sizes="(max-width: 672px) 100vw, 672px"
                   className="object-contain"
                 />
               </div>

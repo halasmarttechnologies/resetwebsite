@@ -45,6 +45,7 @@ export function ShopProductsGrid({ products = defaultTeaserProducts }: ShopProdu
               src={prod.image}
               alt={prod.name}
               fill
+              sizes="(min-width: 640px) 320px, 100vw"
               className="object-cover object-center filter brightness-95"
             />
             <div className="absolute top-3 left-3 px-2.5 py-0.5 rounded-full bg-black/60 backdrop-blur-md text-white text-[10px] font-jakarta font-bold uppercase tracking-wider">

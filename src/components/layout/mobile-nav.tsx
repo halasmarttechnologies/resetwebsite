@@ -83,9 +83,9 @@ export function MobileNav({}: MobileNavProps = {}) {
         onClick={() => setIsOpen(true)}
         aria-label="Open Navigation Menu"
         aria-expanded={isOpen}
-        className="w-11 h-11 flex items-center justify-center text-noir-950 hover:bg-neutral-100 rounded-full transition-colors active:scale-95 cursor-pointer"
+        className="flex h-11 w-11 cursor-pointer items-center justify-center rounded-full text-noir-950 transition-colors hover:bg-neutral-100 active:scale-95"
       >
-        <Menu className="w-6 h-6" strokeWidth={2} />
+        <Menu className="h-6 w-6" strokeWidth={2} />
       </button>
 
       {/* Clean Full-Screen Fixed Mobile Menu Overlay */}
@@ -97,10 +97,10 @@ export function MobileNav({}: MobileNavProps = {}) {
           data-lenis-prevent="true"
           onWheel={(e) => e.stopPropagation()}
           onTouchMove={(e) => e.stopPropagation()}
-          className="fixed inset-0 z-[9999] bg-white text-noir-950 flex flex-col h-[100dvh] max-h-[100dvh] w-full overflow-hidden"
+          className="fixed inset-0 z-[9999] flex h-[100dvh] max-h-[100dvh] w-full flex-col overflow-hidden bg-white text-noir-950"
         >
           {/* Top Bar: Brand Logo & Close Button */}
-          <div className="flex items-center justify-between px-6 h-16 border-b border-neutral-100 shrink-0 bg-white">
+          <div className="flex h-16 shrink-0 items-center justify-between border-b border-neutral-100 bg-white px-6">
             <Link
               href="/"
               onClick={closeMenu}
@@ -121,9 +121,9 @@ export function MobileNav({}: MobileNavProps = {}) {
               type="button"
               onClick={closeMenu}
               aria-label="Close Navigation Menu"
-              className="w-11 h-11 flex items-center justify-center text-noir-950 hover:bg-neutral-100 rounded-full transition-colors active:scale-95 cursor-pointer -mr-2"
+              className="-mr-2 flex h-11 w-11 cursor-pointer items-center justify-center rounded-full text-noir-950 transition-colors hover:bg-neutral-100 active:scale-95"
             >
-              <X className="w-6 h-6" strokeWidth={2} />
+              <X className="h-6 w-6" strokeWidth={2} />
             </button>
           </div>
 
@@ -146,7 +146,7 @@ export function MobileNav({}: MobileNavProps = {}) {
               </div>
 
               {/* Services Section with Direct Clean Accordion */}
-              <div className="py-1 border-y border-neutral-100">
+              <div className="border-y border-neutral-100 py-1">
                 <div className="flex items-center justify-between py-1.5">
                   <Link
                     href="/services"
@@ -159,10 +159,10 @@ export function MobileNav({}: MobileNavProps = {}) {
                     type="button"
                     onClick={() => setServicesExpanded((prev) => !prev)}
                     aria-label="Toggle services list"
-                    className="p-2 text-neutral-500 hover:text-black cursor-pointer"
+                    className="cursor-pointer p-2 text-neutral-500 hover:text-black"
                   >
                     <ChevronDown
-                      className={`w-5 h-5 transition-transform duration-200 ${
+                      className={`h-5 w-5 transition-transform duration-200 ${
                         servicesExpanded ? "rotate-180" : ""
                       }`}
                     />
@@ -170,11 +170,11 @@ export function MobileNav({}: MobileNavProps = {}) {
                 </div>
 
                 {servicesExpanded && (
-                  <div className="mt-1 mb-2 space-y-2 pl-3 border-l-2 border-neutral-200">
+                  <div className="mb-2 mt-1 space-y-2 border-l-2 border-neutral-200 pl-3">
                     <Link
                       href="/services"
                       onClick={closeMenu}
-                      className="block py-1 text-sm font-jakarta font-semibold text-noir-950 hover:underline"
+                      className="block py-1 font-jakarta text-sm font-semibold text-noir-950 hover:underline"
                     >
                       All Services & Rates →
                     </Link>
@@ -183,7 +183,7 @@ export function MobileNav({}: MobileNavProps = {}) {
                         key={service.href}
                         href={service.href}
                         onClick={closeMenu}
-                        className={`block py-1 text-sm font-jakarta transition-colors ${
+                        className={`block py-1 font-jakarta text-sm transition-colors ${
                           pathname === service.href
                             ? "font-bold text-black"
                             : "text-neutral-600 hover:text-black"
@@ -203,7 +203,7 @@ export function MobileNav({}: MobileNavProps = {}) {
                     closeMenu();
                     openPriceList();
                   }}
-                  className="w-full text-left py-2 font-editorial text-2xl tracking-tight text-neutral-800 hover:text-black transition-colors cursor-pointer"
+                  className="w-full cursor-pointer py-2 text-left font-editorial text-2xl tracking-tight text-neutral-800 transition-colors hover:text-black"
                 >
                   Price List
                 </button>
@@ -214,7 +214,9 @@ export function MobileNav({}: MobileNavProps = {}) {
                   href="/about"
                   onClick={closeMenu}
                   className={`block py-2 font-editorial text-2xl tracking-tight transition-colors ${
-                    pathname === "/about" ? "font-bold text-black" : "text-neutral-800 hover:text-black"
+                    pathname === "/about"
+                      ? "font-bold text-black"
+                      : "text-neutral-800 hover:text-black"
                   }`}
                 >
                   About
@@ -223,22 +225,12 @@ export function MobileNav({}: MobileNavProps = {}) {
 
               <div>
                 <Link
-                  href="/shop"
-                  onClick={closeMenu}
-                  className={`block py-2 font-editorial text-2xl tracking-tight transition-colors ${
-                    pathname === "/shop" ? "font-bold text-black" : "text-neutral-800 hover:text-black"
-                  }`}
-                >
-                  Shop
-                </Link>
-              </div>
-
-              <div>
-                <Link
                   href="/blog"
                   onClick={closeMenu}
                   className={`block py-2 font-editorial text-2xl tracking-tight transition-colors ${
-                    pathname === "/blog" ? "font-bold text-black" : "text-neutral-800 hover:text-black"
+                    pathname === "/blog"
+                      ? "font-bold text-black"
+                      : "text-neutral-800 hover:text-black"
                   }`}
                 >
                   Journal
@@ -250,7 +242,9 @@ export function MobileNav({}: MobileNavProps = {}) {
                   href="/contact"
                   onClick={closeMenu}
                   className={`block py-2 font-editorial text-2xl tracking-tight transition-colors ${
-                    pathname === "/contact" ? "font-bold text-black" : "text-neutral-800 hover:text-black"
+                    pathname === "/contact"
+                      ? "font-bold text-black"
+                      : "text-neutral-800 hover:text-black"
                   }`}
                 >
                   Contact

@@ -634,6 +634,7 @@ export function ContactMainSection() {
                   src="/images/salon/salon-rotunda-boutique.webp"
                   alt="Reset Men Salon Business Bay Interior Reception"
                   fill
+                  sizes="(min-width: 1024px) 420px, 100vw"
                   className="object-cover object-center"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent" />

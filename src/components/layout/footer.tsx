@@ -29,7 +29,6 @@ export function Footer() {
           src="/images/salon/salon-armchair-neon.webp"
           alt="Reset Men Salon Sanctuary Lounge Business Bay Dubai"
           fill
-          priority
           sizes="100vw"
           className="object-cover object-top sm:object-[center_20%]"
         />

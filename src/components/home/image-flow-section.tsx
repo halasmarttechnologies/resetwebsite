@@ -129,7 +129,6 @@ export function ImageFlowSection() {
                   alt={card.alt}
                   fill
                   sizes="(max-width: 768px) 80vw, 400px"
-                  priority={idx === 0}
                   className={`object-cover object-center transition-all duration-700 ease-[cubic-bezier(0.16,1,0.3,1)] ${
                     isActive
                       ? "scale-100 brightness-100 saturate-100"
